@@ -1,0 +1,579 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/fragments/footer.html}">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript">
+    <meta http-equiv="Content-Style-Type" content="text/css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="robots" content="noindex,nofollow" />
+
+    <link rel="stylesheet" th:href="@{css/common.css}" type="text/css">
+    <script type="text/javascript" th:src="@{js/jquery-3.1.1.min.js}"></script>
+    <script type="text/javascript" th:src="@{js/jquery.selectbox-0.3.js}"></script>
+    <script type="text/javascript" th:src="@{js/jquery.ui.js}"></script>
+    <script type="text/javascript" th:src="@{js/common.js}"></script>
+    <script type="text/javascript" th:src="@{js/newsroomre.js}"></script>
+
+
+
+
+    <title>신문고</title>
+</head>
+<body>
+<form id="requestForm" method="post" enctype="multipart/form-data">
+    <div id="wrap" class="w01">
+        <!-- header -->
+        <div id="header">
+            <div class="top">
+                <!-- inwrap -->
+                <div class="inwrap">
+                    <h1><a th:href="@{/main.do}"><span class="hide">JoongAng Group</span></a></h1>
+                    <h2>신문고</h2>
+                    <ul>
+                        <li class="n01"><a th:href="@{/intro.do}">제보이용안내</a></li>
+                        <li class="n02 on"><a th:href="@{}">제보하기</a></li>
+                    </ul>
+                </div>
+                <!--//inwrap end -->
+            </div>
+            <div class="headline">
+                <h3>제보하기</h3>
+                <p>당신의 소중한 한마디가 중앙그룹의 밑거름이 됩니다.</p>
+            </div>
+            <div class="tabmenu">
+                <!-- inwrap -->
+                <div class="inwrap">
+                    <ul>
+                        <li class="on"><a th:href="@{}">실명</a></li>
+                        <li><a th:href="@{/anonymityInfo.do}">익명</a></li>
+                    </ul>
+                </div>
+                <!--//inwrap end -->
+            </div>
+        </div>
+        <!--//header end -->
+
+        <!-- container -->
+        <div id="container">
+            <!-- inwrap -->
+            <div class="inwrap">
+                <!-- section 제보내용 -->
+                <div class="section">
+                    <!-- left -->
+                    <div class="left">
+                        <div class="title">1. 제보 내용</div>
+                    </div>
+                    <!--//left end -->
+
+                    <!-- right -->
+                    <div class="right">
+                        <div class="top"><span class="point">필수항목</span></div>
+                        <!-- table -->
+                        <table border="0" class="table t_type01">
+                            <caption>제보 내용</caption>
+                            <colgroup>
+                                <col style="width:170px;">
+                                <col style="width:;">
+                            </colgroup>
+                            <tbody>
+                            <tr>
+                                <th class="imp first">대상 회사</th>
+                                <td class="first">
+                                    <select id="inf_com_idx" name="inf_com_idx" class="selectbox">
+                                        <option value="">선택해주세요</option>
+
+                                        <option value="L50">(주)미디어링크</option>
+
+                                        <option value="L13">BA엔터테인먼트</option>
+
+                                        <option value="L11">JTBC미디어텍</option>
+
+                                        <option value="E16">JTBC스튜디오</option>
+
+                                        <option value="Q12">다보중앙</option>
+
+                                        <option value="L16">드라마하우스</option>
+
+                                        <option value="Q20">드림트러스트</option>
+
+                                        <option value="E18">러너블</option>
+
+                                        <option value="M10">메가박스중앙(주)</option>
+
+                                        <option value="I13">미디어프린팅넷(주)</option>
+
+                                        <option value="L18">스튜디오 피닉스</option>
+
+                                        <option value="L15">스튜디오버드</option>
+
+                                        <option value="L70">스튜디오잼</option>
+
+                                        <option value="Q11">아름지기</option>
+
+                                        <option value="Q13">아름지기(함양)</option>
+
+                                        <option value="L17">앤솔로지</option>
+
+                                        <option value="Q19">유민문화재단</option>
+
+                                        <option value="Q14">화동문화재단</option>
+
+                                        <option value="L10">제이티비씨</option>
+
+                                        <option value="L23">제이티비씨디스커버리</option>
+
+                                        <option value="L20">제이티비씨미디어컴(주)</option>
+
+                                        <option value="L40">제이티비씨스포츠</option>
+
+                                        <option value="L60">제이티비씨포</option>
+
+                                        <option value="C10">제이티비씨플러스 엠앤비</option>
+
+                                        <option value="L30">제이티비씨플러스</option>
+
+                                        <option value="Q21">올마루</option>
+
+                                        <option value="A12">콘텐트리중앙</option>
+
+                                        <option value="B20">차이나랩</option>
+
+                                        <option value="B11">중앙데일리(주)</option>
+
+                                        <option value="Z91">중앙리조트투자</option>
+
+                                        <option value="B10">중앙일보</option>
+
+                                        <option value="H10">중앙일보M&P</option>
+
+                                        <option value="Q17">중앙일보신용협동조합</option>
+
+                                        <option value="Z00">미지정</option>
+
+                                        <option value="J21">중앙일보에스</option>
+
+                                        <option value="Z94">중앙프라퍼티</option>
+
+                                        <option value="A11">중앙홀딩스</option>
+
+                                        <option value="E17">커넥트중앙</option>
+
+                                        <option value="L22">콘텐츠지음</option>
+
+                                        <option value="L19">클라이맥스스튜디오</option>
+
+                                        <option value="L14">퍼펙트스톰필름</option>
+
+                                        <option value="L21">프로덕션에이치</option>
+
+                                        <option value="L12">필름몬스터</option>
+
+                                        <option value="C11">허스트중앙</option>
+
+                                        <option value="V10">휘닉스중앙</option>
+
+                                        <option value="V17">휘닉스중앙제주</option>
+
+                                        <option value="V51">휘닉스평창</option>
+
+                                        <option value="F20">미지정</option>
+
+                                    </select>
+                                    <label for="checkbox01" class="im_ch ch02 ml40">
+                                        <input type="checkbox" id="inf_com_chk" name="inf_com_chk" value="Y" onchange="comDisableChk()"/>
+                                        <span>미지정</span>
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="imp">제보 구분</th>
+                                <td>
+                                    <div class="dis_inb o_ra">
+                                        <label for="radio01" class="im_ra r01 on mr20">
+                                            <input type="radio" id="radio01" name="inf_gubun" value="GB01" checked="checked"/>
+                                            <span>부정행위</span>
+                                        </label>
+                                        <label for="radio02" class="im_ra r01">
+                                            <input type="radio" id="radio02"  name="inf_gubun" value="GB02"/>
+                                            <span>성희롱</span>
+                                        </label>
+                                    </div>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <th class="imp">제보 제목</th>
+                                <td><input type="text" class="intt" id="inf_title" name="inf_title" maxlength="100"/></td>
+                            </tr>
+
+                            <tr>
+                                <th class="imp">제보 내용</th>
+                                <td>
+                                    <div class="textarea"><textarea id="inf_descript" name="inf_descript" placeholder="제보 내용은 발생 일자, 장소, 제보 대상자 및 관련자이름, 부정행위 등을 구체적으로 작성 해주세요. 근거없는 단순 비방이나 음해성 투서는 제보 대상이 아닙니다."></textarea></div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th>첨부 파일</th>
+                                <td class="selfile">
+                                    <!-- <select id="select_01" class="selectbox02" size="5"> -->
+                                    <select id="fileList" multiple="multiple" class="selectbox02" size="4"></select>
+                                    <div class="btnar">
+                                        <a id="btn_add" class="btninput plus">추가</a>
+                                        <a id="btn_del" class="btninput del">삭제</a>
+                                    </div>
+                                    <p class="ps">첨부파일은 문서, 그림, 사운드, 동영상 파일만 가능하며, 문서파일은 txt, word 파일만 첨부 가능 합니다. <br />용량 제한은 20MB이며 최대 5개까지 가능합니다.</p>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <!--//table end -->
+
+                    </div>
+                    <!--//right end -->
+                </div>
+                <!--//section 제보내용 end -->
+
+
+                <!-- section 제보자 -->
+                <div class="section">
+                    <!-- left -->
+                    <div class="left">
+                        <div class="title">2. 제보자</div>
+                    </div>
+                    <!--//left end -->
+
+                    <!-- right -->
+                    <div class="right">
+                        <div class="top"><span class="point">필수항목</span></div>
+                        <!-- table -->
+                        <table border="0" class="table t_type01">
+                            <caption>제보자</caption>
+                            <colgroup>
+                                <col style="width:170px;">
+                                <col style="width:;">
+                            </colgroup>
+                            <tbody>
+                            <tr>
+                                <th class="imp first">이름</th>
+                                <td class="first"><input type="text" id="inf_wb_nm" name="inf_wb_nm" class="intt name" maxlength="20"/></td>
+                            </tr>
+
+                            <tr>
+                                <th>연락처</th>
+                                <td>
+                                    <label for="checkbox02" class="im_ch ch02">
+                                        <input type="checkbox" id="inf_wb_rtn1" name="inf_wb_rtn1" value="Y" />
+                                        <span>전화</span>
+                                    </label>
+                                    <label for="checkbox03" class="im_ch ch02 ml20">
+                                        <input type="checkbox" id="inf_wb_rtn2" name="inf_wb_rtn2" value="Y" />
+                                        <span>이메일</span>
+                                    </label>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <th>전화</th>
+                                <td class="phon">
+                                    <select id="inf_wb_tel1" class="selectbox">
+                                        <option value="">선택</option>
+
+                                        <option value="010">010</option>
+
+                                        <option value="011">011</option>
+
+                                        <option value="016">016</option>
+
+                                        <option value="017">017</option>
+
+                                        <option value="018">018</option>
+
+                                        <option value="019">019</option>
+
+                                        <option value="02">02(서울)</option>
+
+                                        <option value="051">051(부산)</option>
+
+                                        <option value="053">053(대구)</option>
+
+                                        <option value="032">032(인천)</option>
+
+                                        <option value="062">062(광주)</option>
+
+                                        <option value="042">042(대전)</option>
+
+                                        <option value="052">052(울산)</option>
+
+                                        <option value="044">044(세종)</option>
+
+                                        <option value="031">031(경기)</option>
+
+                                        <option value="033">033(강원)</option>
+
+                                        <option value="043">043(충북)</option>
+
+                                        <option value="041">041(충남)</option>
+
+                                        <option value="063">063(전북)</option>
+
+                                        <option value="061">061(전남)</option>
+
+                                        <option value="054">054(경북)</option>
+
+                                        <option value="055">055(경남)</option>
+
+                                        <option value="064">064(제주)</option>
+
+                                    </select>
+                                    <div class="dis_inb font01">-</div>
+                                    <input type="text" id="inf_wb_tel2" class="intt phon" maxlength="4" onkeydown="return showKeyCode(event);" onkeyup="removeChar(event);" />
+                                    <div class="dis_inb font01">-</div>
+                                    <input type="text" id="inf_wb_tel3" class="intt phon" maxlength="4" onkeydown="return showKeyCode(event);" onkeyup="removeChar(event);"/>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th>이메일</th>
+                                <td class="email">
+                                    <input type="text" id="inf_wb_mail1" class="intt mail" maxlength="20"/>
+                                    <span class="font01">@</span>
+                                    <input type="text" id="inf_wb_mail2" class="intt mail mr10" maxlength="30"/>
+                                    <select id="inf_wb_mail3" class="selectbox" onchange="mailSelect()">
+                                        <option value="">직접입력</option>
+
+                                        <option value="joins.com">joins.com</option>
+
+                                        <option value="joongang.co.kr">joongang.co.kr</option>
+
+                                        <option value="megabox.co.kr">megabox.co.kr</option>
+
+                                        <option value="jtbc.co.kr">jtbc.co.kr</option>
+
+                                        <option value="phoenixhnr.co.kr">phoenixhnr.co.kr</option>
+
+                                        <option value="koreadaily.com">koreadaily.com</option>
+
+                                        <option value="gmail.com">gmail.com</option>
+
+                                        <option value="hanmail.net">hanmail.net</option>
+
+                                        <option value="naver.com">naver.com</option>
+
+                                        <option value="yahoo.com">yahoo.com</option>
+
+                                        <option value="nate.com">nate.com</option>
+
+                                    </select>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <!--//table end -->
+
+                    </div>
+                    <!--//right end -->
+                </div>
+                <!--//section 제보자 end -->
+
+
+                <!-- section 개인정보 수집∙이용 내역 -->
+                <div class="section s03">
+                    <!-- left -->
+                    <div class="left">
+                        <div class="title n2">개인정보 수집∙이용 내역</div>
+                    </div>
+                    <!--//left end -->
+
+                    <!-- right -->
+                    <div class="right">
+                        <div class="overbox">
+                            <div class="textpl">
+                                <table class="table t_type02">
+                                    <caption>개인정보 수집∙이용 내역</caption>
+                                    <colgroup>
+                                        <col style="width:33.3333%;">
+                                        <col style="width:33.3333%;">
+                                        <col style="width:33.3333%;">
+                                    </colgroup>
+                                    <thead>
+                                    <tr>
+                                        <th class="first">수집∙이용 항목</th>
+                                        <th>수집∙이용 목적</th>
+                                        <th>보유 기간</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td class="first">이름, 휴대폰번호, 이메일</td>
+                                        <td>제보 내용 추가 확인, <br />접수 확인 안내 등 업무처리</td>
+                                        <td>제보 건 종결 처리 후 1년</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <p>※ 위의 개인정보 수집∙이용에 대한 동의를 거부할 권리가 있습니다. 개인정보의 수집∙이용을 원하지 않으실 경우는 ‘익명’으로 제보하실 수 있습니다. 단, 익명 제보의 경우는 제보 접수 확인 등 업무처리에 제약이 있을 수 있습니다.</p>
+                            </div>
+                        </div>
+                        <div class="input">
+                            <label for="checkbox02" class="im_ch ch02">
+                                <input type="checkbox" id="agreeChk1">
+                                <span>위 개인정보 수집·이용에 동의합니다. </span>
+                            </label>
+                        </div>
+                    </div>
+                    <!--//right end -->
+                </div>
+                <!--//section 개인정보 수집∙이용 내역 end -->
+
+
+                <!-- section 개인정보 제3자 제공 내역 -->
+                <div class="section s03">
+                    <!-- left -->
+                    <div class="left">
+                        <div class="title n2">개인정보 제3자 제공 내역</div>
+                    </div>
+                    <!--//left end -->
+
+                    <!-- right -->
+                    <div class="right">
+                        <div class="overbox">
+                            <div class="textpl">
+                                <table class="table t_type02">
+                                    <caption>개인정보 제3자 제공 내역</caption>
+                                    <colgroup>
+                                        <col style="width:25%;">
+                                        <col style="width:25%;">
+                                        <col style="width:25%;">
+                                        <col style="width:25%;">
+                                    </colgroup>
+                                    <thead>
+                                    <tr>
+                                        <th class="first">제공받는 자</th>
+                                        <th>제공 목적</th>
+                                        <th>제공 항목</th>
+                                        <th>보유 기간</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td class="first">제보조사를 위하여 <br />필요한 경우 해당 회사 <br />(중앙그룹 계열사 內)</td>
+                                        <td>제보 내용 추가 확인 <br />및 업무처리</td>
+                                        <td>이름, 휴대폰번호, 이메일</td>
+                                        <td>목적 달성 후 즉시 파기</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <p>※ 위의 개인정보 제공에 대한 동의를 거부할 권리가 있습니다. 단, 동의를 거부할 경우 제보 내용 추가 확인 등 업무처리에 제약이 있을 수 있습니다.</p>
+                            </div>
+                        </div>
+                        <div class="input">
+                            <label for="checkbox02" class="im_ch ch02">
+                                <input type="checkbox" id="agreeChk2">
+                                <span>위 개인정보 제공에 동의합니다.</span>
+                            </label>
+                        </div>
+                    </div>
+                    <!--//right end -->
+                </div>
+                <!--//section 개인정보 제3자 제공 내역 end -->
+
+                <!-- section 개인정보 처리업무 위탁 내역 -->
+                <div class="section s03">
+                    <!-- left -->
+                    <div class="left">
+                        <div class="title n2">개인정보 처리업무 위탁 내역</div>
+                    </div>
+                    <!--//left end -->
+
+                    <!-- right -->
+                    <div class="right">
+                        <div class="overbox">
+                            <div class="textpl">
+                                <table class="table t_type02">
+                                    <caption>개인정보 처리업무 위탁 내역</caption>
+                                    <colgroup>
+                                        <col style="width:50%;">
+                                        <col style="width:50%;">
+                                    </colgroup>
+                                    <thead>
+                                    <tr>
+                                        <th class="first">처리를 위탁 받는자 (수탁업체)</th>
+                                        <th>목적</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td class="first">제이콘텐트리</td>
+                                        <td>신문고 시스템 운영 및 유지보수</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="input">
+                            <label for="checkbox02" class="im_ch ch02">
+                                <input type="checkbox" id="agreeChk3">
+                                <span>위 개인정보 개인정보 처리업무 위탁에 동의합니다.</span>
+                            </label>
+                        </div>
+                    </div>
+                    <!--//right end -->
+                </div>
+                <!--//section 개인정보 처리업무 위탁 내역 end -->
+
+
+                <div class="btnbox">
+                    <div class="btn b01" onclick="boardRegist()">제보하기</div>
+                </div>
+
+            </div>
+            <!--//inwrap end -->
+        </div>
+        <!--//container end -->
+
+        <!-- footer -->
+        <div id="footer">
+            <!-- inwrap -->
+            <div class="inwrap">
+                <div class="copy">Copyright JoongAng Group All Rights Reserved. </div>
+            </div>
+            <!--//inwrap end -->
+        </div>
+        <!--//footer end -->
+    </div>
+
+    <!--
+    ////////////////////////////////////////////////
+    /////////////////// 첨부파일 영역 //////////////
+    ////////////////////////////////////////////////
+    -->
+    <div id="fileDiv1">
+        <input type="file" id="file1" name="upload" style="display: none;" onchange="javascript:fileChange(1);" />
+    </div>
+    <div id="fileDiv2">
+        <input type="file" id="file2" name="upload" style="display: none;" onchange="javascript:fileChange(2);" />
+    </div>
+    <div id="fileDiv3">
+        <input type="file" id="file3" name="upload" style="display: none;" onchange="javascript:fileChange(3);" />
+    </div>
+    <div id="fileDiv4">
+        <input type="file" id="file4" name="upload" style="display: none;" onchange="javascript:fileChange(4);" />
+    </div>
+    <div id="fileDiv5">
+        <input type="file" id="file5" name="upload" style="display: none;" onchange="javascript:fileChange(5);" />
+    </div>
+
+    <input type="hidden" id="inf_type" name="inf_type" value="TP01" />
+    <input type="hidden" id="inf_wb_rtn" name="inf_wb_rtn" value="" />
+    <input type="hidden" id="inf_wb_tel" name="inf_wb_tel" value="" />
+    <input type="hidden" id="inf_wb_mail" name="inf_wb_mail" value="" />
+    <input type="hidden" id="inf_com_nm" name="inf_com_nm" value="" />
+
+</form>
+
+</body>
+</html>

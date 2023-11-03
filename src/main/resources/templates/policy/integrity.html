@@ -1,0 +1,73 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript">
+    <meta http-equiv="Content-Style-Type" content="text/css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="robots" content="noindex,nofollow" />
+
+    <link rel="stylesheet" th:href="@{css/common.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{css/integrity.css}" type="text/css">
+    <script type="text/javascript" th:src="@{js/jquery-3.1.1.min.js}"></script>
+    <script type="text/javascript" th:src="@{js/jquery.selectbox-0.3.js}"></script>
+    <script type="text/javascript" th:src="@{js/jquery.ui.js}"></script>
+    <script type="text/javascript" th:src="@{js/common.js}"></script>
+    <script type="text/javascript" th:src="@{js/integrity.js}"></script>
+
+
+    <title>윤리경영</title>
+</head>
+<body>
+<div id="wrap" class="main">
+    <!-- header -->
+    <div id="header">
+        <div class="top">
+            <!-- inwrap -->
+            <div class="inwrap">
+                <h1><a th:href="@{/}"><span class="hide">JoongAng Group</span></a></h1>
+                <h2>윤리경영</h2>
+            </div>
+            <!--//inwrap end -->
+        </div>
+    </div>
+    <!--//header end -->
+
+    <!-- container -->
+    <div id="container">
+        <!-- inwrap -->
+        <div class="inwrap">
+            <div class="conttop">
+                <h3>윤리경영</h3>
+                <p>중앙그룹이 지키고<br> 실천하겠습니다</p>
+                <div class="imgbox"><span class="hide">규범(code)/공감(consensus)/준수(compliance)</span></div>
+            </div>
+
+            <div class="contbot">
+                <a th:href="@{/policy/newsroom}" class="item it01">
+                    <dl>
+                        <dt><span>신문고</span></dt>
+                        <dd>부정행위 및 성희롱 제보</dd>
+                        <dd class="d2">부정과 무관한 고객 민원이나 음해성 투서는 제보 대상이 아닙니다</dd>
+                    </dl>
+                </a>
+
+                <a th:href="@{https://integrity.joins.com}" class="item it02">
+                    <dl>
+                        <dt><span>청렴센터</span></dt>
+                        <dd>부정청탁 및 금품 등 수수의 금지에 관한 법률</dd>
+                    </dl>
+                </a>
+                <a th:href="@{/policy/ethics}" class="item it03">
+                    <dl>
+                        <dt>그룹 윤리규범</dt>
+                    </dl>
+                </a>
+            </div>
+
+        </div>
+        <!--//inwrap end -->
+    </div>
+    <!--//container end -->
+</div>
