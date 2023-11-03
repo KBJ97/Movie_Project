@@ -1,4 +1,4 @@
 package com.cinema.policy.entity;
 
-public class policyEntity {
+public class csEntity {
 }
