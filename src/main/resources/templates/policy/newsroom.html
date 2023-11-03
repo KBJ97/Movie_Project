@@ -1,0 +1,200 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/fragments/footer.html}">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript">
+    <meta http-equiv="Content-Style-Type" content="text/css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="robots" content="noindex,nofollow" />
+
+    <link rel="stylesheet" th:href="@{/css/policy/common.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/policy/newsroom.css}" type="text/css">
+    <script type="text/javascript" th:src="@{/js/policy/jquery-3.1.1.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/policy/jquery.selectbox-0.3.js}"></script>
+    <script type="text/javascript" th:src="@{/js/policy/jquery.ui.js}"></script>
+    <script type="text/javascript" th:src="@{/js/policy/common.js}"></script>
+    <script type="text/javascript" th:src="@{/js/policy/newsroom.js}"></script>
+
+
+
+
+    <title>신문고</title>
+</head>
+<body>
+<div id="wrap" class="intro">
+    <!-- header -->
+    <div id="header">
+        <div class="top">
+            <!-- inwrap -->
+            <div class="inwrap">
+                <h1><a th:href="@{/integrity}"><span class="hide">JoongAng Group</span></a></h1>
+                <h2>신문고</h2>
+                <ul>
+                    <li class="n01 on"><a href="#">제보이용안내</a></li>
+                    <li class="n02"><a th:href="@{/realnameInfo.do}">제보하기</a></li>
+                </ul>
+            </div>
+            <!--//inwrap end -->
+        </div>
+        <div class="headline">
+            <h3>제보이용안내</h3>
+            <p></p>
+        </div>
+        <div class="tabmenu">
+            <!-- inwrap -->
+            <div class="inwrap">
+                <ul>
+                    <li class="tab01 on"><a href="#">제보방법</a></li>
+                    <li class="tab02"><a href="#">제보대상</a></li>
+                    <li class="tab03"><a href="#">처리절차</a></li>
+                </ul>
+            </div>
+            <!--//inwrap end -->
+        </div>
+    </div>
+    <!--//header end -->
+
+    <!-- container -->
+    <div id="container" class="intro">
+        <!-- section 제보방법 완료 -->
+        <div class="section in01">
+            <div class="titlebox">
+                <h2>제보방법</h2>
+                <h3>제보사항이 있으면 언제든 접수할 수 있습니다</h3>
+                <!-- <p>부정비리를 알고 계신다면<br />윤리적인 기업문화 정착을 위해 지금 바로 제보해주세요.</p>  -->
+            </div>
+            <div class="contbox">
+                <ul>
+                    <!--
+                        <li class="n01">
+                            <div class="icon"><img src="/images/sub/in01_img01.png" /></div>
+                            <div class="text01">Tell.</div>
+                            <div class="text02">02-2031-1004</div>
+                        </li>
+                     -->
+                    <li class="n02">
+                        <div class="icon"><img th:src="@{/images/in01_img02.png}" /></div>
+                        <div class="text01">e-Mail.</div>
+                        <div class="text02">jebo1004@joins.com</div>
+                    </li>
+                    <li class="n03">
+                        <div class="icon"><img th:src="@{/images/in01_img03.png}" /></div>
+                        <div class="text01">On-line.</div>
+                        <div class="text02">jebo.joonganggroup.com</div>
+                    </li>
+                </ul>
+                <div class="btn"><a th:href="@{/realnameInfo.do}">온라인 제보하기</a></div>
+            </div>
+            <!-- a href="/realnameInfo.do" class="totop">온라인<br/>제보하기</a -->
+            <div class="totopbox">
+                <a th:href="@{/realnameInfo.do}" class="totop">온라인<br/>제보하기</a>
+                <div class="gotop">TOP</div>
+            </div>
+        </div>
+        <!--//section 제보방법 완료 end -->
+
+
+        <!-- section 제보대상 완료 -->
+        <div class="section in02">
+            <div class="titlebox">
+                <h2>제보대상</h2>
+                <h3>무엇을 제보할 수 있나요?</h3>
+            </div>
+            <div class="contbox">
+                <ul>
+                    <li class="dd04">
+                        <dl>
+                            <dt><div><img th:src="@{/images/policy/in02_img04.png}" /></div></dt>
+                            <dd class="text01">업무 관련 금전 부정</dd>
+                            <dd class="text02">
+                                <p>회사 공금 유용 및 횡령</p>
+                                <p>부당한 증빙으로 회사 경비 청구</p>
+                            </dd>
+                        </dl>
+                    </li>
+                    <li class="dd02">
+                        <dl>
+                            <dt><div><img th:src="@{/images/policy/in02_img02.png}" /></div></dt>
+                            <dd class="text01">직장내 성희롱 및 비윤리적 언행</dd>
+                            <dd class="text02">
+                                <p>상하 직원, 동료간 비인격적 욕설, 부당한 차별</p>
+                                <p>성적인 행동과 언어로 상대방이 성적 수치심을<br />
+                                    느끼게 하거나 불쾌감을 주는 행위</p>
+                            </dd>
+                        </dl>
+                    </li>
+                    <li class="dd01"><!-- dd03 -->
+                        <dl>
+                            <dt><div><img th:src="@{/images/policy/in02_img03.png}" /></div></dt>
+                            <dd class="text01">협력업체와의 부적절한 관계</dd>
+                            <dd class="text02">
+                                <p>불공정한 기회 부여, 불공정 거래 행위,<br />
+                                    대가를 전제로 부당거래 유지</p>
+                                <p>협력업체 경영의 참여 및 금전/지분 투자</p>
+                            </dd>
+                        </dl>
+                    </li>
+                    <li class="dd01"><!-- dd04 -->
+                        <dl>
+                            <dt><div><img th:src="@{/images/policy/in02_img01.png}" /></div></dt>
+                            <dd class="text01">이해관계자와의 부정한 거래</dd>
+                            <dd class="text02">
+                                <p>직무와 관련하여 금전, 향응, 오락, 편익 수취</p>
+                                <p>부당한 리베이트를 요구하거나 수령하는 행위</p>
+                            </dd>
+                        </dl>
+                    </li>
+                    <li class="dd01"><!-- dd05 -->
+                        <dl>
+                            <dt><div><img th:src="@{/images/policy/in02_img05.png}" /></div></dt>
+                            <dd class="text01">회사 자산 및 정보의 유용, 유출</dd>
+                            <dd class="text02">
+                                <p>회사 경영 정보의 외부 유출</p>
+                                <p>사적인 용도로 회사 자산 무단 사용 및 처분</p>
+                            </dd>
+                        </dl>
+                    </li>
+                    <li class="dd01"><!-- dd06 -->
+                        <dl>
+                            <!-- <dt><div><img src="/images/sub/in02_img06.png" /></div></dt> -->
+                            <dt><div><img th:src="@{/images/policy/in02_img06_2.jpg}" /></div></dt>
+                            <dd class="text01">기타 직무윤리 위반 </dd>
+                            <dd class="text02">
+                                <p>일반 상식 및 사회 통념상의 윤리 원칙에<br />
+                                    위배되는 제반 행위</p>
+                            </dd>
+                        </dl>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--//section 제보대상 완료 end -->
+
+
+        <!-- section 처리절차 완료 -->
+        <div class="section in03">
+            <div class="titlebox">
+                <h2>처리절차</h2>
+                <h3>제보는 어떻게 처리되나요?</h3>
+                <!-- <p>제보자와 제보 내용은 보호되며,<br />접수된 제보는 절차에 따라 공정하게 검토됩니다.</p> -->
+            </div>
+            <div class="contbox">
+                <img th:src="@{/images/policy/in03_img06.png}" class="solimg" />
+                <!-- ul>
+                    <li class="n01"><img src="/images/sub/in03_img01.png" /></li>
+                    <li class="n02"><img src="/images/sub/in03_img02.png" /></li>
+                    <li class="n03"><img src="/images/sub/in03_img03.png" /></li>
+                    <li class="n04"><img src="/images/sub/in03_img04.png" /></li>
+                    <li class="n05"><img src="/images/sub/in03_img05.png" /></li>
+                </ul -->
+            </div>
+        </div>
+        <!--//section 처리절차 완료 end -->
+    </div>
+    <!--//container end -->
+
+</div>
+</body>
+</html>
