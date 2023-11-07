@@ -45,6 +45,8 @@ spring:
   thymeleaf:
     cache: false
     prefix: classpath:/templates
+    mvc:
+      static-path-pattern: "/static/**"
 
   servlet:
     multipart:
