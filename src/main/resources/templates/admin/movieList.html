@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.thymeleaf.org/">
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Dashboard - SB Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet"/>
+    <link href="../../static/admin/css/style.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.jquery.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        font: normal 14px "Noto Sans CJK KR";
+    }
+
+    a {
+        text-decoration: none; /* 밑줄 제거 */
+        color: black;
+    }
+
+    #register {
+        width: 100%;
+        height: auto;
+        background-color: #e2e2e2;
+        padding: 10px;
+    }
+
+    #register #register_detail {
+        width: 100%;
+        height: 100%;
+        background-color: rgb(255, 255, 255);
+        padding: 10px;
+    }
+
+    #register > div {
+        font-size: 20px;
+    }
+
+    #register hr:first-child {
+        opacity: 1;
+        border: 1.8px solid black;
+    }
+
+    #register_detail td {
+        padding: 10px;
+    }
+
+    #register td:nth-child(1) {
+        width: 5%; /* 원하는 너비로 조절 */
+        height: 50px; /* 원하는 높이로 조절 */
+        padding: 10px; /* 내부 여백 설정 */
+        text-align: center; /* 텍스트 가운데 정렬 (선택적) */
+    }
+    #register td:nth-child(2) {
+        width: 20%; /* 원하는 너비로 조절 */
+        height: 50px; /* 원하는 높이로 조절 */
+        padding: 10px; /* 내부 여백 설정 */
+        text-align: center; /* 텍스트 가운데 정렬 (선택적) */
+    }
+    #register td:nth-child(3) {
+        width: 10%; /* 원하는 너비로 조절 */
+        height: 50px; /* 원하는 높이로 조절 */
+        padding: 10px; /* 내부 여백 설정 */
+        text-align: center; /* 텍스트 가운데 정렬 (선택적) */
+    }
+    #register td:nth-child(4) {
+        width: 10%; /* 원하는 너비로 조절 */
+        height: 50px; /* 원하는 높이로 조절 */
+        padding: 10px; /* 내부 여백 설정 */
+        text-align: center; /* 텍스트 가운데 정렬 (선택적) */
+    }
+    #register td:nth-child(5) {
+        width: 8%; /* 원하는 너비로 조절 */
+        height: 50px; /* 원하는 높이로 조절 */
+        padding: 10px; /* 내부 여백 설정 */
+        text-align: center; /* 텍스트 가운데 정렬 (선택적) */
+    }
+    #register td:nth-child(6) {
+        width: 15%; /* 원하는 너비로 조절 */
+        height: 50px; /* 원하는 높이로 조절 */
+        padding: 10px; /* 내부 여백 설정 */
+        text-align: center; /* 텍스트 가운데 정렬 (선택적) */
+    }
+    #register td:nth-child(7) {
+        width: 15%; /* 원하는 너비로 조절 */
+        height: 50px; /* 원하는 높이로 조절 */
+        padding: 10px; /* 내부 여백 설정 */
+        text-align: center; /* 텍스트 가운데 정렬 (선택적) */
+    }
+    #register td:nth-child(8) {
+        width: 8%; /* 원하는 너비로 조절 */
+        height: 50px; /* 원하는 높이로 조절 */
+        padding: 10px; /* 내부 여백 설정 */
+        text-align: center; /* 텍스트 가운데 정렬 (선택적) */
+    }
+    #register td:nth-child(9) {
+        width: 8%; /* 원하는 너비로 조절 */
+        height: 50px; /* 원하는 높이로 조절 */
+        padding: 10px; /* 내부 여백 설정 */
+        text-align: center; /* 텍스트 가운데 정렬 (선택적) */
+    }
+
+    #register th:nth-child(1) {
+        width: 5%; /* 원하는 너비로 조절 */
+        height: 50px; /* 원하는 높이로 조절 */
+        padding: 10px; /* 내부 여백 설정 */
+        text-align: center; /* 텍스트 가운데 정렬 (선택적) */
+    }
+    #register th:nth-child(2) {
+        width: 20%; /* 원하는 너비로 조절 */
+        height: 50px; /* 원하는 높이로 조절 */
+        padding: 10px; /* 내부 여백 설정 */
+        text-align: center; /* 텍스트 가운데 정렬 (선택적) */
+    }
+    #register th:nth-child(3) {
+        width: 10%; /* 원하는 너비로 조절 */
+        height: 50px; /* 원하는 높이로 조절 */
+        padding: 10px; /* 내부 여백 설정 */
+        text-align: center; /* 텍스트 가운데 정렬 (선택적) */
+    }
+    #register th:nth-child(4) {
+        width: 10%; /* 원하는 너비로 조절 */
+        height: 50px; /* 원하는 높이로 조절 */
+        padding: 10px; /* 내부 여백 설정 */
+        text-align: center; /* 텍스트 가운데 정렬 (선택적) */
+    }
+    #register th:nth-child(5) {
+        width: 8%; /* 원하는 너비로 조절 */
+        height: 50px; /* 원하는 높이로 조절 */
+        padding: 10px; /* 내부 여백 설정 */
+        text-align: center; /* 텍스트 가운데 정렬 (선택적) */
+    }
+    #register th:nth-child(6) {
+        width: 15%; /* 원하는 너비로 조절 */
+        height: 50px; /* 원하는 높이로 조절 */
+        padding: 10px; /* 내부 여백 설정 */
+        text-align: center; /* 텍스트 가운데 정렬 (선택적) */
+    }
+    #register th:nth-child(7) {
+        width: 15%; /* 원하는 너비로 조절 */
+        height: 50px; /* 원하는 높이로 조절 */
+        padding: 10px; /* 내부 여백 설정 */
+        text-align: center; /* 텍스트 가운데 정렬 (선택적) */
+    }
+    #register th:nth-child(8) {
+        width: 8%; /* 원하는 너비로 조절 */
+        height: 50px; /* 원하는 높이로 조절 */
+        padding: 10px; /* 내부 여백 설정 */
+        text-align: center; /* 텍스트 가운데 정렬 (선택적) */
+    }
+    #register th:nth-child(9) {
+        width: 8%; /* 원하는 너비로 조절 */
+        height: 50px; /* 원하는 높이로 조절 */
+        padding: 10px; /* 내부 여백 설정 */
+        text-align: center; /* 텍스트 가운데 정렬 (선택적) */
+    }
+
+    #register table {
+        width: 100%;
+    }
+
+    #register_detail tr:first-child {
+        background-color: black !important; /* 원하는 회색 배경 색상 설정 */
+        color: white;
+    }
+
+    #register_detail tr:nth-child(odd) {
+        background-color: #ccc; /* 원하는 회색 배경 색상 설정 */
+    }
+
+    #register .page {
+        text-align: center; /* 가운데 정렬 */
+        margin-top: 20px;
+        margin-bottom: 5px;
+    }
+
+    #register .page a {
+        font-size: 15px; /* 원하는 글자 크기로 설정 */
+        color: black;
+        text-decoration: none; /* 링크 밑줄 제거 */
+        margin: 0 10px; /* 링크 사이 여백 설정 */
+    }
+
+    #register .page .on {
+        font-size: 15px; /* 활성 페이지 글자 크기 설정 */
+        font-weight: bold; /* 활성 페이지 텍스트 굵게 표시 (선택적) */
+    }
+</style>
+
+<body class="sb-nav-fixed">
+<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+    <!-- Navbar Brand-->
+    <a class="navbar-brand ps-3" href="index.html">REST CINEMA</a>
+
+    <!-- Navbar Search
+          <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+              <div class="input-group">
+                  <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                  <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+              </div>
+          </form>
+          -->
+
+    <!-- Navbar-->
+    <ul class="navbar-nav ms-auto me-3 me-lg-4">
+        <li class="nav-item dropdown">
+            <a
+                    class="nav-link dropdown-toggle"
+                    id="navbarDropdown"
+                    href="#"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+            ><i class="fas fa-user fa-fw"></i
+            ></a>
+            <ul
+                    class="dropdown-menu dropdown-menu-end"
+                    aria-labelledby="navbarDropdown"
+            >
+                <li><a class="dropdown-item" href="#!">개인정보 수정</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="#!">로그아웃</a></li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+<div id="layoutSidenav">
+    <div id="layoutSidenav_nav">
+        <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+            <div class="sb-sidenav-menu">
+                <div class="nav">
+                    <div class="sb-sidenav-menu-heading">Core</div>
+                    <a class="nav-link" href="index.html">
+                        <div class="sb-nav-link-icon"></div>
+                        메인 페이지
+                    </a>
+                    <div class="sb-sidenav-menu-heading">Movie</div>
+                    <a class="nav-link" href="register.html">
+                        <div class="sb-nav-link-icon"></div>
+                        영화 등록
+                    </a>
+                    <a class="nav-link" href="timeRegister.html">
+                        <div class="sb-nav-link-icon"></div>
+                        상영 시간 등록
+                    </a>
+                    <a class="nav-link" href="movieList.html">
+                        <div class="sb-nav-link-icon"></div>
+                        상영 목록
+                    </a>
+                    <div class="sb-sidenav-menu-heading">Member</div>
+                    <a class="nav-link" href="userList.html">
+                        <div class="sb-nav-link-icon"></div>
+                        회원
+                    </a>
+                </div>
+            </div>
+            <div class="sb-sidenav-footer">
+                <div class="small">Logged in as: 성찬</div>
+                관리자님 환영합니다.
+            </div>
+        </nav>
+    </div>
+    <div id="layoutSidenav_content">
+        <main>
+            <div class="container-fluid px-4">
+                <h1 class="mt-4"></h1>
+                <ol class="breadcrumb mb-4">
+                    <li class="breadcrumb-item active">어서오세요 관리자님</li>
+                </ol>
+            </div>
+            <div id="register">
+                <div id="register_detail">
+                    상영 목록
+                    <hr />
+
+                    <section>
+                        <table>
+                            <tr>
+                                <th>번호</th>
+                                <th>상영 영화</th>
+                                <th>지역</th>
+                                <th>세부지역</th>
+                                <th>상영관</th>
+                                <th>상영 시작일</th>
+                                <th>상영 종료일</th>
+                                <th colspan="2">관리</th>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>해리포터</td>
+                                <td>부산</td>
+                                <td>서면</td>
+                                <td>1관</td>
+                                <td>2022/11/01</td>
+                                <td>2022/11/11</td>
+                                <td><a href="#">수정</a></td>
+                                <td><a href="#">삭제</a></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>해리포터</td>
+                                <td>부산</td>
+                                <td>서면</td>
+                                <td>1관</td>
+                                <td>2022/11/01</td>
+                                <td>2022/11/11</td>
+                                <td><a href="#">수정</a></td>
+                                <td><a href="#">삭제</a></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>해리포터</td>
+                                <td>부산</td>
+                                <td>서면</td>
+                                <td>1관</td>
+                                <td>2022/11/01</td>
+                                <td>2022/11/11</td>
+                                <td><a href="#">수정</a></td>
+                                <td><a href="#">삭제</a></td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>해리포터</td>
+                                <td>부산</td>
+                                <td>서면</td>
+                                <td>1관</td>
+                                <td>2022/11/01</td>
+                                <td>2022/11/11</td>
+                                <td><a href="#">수정</a></td>
+                                <td><a href="#">삭제</a></td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>해리포터</td>
+                                <td>부산</td>
+                                <td>서면</td>
+                                <td>1관</td>
+                                <td>2022/11/01</td>
+                                <td>2022/11/11</td>
+                                <td><a href="#">수정</a></td>
+                                <td><a href="#">삭제</a></td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>해리포터</td>
+                                <td>부산</td>
+                                <td>서면</td>
+                                <td>1관</td>
+                                <td>2022/11/01</td>
+                                <td>2022/11/11</td>
+                                <td><a href="#">수정</a></td>
+                                <td><a href="#">삭제</a></td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>해리포터</td>
+                                <td>부산</td>
+                                <td>서면</td>
+                                <td>1관</td>
+                                <td>2022/11/01</td>
+                                <td>2022/11/11</td>
+                                <td><a href="#">수정</a></td>
+                                <td><a href="#">삭제</a></td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>해리포터</td>
+                                <td>부산</td>
+                                <td>서면</td>
+                                <td>1관</td>
+                                <td>2022/11/01</td>
+                                <td>2022/11/11</td>
+                                <td><a href="#">수정</a></td>
+                                <td><a href="#">삭제</a></td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>해리포터</td>
+                                <td>부산</td>
+                                <td>서면</td>
+                                <td>1관</td>
+                                <td>2022/11/01</td>
+                                <td>2022/11/11</td>
+                                <td><a href="#">수정</a></td>
+                                <td><a href="#">삭제</a></td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>해리포터</td>
+                                <td>부산</td>
+                                <td>서면</td>
+                                <td>1관</td>
+                                <td>2022/11/01</td>
+                                <td>2022/11/11</td>
+                                <td><a href="#">수정</a></td>
+                                <td><a href="#">삭제</a></td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>해리포터</td>
+                                <td>부산</td>
+                                <td>서면</td>
+                                <td>1관</td>
+                                <td>2022/11/01</td>
+                                <td>2022/11/11</td>
+                                <td><a href="#">수정</a></td>
+                                <td><a href="#">삭제</a></td>
+                            </tr>
+                        </table>
+
+                        <div class="page">
+                            <a href="#" class="prev">이전</a>
+                            <a href="#" class="num on">1</a>
+                            <a href="#" class="num">2</a>
+                            <a href="#" class="num">3</a>
+                            <a href="#" class="next">다음</a>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+
+        <footer class="py-4 bg-light mt-auto">
+            <div class="container-fluid px-4">
+                <div
+                        class="d-flex align-items-center justify-content-between small"
+                >
+                    <div class="text-muted">Copyright &copy; Your Website 2023</div>
+                    <div>
+                        <a href="#">Privacy Policy</a>
+                        &middot;
+                        <a href="#">Terms &amp; Conditions</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>
+</body>
+</html>
