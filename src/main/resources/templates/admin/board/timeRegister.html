@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.thymeleaf.org/"
+      layout:decorate="/admin/board/layout.html">
+<head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font: normal 14px "Noto Sans CJK KR";
+        }
+
+        #register {
+            width: 100%;
+            height: auto;
+            background-color: #e2e2e2;
+            padding: 10px;
+        }
+
+        #register #register_detail {
+            width: 100%;
+            height: 100%;
+            background-color: rgb(255, 255, 255);
+            padding: 10px;
+        }
+
+        #register > div {
+            font-size: 20px;
+        }
+
+        #register_detail td {
+            padding: 10px 0;
+        }
+
+        #register_detail td {
+            padding: 10px 0;
+        }
+
+        #register_detail td {
+            padding: 10px 0;
+        }
+
+        #register hr:first-child {
+            opacity: 1;
+            border: 1.8px solid black;
+        }
+
+        #register_detail input {
+            width: 100%;
+            height: 35px;
+        }
+
+        #register_detail input[name="openMovie"] {
+            width: 25%;
+            padding: 5px;
+        }
+
+        #register_detail input[name="closeDate"] {
+            width: 25%;
+            padding: 5px;
+        }
+
+        #register_detail #time {
+            height: 35px;
+            width: 50%; /* 너비 조절 */
+        }
+
+        #register_detail #cinema {
+            height: 35px;
+            width: 50%; /* 너비 조절 */
+        }
+
+        #register_detail #region1 {
+            height: 35px;
+            width: 50%; /* 너비 조절 */
+        }
+
+        #register_detail #region2 {
+            height: 35px;
+            width: 50%; /* 너비 조절 */
+        }
+
+        textarea {
+            resize: none;
+        }
+
+        #register_detail td {
+            padding: 10px;
+        }
+
+        #register button {
+            width: 150px; /* 버튼의 넓이 */
+            height: 40px; /* 버튼의 높이 */
+            font-size: 16px; /* 폰트 크기 */
+            background-color: black; /* 버튼의 배경색 (검정색) */
+            color: white; /* 폰트 색상 (흰색) */
+            border: none; /* 테두리 없음 */
+            border-radius: 5px; /* 둥근 모서리 */
+        }
+
+        /* 버튼에 호버(마우스를 올렸을 때) 효과 추가 */
+        #register button:hover {
+            background-color: darkgray; /* 호버시 배경색 변경 */
+            color: black; /* 호버시 폰트 색상 변경 */
+            cursor: pointer; /* 포인터 커서로 변경 */
+        }
+    </style>
+</head>
+
+        <div id="register" layout:fragment="content">
+            <div id="register_detail">
+                상영시간등록
+                <hr />
+
+                <section>
+                    <table>
+                        <tr>
+                            <td>상영지역</td>
+                            <td>
+                                <select id="region1" name="region1">
+                                    <option value="1">부산</option>
+                                    <option value="2">서울</option>
+                                    <option value="3">경기</option>
+                                    <option value="4">대구</option>
+                                    <option value="5">대전</option>
+                                    <!-- 원하는 장르 옵션들을 추가하세요 -->
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>상영 영화관</td>
+                            <td>
+                                <select id="region2" name="region2">
+                                    <option value="1">서면</option>
+                                    <option value="2">남포</option>
+                                    <option value="3">하단</option>
+                                    <option value="4">해운대</option>
+                                    <!-- 원하는 장르 옵션들을 추가하세요 -->
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>상영 스크린</td>
+                            <td>
+                                <select id="cinema" name="room">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <!-- 원하는 장르 옵션들을 추가하세요 -->
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>상영 영화</td>
+                            <td><input type="text" name="running" /></td>
+                        </tr>
+                        <tr>
+                            <td>상영 시간</td>
+                            <td>
+                                <select id="time" name="runningTime">
+                                    <option value="09:00">09:00</option>
+                                    <option value="09:00">09:00</option>
+                                    <option value="10:00">10:00</option>
+                                    <option value="10:30">10:30</option>
+                                    <option value="11:00">11:00</option>
+                                    <option value="11:30">11:30</option>
+                                    <!-- 원하는 장르 옵션들을 추가하세요 -->
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>상영 시작일</td>
+                            <td>
+                                <input type="date" name="openMovie" style="width: 50%" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>상영 종료일</td>
+                            <td>
+                                <input type="date" name="closeDate" style="width: 50%" />
+                            </td>
+                        </tr>
+
+                        <!-- 등록과 취소 버튼 -->
+                        <tr>
+                            <td></td>
+                            <td>
+                                <button type="submit">등록</button>
+                                <button type="button">취소</button>
+                            </td>
+                        </tr>
+                    </table>
+                </section>
+            </div>
+        </div>
+
+
+
+</html>
