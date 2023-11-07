@@ -10,15 +10,11 @@
     <meta name="robots" content="noindex,nofollow" />
 
     <link rel="stylesheet" th:href="@{/css/policy/common.css}" type="text/css">
-    <link rel="stylesheet" th:href="@{/css/policy/newsroom.css}" type="text/css">
     <script type="text/javascript" th:src="@{/js/policy/jquery-3.1.1.min.js}"></script>
     <script type="text/javascript" th:src="@{/js/policy/jquery.selectbox-0.3.js}"></script>
     <script type="text/javascript" th:src="@{/js/policy/jquery.ui.js}"></script>
     <script type="text/javascript" th:src="@{/js/policy/common.js}"></script>
     <script type="text/javascript" th:src="@{/js/policy/newsroom.js}"></script>
-
-
-12
 
     <title>신문고</title>
 </head>
@@ -29,11 +25,11 @@
         <div class="top">
             <!-- inwrap -->
             <div class="inwrap">
-                <h1><a th:href="@{/integrity}"><span class="hide">JoongAng Group</span></a></h1>
+                <h1><a th:href="@{/policy/integrity}"><span class="hide">JoongAng Group</span></a></h1>
                 <h2>신문고</h2>
                 <ul>
-                    <li class="n01 on"><a href="#">제보이용안내</a></li>
-                    <li class="n02"><a th:href="@{/realnameInfo.do}">제보하기</a></li>
+                    <li class="n01 on"><a th:src="@{/images/policy/sub00_top_bg.jpg}">제보이용안내</a></li>
+                    <li class="n02"><a th:href="@{/policy/newsroom}">제보하기</a></li> <!--임의 페이지설정-->
                 </ul>
             </div>
             <!--//inwrap end -->
@@ -75,21 +71,21 @@
                         </li>
                      -->
                     <li class="n02">
-                        <div class="icon"><img th:src="@{/images/in01_img02.png}" /></div>
+                        <div class="icon"><img th:src="@{/images/policy/in01_img02.png}" /></div>
                         <div class="text01">e-Mail.</div>
                         <div class="text02">jebo1004@joins.com</div>
                     </li>
                     <li class="n03">
-                        <div class="icon"><img th:src="@{/images/in01_img03.png}" /></div>
+                        <div class="icon"><img th:src="@{/images/policy/in01_img03.png}" /></div>
                         <div class="text01">On-line.</div>
                         <div class="text02">jebo.joonganggroup.com</div>
                     </li>
                 </ul>
-                <div class="btn"><a th:href="@{/realnameInfo.do}">온라인 제보하기</a></div>
+                <div class="btn"><a th:href="@{/realnameInfo.do}">온라인 제보하기<img th:src="@{/images/policy/in01_btn_on.png}"></a></div>
             </div>
             <!-- a href="/realnameInfo.do" class="totop">온라인<br/>제보하기</a -->
             <div class="totopbox">
-                <a th:href="@{/realnameInfo.do}" class="totop">온라인<br/>제보하기</a>
+                <a th:href="@{/policy/newsroomre}" class="totop">온라인<br/>제보하기</a>
                 <div class="gotop">TOP</div>
             </div>
         </div>

@@ -1,4 +1,6 @@
 package com.cinema.admin.controller;
 
-public class adminController {
+public class MovieController {
+
+
 }
