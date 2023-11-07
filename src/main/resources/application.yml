@@ -17,10 +17,10 @@ server:
     context-path: /cinema
 spring:
   datasource:
-      driver-class-name: com.mysql.cj.jdbc.Driver
-      password: "!Q2w3e4r"
-      url: jdbc:mysql://3.37.127.212:3306/cinema
-      username: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: "!Q2w3e4r"
+    url: jdbc:mysql://3.37.127.212:3306/cinema
+    username: root
 
   devtools:
     livereload:
