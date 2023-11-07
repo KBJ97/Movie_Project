@@ -10,34 +10,30 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class policyController {
 
-   @GetMapping("/policy/ethics/") 
+   @GetMapping("/policy/ethics")
     public String ethics(){
-       String ethics = null;
-       return ethics;
+       return "/policy/ethics";
     }
 
-    @GetMapping("/policy/integrity/")
+    @GetMapping("/policy/integrity")
     public String integrity(){
-        String integrity = null;
-       return integrity;
+       return "/policy/integrity";
     }
 
     @GetMapping("/policy/newsroom")
     public String newsroom(){
-       String newsroom = null;
+
        return "/policy/newsroom";
     }
 
     @GetMapping("/policy/newsroomre")
     public String newsroomre(){
-       String newsroomre = null;
        return "/policy/newsroomre";
     }
 
-    @GetMapping("/policy/newsroomreguide/")
+    @GetMapping("/policy/newsroomreguide")
     public String newsroomreguide(){
-       String newsroomreguide = null;
-       return newsroomreguide;
+       return "/policy/newsroomreguide";
     }
 
    

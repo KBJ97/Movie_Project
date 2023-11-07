@@ -45,6 +45,8 @@ spring:
   thymeleaf:
     cache: false
     prefix: classpath:/templates
+    mvc:
+      static-path-pattern: "/static/**"
 
   servlet:
     multipart:
@@ -56,6 +58,7 @@ upload :
     files : files/
     thumbs : thumbs/
     banners : banners/
+
 # mybatis 설정
 ##mybatis:
 ##  mapper-locations: classpath:mappers/**/*.xml
