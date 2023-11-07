@@ -1,9 +1,9 @@
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.thymeleaf.org">
-<head>
-    <link rel="stylesheet" href="@{/member/css/member.css}"
-</head>
-<div class="login">
+      xmlns:layout="http://www.thymeleaf.org"
+      layout:decorate="/member/memberPage.html">
+
+<div class="login" layout:fragment="content">
     <nav>
         <h1>로그인</h1>
     </nav>
@@ -28,7 +28,6 @@
         </span>
 
         <a href="https://safelogin.kr/sauth/regist?site_code=NA&sub_code=0" target='_blank' class="banner">
-            <img th:src="@{/member/images/member_login_banner.jpg}" alt="1만원 할인 쿠폰 받기">
         </a>
     </form>
     <img th:src="@{/member/images/member_certifi_logo.gif}" alt="banner">
