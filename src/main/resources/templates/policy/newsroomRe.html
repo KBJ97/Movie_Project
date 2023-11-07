@@ -9,15 +9,12 @@
 
     <meta name="robots" content="noindex,nofollow" />
 
-    <link rel="stylesheet" th:href="@{css/common.css}" type="text/css">
-    <script type="text/javascript" th:src="@{js/jquery-3.1.1.min.js}"></script>
-    <script type="text/javascript" th:src="@{js/jquery.selectbox-0.3.js}"></script>
-    <script type="text/javascript" th:src="@{js/jquery.ui.js}"></script>
-    <script type="text/javascript" th:src="@{js/common.js}"></script>
-    <script type="text/javascript" th:src="@{js/newsroomre.js}"></script>
-
-
-
+    <link rel="stylesheet" th:href="@{/css/policy/common.css}" type="text/css">
+    <script type="text/javascript" th:src="@{/js/policy/jquery-3.1.1.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/policy/jquery.selectbox-0.3.js}"></script>
+    <script type="text/javascript" th:src="@{/js/policy/jquery.ui.js}"></script>
+    <script type="text/javascript" th:src="@{/js/policy/common.js}"></script>
+    <script type="text/javascript" th:src="@{/js/policy/newsroomre.js}"></script>
 
     <title>신문고</title>
 </head>
@@ -29,11 +26,11 @@
             <div class="top">
                 <!-- inwrap -->
                 <div class="inwrap">
-                    <h1><a th:href="@{/main.do}"><span class="hide">JoongAng Group</span></a></h1>
+                    <h1><a th:href="@{/policy/ethics}"><span class="hide">JoongAng Group</span></a></h1>
                     <h2>신문고</h2>
                     <ul>
-                        <li class="n01"><a th:href="@{/intro.do}">제보이용안내</a></li>
-                        <li class="n02 on"><a th:href="@{}">제보하기</a></li>
+                        <li class="n01"><a th:href="@{/policy/newsroomreguide}">제보이용안내</a></li>
+                        <li class="n02 on"><a th:href="@{/policy/newsroomre}">제보하기</a></li>
                     </ul>
                 </div>
                 <!--//inwrap end -->
@@ -46,8 +43,8 @@
                 <!-- inwrap -->
                 <div class="inwrap">
                     <ul>
-                        <li class="on"><a th:href="@{}">실명</a></li>
-                        <li><a th:href="@{/anonymityInfo.do}">익명</a></li>
+                        <li class="on"><a th:href="@{/policy/newsroomre}">실명</a></li>
+                        <li><a th:href="@{/policy/newsroomre}">익명</a></li>
                     </ul>
                 </div>
                 <!--//inwrap end -->
@@ -190,7 +187,7 @@
                             <tr>
                                 <th class="imp">제보 구분</th>
                                 <td>
-                                    <div class="dis_inb o_ra">
+                                    <div class="dis_inb o_ra"><!--checkbox 3중 택1--->
                                         <label for="radio01" class="im_ra r01 on mr20">
                                             <input type="radio" id="radio01" name="inf_gubun" value="GB01" checked="checked"/>
                                             <span>부정행위</span>
@@ -215,7 +212,7 @@
                                     <div class="textarea"><textarea id="inf_descript" name="inf_descript" placeholder="제보 내용은 발생 일자, 장소, 제보 대상자 및 관련자이름, 부정행위 등을 구체적으로 작성 해주세요. 근거없는 단순 비방이나 음해성 투서는 제보 대상이 아닙니다."></textarea></div>
                                 </td>
                             </tr>
-
+                            <!--여기까지 필수항목-->
                             <tr>
                                 <th>첨부 파일</th>
                                 <td class="selfile">
@@ -258,7 +255,7 @@
                             </colgroup>
                             <tbody>
                             <tr>
-                                <th class="imp first">이름</th>
+                                <th class="imp first">이름</th><!--필수항목-->
                                 <td class="first"><input type="text" id="inf_wb_nm" name="inf_wb_nm" class="intt name" maxlength="20"/></td>
                             </tr>
 
@@ -381,7 +378,7 @@
                 <!--//section 제보자 end -->
 
 
-                <!-- section 개인정보 수집∙이용 내역 -->
+                <!-- section 개인정보 수집∙이용 내역 필수체크항목-->
                 <div class="section s03">
                     <!-- left -->
                     <div class="left">
@@ -430,7 +427,7 @@
                 <!--//section 개인정보 수집∙이용 내역 end -->
 
 
-                <!-- section 개인정보 제3자 제공 내역 -->
+                <!-- section 개인정보 제3자 제공 내역  필수체크항목-->
                 <div class="section s03">
                     <!-- left -->
                     <div class="left">
@@ -481,7 +478,7 @@
                 </div>
                 <!--//section 개인정보 제3자 제공 내역 end -->
 
-                <!-- section 개인정보 처리업무 위탁 내역 -->
+                <!-- section 개인정보 처리업무 위탁 내역  필수체크항목-->
                 <div class="section s03">
                     <!-- left -->
                     <div class="left">
@@ -515,7 +512,7 @@
                             </div>
                         </div>
                         <div class="input">
-                            <label for="checkbox02" class="im_ch ch02">
+                            <label for="checkbox02" class="im_ch ch02" th:src="@{/images/policy/checkbox2.png}">
                                 <input type="checkbox" id="agreeChk3">
                                 <span>위 개인정보 개인정보 처리업무 위탁에 동의합니다.</span>
                             </label>
