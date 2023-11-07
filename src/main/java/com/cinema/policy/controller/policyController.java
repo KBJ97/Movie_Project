@@ -28,6 +28,7 @@ public class policyController {
 
     @GetMapping("/policy/newsroomre")
     public String newsroomre(){
+       /*제보 내용 첨부파일 등록경로*/
        return "/policy/newsroomre";
     }
 
@@ -36,5 +37,7 @@ public class policyController {
        return "/policy/newsroomreguide";
     }
 
-   
+
+
+
 }
