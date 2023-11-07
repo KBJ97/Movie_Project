@@ -9,12 +9,12 @@
 
     <meta name="robots" content="noindex,nofollow" />
 
-    <link rel="stylesheet" th:href="@{/css/policy/common.css}" type="text/css">
-    <script type="text/javascript" th:src="@{/js/policy/jquery-3.1.1.min.js}"></script>
-    <script type="text/javascript" th:src="@{/js/policy/jquery.selectbox-0.3.js}"></script>
-    <script type="text/javascript" th:src="@{/js/policy/jquery.ui.js}"></script>
-    <script type="text/javascript" th:src="@{/js/policy/common.js}"></script>
-    <script type="text/javascript" th:src="@{/js/policy/newsroom.js}"></script>
+    <link rel="stylesheet" th:href="@{/policy/css/common.css}" type="text/css">
+    <script type="text/javascript" th:src="@{/policy/js/jquery-3.1.1.min.js}"></script>
+    <script type="text/javascript" th:src="@{/policy/js/jquery.selectbox-0.3.js}"></script>
+    <script type="text/javascript" th:src="@{/policy/js/jquery.ui.js}"></script>
+    <script type="text/javascript" th:src="@{/policy/js/common.js}"></script>
+    <script type="text/javascript" th:src="@{/policy/js/newsroom.js}"></script>
 
     <title>신문고</title>
 </head>
@@ -28,7 +28,7 @@
                 <h1><a th:href="@{/policy/integrity}"><span class="hide">JoongAng Group</span></a></h1>
                 <h2>신문고</h2>
                 <ul>
-                    <li class="n01 on"><a th:src="@{/images/policy/sub00_top_bg.jpg}">제보이용안내</a></li>
+                    <li class="n01 on"><a th:src="@{/policy/images/sub00_top_bg.jpg}">제보이용안내</a></li>
                     <li class="n02"><a th:href="@{/policy/newsroom}">제보하기</a></li> <!--임의 페이지설정-->
                 </ul>
             </div>
@@ -71,17 +71,17 @@
                         </li>
                      -->
                     <li class="n02">
-                        <div class="icon"><img th:src="@{/images/policy/in01_img02.png}" /></div>
+                        <div class="icon"><img th:src="@{/policy/images/in01_img02.png}" /></div>
                         <div class="text01">e-Mail.</div>
                         <div class="text02">jebo1004@joins.com</div>
                     </li>
                     <li class="n03">
-                        <div class="icon"><img th:src="@{/images/policy/in01_img03.png}" /></div>
+                        <div class="icon"><img th:src="@{/policy/images/in01_img03.png}" /></div>
                         <div class="text01">On-line.</div>
                         <div class="text02">jebo.joonganggroup.com</div>
                     </li>
                 </ul>
-                <div class="btn"><a th:href="@{/realnameInfo.do}">온라인 제보하기<img th:src="@{/images/policy/in01_btn_on.png}"></a></div>
+                <div class="btn"><a th:href="@{/realnameInfo.do}">온라인 제보하기<img th:src="@{/policy/images/in01_btn_on.png}"></a></div>
             </div>
             <!-- a href="/realnameInfo.do" class="totop">온라인<br/>제보하기</a -->
             <div class="totopbox">
@@ -102,7 +102,7 @@
                 <ul>
                     <li class="dd04">
                         <dl>
-                            <dt><div><img th:src="@{/images/policy/in02_img04.png}" /></div></dt>
+                            <dt><div><img th:src="@{/policy/images/in02_img04.png}" /></div></dt>
                             <dd class="text01">업무 관련 금전 부정</dd>
                             <dd class="text02">
                                 <p>회사 공금 유용 및 횡령</p>
@@ -112,7 +112,7 @@
                     </li>
                     <li class="dd02">
                         <dl>
-                            <dt><div><img th:src="@{/images/policy/in02_img02.png}" /></div></dt>
+                            <dt><div><img th:src="@{/policy/images/in02_img02.png}" /></div></dt>
                             <dd class="text01">직장내 성희롱 및 비윤리적 언행</dd>
                             <dd class="text02">
                                 <p>상하 직원, 동료간 비인격적 욕설, 부당한 차별</p>
@@ -123,7 +123,7 @@
                     </li>
                     <li class="dd01"><!-- dd03 -->
                         <dl>
-                            <dt><div><img th:src="@{/images/policy/in02_img03.png}" /></div></dt>
+                            <dt><div><img th:src="@{/policy/images/in02_img03.png}" /></div></dt>
                             <dd class="text01">협력업체와의 부적절한 관계</dd>
                             <dd class="text02">
                                 <p>불공정한 기회 부여, 불공정 거래 행위,<br />
@@ -134,7 +134,7 @@
                     </li>
                     <li class="dd01"><!-- dd04 -->
                         <dl>
-                            <dt><div><img th:src="@{/images/policy/in02_img01.png}" /></div></dt>
+                            <dt><div><img th:src="@{/policy/images/in02_img01.png}" /></div></dt>
                             <dd class="text01">이해관계자와의 부정한 거래</dd>
                             <dd class="text02">
                                 <p>직무와 관련하여 금전, 향응, 오락, 편익 수취</p>
@@ -144,7 +144,7 @@
                     </li>
                     <li class="dd01"><!-- dd05 -->
                         <dl>
-                            <dt><div><img th:src="@{/images/policy/in02_img05.png}" /></div></dt>
+                            <dt><div><img th:src="@{/policy/images/in02_img05.png}" /></div></dt>
                             <dd class="text01">회사 자산 및 정보의 유용, 유출</dd>
                             <dd class="text02">
                                 <p>회사 경영 정보의 외부 유출</p>
@@ -155,7 +155,7 @@
                     <li class="dd01"><!-- dd06 -->
                         <dl>
                             <!-- <dt><div><img src="/images/sub/in02_img06.png" /></div></dt> -->
-                            <dt><div><img th:src="@{/images/policy/in02_img06_2.jpg}" /></div></dt>
+                            <dt><div><img th:src="@{/policy/images/in02_img06_2.jpg}" /></div></dt>
                             <dd class="text01">기타 직무윤리 위반 </dd>
                             <dd class="text02">
                                 <p>일반 상식 및 사회 통념상의 윤리 원칙에<br />
@@ -177,7 +177,7 @@
                 <!-- <p>제보자와 제보 내용은 보호되며,<br />접수된 제보는 절차에 따라 공정하게 검토됩니다.</p> -->
             </div>
             <div class="contbox">
-                <img th:src="@{/images/policy/in03_img06.png}" class="solimg" />
+                <img th:src="@{/policy/images/in03_img06.png}" class="solimg" />
                 <!-- ul>
                     <li class="n01"><img src="/images/sub/in03_img01.png" /></li>
                     <li class="n02"><img src="/images/sub/in03_img02.png" /></li>

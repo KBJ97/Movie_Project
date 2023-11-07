@@ -1,38 +1,35 @@
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.thymeleaf.org"
+      layout:decorate="/member/memberPage.html">
 
-<th:block th:fragment="setLogin(login)">
-    <body>
-    <div class="member_login">
-        <form th:action="@{/auth/loginProc}" th:method="POST">
-            <div class="member_login_input">
-                <input type="text" name="username" placeholder="아이디" >
-            </div>
+<div class="login" layout:fragment="content">
+    <nav>
+        <h1>로그인</h1>
+    </nav>
 
-            <div class="member_login_input">
-                <input type="password" name="password" placeholder="비밀번호">
-            </div>
+    <form th:action="@{/member/login}" method="post">
+        <table border="0">
+            <tr>
+                <td>아이디</td>
+                <td><input type="text" name="uid" placeholder="아이디 입력"></td>
+            </tr>
+            <tr>
+                <td>비밀번호</td>
+                <td><input type="password" name="pass" placeholder="비밀번호 입력"></td>
+            </tr>
+        </table>
+        <input type="submit" value="로그인" />
+        <span>
+            <label><input type="checkbox" id="rememberMe" name="rememberMe"/>자동 로그인</label>
+            <a th:href="@{/member/findId}">아이디찾기</a>
+            <a th:href="@{/member/findPass}">비밀번호찾기</a>
+            <a th:href="@{/member/join}">회원가입</a>
+        </span>
 
-            <div class="member_login_btn">
-
-                <input type="submit" class="btn btn-secondary" id="btn-login" value="로그인">
-
-                <input type="button" class="btn btn-secondary" value="회원가입" onclick="location.href='/member/join'">
-
-            </div>
-
-            <div class="find_password">
-                <a href="/forgot-password">아이디 또는 비밀번호를 잊으셨나요?</a>
-            </div>
-
-            <div class="login_api">
-                <a href="https://kauth.kakao.com/oauth/authorize?client_id=d860d38c992ca8bf5f07dcc3fd5122b9&redirect_uri=http://localhost:9090/member/auth/kakao/callback&response_type=code"><img src="/image/kakao_login_button.png"></a>
-            </div>
-
-            <div class="login_api">
-                <a href="/oauth2/authorization/google"><img src="/image/google_login_button.png"></a>
-            </div>
-
-        </form>
-    </div>
-    </body>
-</th:block>
+        <a href="https://safelogin.kr/sauth/regist?site_code=NA&sub_code=0" target='_blank' class="banner">
+        </a>
+    </form>
+    <img th:src="@{/member/images/member_certifi_logo.gif}" alt="banner">
+</div>
+</html>

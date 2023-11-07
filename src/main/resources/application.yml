@@ -44,7 +44,11 @@ spring:
       password: 1234
   thymeleaf:
     cache: false
-    prefix: classpath:/templates
+    #개발
+    prefix : file:src/main/resources/templates
+    # 배포
+    #prefix: classpath:/templates
+
     mvc:
       static-path-pattern: "/static/**"
 
