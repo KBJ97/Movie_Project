@@ -57,6 +57,7 @@ spring:
       location: thumbs/
       max-file-size: 10MB
 
+
 upload :
   path :
     files : files/
