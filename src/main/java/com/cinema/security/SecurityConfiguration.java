@@ -50,7 +50,6 @@ public class SecurityConfiguration {
                 //.sessionManagement(configurer -> configurer.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 // 인가 설정
                 .authorizeHttpRequests(authorizeHttpRequests -> authorizeHttpRequests
-                        .requestMatchers("/admin/**").hasAuthority("ADMIN")
                         .requestMatchers("/manager/**").hasAnyAuthority("ADMIN", "MANAGER")
                         .requestMatchers("/guest/**").permitAll()
                         .requestMatchers("/user/**").permitAll()
