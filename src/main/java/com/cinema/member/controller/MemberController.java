@@ -12,4 +12,22 @@ public class MemberController {
     public String login() {
         return "/member/login";
     }
+    @GetMapping("/member/join")
+    public String join() {
+        return "/member/join";
+    }
+    @GetMapping("/member/findId")
+    public String findId() {
+        return "/member/findId";
+    }
+    @GetMapping("/member/findPass")
+    public String findPass() {
+        return "/member/findPass";
+    }
+
+
+
+
+
+
 }
