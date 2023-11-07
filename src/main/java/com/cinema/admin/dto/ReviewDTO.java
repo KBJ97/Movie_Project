@@ -1,7 +1,14 @@
 package com.cinema.admin.dto;
 
-import java.time.LocalDateTime;
+import lombok.*;
 
+import java.time.LocalDateTime;
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class ReviewDTO {
     private int reviewNum;
     private int movieNum;

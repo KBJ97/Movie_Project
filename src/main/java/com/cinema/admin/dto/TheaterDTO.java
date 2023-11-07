@@ -1,5 +1,13 @@
 package com.cinema.admin.dto;
 
+import lombok.*;
+
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class TheaterDTO {
     private int theaterNum;
     private int region1Num;

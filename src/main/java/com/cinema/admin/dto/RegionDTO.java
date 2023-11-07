@@ -1,5 +1,13 @@
 package com.cinema.admin.dto;
 
+import lombok.*;
+
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class RegionDTO {
     private int regionNum1;
     private String region1Name;
