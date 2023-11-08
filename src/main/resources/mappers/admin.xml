@@ -3,7 +3,10 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cinema.admin.mapper.MovieMapper">
 
-
+    <insert id="insertMovie">
+        INSERT INTO movie (cateNum, movieName, openDate, movieAge, runTime, director, story,actor)
+        VALUES (#{cateNum}, #{movieName}, #{openDate}, #{movieAge}, #{runTime}, #{director}, #{story}, #{actor})
+    </insert>
 
 
 </mapper>
