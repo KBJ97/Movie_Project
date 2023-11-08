@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.thymeleaf.org/"
+      layout:decorate="/admin/board/layout.html">
+<head>
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            font: normal 14px "Noto Sans CJK KR";
+        }
+
+
+        #register {
+            width: 100%;
+            height: auto;
+            background-color: #E2E2E2;
+            padding: 10px;
+        }
+
+        #register #register_detail{
+            width: 100%;
+            height: 100%;
+            background-color: rgb(255, 255, 255);
+            padding: 10px;
+        }
+
+        #register > div{
+            font-size: 20px;
+        }
+
+        #register hr:first-child {
+            opacity: 1;
+            border: 1.8px solid black;
+        }
+
+
+        #register_detail td {
+            padding: 10px 0;
+        }
+
+        #register_detail input {
+            width: 100%; /* 모든 input 태그의 너비를 150px로 조절합니다. */
+            height: 35px;
+        }
+
+        #register_detail select {
+            font-size: 12px; /* 셀렉트 박스의 글꼴 크기를 조절합니다. */
+            padding: 5px; /* 셀렉트 박스의 패딩을 조절합니다. */
+            width: 200px; /* 셀렉트 박스의 너비를 조절합니다. */
+            height: 35px; /* 셀렉트 박스의 높이를 조절합니다. */
+        }
+
+        #register_detail input[name="openDate"] {
+            width: 25%;
+            padding: 5px;
+        }
+
+
+
+        textarea {
+            resize: none;
+        }
+
+        #register button {
+            width: 150px; /* 버튼의 넓이 */
+            height: 40px; /* 버튼의 높이 */
+            font-size: 16px; /* 폰트 크기 */
+            background-color: black; /* 버튼의 배경색 (검정색) */
+            color: white; /* 폰트 색상 (흰색) */
+            border: none; /* 테두리 없음 */
+            border-radius: 5px; /* 둥근 모서리 */
+        }
+
+        /* 버튼에 호버(마우스를 올렸을 때) 효과 추가 */
+        #register button:hover {
+            background-color: darkgray; /* 호버시 배경색 변경 */
+            color: black; /* 호버시 폰트 색상 변경 */
+            cursor: pointer; /* 포인터 커서로 변경 */
+        }
+
+
+    </style>
+</head>
+
+            <div id="register" layout:fragment="content">
+                <div id="register_detail">
+                    영화등록<hr/>
+
+                    <section>
+                        <table>
+                            <tr>
+                                <td>영화제목</td>
+                                <td><input type="text" name="prodName"/></td>
+                            </tr>
+                            <tr>
+                                <td>감독</td>
+                                <td>
+                                    <input type="text" name="director"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>출연진</td>
+                                <td><input type="text" name="actor"/></td>
+                            </tr>
+                            <tr>
+                                <td>상영시간</td>
+                                <td><input type="text" name="running"/></td>
+                            </tr>
+                            <tr>
+                                <td>개봉일</td>
+                                <td>
+                                    <input type="date" name="openDate"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>메인 사진 </td>
+                                <td>
+                                    <input type="file" name="Thumb1" />
+                                </td>
+
+                                <td>세부 사진</td>
+                                <td>
+                                    <input type="file" name="Thumb2"/>
+                                </td>
+
+                                <td>세부 사진</td>
+                                <td>
+                                    <input type="file" name="Thumb3"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>관람등급</td>
+                                <td>
+                                    <select name='age'>
+                                        <option value=''>-- 선택 --</option>
+                                        <option value='0' selected>전체이용가</option>
+                                        <option value='15'>15세이상관람가</option>
+                                        <option value='l9'>청소년관람불가</option>
+                                    </select>
+                                    <hr/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>장르</td>
+                                <td>
+                                    <select id="genre" name="genre" >
+                                        <option value="액션">액션</option>
+                                        <option value="코미디">코미디</option>
+                                        <option value="로맨스">로맨스</option>
+                                        <option value="스릴러">스릴러</option>
+                                        <option value="SF">SF</option>
+                                        <option value="판타지">판타지</option>
+                                        <!-- 원하는 장르 옵션들을 추가하세요 -->
+                                    </select>
+                                    <hr/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>줄거리</td>
+                                <td>
+                                        <textarea name="content" cols="80" rows="8" >
+                                            줄거리를 입력하세요
+                                        </textarea>
+                                </td>
+                            </tr>
+                            <!-- 등록과 취소 버튼 -->
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <button type="submit">등록</button>
+                                    <button type="button">취소</button>
+                                </td>
+                            </tr>
+
+                        </table>
+                    </section>
+
+                </div>
+            </div>
+</html>

@@ -9,7 +9,7 @@ public class AdminController {
     @GetMapping(value= {"/admin","/admin/index"})
     public String index() {
 
-        return "/admin/index";
+        return "/admin/board/index";
     }
 
 
