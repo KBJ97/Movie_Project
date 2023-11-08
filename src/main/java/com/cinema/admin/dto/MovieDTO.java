@@ -28,6 +28,7 @@ public class MovieDTO {
     private String director;
     private String story;
     private int totalScore;
+    private String actor;
     private MultipartFile fname;
 
 

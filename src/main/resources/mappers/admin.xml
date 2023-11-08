@@ -4,8 +4,8 @@
 <mapper namespace="com.cinema.admin.mapper.MovieMapper">
 
     <insert id="insertMovie">
-        INSERT INTO movie (cateNum, movieName, openDate, movieAge, runTime, director, story,actor)
-        VALUES (#{cateNum}, #{movieName}, #{openDate}, #{movieAge}, #{runTime}, #{director}, #{story}, #{actor})
+        INSERT INTO movie (movieName, director, actor, cateNum,  runTime, openDate, movieAge,  story)
+        VALUES (#{movieName}, #{director}, #{actor}, #{cateNum}, #{runTime}, #{openDate}, #{movieAge}, #{story})
     </insert>
 
 
