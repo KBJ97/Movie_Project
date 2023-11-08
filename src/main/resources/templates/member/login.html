@@ -2,34 +2,56 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.thymeleaf.org"
       layout:decorate="/member/memberPage.html">
+<head>
+    <link rel="stylesheet" type="text/css" th:href="@{/member/css/login.css}">
+</head>
+<div class="container1" layout:fragment="content">
+    <!-- Heading -->
 
-<div class="login" layout:fragment="content">
-    <nav>
-        <h1>로그인</h1>
-    </nav>
 
-    <form th:action="@{/member/login}" method="post">
-        <table border="0">
-            <tr>
-                <td>아이디</td>
-                <td><input type="text" name="uid" placeholder="아이디 입력"></td>
-            </tr>
-            <tr>
-                <td>비밀번호</td>
-                <td><input type="password" name="pass" placeholder="비밀번호 입력"></td>
-            </tr>
-        </table>
-        <input type="submit" value="로그인" />
-        <span>
-            <label><input type="checkbox" id="rememberMe" name="rememberMe"/>자동 로그인</label>
-            <a th:href="@{/member/findId}">아이디찾기</a>
-            <a th:href="@{/member/findPass}">비밀번호찾기</a>
-            <a th:href="@{/member/join}">회원가입</a>
-        </span>
 
-        <a href="https://safelogin.kr/sauth/regist?site_code=NA&sub_code=0" target='_blank' class="banner">
-        </a>
+    <!-- Form -->
+    <form  action="" method="post">
+        <!-- email input -->
+        <div class="first-input input__block first-input__block">
+            <input type="email" placeholder="아이디" class="input" id="email"   />
+        </div>
+        <!-- password input -->
+        <div class="input__block">
+            <input type="password" placeholder="비밀번호" class="input" id="password"    />
+        </div>
+        <!-- repeat password input -->
+        <div class="input__block">
+            <input type="password" placeholder="비밀번호 확인" class="input repeat__password" id="repeat__password"    />
+        </div>
+        <!-- Links -->
+        <ul class="links">
+            <li>
+                <a href="#" id="signin">로그인</a>
+            </li>
+            <li>
+                <a href="#" id="signup">회원가입</a>
+            </li>
+
+        </ul>
+        <!-- sign in button -->
+        <button class="signin__btn">
+            로그인
+        </button>
     </form>
-    <img th:src="@{/member/images/member_certifi_logo.gif}" alt="banner">
+<!--    &lt;!&ndash; separator &ndash;&gt;-->
+<!--    <div class="separator">-->
+<!--        <p>OR</p>-->
+<!--    </div>-->
+<!--    &lt;!&ndash; google button &ndash;&gt;-->
+<!--    <button class="google__btn">-->
+<!--        <i class="fa fa-google"></i>-->
+<!--        Sign in with Google-->
+<!--    </button>-->
+<!--    &lt;!&ndash; google button &ndash;&gt;-->
+<!--    <button class="github__btn">-->
+<!--        <i class="fa fa-github"></i>-->
+<!--        Sign in with GitHub-->
+<!--    </button>-->
 </div>
 </html>
