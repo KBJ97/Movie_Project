@@ -1,4 +1,4 @@
 package com.cinema.member.repository;
 
-public class userRepository {
+public class memberRepository {
 }
