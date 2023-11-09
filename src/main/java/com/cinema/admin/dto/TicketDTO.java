@@ -1,5 +1,13 @@
 package com.cinema.admin.dto;
 
+import lombok.*;
+
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class TicketDTO {
     private String ticketCode;
     private String uid;

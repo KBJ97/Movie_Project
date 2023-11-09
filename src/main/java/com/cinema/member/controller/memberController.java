@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Log4j2
 @Controller
-public class MemberController {
+public class memberController {
 
     @GetMapping("/member/login")
     public String login() {

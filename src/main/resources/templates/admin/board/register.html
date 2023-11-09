@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.thymeleaf.org/"
+      layout:decorate="/admin/board/layout.html">
+<head>
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            font: normal 14px "Noto Sans CJK KR";
+        }
+
+
+        #register {
+            width: 100%;
+            height: auto;
+            background-color: #e2e2e2;
+            padding: 10px;
+        }
+
+        #register #register_detail {
+            width: 100%;
+            height: 100%;
+            background-color: rgb(255, 255, 255);
+            padding: 10px;
+        }
+
+        #register > div {
+            font-size: 20px;
+        }
+
+        #register hr:first-child {
+            opacity: 1;
+            border: 1.8px solid black;
+        }
+
+        #register_detail td {
+            padding: 10px 0;
+        }
+
+        #register_detail input {
+            width: 100%; /* 모든 input 태그의 너비를 150px로 조절합니다. */
+            height: 35px;
+        }
+
+        #register_detail select {
+            font-size: 12px; /* 셀렉트 박스의 글꼴 크기를 조절합니다. */
+            padding: 5px; /* 셀렉트 박스의 패딩을 조절합니다. */
+            width: 200px; /* 셀렉트 박스의 너비를 조절합니다. */
+            height: 35px; /* 셀렉트 박스의 높이를 조절합니다. */
+        }
+
+        #register_detail input[name="openDate"] {
+            width: 25%;
+            padding: 5px;
+        }
+
+        textarea {
+            resize: none;
+        }
+
+        #register .cancel {
+            width: 150px; /* 버튼의 넓이 */
+            height: 40px; /* 버튼의 높이 */
+            font-size: 16px; /* 폰트 크기 */
+            background-color: black; /* 버튼의 배경색 (검정색) */
+            color: white; /* 폰트 색상 (흰색) */
+            border: none; /* 테두리 없음 */
+            border-radius: 5px; /* 둥근 모서리 */
+        }
+
+        #register .reg {
+            width: 150px; /* 버튼의 넓이 */
+            height: 40px; /* 버튼의 높이 */
+            font-size: 16px; /* 폰트 크기 */
+            background-color: black; /* 버튼의 배경색 (검정색) */
+            color: white; /* 폰트 색상 (흰색) */
+            border: none; /* 테두리 없음 */
+            border-radius: 5px; /* 둥근 모서리 */
+        }
+
+        /* 버튼에 호버(마우스를 올렸을 때) 효과 추가 */
+        #register button:hover {
+            background-color: darkgray; /* 호버시 배경색 변경 */
+            color: black; /* 호버시 폰트 색상 변경 */
+            cursor: pointer; /* 포인터 커서로 변경 */
+        }
+
+        .gerne {
+            width: 500px;
+        }
+
+        .choices__list--multiple .choices__item {
+            display: inline-block;
+            vertical-align: middle;
+            border-radius: 20px;
+            padding: 4px 10px;
+            font-size: 12px;
+            font-weight: 500;
+            margin-right: 3.75px;
+            margin-bottom: 3.75px;
+            background-color: black;
+            border: 1px solid black;
+            color: #fff;
+            word-break: break-all;
+        }
+
+        .choices[data-type*="select-multiple"] .choices__button {
+            position: relative;
+            display: inline-block;
+            margin: 0 -4px 0 8px;
+            padding-left: 16px;
+            border-left: 1px solid white;
+            background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjEiIGhlaWdodD0iMjEiIHZpZXdCb3g9IjAgMCAyMSAyMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSIjRkZGIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0yLjU5Mi4wNDRsMTguMzY0IDE4LjM2NC0yLjU0OCAyLjU0OEwuMDQ0IDIuNTkyeiIvPjxwYXRoIGQ9Ik0wIDE4LjM2NEwxOC4zNjQgMGwyLjU0OCAyLjU0OEwyLjU0OCAyMC45MTJ6Ii8+PC9nPjwvc3ZnPg==);
+            background-size: 8px;
+            width: 8px;
+            line-height: 1;
+            opacity: 0.75;
+            border-radius: 0;
+
+        }
+
+
+    </style>
+</head>
+
+            <div id="register" layout:fragment="content">
+                <div id="register_detail">
+                    영화등록<hr/>
+                    <section>
+                        <form th:action="@{/admin/register}" method="post">
+                            <table>
+                                <tr>
+                                    <td>영화제목</td>
+                                    <td><input type="text" name="movieName"/></td>
+                                </tr>
+                                <tr>
+                                    <td>감독</td>
+                                    <td>
+                                        <input type="text" name="director"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>출연진</td>
+                                    <td><input type="text" name="actor"/></td>
+                                </tr>
+                                <tr>
+                                    <td>상영시간</td>
+                                    <td><input type="text" name="runTime"/></td>
+                                </tr>
+                                <tr>
+                                    <td>개봉일</td>
+                                    <td>
+                                        <input type="date" name="openDate"/>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>메인 사진</td>
+                                    <td>
+                                        <input type="file" name="Thumb1" />
+                                    </td>
+
+                                    <td>세부 사진</td>
+                                    <td>
+                                        <input type="file" name="Thumb2" />
+                                    </td>
+
+                                    <td>세부 사진</td>
+                                    <td>
+                                        <input type="file" name="Thumb3" />
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>관람등급</td>
+                                    <td>
+                                        <select name='movieAge'>
+                                            <option value=''>-- 선택 --</option>
+                                            <option value='0' selected>전체이용가</option>
+                                            <option value='15'>15세이상관람가</option>
+                                            <option value='l9'>청소년관람불가</option>
+                                        </select>
+                                        <hr/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>장르</td>
+                                    <td>
+                                        <div class="row d-flex left-align mt-100">
+                                            <div class="col-md-6 gerne">
+                                                <select name="cateNum" id="choices-multiple-remove-button" placeholder="장르를 선택하시오" multiple>
+                                                    <option value="1">액션</option>
+                                                    <option value="2">코미디</option>
+                                                    <option value="3">로맨스</option>
+                                                    <option value="4">스릴러</option>
+                                                    <option value="5">SF</option>
+                                                    <option value="6">판타지</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>줄거리</td>
+                                    <td>
+                                       <textarea name="story" cols="80" rows="8" >
+                                                줄거리를 입력하세요
+                                       </textarea>
+                                    </td>
+                                </tr>
+                                <!-- 등록과 취소 버튼 -->
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <button class="reg" type="submit">등록</button>
+                                        <button class="cancel" type="button">취소</button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </section>
+                </div>
+            </div>
+</html>
