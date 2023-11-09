@@ -86,7 +86,7 @@ $(function(){
         }
     });
 
-    // 판매자 회원가입 시 담당자 휴대폰번호 입력값 검사
+    // 휴대폰번호 입력값 검사
     $('input[name=managerHp]').focusout(function(){
 
         const hp  = $(this).val();
@@ -103,6 +103,37 @@ $(function(){
             isHpOk = true;
         }
     });
+
+    // 주민등록번호 유효성검증
+    $('input[name=birth1]').on('input', function() {
+        // 입력값이 숫자가 아니거나 0~9 사이의 값이 아닌 경우
+        if (!/^[0-9]$/.test(this.value)) {
+            this.value = this.value.replace(/[^0-9]/g, ''); // 0~9 이외의 문자 제거
+        }
+        validateJumin();
+    });
+
+    // birth2도 추가로 설정
+    $('input[name=birth2]').on('input', function() {
+        // 입력값이 숫자가 아니거나 1~4 사이의 값이 아닌 경우
+        if (!/^[1-4]$/.test(this.value)) {
+            this.value = this.value.replace(/[^1-4]/g, ''); // 1~4 이외의 문자 제거
+        }
+        validateJumin();
+    });
+
+    // 주민등록번호 유효성 검증 함수
+    function validateJumin() {
+        const birth1 = $('input[name=birth1]').val();
+        const birth2 = $('input[name=birth2]').val();
+
+        // 입력값이 유효한 경우
+        if (birth1.length === 7 && birth2.length === 1) {
+            $('.msgJn').css('color', 'green').html('<i class="fas fa-check"></i> ');
+        } else {
+            $('.msgJn').css('color', 'red').text('주민번호를 입력하세요.');
+        }
+    }
 
     // 일반회원 회원가입 최종 전송
     $('#formMember').submit(function(){

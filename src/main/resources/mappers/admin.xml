@@ -19,6 +19,7 @@
          thumb3 = #{thumb3},
          story = #{story}
 
+
     </insert>
 
     <insert id="insertFile">
