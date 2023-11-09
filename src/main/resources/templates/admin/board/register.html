@@ -129,7 +129,7 @@
                 <div id="register_detail">
                     영화등록<hr/>
                     <section>
-                        <form th:action="@{/admin/register}" method="post">
+                        <form th:action="@{/admin/register}" method="post" enctype="multipart/form-data">
                             <table>
                                 <tr>
                                     <td>영화제목</td>
@@ -153,6 +153,22 @@
                                     <td>개봉일</td>
                                     <td>
                                         <input type="date" name="openDate"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>메인 사진</td>
+                                    <td>
+                                        <input type="file" name="thumb1" />
+                                    </td>
+
+                                    <td>세부 사진</td>
+                                    <td>
+                                        <input type="file" name="thumb2" />
+                                    </td>
+
+                                    <td>세부 사진</td>
+                                    <td>
+                                        <input type="file" name="thumb3" />
                                     </td>
                                 </tr>
 
@@ -180,6 +196,24 @@
                                                     <option value="4">스릴러</option>
                                                     <option value="5">SF</option>
                                                     <option value="6">판타지</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        </select>
+                                        <hr />
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>스크린</td>
+                                    <td>
+                                        <div class="row d-flex left-align mt-100">
+                                            <div class="col-md-6 gerne">
+                                                <select name="screenType" id="choices-multiple-remove-button" placeholder="스크린 타입을 선택하시오"  multiple>
+                                                    <option value="2D">2D</option>
+                                                    <option value="4DX">4DX</option>
+                                                    <option value="SCREENX">SCREENX</option>
+                                                    <option value="IMAX">IMAX</option>
                                                 </select>
                                             </div>
                                         </div>
