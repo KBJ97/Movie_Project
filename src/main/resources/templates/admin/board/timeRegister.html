@@ -51,12 +51,12 @@
         }
 
         #register_detail input[name="openMovie"] {
-            width: 25%;
+            width: 50%;
             padding: 5px;
         }
 
         #register_detail input[name="closeDate"] {
-            width: 25%;
+            width: 50%;
             padding: 5px;
         }
 
@@ -104,13 +104,22 @@
             color: black; /* 호버시 폰트 색상 변경 */
             cursor: pointer; /* 포인터 커서로 변경 */
         }
+
+        #register .sdate input[type="date"] {
+            width: 100%;
+        }
+
+        #register .movieNum {
+            width: 300px;
+            height: 40px;
+        }
     </style>
 </head>
 
         <div id="register" layout:fragment="content">
             <div id="register_detail">
                 상영시간등록
-                <hr />
+                <hr/>
 
                 <section>
                     <table>
@@ -131,6 +140,7 @@
                             <td>상영 영화관</td>
                             <td>
                                 <select id="region2" name="region2">
+                                    <option value=''>-- 선택 --</option>
                                     <option value="1">서면</option>
                                     <option value="2">남포</option>
                                     <option value="3">하단</option>
@@ -143,44 +153,48 @@
                             <td>상영 스크린</td>
                             <td>
                                 <select id="cinema" name="room">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
+                                    <option value=''>-- 선택 --</option>
+                                    <option value="2D">2D</option>
+                                    <option value="4DX">4DX</option>
+                                    <option value="SCREENX">SCREENX</option>
+                                    <option value="IMAX">IMAX</option>
                                     <!-- 원하는 장르 옵션들을 추가하세요 -->
                                 </select>
                             </td>
                         </tr>
                         <tr>
                             <td>상영 영화</td>
-                            <td><input type="text" name="running" /></td>
-                        </tr>
-                        <tr>
-                            <td>상영 시간</td>
                             <td>
-                                <select id="time" name="runningTime">
-                                    <option value="09:00">09:00</option>
-                                    <option value="09:00">09:00</option>
-                                    <option value="10:00">10:00</option>
-                                    <option value="10:30">10:30</option>
-                                    <option value="11:00">11:00</option>
-                                    <option value="11:30">11:30</option>
-                                    <!-- 원하는 장르 옵션들을 추가하세요 -->
+                                <select class="movieNum" name='movieNum'>
+                                    <option value=''>-- 선택 --</option>
+                                    <option th:each="movie : ${movies}" th:value="${movie.movieNum}" th:text="${movie.movieName}"></option>
                                 </select>
                             </td>
                         </tr>
                         <tr>
-                            <td>상영 시작일</td>
+                            <td>상영 시간</td>
                             <td>
-                                <input type="date" name="openMovie" style="width: 50%" />
+                                <select id="time" name="playTime">
+                                    <option value="09:00">09:00</option>
+                                    <option value="09:00">09:30</option>
+                                    <th:block th:each="hour : ${#numbers.sequence(10, 23)}">
+                                        <option th:value="${hour + ':00'}" th:text="${hour + ':00'}"></option>
+                                        <option th:value="${hour + ':30'}" th:text="${hour + ':30'}"></option>
+                                    </th:block>
+                                    <option value="24:00">24:00</option>
+                                </select>
                             </td>
                         </tr>
                         <tr>
-                            <td>상영 종료일</td>
+                            <td>상영 날짜</td>
                             <td>
-                                <input type="date" name="closeDate" style="width: 50%" />
+                                <input type="date" name="palyDate"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>가격</td>
+                            <td>
+                                <input type="number" name="price"/>
                             </td>
                         </tr>
 
@@ -196,7 +210,5 @@
                 </section>
             </div>
         </div>
-
-
 
 </html>
