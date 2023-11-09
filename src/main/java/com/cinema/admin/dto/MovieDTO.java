@@ -5,6 +5,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -27,9 +29,24 @@ public class MovieDTO {
     private String screenType;
     private String director;
     private String story;
-    private int totalScore;
     private String actor;
-    private MultipartFile fname;
+    private int totalScore;
+
+    public List<MultipartFile> getThumbs(){
+        List<MultipartFile> thumbs = new ArrayList<>();
+        if (thumb1 != null) {
+            thumbs.add(thumb1);
+        }
+        if (thumb2 != null) {
+            thumbs.add(thumb2);
+        }
+        if (thumb3 != null) {
+            thumbs.add(thumb3);
+        }
+
+        return thumbs;
+    }
+
 
 
 }
