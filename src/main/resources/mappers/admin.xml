@@ -5,6 +5,7 @@
 
     <insert id="insertMovie">
 
+
         INSERT INTO movie (movieName, director, actor, runTime, openDate, movieAge, cateNum, screenType, thumb1, thumb2, thumb3, story)
         VALUES (#{movieName}, #{director}, #{actor}, #{runTime}, #{openDate}, #{movieAge}, #{cateNum}, #{screenType}, #{thumb1}, #{thumb2}, #{thumb3}, #{story})
 
