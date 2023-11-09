@@ -13022,7 +13022,8 @@ body.body-iframe .modal-layer {
     padding: 0;
     font-size: 0;
     line-height: 0;
-    background: url(https://img.megabox.co.kr/static/pc/images/common/ci/logo_new2.png) center center no-repeat
+    background: url(../images/logo.png) center center no-repeat
+
 }
 
 #header .util-area {
@@ -13064,7 +13065,7 @@ body.body-iframe .modal-layer {
     display: block;
     float: left;
     margin-left: 20px;
-    vertical-align: top
+    vertical-align: top;
 }
 
 #header .util-area .right-link .layer-header-notice a {
@@ -13298,7 +13299,7 @@ body.body-iframe .modal-layer {
 }
 
 #header.no-bg .util-area a,#header.no-bg .util-area a:focus,#header.no-bg .util-area a:hover {
-    color: #888
+    color: #888;
 }
 
 #header.no-bg .link-area a.btn-layer-sitemap {
