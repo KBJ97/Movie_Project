@@ -13,6 +13,4 @@ public class MovieMapperTest {
 	@Autowired
 	private MovieMapper movieMapper;
 
-
-
 }
