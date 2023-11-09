@@ -14,9 +14,5 @@ public class MovieMapperTest {
     private MovieMapper movieMapper;
 
 
-    @DisplayName("regiseter 테스트")
-    public void selectArticles(MovieDTO movieDTO) {
-        System.out.println("테스트1번 입니다.");
-        movieMapper.insertMovie(movieDTO);
-    }
+
 }

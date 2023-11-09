@@ -32,7 +32,6 @@ public class MovieDTO {
     private String actor;
     private int totalScore;
 
-
     public List<MultipartFile> getThumbs(){
         List<MultipartFile> thumbs = new ArrayList<>();
         if (thumb1 != null) {
@@ -47,6 +46,7 @@ public class MovieDTO {
 
         return thumbs;
     }
+
 
 
 }
