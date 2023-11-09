@@ -34,4 +34,15 @@
         ORDER BY a.`movieNum` DESC
     </select>
 
+    <select id="selectRegion1Ajax" resultType="com.cinema.admin.dto.RegionDTO">
+        SELECT * FROM `region1`
+    </select>
+
+
+    <select id="selectRegion2Ajax" resultType="com.cinema.admin.dto.RegionDTO">
+        SELECT a.*, b.region2Name
+        FROM region1 a
+        JOIN region2 b ON a.region1Num = b.region1Num
+        WHERE a.region1Num = #{region1Num}
+    </select>
 </mapper>
