@@ -2,6 +2,7 @@ package com.cinema.admin.service;
 
 import com.cinema.admin.dto.FileDTO;
 import com.cinema.admin.dto.MovieDTO;
+import com.cinema.admin.dto.RegionDTO;
 import com.cinema.admin.mapper.MovieMapper;
 import lombok.RequiredArgsConstructor;
 
@@ -94,6 +95,13 @@ public class MovieService {
         return movieMapper.selectMovies();
     }
 
+    public List<RegionDTO> selectRegion2Ajax(int region1Num){
+        return movieMapper.selectRegion2Ajax(region1Num);
+    }
+
+    public List<RegionDTO> selectRegion1Ajax(){
+        return movieMapper.selectRegion1Ajax();
+    }
 
 
 }

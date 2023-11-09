@@ -2,6 +2,7 @@ package com.cinema.admin.controller;
 
 
 import com.cinema.admin.dto.MovieDTO;
+import com.cinema.admin.dto.RegionDTO;
 import com.cinema.admin.mapper.MovieMapper;
 import com.cinema.admin.service.MovieService;
 import lombok.RequiredArgsConstructor;
@@ -44,7 +45,12 @@ public class MovieController {
     public String timeRegister(Model model) {
 
         List<MovieDTO> movies = movieService.selectMovies();
+        List<RegionDTO> region1List = movieService.selectRegion1Ajax();
+
+        log.info("region1List = " + region1List.get(0).getRegion1Name());
+
         model.addAttribute("movies", movies);
+        model.addAttribute("region1List",region1List);
 
         return "/admin/board/timeRegister";
     }
