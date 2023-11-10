@@ -1,8 +1,6 @@
 package com.cinema.admin.mapper;
 
-import com.cinema.admin.dto.FileDTO;
-import com.cinema.admin.dto.MovieDTO;
-import com.cinema.admin.dto.RegionDTO;
+import com.cinema.admin.dto.*;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -18,4 +16,9 @@ public interface MovieMapper {
     public List<RegionDTO> selectRegion2Ajax(int region1Num);
 
     public List<RegionDTO> selectRegion1Ajax();
+
+    public List<TheaterDTO> selectCinemaAjax(int region1Num, int region2Num);
+
+    public void insertMovieInfo(MovieInfoDTO movieInfoDTO);
+
 }
