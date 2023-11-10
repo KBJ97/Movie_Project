@@ -1,4 +1,171 @@
 @charset "UTF-8";
+
+/* 공통? 시작 */
+html {
+    -webkit-text-size-adjust: 100%
+}
+
+body {
+    margin: 0
+}
+
+article,aside,figcaption,figure,footer,header,main,nav,section {
+    display: block
+}
+
+h1 {
+    margin: .67em 0;
+    font-size: 2em
+}
+
+hr {
+    overflow: visible;
+    height: 0;
+    box-sizing: content-box
+}
+
+pre {
+    font-size: 1em
+}
+
+a {
+    background-color: transparent
+}
+
+a:link {
+    color: #444;
+    text-decoration: none;
+}
+
+ol,ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0
+}
+
+abbr[title] {
+    border-bottom: none;
+    text-decoration: underline;
+    text-decoration: underline dotted
+}
+
+b,strong {
+    font-weight: 700
+}
+
+code,kbd,samp {
+    font-size: 1em
+}
+
+small {
+    font-size: 80%
+}
+
+sub,sup {
+    position: relative;
+    font-size: 75%;
+    line-height: 0;
+    vertical-align: baseline
+}
+
+sub {
+    bottom: -.25em
+}
+
+sup {
+    top: -.5em
+}
+
+img {
+    border-style: none
+}
+
+button,input,optgroup,select,textarea {
+    margin: 0;
+    font-family: inherit;
+    font-size: 1em;
+    line-height: 1.15
+}
+
+button,input {
+    overflow: visible
+}
+
+button,select {
+    text-transform: none
+}
+
+[type=button],[type=reset],[type=submit],button {
+    -webkit-appearance: button
+}
+
+[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner {
+    border-style: none;
+    padding: 0
+}
+
+fieldset {
+    padding: 0
+}
+
+legend {
+    display: table;
+    max-width: 100%;
+    padding: 0;
+    box-sizing: border-box;
+    white-space: normal;
+    color: inherit
+}
+
+progress {
+    vertical-align: baseline
+}
+
+textarea {
+    overflow: auto
+}
+
+[type=checkbox],[type=radio] {
+    box-sizing: border-box;
+    padding: 0
+}
+
+[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button {
+    height: auto
+}
+
+[type=search] {
+    -webkit-appearance: textfield;
+    outline-offset: -2px
+}
+
+[type=search]::-webkit-search-decoration {
+    -webkit-appearance: none
+}
+
+::-webkit-file-upload-button {
+    -webkit-appearance: button;
+    font: inherit
+}
+
+details {
+    display: block
+}
+
+summary {
+    display: list-item
+}
+
+template {
+    display: none
+}
+
+[hidden] {
+    display: none
+}
+/* 공통? 끝 */
+
+/* aside bar 시작 */
 .lnb-area {
     float: left;
     width: 200px;
@@ -150,3 +317,251 @@
     font-family: Roboto;
     font-weight: 300
 }
+/* aside bar 끝 */
+
+/* faq 시작 */
+
+.input-search-area {
+    margin: 0;
+    padding: 30px;
+    background-color: #f2f4f5;
+    border-radius: 10px
+}
+
+.input-search-area:after,.input-search-area:before {
+    content: '';
+    display: table
+}
+
+.input-search-area:after {
+    clear: both
+}
+
+.input-search-area .label {
+    display: block;
+    float: left;
+    padding: 0 20px 0 0;
+    line-height: 36px;
+    font-weight: 600
+}
+
+.input-search-area .input-area {
+    overflow: hidden;
+    display: block;
+    float: left;
+    vertical-align: middle
+}
+
+.input-search-area .input-area select {
+    float: left;
+    width: 140px;
+    height: 36px;
+    border-radius: 4px 0 0 4px
+}
+
+.input-search-area .input-area .search-wrap {
+    position: relative;
+    float: left;
+    width: 390px;
+    height: 36px;
+    padding: 0 35px 0 0;
+    border: 1px solid #d8d9db;
+    border-left: 0;
+    border-radius: 0 4px 4px 0;
+    background-color: #fff
+}
+
+.input-search-area .input-area .search-wrap .input-text {
+    display: block;
+    height: 34px;
+    line-height: 34px;
+    border: 0
+}
+
+.input-search-area .input-area .search-wrap .btn-search-input {
+    display: block;
+    position: absolute;
+    right: 3px;
+    top: 1px;
+    border-radius: 0 4px 4px 0
+}
+
+.input-search-area .input-area .search-wrap.v1 {
+    border: 1px solid #d8d9db;
+    border-radius: 4px
+}
+
+.input-search-area .input-area .search-wrap.v1 .input-text {
+    border-radius: 4px 0 0 4px
+}
+
+.input-search-area .btn-area {
+    float: left;
+    padding: 0 0 0 10px
+}
+
+.input-search-area .btn-area .btn {
+    display: block;
+    position: relative;
+    float: left;
+    height: 36px;
+    margin: 0 8px;
+    padding: 0;
+    border: 0;
+    background-color: transparent
+}
+
+.input-search-area .btn-area .btn:after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: -8px;
+    top: 50%;
+    width: 1px;
+    height: 12px;
+    margin: -6px 0 0 0;
+    background-color: #d8d9db
+}
+
+.input-search-area .btn-area .btn:first-child:after {
+    display: none
+}
+
+.box-search {
+    padding: 10px;
+    background-color: #f2f4f5;
+    border-radius: 5px
+}
+
+.box-search table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse
+}
+
+.box-search table td,.box-search table th {
+    padding: 5px 10px;
+    text-align: left
+}
+
+
+
+.inner-wrap {
+    width: 1100px;
+    margin: 0 auto
+}
+
+.inner-wrap:after,.inner-wrap:before {
+    content: '';
+    display: table
+}
+
+.inner-wrap:after {
+    clear: both
+}
+
+
+
+
+.container {
+    width: 100%;
+    min-width: 1100px;
+    min-height: 100%;
+    margin: -92px 0 -200px 0;
+    padding: 92px 0 300px 0
+}
+
+.container.no-padding-bottom {
+    padding-bottom: 200px
+}
+
+.container.has-lnb #contents {
+    float: right;
+    width: calc(100% - 260px)
+}
+
+.container.area-ad {
+    margin-top: -172px;
+    padding-top: 172px
+}
+
+.container.location-fixed {
+    padding-top: 134px
+}
+
+.joinsInfo .container {
+    height: 100%
+}
+
+#bookingArea body.no-scroll {
+    margin-right: 0!important
+}
+
+#contents {
+    width: 100%;
+    margin: 0;
+    padding: 40px 0 0 0
+}
+
+.location-fixed {
+    padding-top: 42px
+}
+
+#contents.no-padding {
+    padding-top: 0
+}
+
+#contents.location-fixed {
+    padding-top: 82px
+}
+
+#contents.location-fixed.tab-fixed {
+    padding-top: 124px
+}
+
+#contents.no-padding.location-fixed {
+    padding-top: 42px
+}
+
+#contents.no-padding.location-fixed.tab-fixed {
+    padding-top: 112px
+}
+
+#contents.tab-padding {
+    padding-top: 20px
+}
+
+#contents.tab-padding.location-fixed {
+    padding-top: 62px
+}
+
+#contents.tab-padding.location-fixed.tab-fixed {
+    padding-top: 112px
+}
+
+#contents.no-padding.movie-fixed {
+    padding-top: 543px
+}
+
+#contents.no-padding.movie-fixed.tab-fixed-movie {
+    padding-top: 583px
+}
+
+#contents.no-padding.theater-fixed {
+    padding-top: 458px
+}
+
+#contents.no-padding.theater-fixed.tab-fixed-theater {
+    padding-top: 538px
+}
+
+
+/* faq 끝 */
+
+/* qna 시작 */
+
+/* qna 끝 */
+
+/* notice 시작 */
+
+/* notice 끝 */
