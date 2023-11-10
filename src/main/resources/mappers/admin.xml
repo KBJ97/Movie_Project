@@ -5,8 +5,20 @@
 
     <insert id="insertMovie">
 
-        INSERT INTO movie (movieName, director, actor, runTime, openDate, movieAge, cateNum, screenType, thumb1, thumb2, thumb3, story)
-        VALUES (#{movieName}, #{director}, #{actor}, #{runTime}, #{openDate}, #{movieAge}, #{cateNum}, #{screenType}, #{thumb1}, #{thumb2}, #{thumb3}, #{story})
+        INSERT INTO movie SET
+         movieName=#{movieName},
+         director=#{director},
+         actor= #{actor},
+         runTime = #{runTime},
+         openDate = #{openDate},
+         movieAge = #{movieAge},
+         cateNum = #{cateNum},
+         screenType = #{screenType},
+         thumb1 = #{thumb1},
+         thumb2 = #{thumb2},
+         thumb3 = #{thumb3},
+         story = #{story}
+
 
     </insert>
 
@@ -15,4 +27,22 @@
         VALUES (#{movieNum}, #{newName}, #{oriName}, #{rdate})
     </insert>
 
+    <select id="selectMovies" resultType="com.cinema.admin.dto.MovieDTO">
+        SELECT a.*, b.`cateName`
+        FROM `movie` a
+        LEFT JOIN `cate` b ON a.cateNum = b.cateNum
+        ORDER BY a.`movieNum` DESC
+    </select>
+
+    <select id="selectRegion1Ajax" resultType="com.cinema.admin.dto.RegionDTO">
+        SELECT * FROM `region1`
+    </select>
+
+
+    <select id="selectRegion2Ajax" resultType="com.cinema.admin.dto.RegionDTO">
+        SELECT a.*, b.region2Name
+        FROM region1 a
+        JOIN region2 b ON a.region1Num = b.region1Num
+        WHERE a.region1Num = #{region1Num}
+    </select>
 </mapper>

@@ -51,12 +51,12 @@
         }
 
         #register_detail input[name="openMovie"] {
-            width: 25%;
+            width: 50%;
             padding: 5px;
         }
 
         #register_detail input[name="closeDate"] {
-            width: 25%;
+            width: 50%;
             padding: 5px;
         }
 
@@ -104,13 +104,94 @@
             color: black; /* 호버시 폰트 색상 변경 */
             cursor: pointer; /* 포인터 커서로 변경 */
         }
+
+        #register .sdate input[type="date"] {
+            width: 100%;
+        }
+
+        #register .movieNum {
+            width: 300px;
+            height: 40px;
+        }
     </style>
-</head>
+
+    <script>
+        window.onload = function() {
+
+            document.querySelector("#region1").addEventListener('change', function() {
+
+                var selectedRegion1 = this.value;
+                var selectedRegion2 = document.querySelector("#region2");
+                var url = `/cinema/admin/timeRegister/${selectedRegion1}`;
+
+                console.log("url : " + url);
+
+                var xhr = new XMLHttpRequest();
+                console.log(xhr);
+                xhr.open('GET', url, true);
+
+                xhr.onload = function() {
+                    if (xhr.status >= 200 && xhr.status < 300) {
+                        // 이전 옵션 제거
+                        while (selectedRegion2.firstChild) {
+                            console.log("category2Select.firstChild = " + selectedRegion2.firstChild)
+                            selectedRegion2.removeChild(selectedRegion2.firstChild);
+                        }
+
+                        var data= JSON.parse(xhr.response);
+                        for (var i = 0; i < data.length; i++) {
+                            console.log(data); // Access each item in the array
+                        }
+                        var defaultOption = document.createElement('option');
+                        defaultOption.value = 'cate0';
+                        defaultOption.text = '상세 지역 선택';
+                        selectedRegion2.appendChild(defaultOption);
+
+                        data.forEach(function(region2) {
+                            var option = document.createElement('option');
+                            option.value = region2.region2Num;
+                            option.text = region2.region2Name;
+                            selectedRegion2.appendChild(option);
+                        });
+                    } else {
+                        console.error('상세지역을 가져오지 못했습니다.');
+                    }
+                };
+
+                xhr.send();
+            });
+
+            var form = document.querySelector('form');
+            form.addEventListener('submit', function(e) {
+                // 선택한 region1와 region2 값을 가져옵니다.
+                var selectedRegion1 = document.querySelector('select[name="region1"]').value;
+                var selectedRegion2 = document.querySelector('select[name="region2"]').value;
+
+                // region1 또는 region2가 ''인 경우 처리합니다.
+                if (selectedRegion1 === '0' || selectedRegion2 === '0') {
+                    e.preventDefault(); // 양식 제출을 방지합니다.
+
+                    // region1와 region2에 따라 알람 메시지를 생성합니다.
+                    var alertMessage = '';
+                    if (selectedRegion1 === '0') {
+                        alertMessage += '지역를 선택하세요. ';
+                    }
+                    if (selectedRegion2 === '0') {
+                        alertMessage += '상세 지역을 선택하세요.';
+                    }
+
+                    alert(alertMessage); // 경고 메시지를 표시합니다.
+                }
+            });
+        }
+    </script>
+
+    </head>
 
         <div id="register" layout:fragment="content">
             <div id="register_detail">
                 상영시간등록
-                <hr />
+                <hr/>
 
                 <section>
                     <table>
@@ -118,11 +199,8 @@
                             <td>상영지역</td>
                             <td>
                                 <select id="region1" name="region1">
-                                    <option value="1">부산</option>
-                                    <option value="2">서울</option>
-                                    <option value="3">경기</option>
-                                    <option value="4">대구</option>
-                                    <option value="5">대전</option>
+                                    <option value='0'>-- 선택 --</option>
+                                    <option th:each="region1 : ${region1List}" th:value="${region1.region1Num}" th:text="${region1.region1Name}"></option>
                                     <!-- 원하는 장르 옵션들을 추가하세요 -->
                                 </select>
                             </td>
@@ -131,10 +209,8 @@
                             <td>상영 영화관</td>
                             <td>
                                 <select id="region2" name="region2">
-                                    <option value="1">서면</option>
-                                    <option value="2">남포</option>
-                                    <option value="3">하단</option>
-                                    <option value="4">해운대</option>
+                                    <option value='0'>-- 선택 --</option>
+                                    <option th:each="region2 : ${region2List}" th:value="${region2.region2Num}" th:text="${region2.region2Name}"></option>
                                     <!-- 원하는 장르 옵션들을 추가하세요 -->
                                 </select>
                             </td>
@@ -143,44 +219,49 @@
                             <td>상영 스크린</td>
                             <td>
                                 <select id="cinema" name="room">
+                                    <option value=''>-- 선택 --</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
                                     <option value="4">4</option>
                                     <option value="5">5</option>
-                                    <option value="6">6</option>
                                     <!-- 원하는 장르 옵션들을 추가하세요 -->
                                 </select>
                             </td>
                         </tr>
                         <tr>
                             <td>상영 영화</td>
-                            <td><input type="text" name="running" /></td>
-                        </tr>
-                        <tr>
-                            <td>상영 시간</td>
                             <td>
-                                <select id="time" name="runningTime">
-                                    <option value="09:00">09:00</option>
-                                    <option value="09:00">09:00</option>
-                                    <option value="10:00">10:00</option>
-                                    <option value="10:30">10:30</option>
-                                    <option value="11:00">11:00</option>
-                                    <option value="11:30">11:30</option>
-                                    <!-- 원하는 장르 옵션들을 추가하세요 -->
+                                <select class="movieNum" name='movieNum'>
+                                    <option value=''>-- 선택 --</option>
+                                    <option th:each="movie : ${movies}" th:value="${movie.movieNum}" th:text="${movie.movieName}"></option>
                                 </select>
                             </td>
                         </tr>
                         <tr>
-                            <td>상영 시작일</td>
+                            <td>상영 시간</td>
                             <td>
-                                <input type="date" name="openMovie" style="width: 50%" />
+                                <select id="time" name="playTime">
+                                    <option value="09:00">09:00</option>
+                                    <option value="09:00">09:30</option>
+                                    <th:block th:each="hour : ${#numbers.sequence(10, 23)}">
+                                        <option th:value="${hour + ':00'}" th:text="${hour + ':00'}"></option>
+                                        <option th:value="${hour + ':30'}" th:text="${hour + ':30'}"></option>
+                                    </th:block>
+                                    <option value="24:00">24:00</option>
+                                </select>
                             </td>
                         </tr>
                         <tr>
-                            <td>상영 종료일</td>
+                            <td>상영 날짜</td>
                             <td>
-                                <input type="date" name="closeDate" style="width: 50%" />
+                                <input type="date" name="palyDate"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>가격</td>
+                            <td>
+                                <input type="number" name="price"/>
                             </td>
                         </tr>
 
@@ -196,7 +277,5 @@
                 </section>
             </div>
         </div>
-
-
 
 </html>

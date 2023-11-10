@@ -21,9 +21,9 @@ public class MovieDTO {
     private int price;
     private LocalDate openDate;
     private LocalDate endDate;
-    private MultipartFile thumb1;
-    private MultipartFile thumb2;
-    private MultipartFile thumb3;
+    private MultipartFile fileThumb1;
+    private MultipartFile fileThumb2;
+    private MultipartFile fileThumb3;
     private int movieAge;
     private int runTime;
     private String screenType;
@@ -32,16 +32,26 @@ public class MovieDTO {
     private String actor;
     private int totalScore;
 
+    // 추가필드
+    private String thumb1;
+    private String thumb2;
+    private String thumb3;
+
+    //추가필드
+    private String cateName;
+
+
+    //파일 여러개 올릴 수 있는 메서드
     public List<MultipartFile> getThumbs(){
         List<MultipartFile> thumbs = new ArrayList<>();
-        if (thumb1 != null) {
-            thumbs.add(thumb1);
+        if (fileThumb1 != null) {
+            thumbs.add(fileThumb1);
         }
-        if (thumb2 != null) {
-            thumbs.add(thumb2);
+        if (fileThumb2 != null) {
+            thumbs.add(fileThumb2);
         }
-        if (thumb3 != null) {
-            thumbs.add(thumb3);
+        if (fileThumb3 != null) {
+            thumbs.add(fileThumb3);
         }
 
         return thumbs;

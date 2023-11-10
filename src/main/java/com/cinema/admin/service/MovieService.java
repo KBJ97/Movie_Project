@@ -2,6 +2,7 @@ package com.cinema.admin.service;
 
 import com.cinema.admin.dto.FileDTO;
 import com.cinema.admin.dto.MovieDTO;
+import com.cinema.admin.dto.RegionDTO;
 import com.cinema.admin.mapper.MovieMapper;
 import lombok.RequiredArgsConstructor;
 
@@ -33,10 +34,20 @@ public class MovieService {
         List<FileDTO> fileDTOSs = thumbUpload(movieDTO);
         log.info("fileDTO : " + fileDTOSs );
 
-
-
         // 썸네일 업로드
-        //thumbUpload(movieDTO);
+        movieDTO.setThumb1(fileDTOSs.get(0).getNewName());
+        movieDTO.setThumb2(fileDTOSs.get(1).getNewName());
+        movieDTO.setThumb3(fileDTOSs.get(2).getNewName());
+
+        log.info("메인 사진 thumb1 = " + movieDTO.getThumb1());
+        log.info("메인 사진 fileThumb1= " +movieDTO.getFileThumb1());
+
+        log.info("메인 사진 thumb2 = " + movieDTO.getThumb2());
+        log.info("메인 사진 fileThumb2= " +movieDTO.getFileThumb2());
+
+        log.info("메인 사진 thumb3 = " + movieDTO.getThumb3());
+        log.info("메인 사진 fileThumb3= " +movieDTO.getFileThumb3());
+
 
         movieMapper.insertMovie(movieDTO);
     }
@@ -80,6 +91,17 @@ public class MovieService {
     }
 
 
+    public List<MovieDTO> selectMovies(){
+        return movieMapper.selectMovies();
+    }
+
+    public List<RegionDTO> selectRegion2Ajax(int region1Num){
+        return movieMapper.selectRegion2Ajax(region1Num);
+    }
+
+    public List<RegionDTO> selectRegion1Ajax(){
+        return movieMapper.selectRegion1Ajax();
+    }
 
 
 }
