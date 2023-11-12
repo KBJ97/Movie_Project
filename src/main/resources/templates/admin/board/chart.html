@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chart.js 꺾은선 그래프</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<canvas id="myLineChart" width="530" height="55"></canvas>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    // 데이터
+    var labels = [[${labels}]];
+    var data = [[${data}]];
+
+    var chartData = {
+        labels: labels,
+        datasets: [{
+            label: "판매량",
+            borderColor: "black",
+            data: data,
+            fill: false
+        }]
+    };
+
+    // 옵션
+    var options = {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    };
+
+    // 꺾은선 그래프 생성
+    var ctx = document.getElementById('myLineChart').getContext('2d');
+    var myLineChart = new Chart(ctx, {
+        type: 'line',
+        data: chartData,
+        options: options
+    });
+    /*]]>*/
+</script>
+</body>
+</html>
