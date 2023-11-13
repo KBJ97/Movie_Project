@@ -2,6 +2,7 @@
 <html xmlns:th="http://thymeleaf.org"
       xmlns:layout="http://www.thymeleaf.org"
       layout:decorate="/member/memberPage.html">
+
 <div class="register" layout:fragment="content">
     <nav>
         <h1>회원가입</h1>
@@ -14,7 +15,7 @@
                 <tr>
                     <th><span class="essential">*</span>아이디</th>
                     <td>
-                        <input type="text" name="uid" placeholder="영문,숫자 조합(8~12자)" required/>
+                        <input type="text" name="uid" placeholder="아이디" required/>
                         <button type="button" id="btnCheckUid">중복확인</button>
                         <br/><span class="msgId">영문, 숫자로 4~12자까지 설정해 주세요.</span>
                     </td>
@@ -22,15 +23,15 @@
                 <tr>
                     <th><span class="essential">*</span>비밀번호</th>
                     <td>
-                        <input type="password" name="pass1" placeholder="영문,숫자,특수기호 중 2가지 이상 조합" required/>
+                        <input type="password" name="pass1" placeholder="비밀번호" required/>
                         <br/><span class="msgPass1">영문, 숫자, 특수문자를 조합하여 8~12자까지 설정해 주세요.</span>
                     </td>
                 </tr>
                 <tr>
                     <th><span class="essential">*</span>비밀번호확인</th>
                     <td>
-                        <input type="password" name="pass2" placeholder="영문,숫자,특수기호 중 2가지 이상 조합" required/>
-                        <br/><span class="msgPass2">비밀번호 재입력</span>
+                        <input type="password" name="pass2" placeholder="비밀번호 확인" required/>
+                        <br/><span class="msgPass2"></span>
                     </td>
                 </tr>
             </table>
@@ -42,7 +43,7 @@
                     <th><span class="essential">*</span>이름</th>
                     <td>
                         <input type="text" name="name" placeholder="이름 입력" required/>
-                        <br/><span class="resultName"></span>
+                        <br/><span class="resultName">이름을 입력하세요</span>
                     </td>
                 </tr>
 
@@ -50,9 +51,9 @@
                 <tr>
                     <th><span class="essential">*</span>주민등록번호</th>
                     <td>
-                        <input type="text" name="birth1" maxlength="7" placeholder="주민번호 입력" required/> -
+                        <input type="text" name="birth1" maxlength="6" placeholder="주민번호 입력" required/> -
                         <input type="text" name="birth2" maxlength="1" style="width: 25px;" required/>
-                        <p style="display: inline-block;">******</p>
+                        <p style="display: inline-block;">* * * * * *</p>
                         <br>
                         <span class="msgJn"> 주민번호를 입력하세요.</span>
                     </td>
@@ -60,7 +61,7 @@
                 <tr>
                     <th><span class="essential">*</span>휴대폰</th>
                     <td>
-                        <input type="text" name="hp" maxlength="13" placeholder="휴대폰번호 입력" required/>
+                        <input type="text" name="hp" id="hp" maxlength="13" placeholder="휴대폰번호 입력" required/>
                         <br/><span class="msgHp"> -포함 13자리를 입력하세요.</span>
                     </td>
                 </tr>
