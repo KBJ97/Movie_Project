@@ -203,127 +203,20 @@
                                 <th>가격</th>
                                 <th colspan="2">관리</th>
                             </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>해리포터</td>
-                                <td>부산</td>
-                                <td>서면</td>
-                                <td>1관</td>
-                                <td>2022/11/01</td>
-                                <td>2022/11/11</td>
-                                <td><a href="#">수정</a></td>
-                                <td><a href="#">삭제</a></td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>해리포터</td>
-                                <td>부산</td>
-                                <td>서면</td>
-                                <td>1관</td>
-                                <td>2022/11/01</td>
-                                <td>2022/11/11</td>
-                                <td><a href="#">수정</a></td>
-                                <td><a href="#">삭제</a></td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>해리포터</td>
-                                <td>부산</td>
-                                <td>서면</td>
-                                <td>1관</td>
-                                <td>2022/11/01</td>
-                                <td>2022/11/11</td>
-                                <td><a href="#">수정</a></td>
-                                <td><a href="#">삭제</a></td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>해리포터</td>
-                                <td>부산</td>
-                                <td>서면</td>
-                                <td>1관</td>
-                                <td>2022/11/01</td>
-                                <td>2022/11/11</td>
-                                <td><a href="#">수정</a></td>
-                                <td><a href="#">삭제</a></td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>해리포터</td>
-                                <td>부산</td>
-                                <td>서면</td>
-                                <td>1관</td>
-                                <td>2022/11/01</td>
-                                <td>2022/11/11</td>
-                                <td><a href="#">수정</a></td>
-                                <td><a href="#">삭제</a></td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>해리포터</td>
-                                <td>부산</td>
-                                <td>서면</td>
-                                <td>1관</td>
-                                <td>2022/11/01</td>
-                                <td>2022/11/11</td>
-                                <td><a href="#">수정</a></td>
-                                <td><a href="#">삭제</a></td>
-                            </tr>
-                            <tr>
-                                <td>6</td>
-                                <td>해리포터</td>
-                                <td>부산</td>
-                                <td>서면</td>
-                                <td>1관</td>
-                                <td>2022/11/01</td>
-                                <td>2022/11/11</td>
-                                <td><a href="#">수정</a></td>
-                                <td><a href="#">삭제</a></td>
-                            </tr>
-                            <tr>
-                                <td>7</td>
-                                <td>해리포터</td>
-                                <td>부산</td>
-                                <td>서면</td>
-                                <td>1관</td>
-                                <td>2022/11/01</td>
-                                <td>2022/11/11</td>
-                                <td><a href="#">수정</a></td>
-                                <td><a href="#">삭제</a></td>
-                            </tr>
-                            <tr>
-                                <td>8</td>
-                                <td>해리포터</td>
-                                <td>부산</td>
-                                <td>서면</td>
-                                <td>1관</td>
-                                <td>2022/11/01</td>
-                                <td>2022/11/11</td>
-                                <td><a href="#">수정</a></td>
-                                <td><a href="#">삭제</a></td>
-                            </tr>
-                            <tr>
-                                <td>9</td>
-                                <td>해리포터</td>
-                                <td>부산</td>
-                                <td>서면</td>
-                                <td>1관</td>
-                                <td>2022/11/01</td>
-                                <td>2022/11/11</td>
-                                <td><a href="#">수정</a></td>
-                                <td><a href="#">삭제</a></td>
-                            </tr>
-                            <tr>
-                                <td>10</td>
-                                <td>해리포터</td>
-                                <td>부산</td>
-                                <td>서면</td>
-                                <td>1관</td>
-                                <td>2022/11/01</td>
-                                <td>2022/11/11</td>
-                                <td><a href="#">수정</a></td>
-                                <td><a href="#">삭제</a></td>
-                            </tr>
+
+                            <th:block th:each="movie:${movieList}">
+                                <tr>
+                                    <td th:text="${movie.region1Name}">서울</td>
+                                    <td th:text="${movie.region2Name}">강남구</td>
+                                    <td th:text="${movie.movieName}">해리포터</td>
+                                    <td th:text="${movie.playDate}">2023.12.2</td>
+                                    <td th:text="${movie.playTime}">09:30</td>
+                                    <td th:text="${movie.theaterName}">1관</td>
+                                    <td th:text="${movie.price}">12300</td>
+                                    <td><a href="#">수정</a></td>
+                                    <td><a href="#">삭제</a></td>
+                                </tr>
+                            </th:block>
                         </table>
 
                         <div class="page">

@@ -16,8 +16,15 @@ import java.time.LocalTime;
 public class MovieInfoDTO {
     private int movieInfoNum;
     private int theaterNum;
+    private String theaterName;
     private int movieNum;
     private LocalDate playDate;
+    private int region1;
+    private int region2;
+
+    private String movieName;
+    private String region1Name;
+    private String region2Name;
 
     @DateTimeFormat(pattern = "HH:mm")
     private Time playTime;
