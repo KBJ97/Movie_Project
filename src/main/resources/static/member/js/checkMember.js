@@ -24,7 +24,7 @@ $(function(){
             }
 
             $.ajax({
-                url: '/LotteON/member/check/uid/'+uid,
+                url: '/cinema/member/check/uid/'+uid,
                 type: 'GET',
                 dataType: 'json',
                 success: function(data){
@@ -70,7 +70,7 @@ $(function(){
         }
 
         $.ajax({
-            url: '/LotteON/member/check/hp/'+hp,
+            url: '/cinema/member/check/hp/'+hp,
             type: 'GET',
             dataType: 'json',
             success: function(data){
@@ -103,7 +103,7 @@ $(function(){
         }
 
         $.ajax({
-            url: '/LotteON/member/check/company/'+company,
+            url: '/cinema/member/check/company/'+company,
             type: 'GET',
             dataType: 'json',
             success: function(data){
@@ -136,7 +136,7 @@ $(function(){
         }
 
         $.ajax({
-            url: '/LotteON/member/check/bizRegNum/'+bizRegNum,
+            url: '/cinema/member/check/bizRegNum/'+bizRegNum,
             type: 'GET',
             dataType: 'json',
             success: function(data){
@@ -169,7 +169,7 @@ $(function(){
         }
 
         $.ajax({
-            url: '/LotteON/member/check/comRegNum/'+comRegNum,
+            url: '/cinema/member/check/comRegNum/'+comRegNum,
             type: 'GET',
             dataType: 'json',
             success: function(data){
@@ -202,7 +202,7 @@ $(function(){
         }
 
         $.ajax({
-            url: '/LotteON/member/check/tel/'+tel,
+            url: '/cinema/member/check/tel/'+tel,
             type: 'GET',
             dataType: 'json',
             success: function(data){
@@ -235,7 +235,7 @@ $(function(){
         }
 
         $.ajax({
-            url: '/LotteON/member/check/fax/'+fax,
+            url: '/cinema/member/check/fax/'+fax,
             type: 'GET',
             dataType: 'json',
             success: function(data){
