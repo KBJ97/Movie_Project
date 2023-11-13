@@ -46,7 +46,7 @@ $(function(){
         {
             if (pass1.match(rePass))
             {
-                $('.msgPass2').css('color', 'green').text('비밀번호가 일치합니다.');
+                $('.msgPass2').css('color', 'green').html('<i class="fas fa-check"></i> ');
                 isPassOk = true;
             }
             else
@@ -81,28 +81,11 @@ $(function(){
         }
         else
         {
-            $('.resultName').text('');
+            $('.resultName').css('color', 'green').html('<i class="fas fa-check"></i> ');
             isNameOk = true;
         }
     });
 
-    // 휴대폰번호 입력값 검사
-    $('input[name=managerHp]').focusout(function(){
-
-        const hp  = $(this).val();
-
-        // 휴대폰번호 입력값 검사
-        if(!hp.match(reHp))
-        {
-            $('.msgHp').css('color', 'red').text('유효한 휴대폰번호가 아닙니다.');
-            isHpOk = false;
-        }
-        else
-        {
-            $('.msgHp').text('');
-            isHpOk = true;
-        }
-    });
 
     // 주민등록번호 유효성검증
     $('input[name=birth1]').on('input', function() {
@@ -128,12 +111,50 @@ $(function(){
         const birth2 = $('input[name=birth2]').val();
 
         // 입력값이 유효한 경우
-        if (birth1.length === 7 && birth2.length === 1) {
+        if (birth1.length === 6 && birth2.length === 1) {
             $('.msgJn').css('color', 'green').html('<i class="fas fa-check"></i> ');
         } else {
             $('.msgJn').css('color', 'red').text('주민번호를 입력하세요.');
         }
     }
+
+    //휴대폰번호 유효성 검증 함수
+    function formatPhoneNumber() {
+        var phoneNumber = document.getElementById("hp").value.replace(/[^0-9]/g, ''); // 입력된 숫자만 추출
+
+        // 숫자가 없으면 아무 처리하지 않음
+        if (!phoneNumber) {
+            return;
+        }
+
+        // 휴대폰 번호를 xxx-xxxx-xxxx 형식으로 변환
+        var formattedPhoneNumber = phoneNumber.replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3");
+
+        // 변환된 형식으로 다시 입력란에 적용
+        document.getElementById("hp").value = formattedPhoneNumber;
+
+        // reHp 패턴과 비교하여 일치 여부 확인
+        validatePhoneNumber(formattedPhoneNumber);
+    }
+
+    function validatePhoneNumber(phoneNumber) {
+        // 유효성 검사를 위해 reHp 패턴과 비교
+        if (reHp.test(phoneNumber)) {
+            $('.msgHp').css('color', 'green').html('<i class="fas fa-check"></i> ');
+            isHpOk = true;
+        } else {
+            $('.msgHp').css('color', 'red').text('유효한 휴대폰번호가 아닙니다.');
+            isHpOk = false;
+        }
+    }
+
+    // "input" 이벤트에서 formatPhoneNumber 함수를 트리거
+    $('#hp').on('input', formatPhoneNumber);
+
+    // "focusout" 이벤트에서 유효성 검사를 트리거
+    $('input[name=hp]').focusout(function () {
+        validatePhoneNumber($(this).val());
+    });
 
     // 일반회원 회원가입 최종 전송
     $('#formMember').submit(function(){
