@@ -40,9 +40,41 @@
 
 
     <select id="selectRegion2Ajax" resultType="com.cinema.admin.dto.RegionDTO">
-        SELECT a.*, b.region2Name
+        SELECT a.*, b.region2Name,b.region2Num
         FROM region1 a
         JOIN region2 b ON a.region1Num = b.region1Num
         WHERE a.region1Num = #{region1Num}
     </select>
+
+    <select id="selectCinemaAjax" resultType="com.cinema.admin.dto.TheaterDTO">
+        SELECT a.*
+        FROM `theater` a
+        JOIN `region2` AS b ON a.region1Num = b.region1Num AND a.region2Num = b.region2Num
+        WHERE a.`region1Num` = #{region1Num} AND a.region2Num = #{region2Num}
+    </select>
+
+
+    <insert id="insertMovieInfo">
+        INSERT INTO `movieInfo`
+        SET
+        `theaterNum` = #{theaterNum},
+        `movieNum` = #{movieNum},
+        `playTime` = #{playTime},
+        `playDate` = #{playDate},
+        `price` = #{price}
+    </insert>
+
+    <select id="selectMovieInfo" resultType="com.cinema.admin.dto.MovieInfoDTO">
+        SELECT a.*, b.region1Name, c.region2Name, d.*, e.movieName
+        FROM `theater` a
+        LEFT JOIN `region1` b
+        ON a.region1Num = b.region1Num
+        LEFT JOIN `region2` c
+        ON a.region1Num = c.region1Num AND a.region2Num = c.region2Num
+        INNER JOIN `movieInfo` d
+        ON a.theaterNum = d.theaterNum
+        INNER JOIN `movie` e
+        ON d.movieNum = e.movieNum
+    </select>
+
 </mapper>

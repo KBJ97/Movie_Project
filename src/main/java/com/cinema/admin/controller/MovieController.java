@@ -2,6 +2,7 @@ package com.cinema.admin.controller;
 
 
 import com.cinema.admin.dto.MovieDTO;
+import com.cinema.admin.dto.MovieInfoDTO;
 import com.cinema.admin.dto.RegionDTO;
 import com.cinema.admin.mapper.MovieMapper;
 import com.cinema.admin.service.MovieService;
@@ -21,27 +22,27 @@ public class MovieController {
 
     private final MovieService movieService;
 
-    @GetMapping(value= "/admin/register")
+    @GetMapping(value = "/admin/register")
     public String register() {
 
         return "/admin/board/register";
     }
 
-    @GetMapping(value= "/admin/movieRegisterList")
+    @GetMapping(value = "/admin/movieRegisterList")
     public String movieRegisterList(Model model) {
 
         List<MovieDTO> movies = movieService.selectMovies();
 
-        log.info("moviesNum = "  + movies.get(0).getMovieNum());
-        log.info("moviesName = "  + movies.get(0).getMovieName());
-        log.info("moviesAge = "  + movies.get(0).getMovieAge());
+        log.info("moviesNum = " + movies.get(0).getMovieNum());
+        log.info("moviesName = " + movies.get(0).getMovieName());
+        log.info("moviesAge = " + movies.get(0).getMovieAge());
 
         model.addAttribute("movies", movies);
 
         return "/admin/board/movieRegisterList";
     }
 
-    @GetMapping(value= "/admin/timeRegister")
+    @GetMapping(value = "/admin/timeRegister")
     public String timeRegister(Model model) {
 
         List<MovieDTO> movies = movieService.selectMovies();
@@ -50,27 +51,32 @@ public class MovieController {
         log.info("region1List = " + region1List.get(0).getRegion1Name());
 
         model.addAttribute("movies", movies);
-        model.addAttribute("region1List",region1List);
+        model.addAttribute("region1List", region1List);
 
         return "/admin/board/timeRegister";
     }
 
-    @GetMapping(value= "/admin/movieList")
-    public String movieList() {
+    @GetMapping(value = "/admin/movieList")
+    public String movieList(Model model) {
+
+        List<MovieInfoDTO> movieList = movieService.selectMovieInfo();
+
+        log.info("movieList = " + movieList);
+
+        model.addAttribute("movieList", movieList);
 
         return "/admin/board/movieList";
     }
 
-    @GetMapping(value= "/admin/userList")
+    @GetMapping(value = "/admin/userList")
     public String userList() {
 
         return "/admin/board/userList";
     }
 
 
-
-    @PostMapping(value= "/admin/register")
-    public String register(MovieDTO movieDTO){
+    @PostMapping(value = "/admin/register")
+    public String register(MovieDTO movieDTO) {
 
         log.info(movieDTO);
 
@@ -78,5 +84,19 @@ public class MovieController {
 
         return "/admin/board/register";
     }
+
+    @PostMapping(value = "/admin/timeRegister")
+    public String movieInfo(MovieInfoDTO movieInfoDTO) {
+
+        movieService.insertMovieInfo(movieInfoDTO);
+
+        log.info(movieInfoDTO.getMovieInfoNum());
+        log.info(movieInfoDTO.getPlayTime());
+        log.info(movieInfoDTO.getPlayDate());
+
+        return "/admin/board/timeRegister";
+
+    }
+
 
 }
