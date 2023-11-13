@@ -2,56 +2,39 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.thymeleaf.org"
       layout:decorate="/member/memberPage.html">
-<head>
-    <link rel="stylesheet" type="text/css" th:href="@{/member/css/login.css}">
-</head>
+
 <div class="container1" layout:fragment="content">
     <!-- Heading -->
 
-
-
     <!-- Form -->
-    <form  action="" method="post">
+    <form action="" method="post">
         <!-- email input -->
         <div class="first-input input__block first-input__block">
-            <input type="email" placeholder="아이디" class="input" id="email"   />
+            <div class="input-container">
+                <input type="email" placeholder="아이디" class="input" id="email" />
+                <button id="resetEmail">
+                    <img th:src="@{/member/images/xButton.png}" alt="Reset Email" />
+                </button>
+            </div>
         </div>
         <!-- password input -->
         <div class="input__block">
-            <input type="password" placeholder="비밀번호" class="input" id="password"    />
+            <div class="input-container">
+                <input type="password" placeholder="비밀번호" class="input" id="password" />
+                <button id="resetPassword">
+                    <img th:src="@{/member/images/xButton.png}" alt="Reset Password" />
+                </button>
+            </div>
         </div>
-        <!-- repeat password input -->
-        <div class="input__block">
-            <input type="password" placeholder="비밀번호 확인" class="input repeat__password" id="repeat__password"    />
-        </div>
-        <!-- Links -->
         <ul class="links">
             <li>
-                <a href="#" id="signin">로그인</a>
+                <a th:href="@{/member/register}" id="signup">회원가입</a>
             </li>
-            <li>
-                <a href="#" id="signup">회원가입</a>
-            </li>
-
         </ul>
         <!-- sign in button -->
         <button class="signin__btn">
             로그인
         </button>
     </form>
-<!--    &lt;!&ndash; separator &ndash;&gt;-->
-<!--    <div class="separator">-->
-<!--        <p>OR</p>-->
-<!--    </div>-->
-<!--    &lt;!&ndash; google button &ndash;&gt;-->
-<!--    <button class="google__btn">-->
-<!--        <i class="fa fa-google"></i>-->
-<!--        Sign in with Google-->
-<!--    </button>-->
-<!--    &lt;!&ndash; google button &ndash;&gt;-->
-<!--    <button class="github__btn">-->
-<!--        <i class="fa fa-github"></i>-->
-<!--        Sign in with GitHub-->
-<!--    </button>-->
 </div>
 </html>

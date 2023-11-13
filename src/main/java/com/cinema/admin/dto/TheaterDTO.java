@@ -10,6 +10,7 @@ import lombok.*;
 @Builder
 public class TheaterDTO {
     private int theaterNum;
+    private String theaterName;
     private int region1Num;
     private int region2Num;
     private int MaxPeople;

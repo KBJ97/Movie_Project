@@ -10,9 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 public class MovieMapperTest {
 
-    @Autowired
-    private MovieMapper movieMapper;
-
-
+	@Autowired
+	private MovieMapper movieMapper;
 
 }

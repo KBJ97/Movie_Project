@@ -12,9 +12,9 @@ public class memberController {
     public String login() {
         return "/member/login";
     }
-    @GetMapping("/member/join")
+    @GetMapping("/member/register")
     public String join() {
-        return "/member/join";
+        return "/member/register";
     }
     @GetMapping("/member/findId")
     public String findId() {

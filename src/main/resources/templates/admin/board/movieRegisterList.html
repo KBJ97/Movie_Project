@@ -186,49 +186,49 @@
 </head>
 
 
-            <div id="register" layout:fragment="content">
-                <div id="register_detail">
-                    상영 목록
-                    <hr/>
+<div id="register" layout:fragment="content">
+    <div id="register_detail">
+         영화 목록
+        <hr/>
 
-                    <section>
-                        <table>
-                            <tr>
-                                <th>상영 지역</th>
-                                <th>세부 지역</th>
-                                <th>상영 영화</th>
-                                <th>상영 날짜</th>
-                                <th>상영 시간</th>
-                                <th>상영관</th>
-                                <th>가격</th>
-                                <th colspan="2">관리</th>
-                            </tr>
+        <section>
+            <table>
+                <tr>
+                    <th>번호</th>
+                    <th>영화 이름</th>
+                    <th>장르</th>
+                    <th>감독</th>
+                    <th>출연진</th>
+                    <th>개봉 일자</th>
+                    <th>스크린 타입</th>
+                    <th colspan="2">관리</th>
+                </tr>
 
-                            <th:block th:each="movie:${movieList}">
-                                <tr>
-                                    <td th:text="${movie.region1Name}">서울</td>
-                                    <td th:text="${movie.region2Name}">강남구</td>
-                                    <td th:text="${movie.movieName}">해리포터</td>
-                                    <td th:text="${movie.playDate}">2023.12.2</td>
-                                    <td th:text="${movie.playTime}">09:30</td>
-                                    <td th:text="${movie.theaterName}">1관</td>
-                                    <td th:text="${movie.price}">12300</td>
-                                    <td><a href="#">수정</a></td>
-                                    <td><a href="#">삭제</a></td>
-                                </tr>
-                            </th:block>
-                        </table>
+                <th:block th:each="movie:${movies}">
+                    <tr>
+                        <td th:text="${movie.movieNum}"></td>
+                        <td th:text="${movie.movieName}">해리포터</td>
+                        <td th:text="${movie.cateName}">호러</td>
+                        <td th:text="${movie.director}">해리</td>
+                        <td th:text="${movie.actor}">포터 및 친구들</td>
+                        <td th:text="${movie.openDate}">2022/11/11</td>
+                        <td th:text="${movie.screenType}">2D</td>
+                        <td><a href="#">수정</a></td>
+                        <td><a href="#">삭제</a></td>
+                    </tr>
+                </th:block>
+            </table>
 
-                        <div class="page">
-                            <a href="#" class="prev">이전</a>
-                            <a href="#" class="num on">1</a>
-                            <a href="#" class="num">2</a>
-                            <a href="#" class="num">3</a>
-                            <a href="#" class="next">다음</a>
-                        </div>
-                    </section>
-                </div>
+            <div class="page">
+                <a href="#" class="prev">이전</a>
+                <a href="#" class="num on">1</a>
+                <a href="#" class="num">2</a>
+                <a href="#" class="num">3</a>
+                <a href="#" class="next">다음</a>
             </div>
+        </section>
+    </div>
+</div>
 
 
 </html>
