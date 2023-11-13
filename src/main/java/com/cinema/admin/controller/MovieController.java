@@ -57,7 +57,13 @@ public class MovieController {
     }
 
     @GetMapping(value = "/admin/movieList")
-    public String movieList() {
+    public String movieList(Model model) {
+
+        List<MovieInfoDTO> movieList = movieService.selectMovieInfo();
+
+        log.info("movieList = " + movieList);
+
+        model.addAttribute("movieList", movieList);
 
         return "/admin/board/movieList";
     }

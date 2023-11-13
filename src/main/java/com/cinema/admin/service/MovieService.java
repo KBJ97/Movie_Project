@@ -109,5 +109,9 @@ public class MovieService {
         movieMapper.insertMovieInfo(movieInfoDTO);
     }
 
+    public List<MovieInfoDTO> selectMovieInfo(){
+        return movieMapper.selectMovieInfo();
+    }
+
 
 }
