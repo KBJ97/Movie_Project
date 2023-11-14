@@ -98,5 +98,17 @@ public class MovieController {
 
     }
 
+    @GetMapping(value = "/admin/theaterRegister")
+    public String theaterRegister(Model model) {
+
+        // 세로 A~F열, 가로 1~10을 생성하는 데이터 전달
+        char[] rows = {'A', 'B', 'C', 'D', 'E', 'F'};
+        int[] cols = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+
+        model.addAttribute("rows", rows);
+        model.addAttribute("cols", cols);
+
+        return "/admin/board/theaterRegister";
+    }
 
 }

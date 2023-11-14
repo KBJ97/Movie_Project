@@ -29,7 +29,7 @@ public class MovieDTO {
     private String screenType;
     private String director;
     private String story;
-    private String actor;
+    //private String actor;
     private int totalScore;
 
     // 추가필드
@@ -39,6 +39,8 @@ public class MovieDTO {
 
     //추가필드
     private String cateName;
+
+    private List<ActorDTO> actors;
 
 
     //파일 여러개 올릴 수 있는 메서드
