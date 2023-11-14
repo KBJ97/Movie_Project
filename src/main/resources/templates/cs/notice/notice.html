@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8">
+    <title>REST Cinema</title>
+    <link href="/static/cs/css/cs.css" rel="stylesheet" />
+    <link href="/static/css/header.css" rel="stylesheet" />
+    <link href="/static/css/footer.css" rel="stylesheet" />
+</head>
+<body>
+<!-- header 시작 -->
+<header id="header" class="main-header">
+    <h1 class="ci"><a href="#" title="REST Cinema 메인으로 가기">REST Cinema</a></h1>
+
+    <!-- topGnb -->
+    <div class="util-area">
+        <div class="right-link">
+            <a href="#" title="로그인">로그인</a>
+            <a href="#" title="회원가입">회원가입</a>
+            <a href="#" title="고객센터">고객센터</a>
+        </div>
+    </div>
+
+    <div class="link-area">
+        <a href="#" class="header-open-layer btn-layer-sitemap" title="사이트맵">사이트맵</a>
+        <a href="#" class="header-open-layer btn-layer-search" title="검색">검색</a>
+        <a href="#" class="link-ticket" title="상영시간표">상영시간표</a>
+        <a href="#" class="header-open-layer btn-layer-mymega" title="마이페이지">마이페이지</a>
+    </div>
+    <nav id="gnb">
+
+        <ul class="gnb-depth1">
+
+            <li><a href="#" class="gnb-txt-movie" title="영화">영화</a>
+                <!--
+                <div class="gnb-depth2">
+                    <ul>
+                        <li><a href="#" title="전체영화">전체영화</a></li>
+                        <li><a href="#" title="큐레이션">큐레이션</a></li>
+                        <li><a href="#" title="무비포스트">무비포스트</a></li>
+                    </ul>
+                </div>
+                -->
+            </li>
+            <li><a href="#" class="gnb-txt-reserve" title="예매">예매</a>
+                <!--
+                <div class="gnb-depth2">
+                    <ul>
+                        <li><a href="#" title="빠른예매">빠른예매</a></li>
+                        <li><a href="#" title="상영시간표">상영시간표</a></li>
+                        <li><a href="#" title="더 부티크 프라이빗 예매">더 부티크 프라이빗 예매</a></li>
+                    </ul>
+                </div>
+                -->
+            </li>
+            <li><a href="#" class="gnb-txt-theater" title="극장">극장</a>
+                <!--
+                <div class="gnb-depth2">
+                    <ul>
+                        <li><a href="#" title="전체극장">전체극장</a></li>
+                        <li><a href="#" title="특별관">특별관</a></li>
+                    </ul>
+                </div>
+                -->
+            </li>
+            <li><a href="#" class="gnb-txt-event" title="이벤트">이벤트</a>
+                <!--
+                <div class="gnb-depth2">
+                    <ul>
+                        <li><a href="#" title="진행중 이벤트">진행중 이벤트</a></li>
+                        <li><a href="#" title="지난 이벤트">지난 이벤트</a></li>
+                        <li><a href="#" title="당첨자발표">당첨자발표</a></li>
+                    </ul>
+                </div>
+                -->
+            </li>
+            <li><a href="#" class="gnb-txt-store" title="스토어">스토어</a></li>
+            <li><a href="#" class="gnb-txt-benefit" title="혜택">혜택</a>
+                <!--
+                <div class="gnb-depth2">
+                    <ul>
+                        <li><a href="#" title="메가박스 멤버십">메가박스 멤버십</a></li>
+                        <li><a href="#" title="제휴/할인">제휴/할인</a></li>
+                    </ul>
+                </div>
+                -->
+            </li>
+        </ul>
+    </nav>
+</header>
+<!-- header 끝 -->
+
+<!-- aside 시작 -->
+<div class="lnb-area addchat">
+    <nav id="lnb" class="ty2">
+        <p class="tit"><a href="/support" title="고객센터">고객센터</a></p>
+        <ul>
+            <li class="on"><a href="#" title="고객센터 홈">고객센터 홈</a></li>
+            <li><a href="#" title="자주 묻는 질문">자주 묻는 질문</a></li>
+            <li><a href="#" title="공지사항">공지사항</a></li>
+            <li><a href="#" title="1:1문의">1:1문의</a></li>
+            <!--
+            <li><a href="#" title="단체관람 및 대관문의">단체관람 및 대관문의</a></li>
+            <li><a href="#" title="분실물 문의">분실물 문의</a></li>
+            -->
+            <li><a href="#" title="이용약관">이용약관</a></li>
+            <li><a href="#" title="위치기반서비스이용약관">위치기반서비스이용약관</a></li>
+            <li><a href="#" title="개인정보처리방침">개인정보처리방침</a></li>
+            <li><a href="#" style="border-radius: 0 0 10px 10px;" title="스크린배정수에관한기준">스크린배정수에관한기준</a></li>
+        </ul>
+
+        <!-- 고객센터 메뉴일때만 출력 -->
+        <div class="left-customer-info">
+            <p class="tit">
+                고객센터
+                <span>Dream center</span>
+            </p>
+            <p class="time"><i class="iconset ico-clock"></i> 10:00~19:00</p>
+        </div>
+    </nav>
+</div>
+<!-- aside 끝 -->
+
+<!-- notice 본문 시작 -->
+<div id="contents">
+    <h2 class="tit">공지사항</h2>
+
+    <div class="tab-block mb30">
+        <ul>
+            <li class="on tabBtn"><button type="button" class="btn tabBtn" data-no="" title="전체공지 보기">전체</button></li>
+
+            <li class="tabBtn"><button type="button" class="btn" data-no="81" title="메가박스 공지 보기">메가박스 공지</button></li>
+
+            <li class="tabBtn"><button type="button" class="btn" data-no="82" title="지점 공지 보기">지점 공지</button></li>
+
+        </ul>
+    </div>
+
+    <div class="board-list-util">
+        <p class="result-count"><strong>전체 <em class="font-gblue">5,519</em>건</strong></p>
+
+        <div class="dropdown bootstrap-select mr07 bs3"><select id="theater" title="지역 선택" class="mr07" tabindex="-98"><option class="bs-title-option" value=""></option>
+            <option value="">지역 선택</option>
+
+            <option value="10">서울</option>
+
+            <option value="30">경기</option>
+
+            <option value="35">인천</option>
+
+            <option value="45">대전/충청/세종</option>
+
+            <option value="55">부산/대구/경상</option>
+
+            <option value="65">광주/전라</option>
+
+            <option value="70">강원</option>
+
+            <option value="80">제주</option>
+
+        </select><button type="button" class="btn dropdown-toggle btn-default bs-placeholder" data-toggle="dropdown" role="button" data-id="theater" title="지역 선택"><div class="filter-option"><div class="filter-option-inner"><div class="filter-option-inner-inner">지역 선택</div></div> </div><span class="bs-caret"><span class="caret"></span></span></button><div class="dropdown-menu open" role="combobox"><div class="inner open" role="listbox" aria-expanded="false" tabindex="-1"><ul class="dropdown-menu inner "></ul></div></div></div>
+
+        <div class="dropdown bootstrap-select disabled mr07 bs3"><select id="theater02" title="극장 선택" disabled="disabled" class="mr07" tabindex="-98"><option class="bs-title-option" value=""></option>
+            <option value="">극장 선택</option>
+
+        </select><button type="button" class="btn dropdown-toggle disabled btn-default bs-placeholder" data-toggle="dropdown" role="button" data-id="theater02" tabindex="-1" aria-disabled="true" title="극장 선택"><div class="filter-option"><div class="filter-option-inner"><div class="filter-option-inner-inner">극장 선택</div></div> </div><span class="bs-caret"><span class="caret"></span></span></button><div class="dropdown-menu open" role="combobox"><div class="inner open" role="listbox" aria-expanded="false" tabindex="-1"><ul class="dropdown-menu inner "></ul></div></div></div>
+
+        <div class="board-search">
+            <input type="text" id="searchTxt" title="검색어를 입력해 주세요." placeholder="검색어를 입력해 주세요." class="input-text" value="" maxlength="15">
+            <button type="button" id="searchBtn" class="btn-search-input">검색</button>
+        </div>
+    </div>
+
+    <div class="table-wrap">
+        <table class="board-list">
+            <caption>번호, 극장, 구분, 제목, 등록일이 들어간 공지사항 전체 리스트</caption>
+            <colgroup>
+                <col style="width:72px;">
+                <col style="width:133px;">
+                <col style="width:95px;">
+                <col>
+                <col style="width:116px;">
+            </colgroup>
+            <thead>
+            <tr>
+                <th scope="col">번호</th>
+                <th scope="col">극장</th>
+                <th scope="col">구분</th>
+                <th scope="col">제목</th>
+                <th scope="col">등록일</th>
+            </tr>
+            </thead>
+            <tbody><tr><td>1</td><td>메가박스</td><td>공지</td><th><a href="#" class="moveBtn" data-no="10995" title="공지사항 상세보기"><span class="font-green"></span>제<span class="font-green"></span> <span class="font-green"></span>1<span class="font-green"></span>1<span class="font-green"></span>회<span class="font-green"></span> <span class="font-green"></span>시<span class="font-green"></span>네<span class="font-green"></span>마<span class="font-green"></span>리<span class="font-green"></span>플<span class="font-green"></span>레<span class="font-green"></span>이<span class="font-green"></span> <span class="font-green"></span>진<span class="font-green"></span>행<span class="font-green"></span> <span class="font-green"></span>공<span class="font-green"></span>지<span class="font-green"></span></a></th><td>2023.11.08</td></tr><tr><td>2</td><td>메가박스</td><td>공지</td><th><a href="#" class="moveBtn" data-no="10994" title="공지사항 상세보기"><span class="font-green"></span>[<span class="font-green"></span>해<span class="font-green"></span>피<span class="font-green"></span>머<span class="font-green"></span>니<span class="font-green"></span>]<span class="font-green"></span> <span class="font-green"></span>I<span class="font-green"></span>D<span class="font-green"></span>C<span class="font-green"></span> <span class="font-green"></span>네<span class="font-green"></span>트<span class="font-green"></span>워<span class="font-green"></span>크<span class="font-green"></span> <span class="font-green"></span>정<span class="font-green"></span>기<span class="font-green"></span>점<span class="font-green"></span>검<span class="font-green"></span> <span class="font-green"></span>안<span class="font-green"></span>내<span class="font-green"></span> <span class="font-green"></span>(<span class="font-green"></span>1<span class="font-green"></span>1<span class="font-green"></span>/<span class="font-green"></span>1<span class="font-green"></span>2<span class="font-green"></span>)<span class="font-green"></span></a></th><td>2023.11.07</td></tr><tr><td>3</td><td>메가박스</td><td>공지</td><th><a href="#" class="moveBtn" data-no="10993" title="공지사항 상세보기"><span class="font-green"></span>N<span class="font-green"></span>I<span class="font-green"></span>C<span class="font-green"></span>E<span class="font-green"></span>평<span class="font-green"></span>가<span class="font-green"></span>정<span class="font-green"></span>보<span class="font-green"></span> <span class="font-green"></span>인<span class="font-green"></span>증<span class="font-green"></span> <span class="font-green"></span>서<span class="font-green"></span>비<span class="font-green"></span>스<span class="font-green"></span> <span class="font-green"></span>점<span class="font-green"></span>검<span class="font-green"></span> <span class="font-green"></span>안<span class="font-green"></span>내<span class="font-green"></span>(<span class="font-green"></span>1<span class="font-green"></span>1<span class="font-green"></span>/<span class="font-green"></span>8<span class="font-green"></span>)<span class="font-green"></span></a></th><td>2023.11.03</td></tr><tr><td>4</td><td>메가박스</td><td>공지</td><th><a href="#" class="moveBtn" data-no="10992" title="공지사항 상세보기"><span class="font-green"></span>[<span class="font-green"></span>하<span class="font-green"></span>나<span class="font-green"></span>카<span class="font-green"></span>드<span class="font-green"></span>]<span class="font-green"></span> <span class="font-green"></span>시<span class="font-green"></span>스<span class="font-green"></span>템<span class="font-green"></span> <span class="font-green"></span>점<span class="font-green"></span>검<span class="font-green"></span> <span class="font-green"></span>안<span class="font-green"></span>내<span class="font-green"></span>(<span class="font-green"></span>1<span class="font-green"></span>1<span class="font-green"></span>/<span class="font-green"></span>1<span class="font-green"></span>8<span class="font-green"></span>)<span class="font-green"></span></a></th><td>2023.11.01</td></tr><tr><td>5</td><td>메가박스</td><td>공지</td><th><a href="#" class="moveBtn" data-no="10991" title="공지사항 상세보기"><span class="font-green"></span>[<span class="font-green"></span>G<span class="font-green"></span>S<span class="font-green"></span>&amp;<span class="font-green"></span>P<span class="font-green"></span>O<span class="font-green"></span>I<span class="font-green"></span>N<span class="font-green"></span>T<span class="font-green"></span>]<span class="font-green"></span> <span class="font-green"></span>시<span class="font-green"></span>스<span class="font-green"></span>템<span class="font-green"></span> <span class="font-green"></span>정<span class="font-green"></span>기<span class="font-green"></span> <span class="font-green"></span>점<span class="font-green"></span>검<span class="font-green"></span> <span class="font-green"></span>안<span class="font-green"></span>내<span class="font-green"></span> <span class="font-green"></span>(<span class="font-green"></span>1<span class="font-green"></span>1<span class="font-green"></span>/<span class="font-green"></span>9<span class="font-green"></span>~<span class="font-green"></span>1<span class="font-green"></span>0<span class="font-green"></span>)<span class="font-green"></span></a></th><td>2023.10.31</td></tr><tr><td>6</td><td>상암월드컵경기장</td><td>공지</td><th><a href="#" class="moveBtn" data-no="10990" title="공지사항 상세보기"><span class="font-green"></span>[<span class="font-green"></span>상<span class="font-green"></span>암<span class="font-green"></span>월<span class="font-green"></span>드<span class="font-green"></span>컵<span class="font-green"></span>경<span class="font-green"></span>기<span class="font-green"></span>장<span class="font-green"></span>]<span class="font-green"></span>2<span class="font-green"></span>3<span class="font-green"></span>.<span class="font-green"></span>1<span class="font-green"></span>0<span class="font-green"></span>.<span class="font-green"></span>3<span class="font-green"></span>1<span class="font-green"></span>(<span class="font-green"></span>화<span class="font-green"></span>)<span class="font-green"></span> <span class="font-green"></span>주<span class="font-green"></span>차<span class="font-green"></span>장<span class="font-green"></span> <span class="font-green"></span>이<span class="font-green"></span>용<span class="font-green"></span> <span class="font-green"></span>안<span class="font-green"></span>내<span class="font-green"></span> <span class="font-green"></span></a></th><td>2023.10.30</td></tr><tr><td>7</td><td>제주삼화</td><td>공지</td><th><a href="#" class="moveBtn" data-no="10989" title="공지사항 상세보기"><span class="font-green"></span>[<span class="font-green"></span>제<span class="font-green"></span>주<span class="font-green"></span>삼<span class="font-green"></span>화<span class="font-green"></span>]<span class="font-green"></span> <span class="font-green"></span>1<span class="font-green"></span>0<span class="font-green"></span>월<span class="font-green"></span> <span class="font-green"></span>2<span class="font-green"></span>5<span class="font-green"></span>일<span class="font-green"></span>(<span class="font-green"></span>수<span class="font-green"></span>)<span class="font-green"></span> <span class="font-green"></span>신<span class="font-green"></span>규<span class="font-green"></span>오<span class="font-green"></span>픈<span class="font-green"></span> <span class="font-green"></span>안<span class="font-green"></span>내<span class="font-green"></span></a></th><td>2023.10.25</td></tr><tr><td>8</td><td>원주센트럴</td><td>공지</td><th><a href="#" class="moveBtn" data-no="10987" title="공지사항 상세보기"><span class="font-green"></span>[<span class="font-green"></span>원<span class="font-green"></span>주<span class="font-green"></span>센<span class="font-green"></span>트<span class="font-green"></span>럴<span class="font-green"></span>]<span class="font-green"></span> <span class="font-green"></span>리<span class="font-green"></span>클<span class="font-green"></span>라<span class="font-green"></span>이<span class="font-green"></span>너<span class="font-green"></span> <span class="font-green"></span>좌<span class="font-green"></span>석<span class="font-green"></span> <span class="font-green"></span>교<span class="font-green"></span>체<span class="font-green"></span> <span class="font-green"></span>공<span class="font-green"></span>사<span class="font-green"></span> <span class="font-green"></span>진<span class="font-green"></span>행<span class="font-green"></span> <span class="font-green"></span>및<span class="font-green"></span> <span class="font-green"></span>지<span class="font-green"></span>점<span class="font-green"></span>명<span class="font-green"></span>칭<span class="font-green"></span> <span class="font-green"></span>변<span class="font-green"></span>경<span class="font-green"></span> <span class="font-green"></span>예<span class="font-green"></span>정<span class="font-green"></span> <span class="font-green"></span>안<span class="font-green"></span>내<span class="font-green"></span> <span class="font-green"></span>(<span class="font-green"></span>1<span class="font-green"></span>0<span class="font-green"></span>/<span class="font-green"></span>2<span class="font-green"></span>6<span class="font-green"></span>~<span class="font-green"></span>1<span class="font-green"></span>1<span class="font-green"></span>/<span class="font-green"></span>1<span class="font-green"></span>1<span class="font-green"></span>)<span class="font-green"></span></a></th><td>2023.10.23</td></tr><tr><td>9</td><td>메가박스</td><td>공지</td><th><a href="#" class="moveBtn" data-no="10986" title="공지사항 상세보기"><span class="font-green"></span>2<span class="font-green"></span>1<span class="font-green"></span>세<span class="font-green"></span>기<span class="font-green"></span> <span class="font-green"></span>피<span class="font-green"></span>아<span class="font-green"></span>노<span class="font-green"></span>의<span class="font-green"></span> <span class="font-green"></span>거<span class="font-green"></span>장<span class="font-green"></span> <span class="font-green"></span>:<span class="font-green"></span> <span class="font-green"></span>다<span class="font-green"></span>닐<span class="font-green"></span> <span class="font-green"></span>트<span class="font-green"></span>리<span class="font-green"></span>포<span class="font-green"></span>노<span class="font-green"></span>프<span class="font-green"></span> <span class="font-green"></span>프<span class="font-green"></span>로<span class="font-green"></span>그<span class="font-green"></span>램<span class="font-green"></span> <span class="font-green"></span>변<span class="font-green"></span>경<span class="font-green"></span> <span class="font-green"></span>안<span class="font-green"></span>내<span class="font-green"></span></a></th><td>2023.10.23</td></tr><tr><td>10</td><td>메가박스</td><td>공지</td><th><a href="#" class="moveBtn" data-no="10985" title="공지사항 상세보기"><span class="font-green"></span>[<span class="font-green"></span>컬<span class="font-green"></span>쳐<span class="font-green"></span>랜<span class="font-green"></span>드<span class="font-green"></span>]<span class="font-green"></span> <span class="font-green"></span>시<span class="font-green"></span>스<span class="font-green"></span>템<span class="font-green"></span> <span class="font-green"></span>점<span class="font-green"></span>검<span class="font-green"></span> <span class="font-green"></span>안<span class="font-green"></span>내<span class="font-green"></span> <span class="font-green"></span>(<span class="font-green"></span>1<span class="font-green"></span>0<span class="font-green"></span>/<span class="font-green"></span>2<span class="font-green"></span>5<span class="font-green"></span>)<span class="font-green"></span></a></th><td>2023.10.23</td></tr></tbody>
+        </table>
+    </div>
+
+    <!-- pagination -->
+    <nav class="pagination"><strong class="active">1</strong> <a title="2페이지보기" href="javascript:void(0)" pagenum="2">2</a> <a title="3페이지보기" href="javascript:void(0)" pagenum="3">3</a> <a title="4페이지보기" href="javascript:void(0)" pagenum="4">4</a> <a title="5페이지보기" href="javascript:void(0)" pagenum="5">5</a> <a title="6페이지보기" href="javascript:void(0)" pagenum="6">6</a> <a title="7페이지보기" href="javascript:void(0)" pagenum="7">7</a> <a title="8페이지보기" href="javascript:void(0)" pagenum="8">8</a> <a title="9페이지보기" href="javascript:void(0)" pagenum="9">9</a> <a title="10페이지보기" href="javascript:void(0)" pagenum="10">10</a> <a title="이후 10페이지 보기" href="javascript:void(0)" class="control next" pagenum="11">next</a> <a title="마지막 페이지 보기" href="javascript:void(0)" class="control last" pagenum="552">last</a> </nav>
+    <!--// pagination -->
+</div>
+<!-- qna 본문 끝 -->
+
+<!-- footer 시작 -->
+<div>
+
+    <footer id="footer">
+        <div class="footer-top">
+            <div>
+                <ul class="fnb">
+                    <li><a href="#">회사소개</a></li>
+                    <li><a href="#">인재채용</a></li>
+                    <li><a href="#">사회공헌</a></li>
+                    <li><a href="#">제휴/광고/부대사업문의</a></li>
+                    <li><a href="#">이용약관</a></li>
+                    <li><a href="#">위치기반서비스</a></li>
+                    <li class="privacy"><a href="#">개인정보처리방침</a></li>
+                    <li><a href="#">윤리경영</a></li>
+                </ul>
+                <a href="#" class="btn-looking-theater"><i class="iconset ico-footer-search"></i>극장찾기</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="inner-wrap">
+                <div class="ci">LEST Cinema</div>
+                <div class="footer-info">
+                    <div>
+                        <address>부산시 그린 아카데미</address>
+                        <p>ARS 1515-1515</p>
+                    </div>
+                    <p>대표자명 이재용</p>
+                    <p>· 개인정보보호책임자 이재용</p>
+                    <p>· 사업자등록번호 211-86-59478</p>
+                    <p>· 통신판매업신고번호 2023-서울성동-0177</p>
+                    <p class="copy">COPYRIGHT © MegaboxJoongAng, Inc. All rights reserved</p>
+                </div>
+                <div class="footer-sns">
+                    <a href="#"><i class="iconset ico-youtubeN">유튜브</i></a>
+                    <a href="#"><i class="iconset ico-twitterN">트위터</i></a>
+                    <a href="#"><i class="iconset ico-instagramN">인스타그램</i></a>
+                    <a href="#"><i class="iconset ico-facebookN">페이스북</i></a>
+                </div>
+            </div>
+        </div>
+        <div id="layer_looking_theater" class="layer_looking_theater"></div>
+    </footer>
+</div>
+<!-- footer 끝 -->
+
+</body>
+</html>
