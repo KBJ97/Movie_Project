@@ -105,17 +105,76 @@
             cursor: pointer; /* 포인터 커서로 변경 */
         }
 
-        #register .sdate input[type="date"] {
-            width: 100%;
-        }
+
 
         #register .movieNum {
             width: 300px;
             height: 40px;
         }
+
+        .wrapper {
+            width: 1200px;
+            display: flex;
+            gap: 20px; /* Room 간격 */
+            flex-wrap: wrap; /* 사각형이 한 줄에 차면 다음 줄로 넘어가도록 설정 */
+            flex-direction: row; /* 가로 방향으로 정렬 */
+        }
+
+        .rectangle {
+            display: flex; /* 추가 */
+            justify-content: space-between; /* 추가 */
+            align-items: center; /* 추가 */
+            width: 180px;
+            height: 25px;
+            border: 2px solid black;
+            background-color: white;
+            box-sizing: border-box;
+            margin-bottom: -2px;
+            position: relative;
+
+        }
+
+        .rectangle:first-child {
+            position: relative;
+        }
+
+        #register .rectangle:first-child .icon {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+        }
+
+        #register .rectangle:nth-child(2) {
+            width: 180px;
+            height: 80px;
+            border: 2px solid black;
+            background-color: white;
+            box-sizing: border-box;
+            margin-bottom: -2px;
+        }
+
     </style>
 
-    </head>
+    <script>
+        let roomCount = 1; // 극장 번호를 나타내는 변수
+
+        function addRectangle() {
+            const wrapper = document.querySelector('.wrapper');
+            const room = document.querySelector('.room'); // .room 요소를 가져옵니다.
+            const newRoom = room.cloneNode(true); // .room을 복제합니다.
+
+            roomCount++; // 극장 번호를 증가시킵니다.
+            const rectangles = newRoom.querySelectorAll('.rectangle'); // 모든 .rectangle 요소를 찾습니다.
+            rectangles[0].innerText = roomCount + '관'; // 첫 번째 .rectangle에 번호를 추가합니다.
+            rectangles[0].insertAdjacentHTML('beforeend', '<i class="fas fa-pencil-alt"></i>'); // 첫 번째 .rectangle에 아이콘을 추가합니다.
+
+            wrapper.appendChild(newRoom); // 복제한 .room을 wrapper에 추가합니다.
+        }
+    </script>
+
+
+</head>
 
         <div id="register" layout:fragment="content">
             <div id="register_detail">
@@ -154,10 +213,25 @@
                                 </td>
                             </tr>
 
+                           <tr>
+                               <td>상영관</td>
+                               <td>
+                                   <div class="wrapper">
+                                       <div class="room">
+                                           <div class="rectangle">1관
+                                               <i class="fas fa-pencil-alt icon"></i>
+                                           </div>
+                                           <div class="rectangle"></div>
+                                       </div>
+                                   </div>
+                               </td>
+                           </tr>
                             <tr>
-                                <td>상영관</td>
+                                <td></td>
+                                <td>
+                                    <button class="add-button" onclick="addRectangle()">극장 추가하기</button>
+                                </td>
                             </tr>
-
                             <!-- 등록과 취소 버튼 -->
                             <tr>
                                 <td></td>
