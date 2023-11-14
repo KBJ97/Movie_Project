@@ -102,6 +102,7 @@ public class MovieService {
     }
 
     public List<TheaterDTO> selectCinemaAjax(int region1Num, int region2Num){
+
         return movieMapper.selectCinemaAjax(region1Num, region2Num);
     }
 
