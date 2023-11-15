@@ -19,6 +19,7 @@
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
     <script th:src="@{/admin/js/datatables-simple-demo.js}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.css"/>
     <script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
     <script>
@@ -108,6 +109,14 @@
                     <a class="nav-link" th:href="@{/admin/userList}">
                         <div class="sb-nav-link-icon"></div>
                         회원
+                    </a>
+                    <div class="sb-sidenav-menu-heading">Theater</div>
+                    <a class="nav-link" th:href="@{/admin/theaterRegister}">
+                        <div class="sb-nav-link-icon"></div>
+                        극장 등록
+                    <a class="nav-link" th:href="@{/admin/userList}">
+                        <div class="sb-nav-link-icon"></div>
+                        극장 목록
                     </a>
                 </div>
             </div>
