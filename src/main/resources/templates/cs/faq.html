@@ -6,11 +6,94 @@
 <head>
     <meta charset="UTF-8">
     <title>REST Cinema</title>
-    <link href="/static/css/header.css" rel="stylesheet" />
-    <link href="/static/cs/css/cs.css" rel="stylesheet" />
-    <link href="/static/css/footer.css" rel="stylesheet" />
+    <link href="/css/header.css" rel="stylesheet" />
+    <link href="/cs/css/cs.css" rel="stylesheet" />
+    <link href="/css/footer.css" rel="stylesheet" />
 </head>
 <body>
+<!-- header 시작 -->
+<header id="header" class="main-header">
+    <h1 class="ci"><a href="#" title="REST Cinema 메인으로 가기">REST Cinema</a></h1>
+
+    <!-- topGnb -->
+    <div class="util-area">
+        <div class="right-link">
+            <a href="#" title="로그인">로그인</a>
+            <a href="#" title="회원가입">회원가입</a>
+            <a href="#" title="고객센터">고객센터</a>
+        </div>
+    </div>
+
+    <div class="link-area">
+        <a href="#" class="header-open-layer btn-layer-sitemap" title="사이트맵">사이트맵</a>
+        <a href="#" class="header-open-layer btn-layer-search" title="검색">검색</a>
+        <a href="#" class="link-ticket" title="상영시간표">상영시간표</a>
+        <a href="#" class="header-open-layer btn-layer-mymega" title="마이페이지">마이페이지</a>
+    </div>
+    <nav id="gnb">
+
+        <ul class="gnb-depth1">
+
+            <li><a href="#" class="gnb-txt-movie" title="영화">영화</a>
+                <!--
+                <div class="gnb-depth2">
+                    <ul>
+                        <li><a href="#" title="전체영화">전체영화</a></li>
+                        <li><a href="#" title="큐레이션">큐레이션</a></li>
+                        <li><a href="#" title="무비포스트">무비포스트</a></li>
+                    </ul>
+                </div>
+                -->
+            </li>
+            <li><a href="#" class="gnb-txt-reserve" title="예매">예매</a>
+                <!--
+                <div class="gnb-depth2">
+                    <ul>
+                        <li><a href="#" title="빠른예매">빠른예매</a></li>
+                        <li><a href="#" title="상영시간표">상영시간표</a></li>
+                        <li><a href="#" title="더 부티크 프라이빗 예매">더 부티크 프라이빗 예매</a></li>
+                    </ul>
+                </div>
+                -->
+            </li>
+            <li><a href="#" class="gnb-txt-theater" title="극장">극장</a>
+                <!--
+                <div class="gnb-depth2">
+                    <ul>
+                        <li><a href="#" title="전체극장">전체극장</a></li>
+                        <li><a href="#" title="특별관">특별관</a></li>
+                    </ul>
+                </div>
+                -->
+            </li>
+            <li><a href="#" class="gnb-txt-event" title="이벤트">이벤트</a>
+                <!--
+                <div class="gnb-depth2">
+                    <ul>
+                        <li><a href="#" title="진행중 이벤트">진행중 이벤트</a></li>
+                        <li><a href="#" title="지난 이벤트">지난 이벤트</a></li>
+                        <li><a href="#" title="당첨자발표">당첨자발표</a></li>
+                    </ul>
+                </div>
+                -->
+            </li>
+            <li><a href="#" class="gnb-txt-store" title="스토어">스토어</a></li>
+            <li><a href="#" class="gnb-txt-benefit" title="혜택">혜택</a>
+                <!--
+                <div class="gnb-depth2">
+                    <ul>
+                        <li><a href="#" title="메가박스 멤버십">메가박스 멤버십</a></li>
+                        <li><a href="#" title="제휴/할인">제휴/할인</a></li>
+                    </ul>
+                </div>
+                -->
+            </li>
+        </ul>
+    </nav>
+</header>
+<!-- header 끝 -->
+
+<!-- faq 본문 시작 -->
 <div class="container has-lnb">
     <div class="page-util">
         <div class="inner-wrap">
@@ -26,28 +109,27 @@
     <div class="inner-wrap">
         <div class="lnb-area addchat">
             <nav id="lnb" class="ty2">
-                <p class="tit"><a href="/support" title="고객센터">고객센터</a></p>
+                <p class="tit"><a href="/cinema/cs/index" title="고객센터">고객센터</a></p>
                 <ul>
-                    <li class="on"><a href="/support" title="고객센터 홈">고객센터 홈</a></li>
-                    <li><a href="/support/faq" title="자주 묻는 질문">자주 묻는 질문</a></li>
-                    <li><a href="/support/notice" title="공지사항">공지사항</a></li>
-                    <li><a href="/support/inquiry" title="1:1문의">1:1문의</a></li>
+                    <li class="on"><a href="/cinema/cs/index" title="고객센터 홈">고객센터 홈</a></li>
+                    <li><a href="/cinema/cs/faq" title="자주 묻는 질문">자주 묻는 질문</a></li>
+                    <li><a href="/cinema/cs/notice" title="공지사항">공지사항</a></li>
+                    <li><a href="/cinema/cs/qna" title="1:1문의">1:1문의</a></li>
                     <!--<li><a href="/support/rent" title="단체관람 및 대관문의">단체관람 및 대관문의</a></li>-->
                     <!--<li><a href="/support/lost" title="분실물 문의">분실물 문의</a></li>-->
 
                     <!--<li><a href="/support/nonMember-inq/check" title="비회원 문의내역">비회원 문의내역</a></li>-->
 
-                    <li><a href="/support/terms" title="이용약관">이용약관</a></li>
-                    <li><a href="/support/lcinfo" title="위치기반서비스이용약관">위치기반서비스이용약관</a></li>
-                    <li><a href="/support/privacy" title="개인정보처리방침">개인정보처리방침</a></li>
-                    <li><a href="/support/screenrule" style="border-radius: 0 0 10px 10px;" title="스크린배정수에관한기준">스크린배정수에관한기준</a></li>
+                    <li><a href="#" title="이용약관">이용약관</a></li>
+                    <li><a href="#" title="위치기반서비스이용약관">위치기반서비스이용약관</a></li>
+                    <li><a href="#" title="개인정보처리방침">개인정보처리방침</a></li>
+                    <li><a href="#" style="border-radius: 0 0 10px 10px;" title="스크린배정수에관한기준">스크린배정수에관한기준</a></li>
                 </ul>
-
 
                 <!-- 고객센터 메뉴일때만 출력 -->
                 <div class="left-customer-info">
                     <p class="tit">
-                        메가박스 고객센터
+                        고객센터
                         <span>Dream center</span>
                     </p>
                     <p class="time"><i class="iconset ico-clock"></i> 10:00~19:00</p>
@@ -157,6 +239,8 @@
         </div>
     </div>
 </div>
+<!--faq 본문 끝-->
+
 <!-- footer 시작 -->
 <div>
 
@@ -178,7 +262,7 @@
         </div>
         <div class="footer-bottom">
             <div class="inner-wrap">
-                <div class="ci">LEST Cinema</div>
+                <div class="ci">REST Cinema</div>
                 <div class="footer-info">
                     <div>
                         <address>부산시 그린 아카데미</address>

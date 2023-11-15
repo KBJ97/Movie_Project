@@ -13022,7 +13022,7 @@ body.body-iframe .modal-layer {
     padding: 0;
     font-size: 0;
     line-height: 0;
-    background: url(https://img.megabox.co.kr/static/pc/images/common/ci/logo_new2.png) center center no-repeat
+    background: url(/static/images/logo.png) center center no-repeat;
 }
 
 #header .util-area {
