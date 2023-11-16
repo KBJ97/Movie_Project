@@ -1,6 +1,5 @@
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{/fragments/footer.html}">
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="Content-Script-Type" content="text/javascript">
@@ -19,7 +18,7 @@
     <title>신문고</title>
 </head>
 <body>
-<form id="requestForm" method="post" enctype="multipart/form-data">
+<form th:action="@{/policy/newsroomre}" id="requestForm" method="post">
     <div id="wrap" class="w01">
         <!-- header -->
         <div id="header">
@@ -76,95 +75,52 @@
                             </colgroup>
                             <tbody>
                             <tr>
-                                <th class="imp first">대상 회사</th>
+                               <!-- <th class="imp first">대상 회사</th>
                                 <td class="first">
                                     <select id="inf_com_idx" name="inf_com_idx" class="selectbox">
                                         <option value="">선택해주세요</option>
-
                                         <option value="L50">(주)미디어링크</option>
-
                                         <option value="L13">BA엔터테인먼트</option>
-
                                         <option value="L11">JTBC미디어텍</option>
-
                                         <option value="E16">JTBC스튜디오</option>
-
                                         <option value="Q12">다보중앙</option>
-
                                         <option value="L16">드라마하우스</option>
-
                                         <option value="Q20">드림트러스트</option>
-
                                         <option value="E18">러너블</option>
-
                                         <option value="M10">메가박스중앙(주)</option>
-
                                         <option value="I13">미디어프린팅넷(주)</option>
-
                                         <option value="L18">스튜디오 피닉스</option>
-
                                         <option value="L15">스튜디오버드</option>
-
                                         <option value="L70">스튜디오잼</option>
-
                                         <option value="Q11">아름지기</option>
-
                                         <option value="Q13">아름지기(함양)</option>
-
                                         <option value="L17">앤솔로지</option>
-
                                         <option value="Q19">유민문화재단</option>
-
                                         <option value="Q14">화동문화재단</option>
-
                                         <option value="L10">제이티비씨</option>
-
                                         <option value="L23">제이티비씨디스커버리</option>
-
                                         <option value="L20">제이티비씨미디어컴(주)</option>
-
                                         <option value="L40">제이티비씨스포츠</option>
-
                                         <option value="L60">제이티비씨포</option>
-
                                         <option value="C10">제이티비씨플러스 엠앤비</option>
-
                                         <option value="L30">제이티비씨플러스</option>
-
                                         <option value="Q21">올마루</option>
-
                                         <option value="A12">콘텐트리중앙</option>
-
                                         <option value="B20">차이나랩</option>
-
                                         <option value="B11">중앙데일리(주)</option>
-
                                         <option value="Z91">중앙리조트투자</option>
-
                                         <option value="B10">중앙일보</option>
-
                                         <option value="H10">중앙일보M&P</option>
-
                                         <option value="Q17">중앙일보신용협동조합</option>
-
                                         <option value="Z00">미지정</option>
-
                                         <option value="J21">중앙일보에스</option>
-
                                         <option value="Z94">중앙프라퍼티</option>
-
                                         <option value="A11">중앙홀딩스</option>
-
                                         <option value="E17">커넥트중앙</option>
-
                                         <option value="L22">콘텐츠지음</option>
-
                                         <option value="L19">클라이맥스스튜디오</option>
-
                                         <option value="L14">퍼펙트스톰필름</option>
-
                                         <option value="L21">프로덕션에이치</option>
-
                                         <option value="L12">필름몬스터</option>
 
                                         <option value="C11">허스트중앙</option>
@@ -182,12 +138,12 @@
                                         <input type="checkbox" id="inf_com_chk" name="inf_com_chk" value="Y" onchange="comDisableChk()"/>
                                         <span>미지정</span>
                                     </label>
-                                </td>
-                            </tr>
+                                </td>-->
+                          <!--  </tr>
                             <tr>
                                 <th class="imp">제보 구분</th>
                                 <td>
-                                    <div class="dis_inb o_ra"><!--checkbox 3중 택1--->
+                                    <div class="dis_inb o_ra">&lt;!&ndash;checkbox 3중 택1-&ndash;&gt;
                                         <label for="radio01" class="im_ra r01 on mr20">
                                             <input type="radio" id="radio01" name="inf_gubun" value="GB01" checked="checked"/>
                                             <span>부정행위</span>
@@ -199,24 +155,24 @@
                                     </div>
                                 </td>
                             </tr>
-
+-->
 
                             <tr>
                                 <th class="imp">제보 제목</th>
-                                <td><input type="text" class="intt" id="inf_title" name="inf_title" maxlength="100"/></td>
+                                <td><input type="text" class="intt" id="inf_title" name="title" maxlength="100"/></td>
                             </tr>
 
                             <tr>
                                 <th class="imp">제보 내용</th>
                                 <td>
-                                    <div class="textarea"><textarea id="inf_descript" name="inf_descript" placeholder="제보 내용은 발생 일자, 장소, 제보 대상자 및 관련자이름, 부정행위 등을 구체적으로 작성 해주세요. 근거없는 단순 비방이나 음해성 투서는 제보 대상이 아닙니다."></textarea></div>
+                                    <div class="textarea"><textarea id="inf_descript" name="content" placeholder="제보 내용은 발생 일자, 장소, 제보 대상자 및 관련자이름, 부정행위 등을 구체적으로 작성 해주세요. 근거없는 단순 비방이나 음해성 투서는 제보 대상이 아닙니다."></textarea></div>
                                 </td>
                             </tr>
                             <!--여기까지 필수항목-->
-                            <tr>
+                           <!-- <tr>
                                 <th>첨부 파일</th>
                                 <td class="selfile">
-                                    <!-- <select id="select_01" class="selectbox02" size="5"> -->
+                                    &lt;!&ndash; <select id="select_01" class="selectbox02" size="5"> &ndash;&gt;
                                     <select id="fileList" multiple="multiple" class="selectbox02" size="4"></select>
                                     <div class="btnar">
                                         <a id="btn_add" class="btninput plus">추가</a>
@@ -224,7 +180,7 @@
                                     </div>
                                     <p class="ps">첨부파일은 문서, 그림, 사운드, 동영상 파일만 가능하며, 문서파일은 txt, word 파일만 첨부 가능 합니다. <br />용량 제한은 10MB이며 최대 5개까지 가능합니다.</p>
                                 </td>
-                            </tr>
+                            </tr>-->
                             </tbody>
                         </table>
                         <!--//table end -->
@@ -256,10 +212,10 @@
                             <tbody>
                             <tr>
                                 <th class="imp first">이름</th><!--필수항목-->
-                                <td class="first"><input type="text" id="inf_wb_nm" name="inf_wb_nm" class="intt name" maxlength="20"/></td>
+                                <td class="first"><input type="text" id="inf_wb_nm" name="name" class="intt name" maxlength="20"/></td>
                             </tr>
 
-                            <tr>
+                           <!-- <tr>
                                 <th>연락처</th>
                                 <td>
                                     <label for="checkbox02" class="im_ch ch02">
@@ -271,75 +227,51 @@
                                         <span>이메일</span>
                                     </label>
                                 </td>
-                            </tr>
+                            </tr>-->
 
 
                             <tr>
                                 <th>전화</th>
                                 <td class="phon">
-                                    <select id="inf_wb_tel1" class="selectbox">
+                                    <select id="inf_wb_tel1" class="selectbox" name="hp1">
                                         <option value="">선택</option>
-
                                         <option value="010">010</option>
-
                                         <option value="011">011</option>
-
                                         <option value="016">016</option>
-
                                         <option value="017">017</option>
-
                                         <option value="018">018</option>
-
                                         <option value="019">019</option>
-
                                         <option value="02">02(서울)</option>
-
                                         <option value="051">051(부산)</option>
-
                                         <option value="053">053(대구)</option>
-
                                         <option value="032">032(인천)</option>
-
                                         <option value="062">062(광주)</option>
-
                                         <option value="042">042(대전)</option>
-
                                         <option value="052">052(울산)</option>
-
                                         <option value="044">044(세종)</option>
-
                                         <option value="031">031(경기)</option>
-
                                         <option value="033">033(강원)</option>
-
                                         <option value="043">043(충북)</option>
-
                                         <option value="041">041(충남)</option>
-
                                         <option value="063">063(전북)</option>
-
                                         <option value="061">061(전남)</option>
-
                                         <option value="054">054(경북)</option>
-
                                         <option value="055">055(경남)</option>
-
                                         <option value="064">064(제주)</option>
-
                                     </select>
                                     <div class="dis_inb font01">-</div>
-                                    <input type="text" id="inf_wb_tel2" class="intt phon" maxlength="4" onkeydown="return showKeyCode(event);" onkeyup="removeChar(event);" />
+                                    <input type="text" id="inf_wb_tel2" class="intt phon" name="hp2"/>
                                     <div class="dis_inb font01">-</div>
-                                    <input type="text" id="inf_wb_tel3" class="intt phon" maxlength="4" onkeydown="return showKeyCode(event);" onkeyup="removeChar(event);"/>
+                                    <input type="text" id="inf_wb_tel3" class="intt phon" name="hp3"/>
                                 </td>
                             </tr>
 
                             <tr>
                                 <th>이메일</th>
                                 <td class="email">
-                                    <input type="text" id="inf_wb_mail1" class="intt mail" maxlength="20"/>
+                                    <input type="text" name="email1" id="inf_wb_mail1" class="intt mail" maxlength="20"/>
                                     <span class="font01">@</span>
-                                    <input type="text" id="inf_wb_mail2" class="intt mail mr10" maxlength="30"/>
+                                    <input type="text" name="email2" id="inf_wb_mail2" class="intt mail mr10" maxlength="30"/>
                                     <select id="inf_wb_mail3" class="selectbox" onchange="mailSelect()">
                                         <option value="">직접입력</option>
 
@@ -524,7 +456,7 @@
 
 
                 <div class="btnbox">
-                    <div class="btn b01" onclick="boardRegist()">제보하기</div>
+                    <input type="submit" class="btn b01" value="제보하기"/>
                 </div>
 
             </div>
