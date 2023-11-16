@@ -69,6 +69,15 @@ public class MovieService {
                 String oName = mf.getOriginalFilename();
                 String ext = oName.substring(oName.lastIndexOf("."));
                 String sName = UUID.randomUUID().toString()+ext;
+                
+                //fileCinema에 넣기
+                FileDTO fileDTO = new FileDTO();
+
+                fileDTO.setOriName(oName);
+                fileDTO.setNewName(sName);
+                fileDTO.setMovieNum(dto.getMovieNum());
+
+                movieMapper.insertFileCinema(fileDTO);
 
                 log.info("fileUpload...4 : " + oName);
 
@@ -114,5 +123,8 @@ public class MovieService {
         return movieMapper.selectMovieInfo();
     }
 
+   public void deleteMovie(int movieNum){
+        movieMapper.deleteMovie(movieNum);
+   }
 
 }

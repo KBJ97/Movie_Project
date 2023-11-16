@@ -3,8 +3,10 @@ package com.cinema.admin.controller;
 import com.cinema.admin.dto.RegionDTO;
 import com.cinema.admin.dto.TheaterDTO;
 import com.cinema.admin.service.MovieService;
+import jakarta.transaction.Transactional;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -34,8 +36,5 @@ public class RestController {
 
         return cinemaList;
     }
-
-
-
 
 }

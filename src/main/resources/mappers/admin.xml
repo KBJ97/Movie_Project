@@ -77,4 +77,18 @@
         ON d.movieNum = e.movieNum
     </select>
 
+    <insert id="insertFileCinema">
+        INSERT INTO cinemaFile
+        SET
+        movieNum = #{movieNum},
+        newName = #{newName},
+        oriName =#{oriName},
+        rdate = NOW()
+    </insert>
+
+    <delete id="deleteMovie">
+        DELETE FROM movie
+        WHERE movieNum = #{movieNum}
+    </delete>
+
 </mapper>

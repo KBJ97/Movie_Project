@@ -1,16 +1,20 @@
 package com.cinema.admin.controller;
 
 
+import com.cinema.admin.dto.FileDTO;
 import com.cinema.admin.dto.MovieDTO;
 import com.cinema.admin.dto.MovieInfoDTO;
 import com.cinema.admin.dto.RegionDTO;
 import com.cinema.admin.mapper.MovieMapper;
 import com.cinema.admin.service.MovieService;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -82,6 +86,7 @@ public class MovieController {
 
         movieService.insertMovie(movieDTO);
 
+
         return "/admin/board/register";
     }
 
@@ -101,14 +106,16 @@ public class MovieController {
     @GetMapping(value = "/admin/theaterRegister")
     public String theaterRegister(Model model) {
 
-        // 세로 A~F열, 가로 1~10을 생성하는 데이터 전달
-        char[] rows = {'A', 'B', 'C', 'D', 'E', 'F'};
-        int[] cols = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-
-        model.addAttribute("rows", rows);
-        model.addAttribute("cols", cols);
-
         return "/admin/board/theaterRegister";
+    }
+
+
+    @DeleteMapping("/admin/movieList/deleteMovie/{movieNum}")
+    @Transactional
+    public void deleteMovie(@PathVariable("movieNum") int movieNum) {
+
+
+        movieService.deleteMovie(movieNum);
     }
 
 }

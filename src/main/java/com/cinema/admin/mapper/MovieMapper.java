@@ -23,4 +23,7 @@ public interface MovieMapper {
 
     public List<MovieInfoDTO> selectMovieInfo();
 
+    public void insertFileCinema(FileDTO fileDTO);
+
+    public void deleteMovie(int movieNum);
 }
