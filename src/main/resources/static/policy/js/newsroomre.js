@@ -189,7 +189,7 @@
 
 
         /* 신고접수 등록 */
-        function boardRegist() {
+        /*function boardRegist() {
 
             if(sendBoo == false){
                 sendBoo = true;
@@ -231,7 +231,7 @@
                     alert("제보자 이름은 필수 입력항목 입니다.");
                     $("#inf_wb_nm").focus().select();
                     return;
-                }
+                }*/
         /*
                 if($.trim($("#inf_wb_tel1").val()) == ""){
                     sendBoo = false;

@@ -201,7 +201,7 @@ a.un:hover{text-decoration:underline;}
 .sbOptions .sbGroup{ display:block; font-weight:bold; padding:8px 0 8px 0;}
 .sbOptions .sbSub{padding-left:17px;}
 
-.phon .intt{width:40px; min-width:40px; text-align:center;}
+.phon .intt{width:140px; min-width:40px; text-align:center;}
 .phon .sbHolder{min-width:95px;}
 
 .email {padding-right:0 !important;}
