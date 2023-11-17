@@ -13022,7 +13022,7 @@ body.body-iframe .modal-layer {
     padding: 0;
     font-size: 0;
     line-height: 0;
-    background: url(https://img.megabox.co.kr/static/pc/images/common/ci/logo_new2.png) center center no-repeat
+    background: url(/static/images/logo.png) center center no-repeat;
 }
 
 #header .util-area {
@@ -31234,7 +31234,7 @@ body.body-iframe .modal-layer2 {
 }
 
 .custo-main .main-block .block-content:nth-child(5) {
-    background: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-card-info.png) 20px top no-repeat
+  /*  background: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-card-info.png) 20px top no-repeat */
 }
 
 .custo-main .main-block .block-content:nth-child(6) {
