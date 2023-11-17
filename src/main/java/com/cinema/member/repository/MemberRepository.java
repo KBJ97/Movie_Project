@@ -1,0 +1,21 @@
+package com.cinema.member.repository;
+
+import com.cinema.entity.MemberEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface MemberRepository extends JpaRepository<MemberEntity, String> {
+
+    int countByUid(String uid);
+//    int countByEmail(String email);
+//    MemberEntity findAllByEmail(String email);
+//    int countByNameAndEmail(String name, String email);
+//    int countByUidAndEmail(String uid, String email);
+    int countByHp(String hp);
+//    int countByCompany(String company);
+//    int countByBizRegNum(String biRegNum);
+//    int countByComRegNum(String comRegNum);
+//    int countByTel(String tel);
+//    int countByFax(String fax);
+}

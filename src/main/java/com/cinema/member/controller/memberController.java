@@ -24,10 +24,4 @@ public class memberController {
     public String findPass() {
         return "/member/findPass";
     }
-
-
-
-
-
-
 }
