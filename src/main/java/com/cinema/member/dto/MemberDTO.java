@@ -1,6 +1,6 @@
 package com.cinema.member.dto;
 
-import com.cinema.member.entity.memberEntity;
+import com.cinema.entity.MemberEntity;
 import lombok.*;
 
 @Getter
@@ -9,21 +9,23 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class memberDTO {
+public class MemberDTO {
     private String uid;
     private String name;
+    private String pass;
     private String hp;
-    private String address;
+    private int gender;
     private int point;
     private String birth;
     private String type;
 
-    public memberEntity toEntity() {
-        return memberEntity.builder()
+    public MemberEntity toEntity() {
+        return MemberEntity.builder()
                 .uid(uid)
                 .name(name)
+                .pass(pass)
                 .hp(hp)
-                .address(address)
+                .gender(gender)
                 .point(point)
                 .birth(birth)
                 .type(type)
