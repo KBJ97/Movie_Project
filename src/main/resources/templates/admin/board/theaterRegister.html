@@ -32,22 +32,11 @@
             padding: 10px 0;
         }
 
-        #register_detail td {
-            padding: 10px 0;
-        }
 
-        #register_detail td {
-            padding: 10px 0;
-        }
 
         #register hr:first-child {
             opacity: 1;
             border: 1.8px solid black;
-        }
-
-        #register_detail input {
-            width: 100%;
-            height: 35px;
         }
 
         #register_detail input[name="thName"] {
@@ -63,11 +52,6 @@
         #register_detail select[name="region2"] {
             height: 35px;
             width: 15%; /* 너비 조절 */
-        }
-
-
-        #register_detail td {
-            padding: 10px;
         }
 
         #register button {
@@ -129,25 +113,203 @@
             margin-bottom: -2px;
         }
 
+        /* 스타일링 */
+        .grey-box {
+            width: 700px; /* 너비 설정 */
+            height: auto; /* 높이 설정 */
+            background-color: lightgrey; /* 회색 배경색 설정 */
+            border-radius: 8px; /* 모서리 둥글게 설정 */
+            margin: 20px; /* 바깥 여백 설정 */
+            padding: 20px; /* 안쪽 여백 설정 */
+            position: relative; /* 포지션 설정 */
+        }
+
+        .screen {
+            background-color: white; /* 흰색 배경색 설정 */
+            padding: 10px; /* 안쪽 여백 설정 */
+            border-radius: 8px; /* 모서리 둥글게 설정 */
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        .seat {
+            width: 40px;
+            height: 40px;
+        }
+
+        .clicked {
+            background-color: rgb(22, 21, 21);
+            color: white;
+        }
+
+        .button-container {
+            display: flex; /* Flexbox 사용 */
+            align-items: center; /* 세로 중앙 정렬 */
+            margin-bottom: 20px; /* 버튼과 체크박스 사이 여백 설정 */
+        }
+
+        button {
+            margin-left: 10px; /* 버튼과 체크박스 사이 여백 설정 */
+        }
+
+        input[type=number] {
+            margin: 10px; /* 숫자 입력 필드에 20px의 마진을 줍니다. */
+        }
+
+        #register .grey-box .create-seats{
+            width: 50px;
+            height: 30px;
+            font-size: 11px;
+        }
+
+        #register .grey-box .check-seats{
+            width: 50px;
+            height: 30px;
+            font-size: 11px;
+        }
     </style>
 
     <script>
-        let roomCount = 1; // 극장 번호를 나타내는 변수
 
-        function addRectangle() {
-            const wrapper = document.querySelector('.wrapper');
+        window.onload = function() {
+            const icon = document.querySelector('.detail_seats');
+            console.log("icon = " + icon);
+            icon.addEventListener('click', function() {
+                alert('아이콘을 클릭했습니다!'); // 아이콘 클릭 시 경고창을 띄웁니다.
 
-            const room = document.querySelector('.room'); // .room 요소를 가져옵니다.
-            const newRoom = room.cloneNode(true); // .room을 복제합니다.
+                const detailSeats = document.querySelector('.grey-box');
+                const addTheater = document.querySelector('.addTheater');
 
-            roomCount++; // 극장 번호를 증가시킵니다.
-            const rectangles = newRoom.querySelectorAll('.rectangle'); // 모든 .rectangle 요소를 찾습니다.
-            rectangles[0].innerText = roomCount + '관'; // 첫 번째 .rectangle에 번호를 추가합니다.
-            rectangles[0].insertAdjacentHTML('beforeend', '<i class="fas fa-pencil-alt"></i>'); // 첫 번째 .rectangle에 아이콘을 추가합니다.
+                addTheater.style.display = 'none';
+                detailSeats.style.display = 'block'; // 클릭 시 detail_seats를 보이도록 설정합니다.
+            });
 
-            wrapper.appendChild(newRoom); // 복제한 .room을 wrapper에 추가합니다.
-        }
+            const checkSeatsButton = document.querySelector('.check-seats');
+            checkSeatsButton.addEventListener('click', function() {
+                alert('확인을 클릭했습니다!'); // 아이콘 클릭 시 경고창을 띄웁니다.
+                const detailSeats = document.querySelector('.grey-box');
+                const addTheater = document.querySelector('.addTheater');
+
+                // 상세 좌석 정보를 숨기고 극장 등록 정보를 보이도록 설정합니다.
+                detailSeats.style.display = 'none';
+                addTheater.style.display = 'block';
+            });
+
+
+            let roomCount = 1; // 극장 번호를 나타내는 변수
+
+            function addRectangle() {
+
+                const wrapper = document.querySelector('.wrapper');
+
+                const room = document.querySelector('.room'); // .room 요소를 가져옵니다.
+                const newRoom = room.cloneNode(true); // .room을 복제합니다.
+
+                roomCount++; // 극장 번호를 증가시킵니다.
+                const rectangles = newRoom.querySelectorAll('.rectangle'); // 모든 .rectangle 요소를 찾습니다.
+                rectangles[0].innerText = roomCount + '관'; // 첫 번째 .rectangle에 번호를 추가합니다.
+                rectangles[0].insertAdjacentHTML('beforeend', '<i class="fas fa-pencil-alt"></i>'); // 첫 번째 .rectangle에 아이콘을 추가합니다.
+
+                wrapper.appendChild(newRoom); // 복제한 .room을 wrapper에 추가합니다.
+            }
+
+            const addTheaterButton = document.querySelector('.add-button');
+            addTheaterButton.addEventListener('click', addRectangle);
+
+
+            let test = [];
+            let selectedSeats = new Array();
+            let selectedSeatsMap = [];
+            const seatWrapper = document.querySelector(".seat-wrapper");
+            let clicked = "";
+            let div = "";
+
+
+            function generateSeats() {
+                const rowsInput = document.getElementById("rows");
+                const colsInput = document.getElementById("cols");
+                const rows = parseInt(rowsInput.value);
+                const cols = parseInt(colsInput.value);
+
+                // 행이 11 이상이거나 열이 17 이상인 경우 생성을 막고 알림 표시
+                if (rows > 11 || cols > 17) {
+                    alert("더 이상 추가할 수 없습니다. 행은 11까지, 열은 17까지 생성 가능합니다.");
+                    return;
+                }
+
+                // 좌석 생성 전에 기존 좌석을 초기화
+                seatWrapper.innerHTML = '';
+
+                for (let i = 1; i <= rows; i++) {
+                    div = document.createElement("div");
+                    seatWrapper.append(div);
+                    for (let j = 1; j <= cols; j++) {
+                        const input = document.createElement('input');
+                        input.type = "button";
+                        input.name = "seats"
+                        input.classList = "seat";
+                        //3중포문을 사용하지 않기위해
+                        mapping(input, i, j);
+                        div.append(input);
+                        input.addEventListener('click', function(e) {
+                            console.log(e.target.value);
+                            //중복방지 함수
+                            selectedSeats = selectedSeats.filter((element, index) => selectedSeats.indexOf(element) != index);
+
+                            //click class가 존재할때(제거해주는 toggle)
+                            if (input.classList.contains("clicked")) {
+                                input.classList.remove("clicked");
+                                clicked = document.querySelectorAll(".clicked");
+                                selectedSeats.splice(selectedSeats.indexOf(e.target.value), 1);
+                                clicked.forEach((data) => {
+                                    selectedSeats.push(data.value);
+                                });
+                                //click class가 존재하지 않을때 (추가해주는 toggle)
+                            } else {
+                                input.classList.add("clicked");
+                                clicked = document.querySelectorAll(".clicked");
+                                clicked.forEach((data) => {
+                                    selectedSeats.push(data.value);
+                                })
+                            }
+                            console.log(selectedSeats);
+                        })
+                    }
+                }
+            }
+
+            function mapping(input, i, j) {
+                if (i === 1) {
+                    input.value = "A" + j;
+                } else if (i === 2) {
+                    input.value = "B" + j;
+                } else if (i === 3) {
+                    input.value = "C" + j;
+                } else if (i === 4) {
+                    input.value = "D" + j;
+                } else if (i === 5) {
+                    input.value = "E" + j;
+                } else if (i === 6) {
+                    input.value = "F" + j;
+                } else if (i === 7) {
+                    input.value = "G" + j;
+                } else if (i === 8) {
+                    input.value = "H" + j;
+                }else if (i === 9) {
+                    input.value = "I" + j;
+                }else if (i === 10) {
+                    input.value = "J" + j;
+                }else if (i === 11) {
+                    input.value = "K" + j;
+                }
+            }
+
+            const createSeatsButton = document.querySelector('.create-seats');
+            createSeatsButton.addEventListener('click', generateSeats);
+        };
     </script>
+
+
 
 
 </head>
@@ -159,7 +321,7 @@
 
                 <section>
                     <form th:action="@{/admin/theaterRegister}" method="post">
-                        <table>
+                        <table class="addTheater">
                             <tr>
                                 <td>영화관 이름</td>
                                 <td>
@@ -195,7 +357,7 @@
                                    <div class="wrapper">
                                        <div class="room">
                                            <div class="rectangle">1관
-                                               <i class="fas fa-pencil-alt icon"></i>
+                                               <i class="fas fa-pencil-alt icon detail_seats"></i>
                                            </div>
                                            <div class="rectangle"></div>
                                        </div>
@@ -217,6 +379,19 @@
                                 </td>
                             </tr>
                         </table>
+
+                        <div class="grey-box" style="display: none">
+                            <div class="screen">스크린</div>
+                            <div class="button-container">
+                                <label for="rows">행 수 : </label>
+                                <input type="number" id="rows" min="1" max="20" value="11">
+                                <label for="cols">열 수 : </label>
+                                <input type="number" id="cols" min="1" max="20" value="14">
+                                <button type="button" class="create-seats" onclick="generateSeats()">좌석 생성</button>
+                                <button type="button" class="check-seats">확인</button>
+                            </div>
+                            <div class="seat-wrapper"></div>
+                        </div>
                     </form>
                 </section>
             </div>

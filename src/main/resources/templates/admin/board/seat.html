@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <style>
+    .seat {
+      width: 30px;
+      height: 30px;
+    }
+
+    .clicked {
+      background-color: green;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+<div class="seat-wrapper">
+  <div th:each="row : ${rows}">
+    <div th:each="col : ${columns}" class="seat">
+      <input type="button" th:value="${row}${col}" th:class="${selectedSeats.contains(row + col)} ? 'seat clicked' : 'seat'" />
+    </div>
+  </div>
+</div>
+</body>
+
+<script th:inline="javascript">
+  /* 타임리프에서 백엔드로부터 전달된 데이터 처리 */
+  var selectedSeats = /*[[${selectedSeats}]]*/ [];
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const seats = document.querySelectorAll('.seat');
+
+    seats.forEach(function (seat) {
+      seat.addEventListener('click', function () {
+        const value = seat.value;
+
+        if (selectedSeats.includes(value)) {
+          selectedSeats = selectedSeats.filter(seat => seat !== value);
+        } else {
+          selectedSeats.push(value);
+        }
+
+        seat.classList.toggle('clicked');
+        console.log(selectedSeats);
+      });
+    });
+  });
+</script>
+
+</html>
