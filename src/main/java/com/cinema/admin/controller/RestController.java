@@ -37,4 +37,5 @@ public class RestController {
         return cinemaList;
     }
 
+
 }

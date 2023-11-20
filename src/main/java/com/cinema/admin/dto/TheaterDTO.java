@@ -15,5 +15,6 @@ public class TheaterDTO {
     private int region2Num;
     private int MaxPeople;
     private int ticketing;
+    private String thName;
 
 }

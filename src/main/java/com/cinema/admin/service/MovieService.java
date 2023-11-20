@@ -127,4 +127,8 @@ public class MovieService {
         movieMapper.deleteMovie(movieNum);
    }
 
+   public void insertTheater(TheaterDTO theaterDTO){
+        movieMapper.insertTheater(theaterDTO);
+   }
+
 }

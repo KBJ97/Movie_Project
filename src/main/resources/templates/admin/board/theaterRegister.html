@@ -44,12 +44,12 @@
             padding: 5px;
         }
 
-        #register_detail select[name="region1"] {
+        #register_detail select[name="region1Num"] {
             height: 35px;
             width: 15%; /* 너비 조절 */
         }
 
-        #register_detail select[name="region2"] {
+        #register_detail select[name="region2Num"] {
             height: 35px;
             width: 15%; /* 너비 조절 */
         }
@@ -172,6 +172,23 @@
     <script>
 
         window.onload = function() {
+
+            document.addEventListener('click', function(e){
+                if(e.target.classList.contains('fa-pencil')){
+
+                    const detailSeats = document.querySelector('.grey-box');
+                    const addTheater = document.querySelector('.addTheater');
+
+                    addTheater.style.display = 'none';
+                    detailSeats.style.display = 'block'; // 클릭 시 detail_seats를 보이도록 설정합니다.
+
+                    // 좌석 생성 전에 기존 좌석을 초기화
+                    seatWrapper.innerHTML = '';
+
+                }
+            });
+
+            /*
             const icon = document.querySelector('.detail_seats');
             console.log("icon = " + icon);
             icon.addEventListener('click', function() {
@@ -183,7 +200,7 @@
                 addTheater.style.display = 'none';
                 detailSeats.style.display = 'block'; // 클릭 시 detail_seats를 보이도록 설정합니다.
             });
-
+             */
             const checkSeatsButton = document.querySelector('.check-seats');
             checkSeatsButton.addEventListener('click', function() {
                 alert('확인을 클릭했습니다!'); // 아이콘 클릭 시 경고창을 띄웁니다.
@@ -198,6 +215,8 @@
 
             let roomCount = 1; // 극장 번호를 나타내는 변수
 
+            const addTheaterButton = document.querySelector('.add-button');
+            addTheaterButton.addEventListener('click', addRectangle);
             function addRectangle() {
 
                 const wrapper = document.querySelector('.wrapper');
@@ -213,8 +232,7 @@
                 wrapper.appendChild(newRoom); // 복제한 .room을 wrapper에 추가합니다.
             }
 
-            const addTheaterButton = document.querySelector('.add-button');
-            addTheaterButton.addEventListener('click', addRectangle);
+
 
 
             let test = [];
@@ -224,6 +242,8 @@
             let clicked = "";
             let div = "";
 
+
+            function initSeats() {}
 
             function generateSeats() {
                 const rowsInput = document.getElementById("rows");
@@ -239,6 +259,14 @@
 
                 // 좌석 생성 전에 기존 좌석을 초기화
                 seatWrapper.innerHTML = '';
+
+                // 총 좌석 수 계산
+
+                const totalSeats = rows * cols;
+                console.log("행 = " + rows);
+                console.log("열 = " + cols);
+                console.log("총 좌석 수: " + totalSeats);
+
 
                 for (let i = 1; i <= rows; i++) {
                     div = document.createElement("div");
@@ -306,10 +334,123 @@
 
             const createSeatsButton = document.querySelector('.create-seats');
             createSeatsButton.addEventListener('click', generateSeats);
-        };
+
+
+            //1차 2차 카테고리 선택하기
+            // Region 1이 변경될 때의 이벤트 리스너
+            document.querySelector("#region1").addEventListener('change', function() {
+                // 선택된 Region 1 값
+                var selectedRegion1 = this.value;
+
+                console.log("selectedRegion1 = " + selectedRegion1);
+
+                // Region 2를 나타내는 DOM 요소
+                var selectedRegion2 = document.querySelector("#region2");
+                console.log("selectedRegion2 = " + selectedRegion2);
+
+                // 서버로 요청을 보낼 URL
+                var url = `/cinema/admin/timeRegister/${selectedRegion1}`;
+
+                console.log("지역1이 변경될 때 ");
+                console.log("selectedRegion1 = " + selectedRegion1);
+                console.log("selectedRegion2 = " + selectedRegion2);
+                console.log(url);
+
+                // XMLHttpRequest 객체 생성
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', url, true);
+
+                // 서버 응답이 도착했을 때의 처리
+                xhr.onload = function() {
+                    if (xhr.status >= 200 && xhr.status < 300) {
+                        // 이전 Region 2 옵션 제거
+                        while (selectedRegion2.firstChild) {
+                            selectedRegion2.removeChild(selectedRegion2.firstChild);
+                        }
+
+                        // 서버에서 받은 데이터 파싱
+                        var data = JSON.parse(xhr.response);
+
+                        // 상세 지역을 선택하는 기본 옵션 추가
+                        var defaultOptionRegion2 = document.createElement('option');
+                        defaultOptionRegion2.value = '0';
+                        defaultOptionRegion2.text = '상세 지역 선택';
+                        selectedRegion2.appendChild(defaultOptionRegion2);
+
+                        // 서버에서 받은 데이터로 옵션 추가
+                        data.forEach(function(region2) {
+                            var option = document.createElement('option');
+                            option.value = region2.region2Num;
+                            option.text = region2.region2Name;
+                            selectedRegion2.appendChild(option);
+                        });
+                    } else {
+                        console.error('상세지역을 가져오지 못했습니다.');
+                    }
+                };
+
+                // 서버에 요청 전송
+                xhr.send();
+            });
+
+            // Form이 제출될 때의 이벤트 리스너
+            var form = document.querySelector('form');
+            form.addEventListener('submit', function(e) {
+                // 선택한 Region 1, Region 2
+                var selectedRegion1 = document.querySelector('select[name="region1Num"]').value;
+                var selectedRegion2 = document.querySelector('select[name="region2Num"]').value;
+
+                console.log("마지막");
+                console.log("selectedRegion1 = " + selectedRegion1);
+                console.log("selectedRegion2 = " + selectedRegion2);
+
+
+                // Region 1, Region 2 또는 Cinema가 ''인 경우 처리
+                if (selectedRegion1 === '0' || selectedRegion2 === '0') {
+                    e.preventDefault(); // 양식 제출 방지
+
+                    // Region 1, Region 2 및 Cinema에 따라 알람 메시지 생성
+                    var alertMessage = '';
+                    if (selectedRegion1 === '0') {
+                        alertMessage += '지역를 선택하세요. ';
+                    }
+                    if (selectedRegion2 === '0') {
+                        alertMessage += '상세 지역을 선택하세요. ';
+                    }
+
+                    alert(alertMessage); // 경고 메시지 표시
+                }
+            });
+        }
     </script>
 
+    <script>
+        $(document).ready(function() {
+            $('form').submit(function(e) {
+                // 선택한 cate와 type 값을 가져옵니다.
+                var selectedRegion1 = $('select[name="region1Num"]').val();
+                var selectedRegion2 = $('select[name="region2Num"]').val();
 
+
+                // cate 또는 type이 ''인 경우 처리합니다.
+                if (selectedRegion1 === '0' || selectedRegion2 === '') {
+                    e.preventDefault(); // 양식 제출을 방지합니다.
+
+                    // cate와 type에 따라 알람 메시지를 생성합니다.
+                    var alertMessage = '';
+                    if (selectedRegion1 === '0') {
+                        alertMessage += '1차 분류를 선택하세요.';
+                    }
+                    if (selectedRegion2 === '') {
+                        alertMessage += '2차 분류을 선택하세요.';
+                    }
+
+                    alert(alertMessage); // 경고 메시지를 표시합니다.
+                }
+            });
+        });
+
+    </script>
 
 
 </head>
@@ -323,6 +464,12 @@
                     <form th:action="@{/admin/theaterRegister}" method="post">
                         <table class="addTheater">
                             <tr>
+                                <td>영화관번호</td>
+                                <td>
+                                    <input type="text" name="theaterNum"/>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>영화관 이름</td>
                                 <td>
                                     <input type="text" name="thName"/>
@@ -332,7 +479,7 @@
                             <tr>
                                 <td>지역</td>
                                 <td>
-                                    <select id="region1" name="region1">
+                                    <select id="region1" name="region1Num">
                                         <option value='0'>-- 선택 --</option>
                                         <option th:each="region1 : ${region1List}" th:value="${region1.region1Num}" th:text="${region1.region1Name}"></option>
                                         <!-- 원하는 장르 옵션들을 추가하세요 -->
@@ -343,7 +490,7 @@
                             <tr>
                                 <td>상세 지역</td>
                                 <td>
-                                    <select id="region2" name="region2">
+                                    <select id="region2" name="region2Num">
                                         <option value='0'>-- 선택 --</option>
                                         <option th:each="region1 : ${region1List}" th:value="${region1.region1Num}" th:text="${region1.region1Name}"></option>
                                         <!-- 원하는 장르 옵션들을 추가하세요 -->
@@ -359,7 +506,11 @@
                                            <div class="rectangle">1관
                                                <i class="fas fa-pencil-alt icon detail_seats"></i>
                                            </div>
-                                           <div class="rectangle"></div>
+                                           <div class="rectangle">
+                                               행 : <br>
+                                               열 : <br>
+                                               총좌석 : <br>
+                                           </div>
                                        </div>
                                    </div>
                                </td>
@@ -367,7 +518,7 @@
                             <tr>
                                 <td></td>
                                 <td>
-                                    <button type="button" class="add-button" onclick="addRectangle()">극장 추가하기</button>
+                                    <button type="button" class="add-button">극장 추가하기</button>
                                 </td>
                             </tr>
                             <!-- 등록과 취소 버튼 -->
@@ -384,14 +535,15 @@
                             <div class="screen">스크린</div>
                             <div class="button-container">
                                 <label for="rows">행 수 : </label>
-                                <input type="number" id="rows" min="1" max="20" value="11">
+                                <input type="number" id="rows" min="1" max="11" name="rowsTheater">
                                 <label for="cols">열 수 : </label>
-                                <input type="number" id="cols" min="1" max="20" value="14">
-                                <button type="button" class="create-seats" onclick="generateSeats()">좌석 생성</button>
+                                <input type="number" id="cols" min="1" max="17" name="colsTheater">
+                                <button type="button" class="create-seats">좌석 생성</button>
                                 <button type="button" class="check-seats">확인</button>
                             </div>
                             <div class="seat-wrapper"></div>
                         </div>
+
                     </form>
                 </section>
             </div>
