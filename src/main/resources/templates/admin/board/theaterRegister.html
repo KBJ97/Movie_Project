@@ -172,6 +172,20 @@
     <script>
 
         window.onload = function() {
+
+            document.addEventListener('click', function(e){
+                if(e.target.classList.contains('fa-pencil')){
+
+                    const detailSeats = document.querySelector('.grey-box');
+                    const addTheater = document.querySelector('.addTheater');
+
+                    addTheater.style.display = 'none';
+                    detailSeats.style.display = 'block'; // 클릭 시 detail_seats를 보이도록 설정합니다.
+
+                }
+            });
+
+            /*
             const icon = document.querySelector('.detail_seats');
             console.log("icon = " + icon);
             icon.addEventListener('click', function() {
@@ -183,7 +197,7 @@
                 addTheater.style.display = 'none';
                 detailSeats.style.display = 'block'; // 클릭 시 detail_seats를 보이도록 설정합니다.
             });
-
+             */
             const checkSeatsButton = document.querySelector('.check-seats');
             checkSeatsButton.addEventListener('click', function() {
                 alert('확인을 클릭했습니다!'); // 아이콘 클릭 시 경고창을 띄웁니다.
@@ -198,6 +212,8 @@
 
             let roomCount = 1; // 극장 번호를 나타내는 변수
 
+            const addTheaterButton = document.querySelector('.add-button');
+            addTheaterButton.addEventListener('click', addRectangle);
             function addRectangle() {
 
                 const wrapper = document.querySelector('.wrapper');
@@ -213,8 +229,7 @@
                 wrapper.appendChild(newRoom); // 복제한 .room을 wrapper에 추가합니다.
             }
 
-            const addTheaterButton = document.querySelector('.add-button');
-            addTheaterButton.addEventListener('click', addRectangle);
+
 
 
             let test = [];
@@ -306,6 +321,8 @@
 
             const createSeatsButton = document.querySelector('.create-seats');
             createSeatsButton.addEventListener('click', generateSeats);
+
+
         };
     </script>
 
@@ -367,7 +384,7 @@
                             <tr>
                                 <td></td>
                                 <td>
-                                    <button type="button" class="add-button" onclick="addRectangle()">극장 추가하기</button>
+                                    <button type="button" class="add-button">극장 추가하기</button>
                                 </td>
                             </tr>
                             <!-- 등록과 취소 버튼 -->
@@ -384,9 +401,9 @@
                             <div class="screen">스크린</div>
                             <div class="button-container">
                                 <label for="rows">행 수 : </label>
-                                <input type="number" id="rows" min="1" max="20" value="11">
+                                <input type="number" id="rows" min="1" max="20" name="rowsTheater">
                                 <label for="cols">열 수 : </label>
-                                <input type="number" id="cols" min="1" max="20" value="14">
+                                <input type="number" id="cols" min="1" max="20" name="colsTheater">
                                 <button type="button" class="create-seats" onclick="generateSeats()">좌석 생성</button>
                                 <button type="button" class="check-seats">확인</button>
                             </div>
