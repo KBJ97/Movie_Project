@@ -119,17 +119,18 @@
                     </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>REST Cinema</td>
-                            <td></td>
-                            <th>
-                                <a href="#" class="moveBtn" data-no="10998" title="공지사항 상세보기">
-                                <span>공지사항</span>
-                                </a>
-                            </th>
-                            <td>2023.11.13</td>
-                        </tr>
+                    <tr th:each="notice:${notices}">
+                        <td>[[${notice.noticeNo}]]</td>
+                        <td>[[${notice.uid}]]</td>
+                        <td></td>
+                        <td>
+                            <a href="#" class="moveBtn" data-no=${notice.noticeNo}
+                               title="공지사항 상세보기">
+                                <span th:text="${notice.title}"></span>
+                            </a>
+                        </td>
+                        <td th:text="${#temporals.format(notice.rdate, 'yy-MM-dd')}">2012-12-20</td>
+                    </tr>
                     </tbody>
                 </table>
             </div>
