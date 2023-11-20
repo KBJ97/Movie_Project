@@ -1,69 +1,99 @@
 package com.cinema.security;
-import java.io.PrintWriter;
-import java.nio.charset.StandardCharsets;
-
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.MediaType;
+import org.springframework.core.io.ResourceLoader;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.CsrfConfigurer;
-import org.springframework.security.config.annotation.web.configurers.FormLoginConfigurer;
-import org.springframework.security.config.annotation.web.configurers.HttpBasicConfigurer;
-import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import lombok.RequiredArgsConstructor;
-
-@RequiredArgsConstructor
+@Log4j2
 @Configuration
-public class SecurityConfiguration {
+public class SecurityConfiguration implements WebMvcConfigurer {
+
+    @Autowired
+    private SecurityUserService securityUserService;
+
+    @Autowired
+    private ResourceLoader resourceLoader;
+
+    @Value("${upload.path.files}")
+    private String files;
+
+    @Value("${upload.path.thumbs}")
+    private String thumbs;
+
+    @Value("${upload.path.banners}")
+    private String banners;
+
+
+    public SecurityConfiguration() {
+    }
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/files/**")
+                .addResourceLocations(resourceLoader.getResource(files));
+
+        registry.addResourceHandler("/thumbs/**")
+                .addResourceLocations(resourceLoader.getResource(thumbs));
+
+        registry.addResourceHandler("/banners/**")
+                .addResourceLocations(resourceLoader.getResource(banners));
+    }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
         http
-                // CSRF 보안 해제()
-                .csrf(CsrfConfigurer::disable) // :: 는 메서드 참조 연산자로 람다식을 간단하게 표현
-                // 기본 HTTP 인증방식 비활성
-                //.httpBasic(HttpBasicConfigurer::disable)
-                // 기본 form 로그인 설정
-                .formLogin(login -> login
-                        .loginPage("/user/login")
-                        .defaultSuccessUrl("/")
-                        .failureUrl("/user/login?success=100")
+                // 사이트 위변조 방지 비활성
+                .csrf(CsrfConfigurer::disable) // 메서드 참조 연산자로 람다식을 간결하게 표현
+                // 폼 로그인 설정
+                .formLogin(config -> config.loginPage("/member/login")
+                        .defaultSuccessUrl("/", true)
+                        .failureUrl("/member/login?success=100")
                         .usernameParameter("uid")
                         .passwordParameter("pass"))
+
+//                // 자동로그인 설정
+//                .rememberMe(config -> config.userDetailsService(securityUserService)
+//                        .rememberMeParameter("rememberMe")
+//                        .key("uniqueAndSecret")
+//                        .tokenValiditySeconds(86400)) // 자동 로그인 유효 기간 (초))
+
                 // 로그아웃 설정
-                .logout(logout -> logout
-                        .logoutUrl("/user/logout")
-                        .logoutSuccessUrl("/"))
+                .logout(config -> config
+                        .logoutUrl("/member/logout")
+                        .invalidateHttpSession(true)
+                        .clearAuthentication(true)
+                        .logoutSuccessUrl("/index?success=300"))
 
-
-                // 토큰방식으로 인증처리하기 때문에 세션을 사용안하게 STATELESS 설정
-                //.sessionManagement(configurer -> configurer.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                // 인가 설정
+                // 인가 권한 설정
                 .authorizeHttpRequests(authorizeHttpRequests -> authorizeHttpRequests
                         .requestMatchers("/manager/**").hasAnyAuthority("ADMIN", "MANAGER")
                         .requestMatchers("/guest/**").permitAll()
                         .requestMatchers("/user/**").permitAll()
                         .requestMatchers("/**").permitAll()
-                        .requestMatchers("/css/**", "/images/**", "/js/**").permitAll()
-                );
+                        .requestMatchers("/css/**", "/images/**", "/js/**").permitAll());
 
         return http.build();
     }
-
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
+    @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
+        return config.getAuthenticationManager();
+    }
 
 }

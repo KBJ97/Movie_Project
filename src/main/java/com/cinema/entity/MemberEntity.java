@@ -1,6 +1,6 @@
-package com.cinema.member.entity;
+package com.cinema.entity;
 
-import com.cinema.member.dto.memberDTO;
+import com.cinema.member.dto.MemberDTO;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -13,23 +13,25 @@ import lombok.*;
 @NoArgsConstructor
 @Entity
 @Table(name = "member")
-public class memberEntity {
+public class MemberEntity {
     @Id
     private String uid;
     private String name;
+    private String pass;
     private String hp;
-    private String address;
+    private int gender;
     private int point;
     private String birth;
     private String type;
 
 
-    public memberDTO toDTO() {
-        return memberDTO.builder()
+    public MemberDTO toDTO() {
+        return MemberDTO.builder()
                 .uid(uid)
                 .name(name)
+                .pass(pass)
                 .hp(hp)
-                .address(address)
+                .gender(gender)
                 .point(point)
                 .birth(birth)
                 .type(type)
