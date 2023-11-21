@@ -88,7 +88,7 @@ $(function(){
 
 
     // 주민등록번호 유효성검증
-    $('input[name=birth1]').on('input', function() {
+    $('input[name=birth]').on('input', function() {
         // 입력값이 숫자가 아니거나 0~9 사이의 값이 아닌 경우
         if (!/^[0-9]$/.test(this.value)) {
             this.value = this.value.replace(/[^0-9]/g, ''); // 0~9 이외의 문자 제거
@@ -96,8 +96,8 @@ $(function(){
         validateJumin();
     });
 
-    // birth2도 추가로 설정
-    $('input[name=birth2]').on('input', function() {
+    // gender도 추가로 설정
+    $('input[name=gender]').on('input', function() {
         // 입력값이 숫자가 아니거나 1~4 사이의 값이 아닌 경우
         if (!/^[1-4]$/.test(this.value)) {
             this.value = this.value.replace(/[^1-4]/g, ''); // 1~4 이외의 문자 제거
@@ -107,11 +107,11 @@ $(function(){
 
     // 주민등록번호 유효성 검증 함수
     function validateJumin() {
-        const birth1 = $('input[name=birth1]').val();
-        const birth2 = $('input[name=birth2]').val();
+        const birth = $('input[name=birth]').val();
+        const gender = $('input[name=gender]').val();
 
         // 입력값이 유효한 경우
-        if (birth1.length === 6 && birth2.length === 1) {
+        if (birth.length === 6 && gender.length === 1) {
             $('.msgJn').css('color', 'green').html('<i class="fas fa-check"></i> ');
         } else {
             $('.msgJn').css('color', 'red').text('주민번호를 입력하세요.');
@@ -156,7 +156,7 @@ $(function(){
         validatePhoneNumber($(this).val());
     });
 
-    // 일반회원 회원가입 최종 전송
+    // 회원가입 최종 전송
     $('#formMember').submit(function(){
 
         if (!isUidOk)
@@ -174,69 +174,24 @@ $(function(){
             alert('이름을 확인하십시오.');
             return false; // 폼 전송 취소
         }
-        if (!isEmailOk)
-        {
-            alert('이메일을 확인하십시오.');
-            return false; // 폼 전송 취소
-        }
         if (!isHpOk)
         {
             alert('전화번호를 확인하십시오.');
             return false; // 폼 전송 취소
         }
-        isCompanyOk   = true;
-        isBizRegNumOk = true;
-        isComRegNumOk = true;
-        isTelOk       = true;
-        isFaxOk       = true;
 
+        // 데이터 테이블에 보낼 데이터 설정
+        const formData = {
+            uid: $('input[name=uid]').val(),
+            name: $('input[name=name]').val(),
+            pass: $('input[name=pass1]').val(), // 비밀번호는 pass1에서 가져옴
+            hp: $('input[name=hp]').val(),
+            birth: $('input[name=birth]').val(),
+            gender: $('input[name=gender]').val(),
+            point: 0, // 예시로 0으로 설정, 필요에 따라 변경
+            type: 'ADMIN'  // 예시로 빈 문자열로 설정, 필요에 따라 변경
+        };
         return true; // 폼 전송 시작
     });
 
-    // 판매자 회원가입 최종 전송
-    $('#formSeller').submit(function(){
-
-        if (!isUidOk)
-        {
-            alert('아이디를 확인하십시오.');
-            return false; // 폼 전송 취소
-        }
-        if (!isPassOk)
-        {
-            alert('비밀번호를 확인하십시오.');
-            return false; // 폼 전송 취소
-        }
-        if (!isEmailOk)
-        {
-            alert('이메일을 확인하십시오.');
-            return false; // 폼 전송 취소
-        }
-        if (!isCompanyOk)
-        {
-            alert('회사명을 확인하십시오.');
-            return false; // 폼 전송 취소
-        }
-        if (!isBizRegNumOk)
-        {
-            alert('사업자등록번호를 확인하십시오.');
-            return false; // 폼 전송 취소
-        }
-        if (!isComRegNumOk)
-        {
-            alert('통신판매업 신고번호를 확인하십시오.');
-            return false; // 폼 전송 취소
-        }
-        if (!isTelOk)
-        {
-            alert('전화번호를 확인하십시오.');
-            return false; // 폼 전송 취소
-        }
-        if (!isFaxOk)
-        {
-            alert('팩스번호를 확인하십시오.');
-            return false; // 폼 전송 취소
-        }
-
-        return true; // 폼 전송 시작
-    });
 });
