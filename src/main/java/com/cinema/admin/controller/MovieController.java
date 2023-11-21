@@ -246,12 +246,6 @@ public class MovieController {
     }
 
 
-    @DeleteMapping("/admin/movieList/deleteMovie/{movieNum}")
-    @Transactional
-    public void deleteMovie(@PathVariable("movieNum") int movieNum) {
 
-
-        movieService.deleteMovie(movieNum);
-    }
 
 }

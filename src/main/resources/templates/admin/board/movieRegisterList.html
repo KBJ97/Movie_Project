@@ -194,6 +194,36 @@
             border-radius: 5px; /* 둥근 모서리 */
         }
     </style>
+
+    <script>
+        $(document).ready(function(){
+            $('.movieListDelete').click(function (e) {
+                e.preventDefault();
+                var $link = $(this);
+                var num = $link.closest('tr').find('td:eq(9)').text();
+
+                console.log("num = " + num);
+
+                if (confirm('상품을 삭제하시겠습니까?')) {
+
+                    $.ajax({
+                        url: '/cinema/admin/movieRegisterList/deleteMovie/' + num,
+                        type: 'DELETE',
+                        dataType: 'json',
+                        success: function (data) {
+                            console.log(data);
+                        },
+                        error: function (xhr, status, error) {
+                            console.error(xhr.responseText);
+                        }
+                    });
+                }
+            });
+        });
+
+    </script>
+
+
 </head>
 
 
@@ -225,7 +255,7 @@
                         <td th:text="${movie.openDate}">2022/11/11</td>
                         <td th:text="${movie.screenType}">2D</td>
                         <td><a href="#">수정</a></td>
-                        <td><a href="#">삭제</a></td>
+                        <td><a href="#" class="movieListDelete">삭제</a></td>
                         <td th:text="${movie.movieNum}" >1</td>
                     </tr>
                 </th:block>
