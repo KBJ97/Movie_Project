@@ -32,6 +32,14 @@
         FROM `movie` a
         LEFT JOIN `cate` b ON a.cateNum = b.cateNum
         ORDER BY a.`movieNum` DESC
+        LIMIT #{start}, #{end}
+    </select>
+
+    <select id="selectMovie" resultType="com.cinema.admin.dto.MovieDTO">
+        SELECT a.*, b.`cateName`
+        FROM `movie` a
+        LEFT JOIN `cate` b ON a.cateNum = b.cateNum
+        ORDER BY a.`movieNum` DESC
     </select>
 
     <select id="selectRegion1Ajax" resultType="com.cinema.admin.dto.RegionDTO">
@@ -55,15 +63,24 @@
 
 
     <insert id="insertTheater">
-        INSERT INTO `theater`
-        SET
-        `theaterNum` = #{theaterNum},
-        `thName` = #{thName},
-        `region1Num` = #{region1Num},
-        `region2Num` = #{region2Num},
-        `theaterName` = #{theaterName}
+        INSERT INTO theater
+        SET thName = #{thName}, region1Num = #{region1Num}, region2Num = #{region2Num}, room = #{room}
     </insert>
 
+
+    <insert id="insertRooms" parameterType="map">
+        INSERT INTO room (theaterNum, rowsTheater, colsTheater, totalSeats, room)
+        VALUES
+        <foreach collection="rooms" item="room" separator=",">
+            (
+            #{room.theaterNum},
+            #{room.rowsTheater},
+            #{room.colsTheater},
+            #{room.totalSeats},
+            #{room.room}
+            )
+        </foreach>
+    </insert>
 
 
     <insert id="insertMovieInfo">
@@ -87,6 +104,7 @@
         ON a.theaterNum = d.theaterNum
         INNER JOIN `movie` e
         ON d.movieNum = e.movieNum
+        LIMIT #{start}, #{end}
     </select>
 
     <insert id="insertFileCinema">
@@ -102,5 +120,13 @@
         DELETE FROM movie
         WHERE movieNum = #{movieNum}
     </delete>
+
+    <select id="movieCount" resultType="int">
+        SELECT COUNT(*) FROM movie
+    </select>
+
+    <select id="movieInfoCount" resultType="int">
+        SELECT COUNT(*) FROM `movieInfo`
+    </select>
 
 </mapper>
