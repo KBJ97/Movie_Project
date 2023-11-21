@@ -4,18 +4,24 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cinema.cs.mapper.CsNoticeMapper">
 
+    <!-- CRUD -->
     <insert id="insertNotice"></insert>
 
     <select id="selectNotice" resultType="com.cinema.cs.dto.csDTO"></select>
 
     <select id="selectNotices" resultType="com.cinema.cs.dto.csDTO">
         SELECT `noticeNo`, `uid`, `title`, `rdate` FROM `cs_notice`
-        ORDER BY `noticeNo` DESC;
-
+        ORDER BY `noticeNo` DESC
+        LIMIT #{start}, 10;
     </select>
 
     <update id="updateNotice"></update>
 
     <delete id="deleteNotice"></delete>
+
+    <!-- 페이징 -->
+    <select id="noticeCountTotal" resultType="int">
+        SELECT COUNT(*) FROM `cs_notice`;
+    </select>
 
 </mapper>

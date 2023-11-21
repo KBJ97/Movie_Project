@@ -19,16 +19,35 @@ public class NoticeController {
     private CsNoticeService csNoticeService;
 
     @GetMapping("/cs/notice")
-    public String notice(Model model) {
+    public String notice(Model model, String pg) {
 
-        List<csDTO> notices = csNoticeService.selectNotices();
+        // 페이징 시작
+        int total = csNoticeService.noticeCountTotal();
+        int lastPageNum = csNoticeService.getLastPageNum(total);
+        int currentPg = csNoticeService.getCurrentPage(pg);
+        int start = csNoticeService.getStartNum(currentPg);
+        int[] result = csNoticeService.getPageGroupNum(currentPg, lastPageNum);
+        int pageStartNum = csNoticeService.getPageStartNum(total, currentPg);
+        int startNum = csNoticeService.getStartNum(currentPg);
 
+        model.addAttribute("lastPageNum", lastPageNum);
+        model.addAttribute("pageGroupStart", result[0]);
+        model.addAttribute("pageGroupEnd", result[1]);
+        model.addAttribute("pageStartNum", pageStartNum+1);
+        //페이징 끝
+
+        // 목록 출력 시작
+        List<csDTO> notices = csNoticeService.selectNotices(start);
+
+        /*
         log.info(notices.get(1).getNoticeNo());
         log.info(notices.get(1).getRdate());
         log.info(notices.get(1).getTitle());
-
+        */
         model.addAttribute("notices", notices);
+        // 목록 출력 끝
 
         return "/cs/notice";
     }
+
 }
