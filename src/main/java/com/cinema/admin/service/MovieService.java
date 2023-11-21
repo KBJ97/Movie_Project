@@ -98,8 +98,12 @@ public class MovieService {
     }
 
 
-    public List<MovieDTO> selectMovies(){
-        return movieMapper.selectMovies();
+    public List<MovieDTO> selectMovies(int start, int end){
+        return movieMapper.selectMovies(start, end);
+    }
+
+    public List<MovieDTO> selectMovie(){
+        return movieMapper.selectMovie();
     }
 
     public List<RegionDTO> selectRegion2Ajax(int region1Num){
@@ -119,8 +123,8 @@ public class MovieService {
         movieMapper.insertMovieInfo(movieInfoDTO);
     }
 
-    public List<MovieInfoDTO> selectMovieInfo(){
-        return movieMapper.selectMovieInfo();
+    public List<MovieInfoDTO> selectMovieInfo(int start, int end){
+        return movieMapper.selectMovieInfo(start, end);
     }
 
    public void deleteMovie(int movieNum){
@@ -129,6 +133,19 @@ public class MovieService {
 
    public void insertTheater(TheaterDTO theaterDTO){
         movieMapper.insertTheater(theaterDTO);
+
+        for(RoomDTO roomDTO : theaterDTO.getRooms()){
+            movieMapper.insertRoom(roomDTO);
+        }
+
+   }
+
+   public int movieCount(){
+        return movieMapper.movieCount();
+   }
+
+   public int movieInfoCount(){
+        return  movieMapper.movieInfoCount();
    }
 
 }
