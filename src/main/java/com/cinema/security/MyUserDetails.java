@@ -36,7 +36,7 @@ public class MyUserDetails implements UserDetails {
 	@Override
 	public String getPassword() {
 		// 계정이 갖는 비밀번호
-		return member.getPass1();
+		return member.getPass();
 	}
 
 	@Override

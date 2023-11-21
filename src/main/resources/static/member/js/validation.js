@@ -180,17 +180,6 @@ $(function(){
             return false; // 폼 전송 취소
         }
 
-        // 데이터 테이블에 보낼 데이터 설정
-        const formData = {
-            uid: $('input[name=uid]').val(),
-            name: $('input[name=name]').val(),
-            pass: $('input[name=pass1]').val(), // 비밀번호는 pass1에서 가져옴
-            hp: $('input[name=hp]').val(),
-            birth: $('input[name=birth]').val(),
-            gender: $('input[name=gender]').val(),
-            point: 0, // 예시로 0으로 설정, 필요에 따라 변경
-            type: 'ADMIN'  // 예시로 빈 문자열로 설정, 필요에 따라 변경
-        };
         return true; // 폼 전송 시작
     });
 

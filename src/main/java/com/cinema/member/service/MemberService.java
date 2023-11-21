@@ -18,10 +18,10 @@ public class MemberService {
     private PasswordEncoder passwordEncoder;
 
     public void save(MemberDTO dto){
-        // 여기서 dto의 값들이 정상적으로 들어오는지 로그로 확인
+        // dto의 값 확인
         log.info("Received DTO in service: {}", dto);
 
-        dto.setPass1(passwordEncoder.encode(dto.getPass1())); // 변경된 부분
+        dto.setPass1(passwordEncoder.encode(dto.getPass1()));
         MemberEntity entity = dto.toEntity(); // DTO를 Entity로 변환
         memberRepository.save(entity); // DB insert
     }
