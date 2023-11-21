@@ -260,12 +260,20 @@
                 // 좌석 생성 전에 기존 좌석을 초기화
                 seatWrapper.innerHTML = '';
 
-                // 총 좌석 수 계산
 
+                // 총 좌석 수 계산
                 const totalSeats = rows * cols;
-                console.log("행 = " + rows);
-                console.log("열 = " + cols);
-                console.log("총 좌석 수: " + totalSeats);
+
+                // 좌석 생성 및 총 좌석 수 업데이트
+                // 이 부분에서 좌석을 생성하고 화면에 표시하는 코드 작성
+                // 그리고 총 좌석 수를 해당 요소에 표시하는 방법을 구현
+
+                // 행, 열, 총 좌석 수를 두 번째 rectangle 클래스를 가진 요소에 텍스트로 삽입
+                const rectangles = document.querySelectorAll('.rectangle');
+                // 두 번째 요소는 인덱스 1에 위치합니다.
+                const secondRectangleDiv = rectangles[1];
+                // 텍스트로 삽입
+                secondRectangleDiv.innerHTML = `행: ${rows} <br> 열: ${cols} <br> 총좌석: ${totalSeats}`;
 
 
                 for (let i = 1; i <= rows; i++) {
@@ -304,7 +312,12 @@
                         })
                     }
                 }
+
             }
+
+
+
+
 
             function mapping(input, i, j) {
                 if (i === 1) {
@@ -507,9 +520,7 @@
                                                <i class="fas fa-pencil-alt icon detail_seats"></i>
                                            </div>
                                            <div class="rectangle">
-                                               행 : <br>
-                                               열 : <br>
-                                               총좌석 : <br>
+
                                            </div>
                                        </div>
                                    </div>
