@@ -7,7 +7,7 @@
 #wrap{position:relative; min-width:; width:100%;}
 #header{position:relative; width:100%; z-index:9999;}
 #header:after{content:""; display:block; clear:both; height:0; visibility:hidden;}
-#container{position:relative; background-color:#f4f4f4;}
+#container{position:relative; background-color:#ffffff;}
 #footer{position:relative; width:100%;}
 .cont{position:relative; width:1000px; margin:auto;}
 .cont:after{content:""; display:block; clear:both; height:0; visibility:hidden;}
@@ -15,7 +15,6 @@
 /*header*/
 #header{height:76px; border-bottom:4px solid #f9b627; background-color:#303030;}
 #header:after{content:""; display:block; clear:both; height:0; visibility:hidden;}
-#header h1{padding:30px 0 16px;}
 /*#header h1 a{display:block; width:121px; height:33px; background:url('../images/common/header_logo.jpg') no-repeat;} 20201029 변경전*/
 #header h1 a{display:block; width:159px; height:18px; background:url('../header_logo2.png') no-repeat;}
 #header .nav{position:absolute; top:20px; right:20px;}

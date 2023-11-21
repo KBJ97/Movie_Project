@@ -1,20 +1,46 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<link rel="stylesheet" th:href="@{/css/footer/css}">
 <div th:fragment="footer">
 
-
-
-<div id="footer">
-    <!-- inwrap -->
-    <div class="inwrap">
-        <div class="copy">Copyright © JoongAng Group All Rights Reserved. </div>
-    </div>
-    <!--//inwrap end -->
-</div>
-<!--//footer end -->
-</div>
-
+            <div>
+                <ul class="fnb">
+                    <li><a href="#">회사소개</a></li>
+                    <li><a href="#">인재채용</a></li>
+                    <li><a href="#">사회공헌</a></li>
+                    <li><a href="#">제휴/광고/부대사업문의</a></li>
+                    <li><a href="#">이용약관</a></li>
+                    <li><a href="#">위치기반서비스</a></li>
+                    <li class="privacy"><a href="#">개인정보처리방침</a></li>
+                    <li><a th:href="@{/policy/integrity}">윤리경영</a></li>
+                </ul>
+                <a href="#" class="btn-looking-theater"><i class="iconset ico-footer-search"></i>극장찾기</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="inner-wrap">
+                <div class="ci">REST Cinema</div>
+                <div class="footer-info">
+                    <div>
+                        <address>부산시 그린 아카데미</address>
+                        <p>ARS 1515-1515</p>
+                    </div>
+                    <p>대표자명 이재용</p>
+                    <p>· 개인정보보호책임자 이재용</p>
+                    <p>· 사업자등록번호 211-86-59478</p>
+                    <p>· 통신판매업신고번호 2023-서울성동-0177</p>
+                    <p class="copy">COPYRIGHT © MegaboxJoongAng, Inc. All rights reserved</p>
+                </div>
+                <div class="footer-sns">
+                    <a href="#"><i class="iconset ico-youtubeN">유튜브</i></a>
+                    <a href="#"><i class="iconset ico-twitterN">트위터</i></a>
+                    <a href="#"><i class="iconset ico-instagramN">인스타그램</i></a>
+                    <a href="#"><i class="iconset ico-facebookN">페이스북</i></a>
+                </div>
+            </div>
+        </div>
+        <div id="layer_looking_theater" class="layer_looking_theater"></div>
 </html>
 
 
