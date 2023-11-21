@@ -54,6 +54,18 @@
     </select>
 
 
+    <insert id="insertTheater">
+        INSERT INTO `theater`
+        SET
+        `theaterNum` = #{theaterNum},
+        `thName` = #{thName},
+        `region1Num` = #{region1Num},
+        `region2Num` = #{region2Num},
+        `theaterName` = #{theaterName}
+    </insert>
+
+
+
     <insert id="insertMovieInfo">
         INSERT INTO `movieInfo`
         SET
