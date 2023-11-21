@@ -119,35 +119,31 @@
                     </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>REST Cinema</td>
-                            <td></td>
-                            <th>
-                                <a href="#" class="moveBtn" data-no="10998" title="공지사항 상세보기">
-                                <span>공지사항</span>
-                                </a>
-                            </th>
-                            <td>2023.11.13</td>
-                        </tr>
+                    <tr th:each="notice:${notices}">
+                        <td>[[${notice.noticeNo}]]</td>
+                        <td>[[${notice.uid}]]</td>
+                        <td></td>
+                        <td>
+                            <a href="#" class="moveBtn" data-no=${notice.noticeNo}
+                               title="공지사항 상세보기">
+                                <span th:text="${notice.title}"></span>
+                            </a>
+                        </td>
+                        <td th:text="${#temporals.format(notice.rdate, 'yy-MM-dd')}">2012-12-20</td>
+                    </tr>
                     </tbody>
                 </table>
             </div>
 
             <!-- pagination -->
             <nav class="pagination">
-                <strong class="active">1</strong>
-                <a title="2페이지보기" href="javascript:void(0)" pagenum="2">2</a>
-                <a title="3페이지보기" href="javascript:void(0)" pagenum="3">3</a>
-                <a title="4페이지보기" href="javascript:void(0)" pagenum="4">4</a>
-                <a title="5페이지보기" href="javascript:void(0)" pagenum="5">5</a>
-                <a title="6페이지보기" href="javascript:void(0)" pagenum="6">6</a>
-                <a title="7페이지보기" href="javascript:void(0)" pagenum="7">7</a>
-                <a title="8페이지보기" href="javascript:void(0)" pagenum="8">8</a>
-                <a title="9페이지보기" href="javascript:void(0)" pagenum="9">9</a>
-                <a title="10페이지보기" href="javascript:void(0)" pagenum="10">10</a>
-                <a title="이후 10페이지 보기" href="javascript:void(0)" class="control next" pagenum="11">next</a>
-                <a title="마지막 페이지 보기" href="javascript:void(0)" class="control last" pagenum="553">last</a>
+                <a title="처음 페이지 보기" th:href="@{/cs/notice/pg=${pageStartNum}}" class="control first">first</a>
+                <a title="이전 10페이지 보기" href="#" class="control prev">prev</a>
+                <th:block th:each="num : ${#numbers.sequence(pageGroupStart, pageGroupEnd)}">
+                    <a th:title="${num}페이지보기" th:href="@{/cs/notice/pg=${num}}">[[${num}]]</a>
+                </th:block>
+                <a title="이후 10페이지 보기" href="#" class="control next">next</a>
+                <a title="마지막 페이지 보기" th:href="@{/cs/notice/pg=${lastPageNum}}" class="control last">last</a>
             </nav>
             <!--// pagination -->
         </div>

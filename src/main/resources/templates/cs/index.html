@@ -17,10 +17,9 @@
             <div class="inner-wrap">
                 <div class="location">
                     <span>Home</span>
-                    <a href="/support" title="고객센터 페이지로 이동">고객센터</a>
-                    <a href="/support" title="고객센터 페이지로 이동">고객센터 홈</a>
+                    <a th:href="@{/cs/index}" title="고객센터 페이지로 이동">고객센터</a>
+                    <a th:href="@{/cs/index}" title="고객센터 페이지로 이동">고객센터 홈</a>
                 </div>
-
             </div>
         </div>
 
@@ -60,7 +59,7 @@
                             </a>
                         </div>
                         <div class="block-content">
-                            <a href="/cs/faq" title="자주 묻는 질문 페이지로 이동">
+                            <a th:href="@{/cs/faq}" title="자주 묻는 질문 페이지로 이동">
                                 <p>
                                     <strong>자주 묻는 질문</strong>
                                     자주 묻는 질문<br>빠르고 간편하게 검색하세요.
@@ -68,7 +67,7 @@
                             </a>
                         </div>
                         <div class="block-content">
-                            <a href="/cs/notice" title="1:1 문의 페이지로 이동">
+                            <a th:href="@{/cs/notice}" title="1:1 문의 페이지로 이동">
                                 <p>
                                     <strong>공지사항</strong>
                                     공지사항<br>고객님들께 알립니다.
@@ -76,7 +75,7 @@
                             </a>
                         </div>
                         <div class="block-content">
-                            <a href="/cs/qna" title="1:1 문의 페이지로 이동">
+                            <a th:href="@{/cs/qna}" title="1:1 문의 페이지로 이동">
                                 <p>
                                     <strong>1:1 문의</strong>
                                     해결되지 않은 문제가 있나요?<br>1:1문의로 문의주세요.
@@ -84,10 +83,9 @@
                             </a>
                         </div>
                         <div class="block-content">
-                            <a href="/support/lost" title="분실물 문의 페이지로 이동">
+                            <a href="#" title="분실물 문의 페이지로 이동">
                                 <p>
                                     <strong></strong>
-
                                 </p>
                             </a>
                         </div>
@@ -98,11 +96,10 @@
                             <div class="tit-area">
                                 <h3 class="tit small">자주 묻는 질문 BEST5</h3>
 
-                                <a href="/cs/faq" class="more" title="더보기">더보기 <i class="iconset ico-arr-right-gray ml07"></i></a>
+                                <a th:href="@{/cs/faq}" class="more" title="더보기">더보기 <i class="iconset ico-arr-right-gray ml07"></i></a>
                             </div>
                             <div class="">
                                 <ol class="decimal-list">
-
                                     <li>
                                         <a href="#" class="faqBtn" data-idx="1" title="질문 상세보기">
                                             <span class="font-roboto">1</span>&nbsp;
@@ -110,7 +107,6 @@
                                             <span class="date">2023.07.12</span>
                                         </a>
                                     </li>
-
                                     <li>
                                         <a href="#" class="faqBtn" data-idx="2" title="질문 상세보기">
                                             <span class="font-roboto">2</span>&nbsp;
@@ -118,7 +114,6 @@
                                             <span class="date">2023.07.12</span>
                                         </a>
                                     </li>
-
                                     <li>
                                         <a href="#" class="faqBtn" data-idx="3" title="질문 상세보기">
                                             <span class="font-roboto">3</span>&nbsp;
@@ -126,7 +121,6 @@
                                             <span class="date">2023.07.12</span>
                                         </a>
                                     </li>
-
                                     <li>
                                         <a href="#" class="faqBtn" data-idx="4" title="질문 상세보기">
                                             <span class="font-roboto">4</span>&nbsp;
@@ -142,7 +136,6 @@
                                             <span class="date">2023.07.12</span>
                                         </a>
                                     </li>
-
                                 </ol>
                             </div>
                         </div>
@@ -150,73 +143,41 @@
                         <div class="block right">
                             <div class="tit-area">
                                 <h3 class="tit small">공지사항</h3>
-
-                                <a href="/cs/notice" class="more" title="더보기">더보기 <i class="iconset ico-arr-right-gray ml07"></i></a>
+                                <a th:href="@{/cs/notice}" class="more" title="더보기">더보기 <i class="iconset ico-arr-right-gray ml07"></i></a>
                             </div>
-
                             <div class="decimal-list">
                                 <ol>
-
                                     <li>
                                         <a href="#" class="moveBtn" data-no="10998" title="공지사항 상세보기">
-
-
                                             <span class="font-gblue"><i class="iconset ico-notice"></i> [공지]</span>
-
-
-
                                             메가박스 개인정보 처리 방침 변경 안내
                                             <span class="date">2023.11.13</span>
                                         </a>
                                     </li>
-
                                     <li>
                                         <a href="#" class="moveBtn" data-no="10997" title="공지사항 상세보기">
-
-
-
                                             <span class="font-purple"><i class="iconset ico-marker"></i> [코엑스]</span>
-
-
                                             [코엑스]시사회 진행에 따른 고객 안내 (11/16)
                                             <span class="date">2023.11.13</span>
                                         </a>
                                     </li>
-
                                     <li>
                                         <a href="#" class="moveBtn" data-no="10996" title="공지사항 상세보기">
-
-
-
                                             <span class="font-purple"><i class="iconset ico-marker"></i> [송도]</span>
-
-
                                             [송도] Dolby Atmos관(구 MX관) 리뉴얼 공사
                                             <span class="date">2023.11.10</span>
                                         </a>
                                     </li>
-
                                     <li>
                                         <a href="#" class="moveBtn" data-no="10995" title="공지사항 상세보기">
-
-
                                             <span class="font-gblue"><i class="iconset ico-notice"></i> [공지]</span>
-
-
-
                                             제 11회 시네마리플레이 진행 공지
                                             <span class="date">2023.11.08</span>
                                         </a>
                                     </li>
-
                                     <li>
                                         <a href="#" class="moveBtn" data-no="10994" title="공지사항 상세보기">
-
-
                                             <span class="font-gblue"><i class="iconset ico-notice"></i> [공지]</span>
-
-
-
                                             [해피머니] IDC 네트워크 정기점검 안내 (11/12)
                                             <span class="date">2023.11.07</span>
                                         </a>
