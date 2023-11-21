@@ -1,10 +1,7 @@
 package com.cinema.admin.controller;
 
 
-import com.cinema.admin.dto.FileDTO;
-import com.cinema.admin.dto.MovieDTO;
-import com.cinema.admin.dto.MovieInfoDTO;
-import com.cinema.admin.dto.RegionDTO;
+import com.cinema.admin.dto.*;
 import com.cinema.admin.mapper.MovieMapper;
 import com.cinema.admin.service.MovieService;
 import jakarta.transaction.Transactional;
@@ -106,8 +103,30 @@ public class MovieController {
     @GetMapping(value = "/admin/theaterRegister")
     public String theaterRegister(Model model) {
 
+        List<RegionDTO> region1List = movieService.selectRegion1Ajax();
+
+
+        log.info("region1List = " + region1List.get(0).getRegion1Name());
+
+        model.addAttribute("region1List", region1List);
         return "/admin/board/theaterRegister";
     }
+
+
+    @PostMapping(value = "/admin/theaterRegister")
+    public String theaterRegister(Model model, TheaterDTO theaterDTO) {
+
+        log.info("theaterDTO : " + theaterDTO);
+
+        //theaterDTO.setTheaterNum(100);
+
+        movieService.insertTheater(theaterDTO);
+
+
+        return "/admin/board/theaterRegister";
+    }
+
+
 
 
     @DeleteMapping("/admin/movieList/deleteMovie/{movieNum}")

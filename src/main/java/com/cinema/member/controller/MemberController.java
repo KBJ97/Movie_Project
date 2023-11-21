@@ -6,24 +6,32 @@ import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Log4j2
 @Controller
-public class memberController {
+public class MemberController {
 
     private final MemberService memberService;
 
     @Autowired
-    public memberController(MemberService memberService) {
+    public MemberController(MemberService memberService) {
         this.memberService = memberService;
     }
 
     @GetMapping("/member/login")
-    public String login() {
+    public String login(Model model, String success) {
+        model.addAttribute("success", success);
         return "/member/login";
     }
+
+    @GetMapping("/member/loginmodal")
+    public String loginmodal() {
+        return "/member/loginmodal";
+    }
+
 
     @GetMapping("/member/register")
     public String join() {
@@ -33,14 +41,10 @@ public class memberController {
     @PostMapping("/member/register")
     public String register(MemberDTO dto, HttpServletRequest request) {
         // 사용자에게 비밀번호 입력 받기
-        String userPassword = request.getParameter("password"); // 사용자 입력 필드의 이름을 적절히 변경
-
-        // 여기서 dto의 값들이 정상적으로 들어오는지 로그로 확인
-        log.info("Received DTO: {}", dto);
+        String userPassword = request.getParameter("pass1");
 
         // 사용자가 입력한 비밀번호를 DTO에 설정
         dto.setPass1(userPassword);
-
         memberService.save(dto);
         return "redirect:/member/login?success=200";
     }

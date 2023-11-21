@@ -12,7 +12,7 @@ import lombok.*;
 public class MemberDTO {
     private String uid;
     private String name;
-    private String pass1; // 변경된 부분
+    private String pass1;
     private String hp;
     private int gender;
     private int point;
@@ -23,7 +23,7 @@ public class MemberDTO {
         return MemberEntity.builder()
                 .uid(uid)
                 .name(name)
-                .pass1(pass1) // 변경된 부분
+                .pass(pass1)
                 .hp(hp)
                 .gender(gender)
                 .point(point)

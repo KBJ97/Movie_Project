@@ -26,4 +26,7 @@ public interface MovieMapper {
     public void insertFileCinema(FileDTO fileDTO);
 
     public void deleteMovie(int movieNum);
+
+    public void insertTheater(TheaterDTO theaterDTO);
+
 }
