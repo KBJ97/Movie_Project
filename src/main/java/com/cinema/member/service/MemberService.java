@@ -18,7 +18,10 @@ public class MemberService {
     private PasswordEncoder passwordEncoder;
 
     public void save(MemberDTO dto){
-        dto.setPass(passwordEncoder.encode(dto.getPass())); // 비밀번호 암호화
+        // 여기서 dto의 값들이 정상적으로 들어오는지 로그로 확인
+        log.info("Received DTO in service: {}", dto);
+
+        dto.setPass1(passwordEncoder.encode(dto.getPass1())); // 변경된 부분
         MemberEntity entity = dto.toEntity(); // DTO를 Entity로 변환
         memberRepository.save(entity); // DB insert
     }
@@ -31,13 +34,13 @@ public class MemberService {
         return memberRepository.countByHp(hp);
     }
 
-    // 비밀번호 찾기를 통한 비밀번호 재설정
-    public void updatePass(String uid, String pass) {
-        pass = passwordEncoder.encode(pass);
-        MemberEntity entity = memberRepository.findById(uid).get();
-        entity.setPass(pass);
-        memberRepository.save(entity);
-    }
+//    // 비밀번호 찾기를 통한 비밀번호 재설정
+//    public void updatePass(String uid, String pass) {
+//        pass = passwordEncoder.encode(pass);
+//        MemberEntity entity = memberRepository.findById(uid).get();
+//        entity.setPass(pass);
+//        memberRepository.save(entity);
+//    }
 
 //    // 회원 탈퇴
 //    public void updateWdate(String uid) {

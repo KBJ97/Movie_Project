@@ -78,11 +78,11 @@ public class SecurityConfiguration implements WebMvcConfigurer {
 
                 // 인가 권한 설정
                 .authorizeHttpRequests(authorizeHttpRequests -> authorizeHttpRequests
-                        .requestMatchers("/manager/**").hasAnyAuthority("ADMIN", "MANAGER")
-                        .requestMatchers("/guest/**").permitAll()
-                        .requestMatchers("/user/**").permitAll()
+                        .requestMatchers("/admin/**").permitAll() //hasAnyRole("","")
+                        .requestMatchers("/member/**").permitAll()
+                        .requestMatchers("/").permitAll()
                         .requestMatchers("/**").permitAll()
-                        .requestMatchers("/css/**", "/images/**", "/js/**").permitAll());
+                        .requestMatchers("/vendor/**", "/js/**", "/dist/**", "/data/**", "/less/**", "/css/**").permitAll());
 
         return http.build();
     }
