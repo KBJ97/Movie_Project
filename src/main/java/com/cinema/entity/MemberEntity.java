@@ -21,21 +21,19 @@ public class MemberEntity {
     @Id
     private String uid;
     private String name;
-    private String pass1;
+    private String pass;
     private String hp;
     private int gender;
     private int point;
-
+    private String type;
     @Column(name = "birth")
     private String birth;
-
-    private String type;
 
     public MemberDTO toDTO() {
         return MemberDTO.builder()
                 .uid(uid)
                 .name(name)
-                .pass1(pass1)
+                .pass1(pass)
                 .hp(hp)
                 .gender(gender)
                 .point(point)
