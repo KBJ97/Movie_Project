@@ -3,6 +3,7 @@
       xmlns:layout="http://www.thymeleaf.org/"
       layout:decorate="/admin/board/layout.html">
 <head>
+
     <style>
         * {
             margin: 0;
@@ -189,6 +190,17 @@
             outline: none;
             border: none;
         }
+
+        #register .addr .btnZip{
+            width: 100px;
+            height: 25px;
+            font-size: 12px;
+
+        }
+
+        #register .addr input[type="text"]{
+            margin-top: 10px;
+        }
     </style>
 
     <script>
@@ -250,7 +262,7 @@
 
                 roomCount++; // 극장 번호를 증가시킵니다.
                 const rectangles = newRoom.querySelectorAll('.rectangle'); // 모든 .rectangle 요소를 찾습니다.
-                rectangles[0].innerHTML = `<input type="text" value="${roomCount}관" name="rooms[${roomCount-1}].room" readonly>`;
+                rectangles[0].innerHTML = `${roomCount}관`;
                 rectangles[0].insertAdjacentHTML('beforeend', '<i class="fas fa-pencil-alt"></i>'); // 첫 번째 .rectangle에 아이콘을 추가합니다.
                 rectangles[1].innerHTML="";
 
@@ -267,7 +279,7 @@
             function initSeats() {}
 
             function generateSeats() {
-
+                let size = document.querySelectorAll(".room").length;
                 console.log('generateSeats...1 : ' + roomCount);
 
                 const rowsInput = document.getElementById("rows");
@@ -301,8 +313,8 @@
                 // 텍스트로 삽입
                 secondRectangleDiv.innerHTML = `행: <input type="number" value="${rows}" name="rooms[${roomCount - 1}].rowsTheater"> <br>
                                                 열: <input type="number" value="${cols}" name="rooms[${roomCount - 1}].colsTheater"> <br>
-                                                총좌석: <input type="number" value="${totalSeats}" name="rooms[${roomCount - 1}].totalSeats"><br>`
-
+                                                총좌석: <input type="number" value="${totalSeats}" name="rooms[${roomCount - 1}].totalSeats"><br>
+                                                <input type="hidden" value="${size}관" name="rooms[${roomCount - 1}].roomName"><br>`
 
 
                 for (let i = 1; i <= rows; i++) {
@@ -499,91 +511,105 @@
 
 </head>
 
-        <div id="register" layout:fragment="content">
-            <div id="register_detail">
-                극장 등록
-                <hr/>
+<div id="register" layout:fragment="content">
+    <div id="register_detail">
+        극장 등록
+        <hr/>
 
-                <section>
-                    <form th:action="@{/admin/theaterRegister}" method="post">
-                        <table class="addTheater">
-                            <tr>
-                                <td>영화관 이름</td>
-                                <td>
-                                    <input type="text" name="thName"/>
-                                </td>
-                            </tr>
+        <section>
+            <form th:action="@{/admin/theaterRegister}" method="post">
+                <table class="addTheater">
+                    <tr>
+                        <td>영화관 이름</td>
+                        <td>
+                            <input type="text" name="thName"/>
+                        </td>
+                    </tr>
 
-                            <tr>
-                                <td>지역</td>
-                                <td>
-                                    <select id="region1" name="region1Num">
-                                        <option value='0'>-- 선택 --</option>
-                                        <option th:each="region1 : ${region1List}" th:value="${region1.region1Num}" th:text="${region1.region1Name}"></option>
-                                        <!-- 원하는 장르 옵션들을 추가하세요 -->
-                                    </select>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>상세 지역</td>
-                                <td>
-                                    <select id="region2" name="region2Num">
-                                        <option value='0'>-- 선택 --</option>
-                                        <option th:each="region1 : ${region1List}" th:value="${region1.region1Num}" th:text="${region1.region1Name}"></option>
-                                        <!-- 원하는 장르 옵션들을 추가하세요 -->
-                                    </select>
-                                </td>
-                            </tr>
-
-                           <tr>
-                               <td>상영관</td>
-                               <td>
-                                   <div class="wrapper">
-                                       <div class="room">
-                                           <div class="rectangle">
-                                               <input type="text" value="1관" name="rooms[0].room" readonly>
-                                               <i class="fas fa-pencil-alt icon detail_seats"></i>
-                                           </div>
-                                           <div class="rectangle">
-
-                                           </div>
-                                       </div>
-                                   </div>
-                               </td>
-                           </tr>
-                            <tr>
-                                <td></td>
-                                <td>
-                                    <button type="button" class="add-button">극장 추가하기</button>
-                                </td>
-                            </tr>
-                            <!-- 등록과 취소 버튼 -->
-                            <tr>
-                                <td></td>
-                                <td>
-                                    <button type="submit">등록</button>
-                                    <button type="button">취소</button>
-                                </td>
-                            </tr>
-                        </table>
-
-                        <div class="grey-box" style="display: none">
-                            <div class="screen">스크린</div>
-                            <div class="button-container">
-                                <label for="rows">행 수 : </label>
-                                <input type="number" id="rows" min="1" max="11" name="rowsTheater">
-                                <label for="cols">열 수 : </label>
-                                <input type="number" id="cols" min="1" max="17" name="colsTheater">
-                                <button type="button" class="create-seats">좌석 생성</button>
-                                <button type="button" class="check-seats">확인</button>
+                    <tr>
+                        <td>지역</td>
+                        <td>
+                            <select id="region1" name="region1Num">
+                                <option value='0'>-- 선택 --</option>
+                                <option th:each="region1 : ${region1List}" th:value="${region1.region1Num}" th:text="${region1.region1Name}"></option>
+                                <!-- 원하는 장르 옵션들을 추가하세요 -->
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>상세 지역</td>
+                        <td>
+                            <select id="region2" name="region2Num">
+                                <option value='0'>-- 선택 --</option>
+                                <option th:each="region1 : ${region1List}" th:value="${region1.region1Num}" th:text="${region1.region1Name}"></option>
+                                <!-- 원하는 장르 옵션들을 추가하세요 -->
+                            </select>
+                        </td>
+                    </tr>
+                    <tr class="addr">
+                        <th>주소</th>
+                        <td>
+                            <div>
+                                <input type="text" name="zip" id="zip" placeholder="우편번호 찾기 클릭" readonly/>
+                                <button type="button" class="btnZip" onclick="zipcode()">우편번호 찾기</button>
                             </div>
-                            <div class="seat-wrapper"></div>
-                        </div>
+                            <div>
+                                <input type="text" name="addr1" id="addr1" size="50" placeholder="주소를 검색하세요." readonly />
+                            </div>
+                            <div>
+                                <input type="text" name="addr2" id="addr2" size="50" placeholder="상세주소를 입력하세요." />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>상영관</td>
+                        <td>
+                            <div class="wrapper">
+                                <div class="room">
+                                    <div class="rectangle">
+                                        <input type="text" value="1관" name="rooms[0].room" readonly>
+                                        <i class="fas fa-pencil-alt icon detail_seats"></i>
+                                    </div>
+                                    <div class="rectangle">
 
-                    </form>
-                </section>
-            </div>
-        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <button type="button" class="add-button">극장 추가하기</button>
+                        </td>
+                    </tr>
+                    <!-- 등록과 취소 버튼 -->
+                    <tr>
+                        <td></td>
+                        <td>
+                            <button type="submit">등록</button>
+                            <button type="button">취소</button>
+                        </td>
+                    </tr>
+                </table>
+
+                <div class="grey-box" style="display: none">
+                    <div class="screen">스크린</div>
+                    <div class="button-container">
+                        <label for="rows">행 수 : </label>
+                        <input type="number" id="rows" min="1" max="11" name="rowsTheater">
+                        <input type="hidden" id="size" min="1" name="roomName">
+                        <label for="cols">열 수 : </label>
+                        <input type="number" id="cols" min="1" max="17" name="colsTheater">
+                        <button type="button" class="create-seats">좌석 생성</button>
+                        <button type="button" class="check-seats">확인</button>
+                    </div>
+                    <div class="seat-wrapper"></div>
+                </div>
+
+            </form>
+        </section>
+    </div>
+</div>
 
 </html>

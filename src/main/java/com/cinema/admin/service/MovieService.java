@@ -131,14 +131,23 @@ public class MovieService {
         movieMapper.deleteMovie(movieNum);
    }
 
-   public void insertTheater(TheaterDTO theaterDTO){
-        movieMapper.insertTheater(theaterDTO);
+    public void insertTheater(TheaterDTO theaterDTO){
 
-        for(RoomDTO roomDTO : theaterDTO.getRooms()){
-            movieMapper.insertRoom(roomDTO);
-        }
+            List<RoomDTO> newList = new ArrayList<>();
 
-   }
+            for(RoomDTO roomDTO: theaterDTO.getRooms()){
+                theaterDTO.setRoomName(roomDTO.getRoomName());
+                 movieMapper.insertTheater(theaterDTO);
+            }
+
+            for(RoomDTO roomDTO: theaterDTO.getRooms()){
+                roomDTO.setTheaterNum(theaterDTO.getTheaterNum());
+                newList.add(roomDTO);
+            }
+
+           movieMapper.insertRooms(newList);
+
+    }
 
    public int movieCount(){
         return movieMapper.movieCount();

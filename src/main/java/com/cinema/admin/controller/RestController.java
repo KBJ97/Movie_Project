@@ -40,11 +40,11 @@ public class RestController {
     @ResponseBody
     @DeleteMapping("/admin/movieRegisterList/deleteMovie/{movieNum}")
     @Transactional
-    public String deleteMovie(@PathVariable("movieNum") int movieNum) {
+    public void deleteMovie(@PathVariable("movieNum") int movieNum) {
 
         movieService.deleteMovie(movieNum);
 
-        return "/admin/board/movieRegisterList";
+
     }
 
 
