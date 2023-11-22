@@ -17,8 +17,8 @@
         <div class="inner-wrap">
             <div class="location">
                 <span>Home</span>
-                <a href="/support" title="고객센터 페이지로 이동">고객센터</a>
-                <a href="/support/notice" title="공지사항 페이지로 이동">공지사항</a>
+                <a th:href="@{/cs/index}" title="고객센터 페이지로 이동">고객센터</a>
+                <a th:href="@{/cs/notice}" title="공지사항 페이지로 이동">공지사항</a>
             </div>
         </div>
     </div>
@@ -140,7 +140,7 @@
                 <a title="처음 페이지 보기" th:href="@{/cs/notice/pg=${pageStartNum}}" class="control first">first</a>
                 <a title="이전 10페이지 보기" href="#" class="control prev">prev</a>
                 <th:block th:each="num : ${#numbers.sequence(pageGroupStart, pageGroupEnd)}">
-                    <a th:title="${num}페이지보기" th:href="@{/cs/notice/pg=${num}}">[[${num}]]</a>
+                    <a th:href="@{/cs/notice/pg=${num}}">[[${num}]]</a>
                 </th:block>
                 <a title="이후 10페이지 보기" href="#" class="control next">next</a>
                 <a title="마지막 페이지 보기" th:href="@{/cs/notice/pg=${lastPageNum}}" class="control last">last</a>
