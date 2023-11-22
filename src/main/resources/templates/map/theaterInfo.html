@@ -1,13 +1,9 @@
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="/layout.html">
-<link rel="stylesheet" th:href="@{/map/css/min.css}" media="all">
-<link rel="stylesheet" th:href="@{/css/footer.css}"/>
-<script th:src="@{/map/js/hmac-sha256.js}"></script>
-<script th:src="@{/map/js/enc-base64-min.js}"></script>
-<script th:src="@{/map/js/simpleBokd.js}"></script>
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <!--  layout:decorate="/map/map_layout.html-->"
 
-<div class="map road" layout:fragment="content">
+<div class="map theaterInfo" layout:fragment="content">
     <div class="theater-info-text mt40">
         <p class="big">
             2호선 강남역과 9호선 신논현역을 잇는 생동감 넘치는 강남의 중심 벨트!! 문화와 쇼핑을 한번에!!<br>강남에서 가장 큰 상영관에서 압도되는 영상을 경험하세요.
@@ -16,7 +12,6 @@
     </div>
 
     <h2 class="tit small mt70">시설안내</h2>
-
     <h3 class="tit small">보유시설</h3>
 
     <div class="theater-facility">
