@@ -1,4 +1,4 @@
-package com.cinema.entity;
+package com.cinema.member.entity;
 
 import com.cinema.member.dto.MemberDTO;
 import jakarta.persistence.Column;

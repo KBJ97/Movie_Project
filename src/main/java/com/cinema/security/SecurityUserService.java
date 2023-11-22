@@ -1,6 +1,6 @@
 package com.cinema.security;
 
-import com.cinema.entity.MemberEntity;
+import com.cinema.member.entity.MemberEntity;
 import com.cinema.member.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

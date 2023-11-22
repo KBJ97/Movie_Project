@@ -1,6 +1,6 @@
 package com.cinema.security;
 
-import com.cinema.entity.MemberEntity;
+import com.cinema.member.entity.MemberEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
