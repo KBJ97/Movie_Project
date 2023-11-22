@@ -1,6 +1,5 @@
-map js
+/*map js*/
 
-<script type="text/javascript">
         /*전역변수
         아이디
         패스워드  입력 완료 체크 변수 필요
@@ -1417,8 +1416,7 @@ map js
             }
         }
 
-    </script>
-    <script type="text/javascript">
+
         var simpleLoginWithPopup;
         var simpleLoginWith = function(lnkgTy){
             var url = "/on/oc/ocz/SimpleLogin/simpleLogin.do?lnkgTy=" + lnkgTy;
@@ -1464,8 +1462,7 @@ map js
             // 레이어 호출
             $(document).find('#aNonMbLogin').click();
         }
-    </script>
-    <script type="text/javascript">
+
         var fn_LoginWithCallBack = function(paramData){
             $.ajaxMegaBox({
                 url: "/on/oc/ocz/SimpleLogin/selectSimpleLogin.do",
@@ -1497,4 +1494,3 @@ map js
                 simpleLoginWith($(this).attr("lnkgTy"));
             });
         });
-    </script>

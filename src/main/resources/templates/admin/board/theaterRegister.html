@@ -104,14 +104,6 @@
             transform: translateY(-50%);
         }
 
-        #register .rectangle:nth-child(2) {
-            width: 180px;
-            height: 80px;
-            border: 2px solid black;
-            background-color: white;
-            box-sizing: border-box;
-            margin-bottom: -2px;
-        }
 
         /* 스타일링 */
         .grey-box {
@@ -152,10 +144,6 @@
             margin-left: 10px; /* 버튼과 체크박스 사이 여백 설정 */
         }
 
-        input[type=number] {
-            margin: 10px; /* 숫자 입력 필드에 20px의 마진을 줍니다. */
-        }
-
         #register .grey-box .create-seats{
             width: 50px;
             height: 30px;
@@ -166,6 +154,40 @@
             width: 50px;
             height: 30px;
             font-size: 11px;
+        }
+
+        #register .rectangle:nth-child(2) {
+            width: 180px;
+            height: 80px;
+            border: 2px solid black;
+            background-color: white;
+            box-sizing: border-box;
+            margin-bottom: -2px;
+            display: inline-block;
+            font-size: 14px;
+
+        }
+
+        #register .rectangle:nth-child(2) input {
+            margin-top: 5px;
+            margin-left: 5px;
+            width: 35px;
+            border: none;
+        }
+        #register .rectangle:nth-child(2) input {
+            outline: none;
+        }
+
+        .rectangle input[type="number"] {
+            width: 40px;
+            outline: none;
+            border: none;
+        }
+
+        .rectangle input[type="text"] {
+            width: 40px;
+            outline: none;
+            border: none;
         }
     </style>
 
@@ -223,18 +245,17 @@
                 const wrapper = document.querySelector('.wrapper');
 
                 const room = document.querySelector('.room'); // .room 요소를 가져옵니다.
+
                 const newRoom = room.cloneNode(true); // .room을 복제합니다.
 
                 roomCount++; // 극장 번호를 증가시킵니다.
                 const rectangles = newRoom.querySelectorAll('.rectangle'); // 모든 .rectangle 요소를 찾습니다.
-                rectangles[0].innerText = roomCount + '관'; // 첫 번째 .rectangle에 번호를 추가합니다.
+                rectangles[0].innerHTML = `<input type="text" value="${roomCount}관" name="rooms[${roomCount-1}].room" readonly>`;
                 rectangles[0].insertAdjacentHTML('beforeend', '<i class="fas fa-pencil-alt"></i>'); // 첫 번째 .rectangle에 아이콘을 추가합니다.
+                rectangles[1].innerHTML="";
 
                 wrapper.appendChild(newRoom); // 복제한 .room을 wrapper에 추가합니다.
             }
-
-
-
 
             let test = [];
             let selectedSeats = new Array();
@@ -243,15 +264,19 @@
             let clicked = "";
             let div = "";
 
-
             function initSeats() {}
 
             function generateSeats() {
+
+                console.log('generateSeats...1 : ' + roomCount);
+
                 const rowsInput = document.getElementById("rows");
                 const colsInput = document.getElementById("cols");
                 const rows = parseInt(rowsInput.value);
                 const cols = parseInt(colsInput.value);
 
+
+                console.log('generateSeats...2');
                 // 행이 11 이상이거나 열이 17 이상인 경우 생성을 막고 알림 표시
                 if (rows > 11 || cols > 17) {
                     alert("더 이상 추가할 수 없습니다. 행은 11까지, 열은 17까지 생성 가능합니다.");
@@ -261,20 +286,23 @@
                 // 좌석 생성 전에 기존 좌석을 초기화
                 seatWrapper.innerHTML = '';
 
+                console.log('generateSeats...3');
 
                 // 총 좌석 수 계산
                 const totalSeats = rows * cols;
 
-                // 좌석 생성 및 총 좌석 수 업데이트
-                // 이 부분에서 좌석을 생성하고 화면에 표시하는 코드 작성
-                // 그리고 총 좌석 수를 해당 요소에 표시하는 방법을 구현
+                // 좌석 생성 및 총 좌석 수
 
                 // 행, 열, 총 좌석 수를 두 번째 rectangle 클래스를 가진 요소에 텍스트로 삽입
-                const rectangles = document.querySelectorAll('.rectangle');
-                // 두 번째 요소는 인덱스 1에 위치합니다.
+                const rooms = document.querySelectorAll('.room')[roomCount - 1];
+                const rectangles = rooms.querySelectorAll('.rectangle');
+                // 두 번째 rectangles 위치
                 const secondRectangleDiv = rectangles[1];
                 // 텍스트로 삽입
-                secondRectangleDiv.innerHTML = `행: ${rows} <br> 열: ${cols} <br> 총좌석: ${totalSeats}`;
+                secondRectangleDiv.innerHTML = `행: <input type="number" value="${rows}" name="rooms[${roomCount - 1}].rowsTheater"> <br>
+                                                열: <input type="number" value="${cols}" name="rooms[${roomCount - 1}].colsTheater"> <br>
+                                                총좌석: <input type="number" value="${totalSeats}" name="rooms[${roomCount - 1}].totalSeats"><br>`
+
 
 
                 for (let i = 1; i <= rows; i++) {
@@ -480,12 +508,6 @@
                     <form th:action="@{/admin/theaterRegister}" method="post">
                         <table class="addTheater">
                             <tr>
-                                <td>영화관번호</td>
-                                <td>
-                                    <input type="text" name="theaterNum"/>
-                                </td>
-                            </tr>
-                            <tr>
                                 <td>영화관 이름</td>
                                 <td>
                                     <input type="text" name="thName"/>
@@ -519,7 +541,8 @@
                                <td>
                                    <div class="wrapper">
                                        <div class="room">
-                                           <div class="rectangle">1관
+                                           <div class="rectangle">
+                                               <input type="text" value="1관" name="rooms[0].room" readonly>
                                                <i class="fas fa-pencil-alt icon detail_seats"></i>
                                            </div>
                                            <div class="rectangle">

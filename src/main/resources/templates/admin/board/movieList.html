@@ -183,6 +183,9 @@
             font-weight: bold; /* 활성 페이지 텍스트 굵게 표시 (선택적) */
         }
     </style>
+
+
+
 </head>
 
 
@@ -219,12 +222,19 @@
                             </th:block>
                         </table>
 
+                        <!-- 페이지 네비게이션 -->
                         <div class="page">
-                            <a href="#" class="prev">이전</a>
-                            <a href="#" class="num on">1</a>
-                            <a href="#" class="num">2</a>
-                            <a href="#" class="num">3</a>
-                            <a href="#" class="next">다음</a>
+                            <th:block th:if="${pageGroupStart > 1}">
+                                <a th:href="@{/admin/movieList(pg=${pageGroupStart - 1})}" class="prev">이전</a>
+                            </th:block>
+
+                            <th:block th:each="num : ${#numbers.sequence(pageGroupStart, pageGroupEnd)}">
+                                <a th:href="@{/admin/movieList(pg=${num})}" th:class="${num == pg} ? 'on' : 'num'">[[${num}]]</a>
+                            </th:block>
+
+                            <th:block th:if="${pageGroupEnd < lastPageNum}">
+                                <a th:href="@{/admin/movieList(pg=${pageGroupEnd + 1})}" class="next">다음</a>
+                            </th:block>
                         </div>
                     </section>
                 </div>

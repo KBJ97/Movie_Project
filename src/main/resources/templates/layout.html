@@ -5,20 +5,20 @@
       xmlns="http://www.w3.org/1999/html"
       xmlns:sec="http://thymeleaf.org/extras/spring-security">
 <head>
-<link rel="stylesheet" href="@{/css/header.css}"/>
-<link rel="stylesheet" href="@{/css/footer.css}"/>
+<link rel="stylesheet" th:href="@{/css/header.css}"/>
+<link rel="stylesheet" th:href="@{/css/footer.css}"/>
 </head>
 <body>
 <div>
     <header id="header" class="main-header">
-        <h1 class="ci"><a href="#" title="REST Cinema 메인으로 가기">REST Cinema</a></h1>
+        <h1 class="ci"><a th:href="@{/}" title="REST Cinema 메인으로 가기">REST Cinema</a></h1>
 
         <!-- topGnb -->
         <div class="util-area">
             <div class="right-link">
-                <a href="#" title="로그인">로그인</a>
-                <a href="#" title="회원가입">회원가입</a>
-                <a href="#" title="고객센터">고객센터</a>
+                <a th:href="@{/member/login}" title="로그인">로그인</a>
+                <a th:href="@{/member/register}" title="회원가입">회원가입</a>
+                <a th:href="@{/cs/index}" title="고객센터">고객센터</a>
             </div>
         </div>
 

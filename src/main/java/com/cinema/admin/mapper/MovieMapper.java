@@ -11,7 +11,9 @@ public interface MovieMapper {
     public void insertMovie(MovieDTO movieDTO);
     public void insertFile(FileDTO fileDTO);
 
-    public List<MovieDTO> selectMovies();
+    public List<MovieDTO> selectMovies(int start, int end);
+
+    public List<MovieDTO> selectMovie();
 
     public List<RegionDTO> selectRegion2Ajax(int region1Num);
 
@@ -21,7 +23,7 @@ public interface MovieMapper {
 
     public void insertMovieInfo(MovieInfoDTO movieInfoDTO);
 
-    public List<MovieInfoDTO> selectMovieInfo();
+    public List<MovieInfoDTO> selectMovieInfo(int start, int end);
 
     public void insertFileCinema(FileDTO fileDTO);
 
@@ -29,4 +31,9 @@ public interface MovieMapper {
 
     public void insertTheater(TheaterDTO theaterDTO);
 
+    public void insertRoom(RoomDTO roomDTO);
+
+    public int movieCount();
+
+    public int movieInfoCount();
 }

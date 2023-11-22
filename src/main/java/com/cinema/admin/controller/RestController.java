@@ -37,5 +37,15 @@ public class RestController {
         return cinemaList;
     }
 
+    @ResponseBody
+    @DeleteMapping("/admin/movieRegisterList/deleteMovie/{movieNum}")
+    @Transactional
+    public String deleteMovie(@PathVariable("movieNum") int movieNum) {
+
+        movieService.deleteMovie(movieNum);
+
+        return "/admin/board/movieRegisterList";
+    }
+
 
 }
