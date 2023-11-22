@@ -136,4 +136,12 @@
         SELECT COUNT(*) FROM `movieInfo`
     </select>
 
+
+    <select id="selectTheaterByRegions" resultType="com.cinema.admin.dto.TheaterDTO">
+        SELECT *
+        FROM theater
+        WHERE region1Num = #{region1Num}
+        AND region2Num = #{region2Num}
+    </select>
+
 </mapper>
