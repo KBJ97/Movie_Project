@@ -1,6 +1,6 @@
 package com.cinema.member.repository;
 
-import com.cinema.entity.MemberEntity;
+import com.cinema.member.entity.MemberEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
