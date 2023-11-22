@@ -634,6 +634,14 @@ template {
     width: 29px;
     background-image: url(https://img.megabox.co.kr/static/pc/images/common/gnb/gnb-txt-benefit.png)
 }
+/*
+#gnb>ul>li>a.gnb-txt-cs {}
+
+#gnb>ul>li>a.gnb-txt-login {}
+
+#gnb>ul>li>a.gnb-txt-register {}
+*/
+
 
 #gnb .gnb-depth2 {
     display: none;
