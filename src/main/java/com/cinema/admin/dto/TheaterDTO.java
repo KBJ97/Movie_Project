@@ -19,8 +19,14 @@ public class TheaterDTO {
     private int ticketing;
     private String thName;
     private String seat;
-
-    @JsonProperty("room")
+    private String roomName;
+    
+    //추가필드
     private List<RoomDTO> rooms;
+
+    private String zip;
+    private String addr1;
+    private String addr2;
+
 
 }

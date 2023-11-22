@@ -7,6 +7,7 @@ import com.cinema.admin.service.MovieService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -235,7 +236,7 @@ public class MovieController {
     @PostMapping(value = "/admin/theaterRegister")
     public String theaterRegister(TheaterDTO theaterDTO) {
         log.info("theaterDTO : " + theaterDTO);
-        log.info("theaterDTO.getRooms : " + theaterDTO.getRooms());
+        //log.info("theaterDTO.getRooms : " + theaterDTO.getRooms());
 
 
         movieService.insertTheater(theaterDTO);
@@ -245,6 +246,12 @@ public class MovieController {
         return "/admin/board/theaterRegister";
     }
 
+
+    @GetMapping(value = "/admin/theaterList")
+    public String theaterList(Model model) {
+
+        return "/admin/board/theaterList";
+    }
 
 
 
