@@ -82,7 +82,7 @@ $(function(){
                 }
                 else
                 {
-                    $('.msgHp').css('color', 'green').text('사용 가능한 휴대폰번호입니다.');
+                    $('.msgJn').css('color', 'green').html('<i class="fas fa-check"></i> ');
                     isHpOk = true;
                 }
             }

@@ -7,12 +7,8 @@ let isUidOk       = false;
 let isPassOk      = false;
 let isNameOk      = false;
 let isEmailOk     = false;
+let isJuminOk     = false;
 let isHpOk        = false;
-let isCompanyOk   = false;
-let isBizRegNumOk = false;
-let isComRegNumOk = false;
-let isTelOk       = false;
-let isFaxOk       = false;
 
 // 데이터 검증에 사용하는 정규표현식
 const reUid     = /^[A-Za-z0-9]{4,12}$/;
@@ -88,7 +84,7 @@ $(function(){
 
 
     // 주민등록번호 유효성검증
-    $('input[name=birth]').on('input', function() {
+    $('input[name=birth]').on('input', function () {
         // 입력값이 숫자가 아니거나 0~9 사이의 값이 아닌 경우
         if (!/^[0-9]$/.test(this.value)) {
             this.value = this.value.replace(/[^0-9]/g, ''); // 0~9 이외의 문자 제거
@@ -97,7 +93,7 @@ $(function(){
     });
 
     // gender도 추가로 설정
-    $('input[name=gender]').on('input', function() {
+    $('input[name=gender]').on('input', function () {
         // 입력값이 숫자가 아니거나 1~4 사이의 값이 아닌 경우
         if (!/^[1-4]$/.test(this.value)) {
             this.value = this.value.replace(/[^1-4]/g, ''); // 1~4 이외의 문자 제거
@@ -111,14 +107,36 @@ $(function(){
         const gender = $('input[name=gender]').val();
 
         // 입력값이 유효한 경우
-        if (birth.length === 6 && gender.length === 1) {
+        if (isValidDate(birth) && gender.length === 1) {
             $('.msgJn').css('color', 'green').html('<i class="fas fa-check"></i> ');
+            isJuminOk = true;
         } else {
-            $('.msgJn').css('color', 'red').text('주민번호를 입력하세요.');
+            $('.msgJn').css('color', 'red').text('올바른 주민번호를 입력하세요.');
+            isJuminOk = false;
         }
-    }
+    };
 
-    //휴대폰번호 유효성 검증 함수
+    // 주민등록번호의 날짜 부분이 유효한지 검증하는 함수
+    function isValidDate(date) {
+        // 날짜가 6자리 숫자인지 확인
+        if (/^\d{6}$/.test(date)) {
+            const year = parseInt(date.substring(0, 2), 10);
+            const month = parseInt(date.substring(2, 4), 10);
+            const day = parseInt(date.substring(4, 6), 10);
+
+            // 실제 존재하는 날짜인지 확인
+            const isValidYear = year >= 00 && year <= 99;
+            const isValidMonth = month >= 1 && month <= 12;
+            const daysInMonth = new Date(year + 2000, month, 0).getDate();
+            const isValidDay = day >= 1 && day <= daysInMonth;
+
+            return isValidYear && isValidMonth && isValidDay;
+        }
+
+        return false;
+    };
+
+    // 휴대폰번호 유효성 검증 함수
     function formatPhoneNumber() {
         var phoneNumber = document.getElementById("hp").value.replace(/[^0-9]/g, ''); // 입력된 숫자만 추출
 
@@ -151,7 +169,7 @@ $(function(){
     // "input" 이벤트에서 formatPhoneNumber 함수를 트리거
     $('#hp').on('input', formatPhoneNumber);
 
-    // "focusout" 이벤트에서 유효성 검사를 트리거
+    // "focusout" 이벤트에서 유효성 검사를 트리거 ==                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         =
     $('input[name=hp]').focusout(function () {
         validatePhoneNumber($(this).val());
     });
@@ -172,6 +190,10 @@ $(function(){
         if (!isNameOk)
         {
             alert('이름을 확인하십시오.');
+            return false; // 폼 전송 취소
+        }
+        if (!isJuminOk) {
+            alert('주민등록번호를 확인하십시오.');
             return false; // 폼 전송 취소
         }
         if (!isHpOk)
