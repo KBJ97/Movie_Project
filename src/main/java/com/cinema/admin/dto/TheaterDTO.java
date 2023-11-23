@@ -23,6 +23,7 @@ public class TheaterDTO {
     
     //추가필드
     private List<RoomDTO> rooms;
+    private int totalSeats;
 
     private String zip;
     private String addr1;

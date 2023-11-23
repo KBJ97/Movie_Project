@@ -4,6 +4,7 @@ package com.cinema.admin.controller;
 import com.cinema.admin.dto.*;
 import com.cinema.admin.mapper.MovieMapper;
 import com.cinema.admin.service.MovieService;
+import com.cinema.member.dto.MemberDTO;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -190,7 +191,11 @@ public class MovieController {
     }
 
     @GetMapping(value = "/admin/userList")
-    public String userList() {
+    public String userList(Model model) {
+
+        List<MemberDTO> members = movieService.selectAllMembers();
+
+        model.addAttribute("members", members);
 
         return "/admin/board/userList";
     }
@@ -238,7 +243,6 @@ public class MovieController {
         log.info("theaterDTO : " + theaterDTO);
         //log.info("theaterDTO.getRooms : " + theaterDTO.getRooms());
 
-
         movieService.insertTheater(theaterDTO);
 
         log.info("movieService = " + movieService);
@@ -248,9 +252,13 @@ public class MovieController {
 
 
     @GetMapping(value = "/admin/theaterList")
-    public String theaterList(Model model, TheaterDTO theaterDTO) {
+    public String theaterList(Model model){
 
-        List<TheaterDTO> theaters = movieService.selectTheaterByRegions(theaterDTO);
+        List<RegionDTO> region1List = movieService.selectRegion1Ajax();
+        List<TheaterDTO> theaters = movieService.selectAllTheater();
+
+
+        model.addAttribute("region1List", region1List);
 
         model.addAttribute("theaters", theaters);
 

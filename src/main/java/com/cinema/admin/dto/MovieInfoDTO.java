@@ -30,6 +30,7 @@ public class MovieInfoDTO {
     private Time playTime;
 
     private int price;
+    private String roomName;
 
 
     // Getter

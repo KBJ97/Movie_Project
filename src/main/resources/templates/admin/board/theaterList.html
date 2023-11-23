@@ -195,28 +195,129 @@
             height: 30px;
         }
     </style>
+
+    <script>
+
+        window.onload = function (){
+            //1차 2차 카테고리 선택하기
+            // Region 1이 변경될 때의 이벤트 리스너
+            document.querySelector("#region1").addEventListener('change', function() {
+                // 선택된 Region 1 값
+                var selectedRegion1 = this.value;
+
+                console.log("selectedRegion1 = " + selectedRegion1);
+
+                // Region 2를 나타내는 DOM 요소
+                var selectedRegion2 = document.querySelector("#region2");
+                console.log("selectedRegion2 = " + selectedRegion2);
+
+                // 서버로 요청을 보낼 URL
+                var url = `/cinema/admin/timeRegister/${selectedRegion1}`;
+
+                console.log("지역1이 변경될 때 ");
+                console.log("selectedRegion1 = " + selectedRegion1);
+                console.log("selectedRegion2 = " + selectedRegion2);
+                console.log(url);
+
+                // XMLHttpRequest 객체 생성
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', url, true);
+
+                // 서버 응답이 도착했을 때의 처리
+                xhr.onload = function() {
+                    if (xhr.status >= 200 && xhr.status < 300) {
+                        // 이전 Region 2 옵션 제거
+                        while (selectedRegion2.firstChild) {
+                            selectedRegion2.removeChild(selectedRegion2.firstChild);
+                        }
+
+                        // 서버에서 받은 데이터 파싱
+                        var data = JSON.parse(xhr.response);
+
+                        // 상세 지역을 선택하는 기본 옵션 추가
+                        var defaultOptionRegion2 = document.createElement('option');
+                        defaultOptionRegion2.value = '0';
+                        defaultOptionRegion2.text = '상세 지역 선택';
+                        selectedRegion2.appendChild(defaultOptionRegion2);
+
+                        // 서버에서 받은 데이터로 옵션 추가
+                        data.forEach(function(region2) {
+                            var option = document.createElement('option');
+                            option.value = region2.region2Num;
+                            option.text = region2.region2Name;
+                            selectedRegion2.appendChild(option);
+                        });
+                    } else {
+                        console.error('상세지역을 가져오지 못했습니다.');
+                    }
+                };
+
+                // 서버에 요청 전송
+                xhr.send();
+            });
+
+            // Form이 제출될 때의 이벤트 리스너
+            var form = document.querySelector('form');
+            form.addEventListener('submit', function(e) {
+                // 선택한 Region 1, Region 2
+                var selectedRegion1 = document.querySelector('select[name="region1Num"]').value;
+                var selectedRegion2 = document.querySelector('select[name="region2Num"]').value;
+
+                console.log("마지막");
+                console.log("selectedRegion1 = " + selectedRegion1);
+                console.log("selectedRegion2 = " + selectedRegion2);
+
+
+                // Region 1, Region 2 또는 Cinema가 ''인 경우 처리
+                if (selectedRegion1 === '0' || selectedRegion2 === '0') {
+                    e.preventDefault(); // 양식 제출 방지
+
+                    // Region 1, Region 2 및 Cinema에 따라 알람 메시지 생성
+                    var alertMessage = '';
+                    if (selectedRegion1 === '0') {
+                        alertMessage += '지역를 선택하세요. ';
+                    }
+                    if (selectedRegion2 === '0') {
+                        alertMessage += '상세 지역을 선택하세요. ';
+                    }
+
+                    alert(alertMessage); // 경고 메시지 표시
+                }
+            });
+        }
+
+
+    </script>
+
+    <script>
+        $(document).ready(function(){
+            document.querySelector('#region2').addEventListener('change', function () {
+                var selectedRegion1 = document.querySelector('#region1').value;
+                var selectedRegion2 = this.value;
+                window.location.href = `/admin/theaterList?region1=${selectedRegion1}&region2=${selectedRegion2}`;
+            });
+        });
+    </script>
+
+
 </head>
         <div id="register" layout:fragment="content">
             <div id="register_detail">
-                회원 목록
+                상영관 목록
                 <hr/>
-
+            <!--
             <div class="theaterListOption">
-                <select id="regionSelect">
-                    <!-- 첫 번째 select 요소 -->
-                    <option value="seoul">서울</option>
-                    <option value="busan">부산</option>
-                    <!-- 다른 옵션들... -->
+                <select id="region1" name="region1Num">
+                    <option value='0'>-- 선택 --</option>
+                    <option th:each="region1 : ${region1List}" th:value="${region1.region1Num}" th:text="${region1.region1Name}"></option>
                 </select>
 
-                <select id="detailRegionSelect">
-                    <!-- 두 번째 select 요소 -->
-                    <option value="gangnam">강남구</option>
-                    <option value="jongro">종로구</option>
-                    <!-- 다른 옵션들... -->
+                <select id="region2" name="region2Num">
+                    <option value='0'>-- 선택 --</option>
+                    <option th:each="region1 : ${region1List}" th:value="${region1.region1Num}" th:text="${region1.region1Name}"></option>
                 </select>
             </div>
-
+            -->
 
                 <section>
 
@@ -233,7 +334,7 @@
                                 <td th:text="${theater.thName}">서면점</td>
                                 <td th:text="${theater.addr1 + ' ' + theater.addr2}">나도몰라주소</td>
                                 <td th:text="${theater.roomName}">1관</td>
-                                <td><a href="#">100</a></td>
+                                <td th:text="${theater.totalSeats}"><a href="#">100</a></td>
                                 <td><a href="#">삭제</a></td>
                             </tr>
                         </th:block>
