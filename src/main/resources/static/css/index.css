@@ -52,6 +52,7 @@ body {
   color: white;
   object-fit: contain;
   height: 448px;
+  margin-bottom: 30px;
 }
 
 .banner__contents {

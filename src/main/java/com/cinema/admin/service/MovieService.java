@@ -171,4 +171,7 @@ public class MovieService {
         return movieMapper.selectAllMembers();
     }
 
+    public List<CateDTO> selectAllCate(){
+        return movieMapper.selectAllCate();
+    }
 }
