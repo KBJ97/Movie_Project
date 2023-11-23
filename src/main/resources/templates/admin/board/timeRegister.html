@@ -221,7 +221,7 @@
                         data.forEach(function(cinema) {
                             var option = document.createElement('option');
                             option.value = cinema.theaterNum;
-                            option.text = cinema.theaterName;
+                            option.text = cinema.roomName;
                             selectedCinema.appendChild(option);
                         });
                     } else {
@@ -299,11 +299,11 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>상영 상영관</td>
+                                <td>상영관</td>
                                 <td>
                                     <select id="cinema" name="theaterNum">
                                         <option value=''>-- 선택 --</option>
-                                        <option th:each="theater : ${cinemaList}" th:value="${theater.theaterNum}" th:text="${theater.theaterNum}"></option>
+                                        <option th:each="theater : ${cinemaList}" th:value="${theater.theaterNum}" th:text="${theater.roomName}"></option>
                                         <!-- 원하는 장르 옵션들을 추가하세요 -->
                                     </select>
                                 </td>

@@ -2,6 +2,7 @@ package com.cinema.admin.service;
 
 import com.cinema.admin.dto.*;
 import com.cinema.admin.mapper.MovieMapper;
+import com.cinema.member.dto.MemberDTO;
 import lombok.RequiredArgsConstructor;
 
 import lombok.extern.log4j.Log4j2;
@@ -158,8 +159,16 @@ public class MovieService {
    }
 
 
-   public List<TheaterDTO> selectTheaterByRegions(TheaterDTO theaterDTO){
-        return movieMapper.selectTheaterByRegions(theaterDTO);
+   public List<TheaterDTO> selectAllTheater(){
+        return movieMapper.selectAllTheater();
    }
+
+    public List<TheaterDTO> selectTheaterByRegion(int region1Num, int regionNum2){
+        return movieMapper.selectTheaterByRegion(region1Num,regionNum2);
+    }
+
+    public List<MemberDTO> selectAllMembers(){
+        return movieMapper.selectAllMembers();
+    }
 
 }

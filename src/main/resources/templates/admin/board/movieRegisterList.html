@@ -200,24 +200,29 @@
             $('.movieListDelete').click(function (e) {
                 e.preventDefault();
                 var $link = $(this);
+                var $row = $link.closest('tr');
+
+                console.log("로우야 살아있니?");
+                console.log("$row = " + $row );
+                //$row.remove();
+
                 var num = $link.closest('tr').find('td:eq(9)').text();
 
                 console.log("num = " + num);
 
                 if (confirm('상품을 삭제하시겠습니까?')) {
-
                     $.ajax({
                         url: '/cinema/admin/movieRegisterList/deleteMovie/' + num,
                         type: 'DELETE',
-                        dataType: 'json',
                         success: function (data) {
-                            console.log(data);
+                            $row.remove();
                         },
                         error: function (xhr, status, error) {
-                            console.error(xhr.responseText);
                         }
                     });
                 }
+
+
             });
         });
 

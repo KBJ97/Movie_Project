@@ -194,25 +194,22 @@
                 <section>
                     <table>
                         <tr>
-                            <th>번호</th>
                             <th>아이디</th>
                             <th>이름</th>
-
                             <th>포인트</th>
                             <th>생년월일</th>
                             <th>Type</th>
-                            <th colspan="2">관리</th>
                         </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>a1234</td>
-                            <td>김유신</td>
-                            <td>1000P</td>
-                            <td>1988/11/01</td>
-                            <td>일반회원</td>
-                            <td><a href="#">수정</a></td>
-                            <td><a href="#">삭제</a></td>
-                        </tr>
+
+                        <th:block th:each="member:${members}">
+                            <tr>
+                                <td th:text="${member.uid}">a1234</td>
+                                <td th:text="${member.name}">김유신</td>
+                                <td th:text="${member.point}">1000P</td>
+                                <td th:text="${member.birth}">1988/11/01</td>
+                                <td th:text="${member.type}">일반회원</td>
+                            </tr>
+                        </th:block>
                     </table>
 
                     <div class="page">

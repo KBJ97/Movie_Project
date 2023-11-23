@@ -6,10 +6,8 @@ import com.cinema.admin.service.MovieService;
 import jakarta.transaction.Transactional;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -37,14 +35,14 @@ public class RestController {
         return cinemaList;
     }
 
-    @ResponseBody
+
     @DeleteMapping("/admin/movieRegisterList/deleteMovie/{movieNum}")
     @Transactional
-    public void deleteMovie(@PathVariable("movieNum") int movieNum) {
-
+    public ResponseEntity<String> deleteMovie(@PathVariable("movieNum") int movieNum) {
+        log.info(movieNum);
         movieService.deleteMovie(movieNum);
 
-
+        return ResponseEntity.ok("Movie deleted successfully");
     }
 
 

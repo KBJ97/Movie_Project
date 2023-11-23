@@ -137,11 +137,22 @@
     </select>
 
 
-    <select id="selectTheaterByRegions" resultType="com.cinema.admin.dto.TheaterDTO">
+    <select id="selectAllTheater" resultType="com.cinema.admin.dto.TheaterDTO">
         SELECT *
-        FROM theater
-        WHERE region1Num = #{region1Num}
-        AND region2Num = #{region2Num}
+        FROM `theater` a
+        INNER JOIN `room` b
+        ON a.theaterNum = b.theaterNum;
+    </select>
+
+    <select id="selectTheaterByRegion" resultType="com.cinema.admin.dto.TheaterDTO">
+        SELECT *
+        FROM `theater` a
+        INNER JOIN `room` b ON a.theaterNum = b.theaterNum
+        WHERE a.`region1Num` = #{region1Num} AND a.`region2Num` = #{region2Num}
+    </select>
+
+    <select id="selectAllMembers" resultType="com.cinema.member.dto.MemberDTO">
+        SELECT * FROM member
     </select>
 
 </mapper>

@@ -1,6 +1,7 @@
 package com.cinema.admin.mapper;
 
 import com.cinema.admin.dto.*;
+import com.cinema.member.dto.MemberDTO;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -37,7 +38,10 @@ public interface MovieMapper {
 
     public int movieInfoCount();
 
-    public List<TheaterDTO> selectTheaterByRegions(TheaterDTO theaterDTO);
+    public List<TheaterDTO> selectAllTheater();
 
+    public List<TheaterDTO> selectTheaterByRegion(int region1Num, int regionNum2);
+
+    public List<MemberDTO> selectAllMembers();
 
 }
