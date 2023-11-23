@@ -31,9 +31,10 @@ public interface MovieMapper {
 
     public void insertTheater(TheaterDTO theaterDTO);
 
-    public void insertRoom(RoomDTO roomDTO);
+    public void insertRooms(List<RoomDTO> RoomDTO);
 
     public int movieCount();
 
     public int movieInfoCount();
+
 }

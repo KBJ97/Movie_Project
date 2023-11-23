@@ -1,5 +1,5 @@
 package com.cinema.member.service;
-import com.cinema.entity.MemberEntity;
+import com.cinema.member.entity.MemberEntity;
 import com.cinema.member.dto.MemberDTO;
 import com.cinema.member.repository.MemberRepository;
 import lombok.extern.log4j.Log4j2;

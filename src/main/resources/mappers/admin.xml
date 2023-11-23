@@ -62,25 +62,32 @@
     </select>
 
 
-    <insert id="insertTheater">
+    <insert id="insertTheater" useGeneratedKeys="true" keyProperty="theaterNum">
         INSERT INTO theater
-        SET thName = #{thName}, region1Num = #{region1Num}, region2Num = #{region2Num}, room = #{room}
+        SET
+        thName = #{thName},
+        region1Num = #{region1Num},
+        region2Num = #{region2Num},
+        addr1 = #{addr1},
+        addr2 = #{addr2},
+        zip = #{zip},
+        roomName = #{roomName}
     </insert>
 
-
-    <insert id="insertRooms" parameterType="map">
-        INSERT INTO room (theaterNum, rowsTheater, colsTheater, totalSeats, room)
-        VALUES
-        <foreach collection="rooms" item="room" separator=",">
+    <insert id="insertRooms">
+        INSERT INTO room (theaterNum,roomName,rowsTheater,colsTheater,totalSeats) VALUES
+        <foreach collection="list" item="room" separator=",">
             (
-            #{room.theaterNum},
-            #{room.rowsTheater},
-            #{room.colsTheater},
-            #{room.totalSeats},
-            #{room.room}
+                #{room.theaterNum},
+                #{room.roomName},
+                #{room.rowsTheater},
+                #{room.colsTheater},
+                #{room.totalSeats}
             )
         </foreach>
     </insert>
+
+
 
 
     <insert id="insertMovieInfo">
@@ -127,6 +134,14 @@
 
     <select id="movieInfoCount" resultType="int">
         SELECT COUNT(*) FROM `movieInfo`
+    </select>
+
+
+    <select id="selectTheaterByRegions" resultType="com.cinema.admin.dto.TheaterDTO">
+        SELECT *
+        FROM theater
+        WHERE region1Num = #{region1Num}
+        AND region2Num = #{region2Num}
     </select>
 
 </mapper>

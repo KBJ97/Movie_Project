@@ -1,6 +1,6 @@
 package com.cinema.member.dto;
 
-import com.cinema.entity.MemberEntity;
+import com.cinema.member.entity.MemberEntity;
 import lombok.*;
 
 @Getter

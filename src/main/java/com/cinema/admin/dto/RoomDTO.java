@@ -12,12 +12,10 @@ import lombok.*;
 @Builder
 public class RoomDTO {
 
-    private String room;
+    private String roomName;
     private int rowsTheater;
     private int colsTheater;
     private int totalSeats;
     private int theaterNum;
-
-
 
 }

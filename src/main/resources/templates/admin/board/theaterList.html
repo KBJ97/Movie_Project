@@ -184,6 +184,16 @@
             font-size: 15px; /* 활성 페이지 글자 크기 설정 */
             font-weight: bold; /* 활성 페이지 텍스트 굵게 표시 (선택적) */
         }
+
+        .theaterListOption{
+            width: 350px;
+            height: 50px;
+        }
+
+        .theaterListOption select{
+            width: 100px;
+            height: 30px;
+        }
     </style>
 </head>
         <div id="register" layout:fragment="content">
@@ -191,26 +201,38 @@
                 회원 목록
                 <hr/>
 
+            <div class="theaterListOption">
+                <select id="regionSelect">
+                    <!-- 첫 번째 select 요소 -->
+                    <option value="seoul">서울</option>
+                    <option value="busan">부산</option>
+                    <!-- 다른 옵션들... -->
+                </select>
+
+                <select id="detailRegionSelect">
+                    <!-- 두 번째 select 요소 -->
+                    <option value="gangnam">강남구</option>
+                    <option value="jongro">종로구</option>
+                    <!-- 다른 옵션들... -->
+                </select>
+            </div>
+
+
                 <section>
+
                     <table>
                         <tr>
-                            <th>번호</th>
-                            <th>아이디</th>
-                            <th>이름</th>
-
-                            <th>포인트</th>
-                            <th>생년월일</th>
-                            <th>Type</th>
+                            <th>영화관 이름</th>
+                            <th>주소</th>
+                            <th>상영관</th>
+                            <th>최대 수용 인원</th>
                             <th colspan="2">관리</th>
                         </tr>
                         <tr>
-                            <td>1</td>
-                            <td>a1234</td>
-                            <td>김유신</td>
-                            <td>1000P</td>
-                            <td>1988/11/01</td>
-                            <td>일반회원</td>
-                            <td><a href="#">수정</a></td>
+                            <td>서면점</td>
+                            <td>나도몰라주소</td>
+                            <td>1관</td>
+                            <td><a href="#">100</a></td>
                             <td><a href="#">삭제</a></td>
                         </tr>
                     </table>
