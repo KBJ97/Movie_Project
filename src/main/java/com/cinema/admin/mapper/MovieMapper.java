@@ -37,4 +37,7 @@ public interface MovieMapper {
 
     public int movieInfoCount();
 
+    public List<TheaterDTO> selectTheaterByRegions(TheaterDTO theaterDTO);
+
+
 }

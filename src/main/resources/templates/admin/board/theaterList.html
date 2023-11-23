@@ -228,13 +228,15 @@
                             <th>최대 수용 인원</th>
                             <th colspan="2">관리</th>
                         </tr>
-                        <tr>
-                            <td>서면점</td>
-                            <td>나도몰라주소</td>
-                            <td>1관</td>
-                            <td><a href="#">100</a></td>
-                            <td><a href="#">삭제</a></td>
-                        </tr>
+                        <th:block th:each="theater:${theaters}">
+                            <tr>
+                                <td th:text="${theater.thName}">서면점</td>
+                                <td th:text="${theater.addr1 + ' ' + theater.addr2}">나도몰라주소</td>
+                                <td th:text="${theater.roomName}">1관</td>
+                                <td><a href="#">100</a></td>
+                                <td><a href="#">삭제</a></td>
+                            </tr>
+                        </th:block>
                     </table>
 
                     <div class="page">
