@@ -16,15 +16,7 @@
         <!-- topGnb -->
         <div class="util-area">
             <div class="right-link">
-                <th:block sec:authorize="isAnonymous()">
-                    <a th:href="@{/member/login}">로그인</a>
-                    <a th:href="@{/member/register}">회원가입</a>
-                    <a th:href="@{/cs/index}" title="고객센터">고객센터</a>
-                </th:block>
-                <th:block sec:authorize="isAuthenticated()">
-                    <span>[[${#authentication.principal.member.name}]]님</span>
-                    <a th:href="@{/cs/index}" title="고객센터">고객센터</a>
-                </th:block>
+
             </div>
         </div>
 
@@ -41,11 +33,15 @@
                 <li><a href="#" class="gnb-txt-movie" title="영화">영화</a></li>
                 <li><a href="#" class="gnb-txt-reserve" title="예매">예매</a></li>
                 <li><a href="#" class="gnb-txt-theater" title="극장">극장</a></li>
-                <!--
-                <li><a href="#" class="gnb-txt-cs" title="고객센터">고객센터</a></li>
-                <li><a href="#" class="gnb-txt-register" title="회원가입">회원가입</a></li>
-                <li><a href="#" class="gnb-txt-login" title="로그인">로그인</a></li>
-                -->
+                <li><a th:href="@{/cs/index}" class="gnb-txt-cs" title="고객센터">고객센터</a></li>
+                <th:block sec:authorize="isAnonymous()">
+                    <li><a th:href="@{/member/register}" class="gnb-txt-register" title="회원가입">회원가입</a></li>
+                    <li><a th:href="@{/member/login}" class="gnb-txt-login" title="로그인">로그인</a></li>
+                </th:block>
+                <th:block sec:authorize="isAuthenticated()">
+                    <li><a>[[${#authentication.principal.member.name}]]님</a></li>
+                    <li><a>[[${#authentication.principal.member.name}]]님</a></li>
+                </th:block>
 
             </ul>
         </nav>
