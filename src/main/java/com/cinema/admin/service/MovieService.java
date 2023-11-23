@@ -157,4 +157,9 @@ public class MovieService {
         return  movieMapper.movieInfoCount();
    }
 
+
+   public List<TheaterDTO> selectTheaterByRegions(TheaterDTO theaterDTO){
+        return movieMapper.selectTheaterByRegions(theaterDTO);
+   }
+
 }

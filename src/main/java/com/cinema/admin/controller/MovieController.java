@@ -248,7 +248,13 @@ public class MovieController {
 
 
     @GetMapping(value = "/admin/theaterList")
-    public String theaterList(Model model) {
+    public String theaterList(Model model, TheaterDTO theaterDTO) {
+
+        List<TheaterDTO> theaters = movieService.selectTheaterByRegions(theaterDTO);
+
+        model.addAttribute("theaters", theaters);
+
+        log.info("theaters = " +theaters );
 
         return "/admin/board/theaterList";
     }
