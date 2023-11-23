@@ -52,35 +52,24 @@ public class SecurityConfiguration implements WebMvcConfigurer {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-
         http
-                // 사이트 위변조 방지 비활성
-                .csrf(CsrfConfigurer::disable) // 메서드 참조 연산자로 람다식을 간결하게 표현
-                // 폼 로그인 설정
-                .formLogin(config -> config.loginPage("/member/login")
+                .csrf(CsrfConfigurer::disable)
+                .formLogin(config -> config
+                        .loginPage("/member/login") // 로그인 페이지 설정
                         .defaultSuccessUrl("/", true)
                         .failureUrl("/member/login?success=100")
                         .usernameParameter("uid")
                         .passwordParameter("pass"))
-
-//                // 자동로그인 설정
-//                .rememberMe(config -> config.userDetailsService(securityUserService)
-//                        .rememberMeParameter("rememberMe")
-//                        .key("uniqueAndSecret")
-//                        .tokenValiditySeconds(86400)) // 자동 로그인 유효 기간 (초))
-
-                // 로그아웃 설정
                 .logout(config -> config
                         .logoutUrl("/member/logout")
                         .invalidateHttpSession(true)
                         .clearAuthentication(true)
                         .logoutSuccessUrl("/index?success=300"))
-
-                // 인가 권한 설정
                 .authorizeHttpRequests(authorizeHttpRequests -> authorizeHttpRequests
-                        .requestMatchers("/admin/**").permitAll() //hasAnyRole("","")
+                        .requestMatchers("/admin/**").permitAll()
                         .requestMatchers("/member/**").permitAll()
                         .requestMatchers("/").permitAll()
+                        .requestMatchers("/member/loginmodal").permitAll() // 로그인 모달 페이지 허용
                         .requestMatchers("/**").permitAll()
                         .requestMatchers("/vendor/**", "/js/**", "/dist/**", "/data/**", "/less/**", "/css/**").permitAll());
 

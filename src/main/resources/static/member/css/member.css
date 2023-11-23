@@ -62,7 +62,9 @@ header {
 #member .btnNext:hover {
   background-color: #036dde;
 }
-
+.modal {
+    display: none;
+}
 /* member > .register */
 #member > .register {
   width: 900px;
