@@ -26,12 +26,11 @@ public class MemberController {
         model.addAttribute("success", success);
         return "/member/login";
     }
-
-    @GetMapping("/member/loginmodal")
-    public String loginmodal() {
-        return "/member/loginmodal";
+    @PostMapping("/member/login")
+    public String processLogin(Model model, String success) {
+        // 로그인 처리 로직 추가
+        return "redirect:/cinema"; // 로그인 성공 후 리다이렉트할 페이지
     }
-
 
     @GetMapping("/member/register")
     public String join() {
