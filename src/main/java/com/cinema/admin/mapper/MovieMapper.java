@@ -44,4 +44,5 @@ public interface MovieMapper {
 
     public List<MemberDTO> selectAllMembers();
 
+    public List<CateDTO> selectAllCate();
 }

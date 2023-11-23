@@ -25,8 +25,13 @@ public class MovieController {
     private final MovieService movieService;
 
     @GetMapping(value = "/admin/register")
-    public String register() {
+    public String register(Model model) {
 
+        List<CateDTO> cateList = movieService.selectAllCate();
+
+        model.addAttribute("cateList", cateList);
+
+        log.info("cateList = " + cateList );
         return "/admin/board/register";
     }
 
@@ -202,7 +207,7 @@ public class MovieController {
 
 
     @PostMapping(value = "/admin/register")
-    public String register(MovieDTO movieDTO) {
+    public String register(MovieDTO movieDTO, Model model) {
 
         log.info(movieDTO);
 

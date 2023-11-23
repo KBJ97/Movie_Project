@@ -206,21 +206,16 @@
                                 <tr>
                                     <td>장르</td>
                                     <td>
-                                        <div class="row d-flex left-align mt-100">
-                                            <div class="col-md-6 gerne">
-                                                <select name="cateNum" id="choices-multiple-remove-button" placeholder="장르를 선택하시오" multiple>
-                                                    <option value="1">액션</option>
-                                                    <option value="2">코미디</option>
-                                                    <option value="3">로맨스</option>
-                                                    <option value="4">스릴러</option>
-                                                    <option value="5">SF</option>
-                                                    <option value="6">판타지</option>
+                                        <div>
+                                            <div>
+                                                <select name="cateNum">
+                                                    <option selected disabled>장르를 선택하시오</option>
+                                                    <option th:each="cate : ${cateList}" th:value="${cate.cateNum}" th:text="${cate.cateName}"></option>
                                                 </select>
                                             </div>
                                         </div>
                                     </td>
                                 </tr>
-
                                 <tr>
                                     <td>스크린</td>
                                     <td>

@@ -155,4 +155,7 @@
         SELECT * FROM member
     </select>
 
+    <select id="selectAllCate" resultType="com.cinema.admin.dto.CateDTO">
+        SELECT * FROM cate
+    </select>
 </mapper>
