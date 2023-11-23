@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.w3.org/1999/xhtml"
+      layout:decorate="/layout.html">
 <head>
     <meta charset="UTF-8">
     <title>REST Cinema</title>
@@ -9,12 +11,8 @@
 </head>
 <body>
 
-
-<div th:replace="~{/cs/fragments/_header.html}"></div>
-
-
 <!-- faq 본문 시작 -->
-<div class="container has-lnb">
+<div class="container has-lnb" layout:fragment="content">
     <div class="page-util">
         <div class="inner-wrap">
             <div class="location">
@@ -137,8 +135,6 @@
     </div>
 </div>
 <!--faq 본문 끝-->
-
-<div th:replace="~{/cs/fragments/_footer.html}"></div>
 
 </body>
 </html>

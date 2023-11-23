@@ -11,81 +11,39 @@
 <body>
 <div>
     <header id="header" class="main-header">
-        <h1 class="ci"><a th:href="@{/}" title="REST Cinema 메인으로 가기">REST Cinema</a></h1>
+        <h1 class="ci"><a th:href="@{/}" title="REST Cinema 메인으로 가기">REST<br>Cinema</a></h1>
 
         <!-- topGnb -->
         <div class="util-area">
             <div class="right-link">
-                <a th:href="@{/member/login}" title="로그인">로그인</a>
-                <a th:href="@{/member/register}" title="회원가입">회원가입</a>
-                <a th:href="@{/cs/index}" title="고객센터">고객센터</a>
+
             </div>
         </div>
 
         <div class="link-area">
             <a href="#" class="header-open-layer btn-layer-sitemap" title="사이트맵">사이트맵</a>
             <a href="#" class="header-open-layer btn-layer-search" title="검색">검색</a>
+           <!--
             <a href="#" class="link-ticket" title="상영시간표">상영시간표</a>
             <a href="#" class="header-open-layer btn-layer-mymega" title="마이페이지">마이페이지</a>
+            -->
         </div>
         <nav id="gnb">
-
             <ul class="gnb-depth1">
+                <li><a href="#" class="gnb-txt-movie" title="영화">영화</a></li>
+                <li><a href="#" class="gnb-txt-reserve" title="예매">예매</a></li>
+                <li><a href="#" class="gnb-txt-theater" title="극장">극장</a></li>
+                <li><a th:href="@{/cs/index}" class="gnb-txt-cs" title="고객센터">고객센터</a></li>
+                <th:block sec:authorize="isAnonymous()">
+                    <li><a th:href="@{/member/register}" class="gnb-txt-register" title="회원가입">회원가입</a></li>
+                    <li><a th:href="@{/member/login}" class="gnb-txt-login" title="로그인">로그인</a></li>
+                </th:block>
+                <th:block sec:authorize="isAuthenticated()">
+                    <li><a>[[${#authentication.principal.member.name}]]님</a></li>
+                    <li><a th:href="@{/member/logout}">로그아웃</a></li>
 
-                <li><a href="#" class="gnb-txt-movie" title="영화">영화</a>
-                    <!--
-                    <div class="gnb-depth2">
-                        <ul>
-                            <li><a href="#" title="전체영화">전체영화</a></li>
-                            <li><a href="#" title="큐레이션">큐레이션</a></li>
-                            <li><a href="#" title="무비포스트">무비포스트</a></li>
-                        </ul>
-                    </div>
-                    -->
-                </li>
-                <li><a href="#" class="gnb-txt-reserve" title="예매">예매</a>
-                    <!--
-                    <div class="gnb-depth2">
-                        <ul>
-                            <li><a href="#" title="빠른예매">빠른예매</a></li>
-                            <li><a href="#" title="상영시간표">상영시간표</a></li>
-                            <li><a href="#" title="더 부티크 프라이빗 예매">더 부티크 프라이빗 예매</a></li>
-                        </ul>
-                    </div>
-                    -->
-                </li>
-                <li><a href="#" class="gnb-txt-theater" title="극장">극장</a>
-                    <!--
-                    <div class="gnb-depth2">
-                        <ul>
-                            <li><a href="#" title="전체극장">전체극장</a></li>
-                            <li><a href="#" title="특별관">특별관</a></li>
-                        </ul>
-                    </div>
-                    -->
-                </li>
-                <li><a href="#" class="gnb-txt-event" title="이벤트">이벤트</a>
-                    <!--
-                    <div class="gnb-depth2">
-                        <ul>
-                            <li><a href="#" title="진행중 이벤트">진행중 이벤트</a></li>
-                            <li><a href="#" title="지난 이벤트">지난 이벤트</a></li>
-                            <li><a href="#" title="당첨자발표">당첨자발표</a></li>
-                        </ul>
-                    </div>
-                    -->
-                </li>
-                <li><a href="#" class="gnb-txt-store" title="스토어">스토어</a></li>
-                <li><a href="#" class="gnb-txt-benefit" title="혜택">혜택</a>
-                    <!--
-                    <div class="gnb-depth2">
-                        <ul>
-                            <li><a href="#" title="메가박스 멤버십">메가박스 멤버십</a></li>
-                            <li><a href="#" title="제휴/할인">제휴/할인</a></li>
-                        </ul>
-                    </div>
-                    -->
-                </li>
+                </th:block>
+
             </ul>
         </nav>
     </header>
@@ -103,14 +61,13 @@
                     <li><a href="#">이용약관</a></li>
                     <li><a href="#">위치기반서비스</a></li>
                     <li class="privacy"><a href="#">개인정보처리방침</a></li>
-                    <li><a th:href="@{/policy/integrity}">윤리경영</a></li>
+                    <li><a href="#">윤리경영</a></li>
                 </ul>
                 <a href="#" class="btn-looking-theater"><i class="iconset ico-footer-search"></i>극장찾기</a>
             </div>
         </div>
         <div class="footer-bottom">
             <div class="inner-wrap">
-                <div class="ci">REST Cinema</div>
                 <div class="footer-info">
                     <div>
                         <address>부산시 그린 아카데미</address>

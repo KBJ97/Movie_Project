@@ -13007,7 +13007,7 @@ body.body-iframe .modal-layer {
 #header .ci {
     position: absolute;
     left: 50%;
-    top: 23px;
+    top: -2px;
     width: 140px;
     height: 90px;
     margin: 0 0 0 -70px;
@@ -13018,11 +13018,12 @@ body.body-iframe .modal-layer {
     display: block;
     width: 140px;
     height: 47px;
-    margin: 0;
+    margin: 40px;
     padding: 0;
-    font-size: 0;
-    line-height: 0;
-    background: url(/static/images/logo.png) center center no-repeat;
+    font-size: 20px;
+    line-height: 1;
+    color: black;
+
 }
 
 #header .util-area {
@@ -13360,9 +13361,11 @@ body.body-iframe .modal-layer {
 
 #gnb>ul>li>a {
     position: absolute;
-    top: -38px;
+    top: -45px;
     height: 38px;
-    text-indent: -9999px;
+    /*  헤더 네비 텍스트 정렬 */
+    text-indent: -9px;
+    font-size: 19px;
     background-position: center 0;
     background-repeat: no-repeat
 }
@@ -13387,58 +13390,60 @@ body.body-iframe .modal-layer {
 }
 
 #gnb>ul>li:nth-child(1)>a {
-    left: 166px
+    left: 150px
 }
 
 #gnb>ul>li:nth-child(2)>a {
-    left: 256px
+    left: 240px
 }
 
 #gnb>ul>li:nth-child(3)>a {
-    left: 345px
+    left: 300px
 }
 
 #gnb>ul>li:nth-child(4)>a {
-    right: 347px
+    right: 300px;
 }
 
 #gnb>ul>li:nth-child(5)>a {
-    right: 241px
+    right: 185px;
+    color: #01738b;
 }
 
 #gnb>ul>li:nth-child(6)>a {
-    right: 150px
+    right: 95px;
+    color: #01738b;
 }
 
 #gnb>ul>li>a.gnb-txt-movie {
-    width: 30px;
-    background-image: url(https://img.megabox.co.kr/static/pc/images/common/gnb/gnb-txt-movie.png)
+
 }
 
 #gnb>ul>li>a.gnb-txt-reserve {
-    width: 30px;
-    background-image: url(https://img.megabox.co.kr/static/pc/images/common/gnb/gnb-txt-reserve.png)
+
 }
 
 #gnb>ul>li>a.gnb-txt-theater {
-    width: 31px;
-    background-image: url(https://img.megabox.co.kr/static/pc/images/common/gnb/gnb-txt-theater.png)
+
 }
 
 #gnb>ul>li>a.gnb-txt-event {
-    width: 45px;
-    background-image: url(https://img.megabox.co.kr/static/pc/images/common/gnb/gnb-txt-event.png)
+
 }
 
 #gnb>ul>li>a.gnb-txt-store {
-    width: 44px;
-    background-image: url(https://img.megabox.co.kr/static/pc/images/common/gnb/gnb-txt-store.png)
+
 }
 
 #gnb>ul>li>a.gnb-txt-benefit {
-    width: 29px;
-    background-image: url(https://img.megabox.co.kr/static/pc/images/common/gnb/gnb-txt-benefit.png)
+
 }
+
+#gnb>ul>li>a.gnb-txt-cs {}
+
+#gnb>ul>li>a.gnb-txt-login {}
+
+#gnb>ul>li>a.gnb-txt-register {}
 
 #gnb .gnb-depth2 {
     display: none;
