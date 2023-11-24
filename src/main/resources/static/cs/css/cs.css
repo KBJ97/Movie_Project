@@ -12970,49 +12970,6 @@ body.body-iframe .modal-layer {
     padding-top: 0
 }
 
-.header-add-area {
-    overflow: hidden;
-    position: relative;
-    width: 100%;
-    min-width: 1100px;
-    height: 80px;
-    color: #fff;
-    text-align: center
-}
-
-.header-add-area .btn-del {
-    overflow: hidden;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    width: 20px;
-    height: 20px;
-    margin: 0;
-    padding: 0;
-    border: 0;
-    text-indent: -9999px;
-    background: url(https://img.megabox.co.kr/static/pc/images/reserve/btn-choice-dell.png) no-repeat 0 0
-}
-
-#header {
-    position: relative;
-    z-index: 100;
-    width: 100%;
-    min-width: 1100px;
-    height: 91px;
-    background: #fff;
-    border-bottom: 1px solid #351f67
-}
-
-#header .ci {
-    position: absolute;
-    left: 50%;
-    top: -2px;
-    width: 140px;
-    height: 90px;
-    margin: 0 0 0 -70px;
-    padding: 0
-}
 
 #header .ci a {
     display: block;
@@ -13398,7 +13355,7 @@ body.body-iframe .modal-layer {
 }
 
 #gnb>ul>li:nth-child(3)>a {
-    left: 300px
+    left: 325px
 }
 
 #gnb>ul>li:nth-child(4)>a {
@@ -13406,12 +13363,12 @@ body.body-iframe .modal-layer {
 }
 
 #gnb>ul>li:nth-child(5)>a {
-    right: 185px;
+    right: 182px;
     color: #01738b;
 }
 
 #gnb>ul>li:nth-child(6)>a {
-    right: 95px;
+    right: 85px;
     color: #01738b;
 }
 
