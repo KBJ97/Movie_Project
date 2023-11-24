@@ -289,15 +289,7 @@
 
     </script>
 
-    <script>
-        $(document).ready(function(){
-            document.querySelector('#region2').addEventListener('change', function () {
-                var selectedRegion1 = document.querySelector('#region1').value;
-                var selectedRegion2 = this.value;
-                window.location.href = `/admin/theaterList?region1=${selectedRegion1}&region2=${selectedRegion2}`;
-            });
-        });
-    </script>
+
 
 
 </head>
@@ -336,6 +328,7 @@
                                 <td th:text="${theater.roomName}">1관</td>
                                 <td th:text="${theater.totalSeats}"><a href="#">100</a></td>
                                 <td><a href="#">삭제</a></td>
+                                <td th:text="${theater.theaterNum}">서면점</td>
                             </tr>
                         </th:block>
                     </table>
