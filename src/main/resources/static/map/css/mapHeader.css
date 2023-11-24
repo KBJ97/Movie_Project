@@ -555,15 +555,24 @@ template {
     padding: 0;
 }
 
+#gnb>ul>li {
+    display: inline-block;
+    margin-right: 10px;
+}
 
 #gnb>ul>li>a {
     position: absolute;
     top: -45px;
     height: 38px;
     /*헤더 네비 텍스트 정렬*/
-    text-indent: -9999px;
+    text-indent: -9px;
+    font-size: 19px;
     background-position: center 0;
-    background-repeat: no-repeat
+    background-repeat: no-repeat;
+
+    text-decoration: none;
+    padding: 5ps 10px;
+    color: black;
 }
 
 #gnb>ul>li>a:after {
@@ -586,27 +595,29 @@ template {
 }
 
 #gnb>ul>li:nth-child(1)>a {
-    left: 166px
+    left: 150px
 }
 
 #gnb>ul>li:nth-child(2)>a {
-    left: 256px
+    left: 240px
 }
 
 #gnb>ul>li:nth-child(3)>a {
-    left: 345px
+    left: 325px
 }
 
 #gnb>ul>li:nth-child(4)>a {
-    right: 347px
+    right: 300px
 }
 
 #gnb>ul>li:nth-child(5)>a {
-    right: 241px
+    right: 182px;
+    color: #01738b;
 }
 
 #gnb>ul>li:nth-child(6)>a {
-    right: 150px
+    right: 85px;
+    color: #01738b;
 }
 
 #gnb>ul>li>a.gnb-txt-movie {
@@ -1399,7 +1410,7 @@ template {
 }
 
 #contents.no-padding.location-fixed {
-    padding-top: 42px
+    padding-top: 112px
 }
 
 #contents.no-padding.location-fixed.tab-fixed {
