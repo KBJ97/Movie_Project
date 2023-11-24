@@ -184,6 +184,37 @@
         }
     </style>
 
+    <script>
+        $(document).ready(function(){
+            $('.movieDelete').click(function (e) {
+                e.preventDefault();
+                var $link = $(this);
+                var $row = $link.closest('tr');
+
+                console.log("$row = " + $row );
+                //$row.remove();
+
+                var num = $link.closest('tr').find('td:eq(8)').text();
+
+                console.log("num = " + num);
+
+                if (confirm('상영 되는 영화를 지우시겠습니까?')) {
+                    $.ajax({
+                        url: '/cinema/admin/movieList/deleteMovieInfo/' + num,
+                        type: 'DELETE',
+                        success: function (data) {
+                            $row.remove();
+                        },
+                        error: function (xhr, status, error) {
+                        }
+                    });
+                }
+
+
+            });
+        });
+
+    </script>
 
 
 </head>
@@ -216,8 +247,8 @@
                                     <td th:text="${movie.playTime}">09:30</td>
                                     <td th:text="${movie.roomName}">1관</td>
                                     <td th:text="${movie.price}">12300</td>
-                                    <td><a href="#" class="movieModify">수정</a></td>
                                     <td><a href="#" class="movieDelete">삭제</a></td>
+                                    <td style="display: none" th:text="${movie.movieInfoNum}" >1</td>
                                 </tr>
                             </th:block>
                         </table>

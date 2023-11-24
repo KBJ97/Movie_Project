@@ -45,5 +45,14 @@ public class RestController {
         return ResponseEntity.ok("Movie deleted successfully");
     }
 
+    @DeleteMapping("/admin/movieList/deleteMovieInfo/{movieInfoNum}")
+    @Transactional
+    public ResponseEntity<String> deleteMovieInfo(@PathVariable("movieInfoNum") int movieInfoNum) {
+        log.info(movieInfoNum);
+        movieService.deleteMovieInfo(movieInfoNum);
+
+        return ResponseEntity.ok("Movie deleted successfully");
+    }
+
 
 }

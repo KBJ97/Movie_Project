@@ -43,13 +43,13 @@
         }
 
         #register td:nth-child(1) {
-            width: 5%; /* 원하는 너비로 조절 */
+            width: 15%; /* 원하는 너비로 조절 */
             height: 50px; /* 원하는 높이로 조절 */
             padding: 10px; /* 내부 여백 설정 */
             text-align: center; /* 텍스트 가운데 정렬 (선택적) */
         }
         #register td:nth-child(2) {
-            width: 20%; /* 원하는 너비로 조절 */
+            width: 5%; /* 원하는 너비로 조절 */
             height: 50px; /* 원하는 높이로 조절 */
             padding: 10px; /* 내부 여백 설정 */
             text-align: center; /* 텍스트 가운데 정렬 (선택적) */
@@ -61,7 +61,7 @@
             text-align: center; /* 텍스트 가운데 정렬 (선택적) */
         }
         #register td:nth-child(4) {
-            width: 10%; /* 원하는 너비로 조절 */
+            width: 20%; /* 원하는 너비로 조절 */
             height: 50px; /* 원하는 높이로 조절 */
             padding: 10px; /* 내부 여백 설정 */
             text-align: center; /* 텍스트 가운데 정렬 (선택적) */
@@ -73,7 +73,7 @@
             text-align: center; /* 텍스트 가운데 정렬 (선택적) */
         }
         #register td:nth-child(6) {
-            width: 15%; /* 원하는 너비로 조절 */
+            width: 10%; /* 원하는 너비로 조절 */
             height: 50px; /* 원하는 높이로 조절 */
             padding: 10px; /* 내부 여백 설정 */
             text-align: center; /* 텍스트 가운데 정렬 (선택적) */
@@ -98,25 +98,25 @@
         }
 
         #register th:nth-child(1) {
-            width: 5%; /* 원하는 너비로 조절 */
-            height: 50px; /* 원하는 높이로 조절 */
-            padding: 10px; /* 내부 여백 설정 */
-            text-align: center; /* 텍스트 가운데 정렬 (선택적) */
-        }
-        #register th:nth-child(2) {
             width: 20%; /* 원하는 너비로 조절 */
             height: 50px; /* 원하는 높이로 조절 */
             padding: 10px; /* 내부 여백 설정 */
             text-align: center; /* 텍스트 가운데 정렬 (선택적) */
         }
+        #register th:nth-child(2) {
+            width: 5%; /* 원하는 너비로 조절 */
+            height: 50px; /* 원하는 높이로 조절 */
+            padding: 10px; /* 내부 여백 설정 */
+            text-align: center; /* 텍스트 가운데 정렬 (선택적) */
+        }
         #register th:nth-child(3) {
-            width: 10%; /* 원하는 너비로 조절 */
+            width: 5%; /* 원하는 너비로 조절 */
             height: 50px; /* 원하는 높이로 조절 */
             padding: 10px; /* 내부 여백 설정 */
             text-align: center; /* 텍스트 가운데 정렬 (선택적) */
         }
         #register th:nth-child(4) {
-            width: 10%; /* 원하는 너비로 조절 */
+            width: 15%; /* 원하는 너비로 조절 */
             height: 50px; /* 원하는 높이로 조절 */
             padding: 10px; /* 내부 여백 설정 */
             text-align: center; /* 텍스트 가운데 정렬 (선택적) */
@@ -202,17 +202,16 @@
                 var $link = $(this);
                 var $row = $link.closest('tr');
 
-                console.log("로우야 살아있니?");
                 console.log("$row = " + $row );
                 //$row.remove();
 
-                var num = $link.closest('tr').find('td:eq(9)').text();
+                var num = $link.closest('tr').find('td:eq(7)').text();
 
                 console.log("num = " + num);
 
-                if (confirm('상품을 삭제하시겠습니까?')) {
+                if (confirm('등록된 영화를 삭제하시겠습니까?')) {
                     $.ajax({
-                        url: '/cinema/admin/movieRegisterList/deleteMovie/' + num,
+                        url: '/cinema/admin/movieList/deleteMovie/' + num,
                         type: 'DELETE',
                         success: function (data) {
                             $row.remove();
@@ -240,7 +239,6 @@
         <section>
             <table>
                 <tr>
-                    <th><input type="checkbox" name="all"/></th>
                     <th>영화 이름</th>
                     <th>장르</th>
                     <th>감독</th>
@@ -252,21 +250,19 @@
 
                 <th:block th:each="movie:${movies}">
                     <tr>
-                        <td><input type="checkbox" name="chk"></td>
                         <td th:text="${movie.movieName}">해리포터</td>
                         <td th:text="${movie.cateName}">호러</td>
                         <td th:text="${movie.director}">해리</td>
                         <td th:text="${movie.actor}">포터 및 친구들</td>
                         <td th:text="${movie.openDate}">2022/11/11</td>
                         <td th:text="${movie.screenType}">2D</td>
-                        <td><a href="#">수정</a></td>
                         <td><a href="#" class="movieListDelete">삭제</a></td>
-                        <td th:text="${movie.movieNum}" >1</td>
+                        <td style="display: none" th:text="${movie.movieNum}" >1</td>
                     </tr>
                 </th:block>
             </table>
 
-            <button class="deleteMovie" type="button">선택 삭제</button>
+
 
             <!-- 페이지 네비게이션 -->
             <div class="page">

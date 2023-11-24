@@ -136,3 +136,18 @@ body {
 .nav__black {
   background-color: #111;
 }
+
+
+/*추가 css 선언*/
+.row__posters .moviePoster  {
+  margin-left: 25px;
+}
+
+.row__posters .moviePoster .titleMovie{
+  font-size: 14px;
+  margin: 10px;
+}
+
+.row__posters .moviePoster .director{
+  font-size: 14px;
+}
