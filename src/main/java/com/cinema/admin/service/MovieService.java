@@ -174,4 +174,10 @@ public class MovieService {
     public List<CateDTO> selectAllCate(){
         return movieMapper.selectAllCate();
     }
+
+
+    public void deleteMovieInfo(int movieInfoNum){
+        movieMapper.deleteMovieInfo(movieInfoNum);
+    }
+
 }

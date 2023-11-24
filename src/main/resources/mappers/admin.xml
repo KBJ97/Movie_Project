@@ -158,4 +158,9 @@
     <select id="selectAllCate" resultType="com.cinema.admin.dto.CateDTO">
         SELECT * FROM cate
     </select>
+
+    <delete id="deleteMovieInfo">
+        DELETE FROM movieInfo
+        WHERE movieInfoNum = #{movieInfoNum}
+    </delete>
 </mapper>
