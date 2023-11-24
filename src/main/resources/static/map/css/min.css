@@ -12911,7 +12911,8 @@ body.body-iframe .modal-layer {
 
 .inner-wrap {
     width: 1100px;
-    margin: 0 auto
+    margin: 0 auto;
+    color: black
 }
 
 .inner-wrap:after,.inner-wrap:before {
@@ -25389,7 +25390,8 @@ body.body-iframe .modal-layer2 {
 
 .theater-info-text .big {
     padding: 0 0 20px 0;
-    font-size: 1.8666em
+    font-size: 1.8666em;
+    color: black;
 }
 
 .theater-facility {
@@ -25472,7 +25474,8 @@ body.body-iframe .modal-layer2 {
 .public-transportation {
     padding: 0 0 30px 0;
     border: 1px solid #d8d9db;
-    border-radius: 10px
+    border-radius: 10px;
+    margin: 30px;
 }
 
 .public-transportation p {
