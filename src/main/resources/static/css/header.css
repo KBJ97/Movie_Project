@@ -597,15 +597,15 @@ template {
 }
 
 #gnb>ul>li:nth-child(1)>a {
-    left: 120px
+    left: 150px
 }
 
 #gnb>ul>li:nth-child(2)>a {
-    left: 190px
+    left: 240px
 }
 
 #gnb>ul>li:nth-child(3)>a {
-    left: 260px
+    left: 325px
 }
 
 #gnb>ul>li:nth-child(4)>a {
@@ -613,12 +613,12 @@ template {
 }
 
 #gnb>ul>li:nth-child(5)>a {
-    right: 185px;
+    right: 182px;
     color: #01738b;
 }
 
 #gnb>ul>li:nth-child(6)>a {
-    right: 95px;
+    right: 85px;
     color: #01738b;
 }
 
@@ -634,7 +634,6 @@ template {
 
 }
 
-/*
 #gnb>ul>li>a.gnb-txt-event {
 
 }
@@ -646,14 +645,12 @@ template {
 #gnb>ul>li>a.gnb-txt-benefit {
 
 }
-*/
 
 #gnb>ul>li>a.gnb-txt-cs {}
 
 #gnb>ul>li>a.gnb-txt-login {}
 
 #gnb>ul>li>a.gnb-txt-register {}
-
 
 
 #gnb .gnb-depth2 {
