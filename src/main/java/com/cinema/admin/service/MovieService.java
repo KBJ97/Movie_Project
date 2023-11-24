@@ -134,19 +134,29 @@ public class MovieService {
 
     public void insertTheater(TheaterDTO theaterDTO){
 
-            List<RoomDTO> newList = new ArrayList<>();
+        log.info("insertTheater...1");
+        List<RoomDTO> newList = new ArrayList<>();
 
-            for(RoomDTO roomDTO: theaterDTO.getRooms()){
-                theaterDTO.setRoomName(roomDTO.getRoomName());
-                 movieMapper.insertTheater(theaterDTO);
-            }
 
-            for(RoomDTO roomDTO: theaterDTO.getRooms()){
-                roomDTO.setTheaterNum(theaterDTO.getTheaterNum());
-                newList.add(roomDTO);
-            }
+        for(RoomDTO roomDTO: theaterDTO.getRooms()){
 
-           movieMapper.insertRooms(newList);
+            log.info("insertTheater...2 : " + roomDTO);
+
+            theaterDTO.setRoomName(roomDTO.getRoomName());
+             movieMapper.insertTheater(theaterDTO);
+        }
+
+        log.info("insertTheater...3");
+
+        for(RoomDTO roomDTO: theaterDTO.getRooms()){
+
+            log.info("insertTheater...4 : " + roomDTO);
+
+            roomDTO.setTheaterNum(theaterDTO.getTheaterNum());
+            newList.add(roomDTO);
+        }
+
+       movieMapper.insertRooms(newList);
 
     }
 
