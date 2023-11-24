@@ -190,4 +190,9 @@ public class MovieService {
         movieMapper.deleteMovieInfo(movieInfoNum);
     }
 
+
+    public List<MovieDTO> selectMoviesByCate(int cateNum){
+        return movieMapper.selectMoviesByCate(cateNum);
+    }
+
 }

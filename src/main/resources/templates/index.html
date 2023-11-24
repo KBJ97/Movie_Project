@@ -83,162 +83,19 @@
             </div>
         </div>
 
-        <!-- Trending Now -->
-        <div class="row">
-            <h2>Trending Now</h2>
-            <div class="row__posters">
-                <div class="moviePoster">
-                    <img class="row__poster row__posterLarge" th:src="@{/images/large-movie1.jpg}" alt=""/>
-                    <div class="titleMovie">영화제목</div>
-                </div>
-                <div class="moviePoster">
-                    <img class="row__poster row__posterLarge" th:src="@{/images/large-movie2.jpg}" alt=""/>
-                    <div class="titleMovie">영화제목</div>
-                </div>
-                <div class="moviePoster">
-                    <img class="row__poster row__posterLarge" th:src="@{/images/large-movie3.jpg}" alt=""/>
-                    <div class="titleMovie">영화제목</div>
-                </div>
-                <div class="moviePoster">
-                    <img class="row__poster row__posterLarge" th:src="@{/images/large-movie4.jpg}" alt=""/>
-                    <div class="titleMovie">영화제목</div>
-                </div>
-                <div class="moviePoster">
-                    <img class="row__poster row__posterLarge" th:src="@{/images/large-movie5.jpg}" alt=""/>
-                    <div class="titleMovie">영화제목</div>
-                </div>
-                <div class="moviePoster">
-                    <img class="row__poster row__posterLarge" th:src="@{/images/large-movie6.jpg}" alt=""/>
-                    <div class="titleMovie">영화제목</div>
+        <th:block th:each="cate:${cateList}">
+            <div class="row">
+                <h2>[[${cate.cateName}]]</h2>
+                <div class="row__posters">
+                    <th:block th:each="movie:${movieList}">
+                        <div class="moviePoster">
+                            <img class="row__poster row__posterLarge" th:src="@{/images/large-movie1.jpg}" alt=""/>
+                            <div class="titleMovie">[[${movie.movieName}]]</div>
+                        </div>
+                    </th:block>
                 </div>
             </div>
-        </div>
-
-        <!-- Trending Now -->
-        <div class="row">
-            <h2>Trending Now</h2>
-            <div class="row__posters">
-                <div class="moviePoster">
-                    <img class="row__poster row__posterLarge" th:src="@{/images/large-movie1.jpg}" alt=""/>
-                    <div class="titleMovie">영화제목</div>
-                </div>
-                <div class="moviePoster">
-                    <img class="row__poster row__posterLarge" th:src="@{/images/large-movie2.jpg}" alt=""/>
-                    <div class="titleMovie">영화제목</div>
-                </div>
-                <div class="moviePoster">
-                    <img class="row__poster row__posterLarge" th:src="@{/images/large-movie3.jpg}" alt=""/>
-                    <div class="titleMovie">영화제목</div>
-                </div>
-                <div class="moviePoster">
-                    <img class="row__poster row__posterLarge" th:src="@{/images/large-movie4.jpg}" alt=""/>
-                    <div class="titleMovie">영화제목</div>
-                </div>
-                <div class="moviePoster">
-                    <img class="row__poster row__posterLarge" th:src="@{/images/large-movie5.jpg}" alt=""/>
-                    <div class="titleMovie">영화제목</div>
-                </div>
-                <div class="moviePoster">
-                    <img class="row__poster row__posterLarge" th:src="@{/images/large-movie6.jpg}" alt=""/>
-                    <div class="titleMovie">영화제목</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Trending Now -->
-        <div class="row">
-            <h2>Trending Now</h2>
-            <div class="row__posters">
-                <div class="moviePoster">
-                    <img class="row__poster row__posterLarge" th:src="@{/images/large-movie1.jpg}" alt=""/>
-                    <div class="titleMovie">영화제목</div>
-                </div>
-                <div class="moviePoster">
-                    <img class="row__poster row__posterLarge" th:src="@{/images/large-movie2.jpg}" alt=""/>
-                    <div class="titleMovie">영화제목</div>
-                </div>
-                <div class="moviePoster">
-                    <img class="row__poster row__posterLarge" th:src="@{/images/large-movie3.jpg}" alt=""/>
-                    <div class="titleMovie">영화제목</div>
-                </div>
-                <div class="moviePoster">
-                    <img class="row__poster row__posterLarge" th:src="@{/images/large-movie4.jpg}" alt=""/>
-                    <div class="titleMovie">영화제목</div>
-                </div>
-                <div class="moviePoster">
-                    <img class="row__poster row__posterLarge" th:src="@{/images/large-movie5.jpg}" alt=""/>
-                    <div class="titleMovie">영화제목</div>
-                </div>
-                <div class="moviePoster">
-                    <img class="row__poster row__posterLarge" th:src="@{/images/large-movie6.jpg}" alt=""/>
-                    <div class="titleMovie">영화제목</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Trending Now -->
-        <div class="row">
-            <h2>Trending Now</h2>
-            <div class="row__posters">
-                <div class="moviePoster">
-                    <img class="row__poster row__posterLarge" th:src="@{/images/large-movie1.jpg}" alt=""/>
-                    <div class="titleMovie">영화제목</div>
-                </div>
-                <div class="moviePoster">
-                    <img class="row__poster row__posterLarge" th:src="@{/images/large-movie2.jpg}" alt=""/>
-                    <div class="titleMovie">영화제목</div>
-                </div>
-                <div class="moviePoster">
-                    <img class="row__poster row__posterLarge" th:src="@{/images/large-movie3.jpg}" alt=""/>
-                    <div class="titleMovie">영화제목</div>
-                </div>
-                <div class="moviePoster">
-                    <img class="row__poster row__posterLarge" th:src="@{/images/large-movie4.jpg}" alt=""/>
-                    <div class="titleMovie">영화제목</div>
-                </div>
-                <div class="moviePoster">
-                    <img class="row__poster row__posterLarge" th:src="@{/images/large-movie5.jpg}" alt=""/>
-                    <div class="titleMovie">영화제목</div>
-                </div>
-                <div class="moviePoster">
-                    <img class="row__poster row__posterLarge" th:src="@{/images/large-movie6.jpg}" alt=""/>
-                    <div class="titleMovie">영화제목</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Trending Now -->
-        <div class="row">
-            <h2>Trending Now</h2>
-            <div class="row__posters">
-                <div class="moviePoster">
-                    <img class="row__poster row__posterLarge" th:src="@{/images/large-movie1.jpg}" alt=""/>
-                    <div class="titleMovie">영화제목</div>
-                </div>
-                <div class="moviePoster">
-                    <img class="row__poster row__posterLarge" th:src="@{/images/large-movie2.jpg}" alt=""/>
-                    <div class="titleMovie">영화제목</div>
-                </div>
-                <div class="moviePoster">
-                    <img class="row__poster row__posterLarge" th:src="@{/images/large-movie3.jpg}" alt=""/>
-                    <div class="titleMovie">영화제목</div>
-                </div>
-                <div class="moviePoster">
-                    <img class="row__poster row__posterLarge" th:src="@{/images/large-movie4.jpg}" alt=""/>
-                    <div class="titleMovie">영화제목</div>
-                </div>
-                <div class="moviePoster">
-                    <img class="row__poster row__posterLarge" th:src="@{/images/large-movie5.jpg}" alt=""/>
-                    <div class="titleMovie">영화제목</div>
-                </div>
-                <div class="moviePoster">
-                    <img class="row__poster row__posterLarge" th:src="@{/images/large-movie6.jpg}" alt=""/>
-                    <div class="titleMovie">영화제목</div>
-                </div>
-            </div>
-        </div>
-
-
+        </th:block>
 
 
     </div>
