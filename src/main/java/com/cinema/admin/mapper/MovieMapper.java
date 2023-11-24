@@ -47,4 +47,7 @@ public interface MovieMapper {
     public List<CateDTO> selectAllCate();
 
     public void deleteMovieInfo(int movieInfoNum);
+
+    public List<MovieDTO> selectMoviesByCate(int cateNum);
+
 }

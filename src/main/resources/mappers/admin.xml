@@ -163,4 +163,15 @@
         DELETE FROM movieInfo
         WHERE movieInfoNum = #{movieInfoNum}
     </delete>
+
+    <insert id="insertCasting">
+        INSERT INTO casting (actorNum, movieNum)
+        VALUES (#{actorNum}, #{movieNum})
+    </insert>
+
+    <select id="selectMoviesByCate" resultType="com.cinema.member.dto.MemberDTO">
+        SELECT * FROM movie
+        WHERE cateNum = #{cateNum}
+    </select>
+
 </mapper>
