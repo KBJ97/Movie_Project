@@ -26,6 +26,7 @@ public class MainController {
         List<MovieDTO> movieList = movieService.selectMovies(0,6);
 
         log.info("movieList", movieList);
+        log.info("cateList = " +  cateList);
 
         model.addAttribute("cateList", cateList);
         model.addAttribute("movieList", movieList);
