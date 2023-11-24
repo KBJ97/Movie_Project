@@ -21,11 +21,8 @@
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <script th:src="@{/member/js/zipcode.js}"></script>
     <script th:src="@{/member/js/validation.js}"></script>
     <script th:src="@{/member/js/checkMember.js}"></script>
-    <script th:src="@{/member/js/authEmail.js}"></script>
-    <script th:src="@{/member/js/reset.js}"></script>
     <script th:src="@{/js/loginModal.js}"></script>
     <script>
         const sameEmail = "";
@@ -46,41 +43,43 @@
 <body>
 <div id="wrapper">
     <header id="header" class="main-header">
-        <h1 class="ci"><a th:href="@{/}" title="REST Cinema 메인으로 가기">REST Cinema</a></h1>
+        <h1 class="ci"><a th:href="@{/}" title="REST Cinema 메인으로 가기">REST<br>Cinema</a></h1>
 
         <!-- topGnb -->
         <div class="util-area">
             <div class="right-link">
-                <th:block sec:authorize="isAnonymous()">
-                    <a href="#" id="loginButton">로그인</a>
-                    <a th:href="@{/member/register}">회원가입</a>
-                </th:block>
-                <th:block sec:authorize="isAuthenticated()">
-                    <span>[[${#authentication.principal.member.name}]]님</span>
-                    <a th:href="@{/member/logout}">로그아웃</a>
-                    <a th:href="@{/cs/index}" title="고객센터">고객센터</a>
-                </th:block>
+
             </div>
         </div>
 
         <div class="link-area">
             <a href="#" class="header-open-layer btn-layer-sitemap" title="사이트맵">사이트맵</a>
             <a href="#" class="header-open-layer btn-layer-search" title="검색">검색</a>
-            <a href="#" class="link-ticket" title="상영시간표">상영시간표</a>
-            <a href="#" class="header-open-layer btn-layer-mymega" title="마이페이지">마이페이지</a>
+            <!--
+             <a href="#" class="link-ticket" title="상영시간표">상영시간표</a>
+             <a href="#" class="header-open-layer btn-layer-mymega" title="마이페이지">마이페이지</a>
+             -->
         </div>
         <nav id="gnb">
-
             <ul class="gnb-depth1">
-
                 <li><a href="#" class="gnb-txt-movie" title="영화">영화</a></li>
                 <li><a href="#" class="gnb-txt-reserve" title="예매">예매</a></li>
                 <li><a href="#" class="gnb-txt-theater" title="극장">극장</a></li>
-                <li><a href="#" class="gnb-txt-event" title="이벤트">이벤트</a></li>
+                <li><a th:href="@{/cs/index}" class="gnb-txt-cs" title="고객센터">고객센터</a></li>
+                <th:block sec:authorize="isAnonymous()">
+                    <li><a th:href="@{/member/register}" class="gnb-txt-register" title="회원가입">회원가입</a></li>
+                    <li><a href="#" id="loginButton" class="gnb-txt-login" title="로그인">로그인</a></li>
+                </th:block>
+                <th:block sec:authorize="isAuthenticated()">
+                    <li><a>[[${#authentication.principal.member.name}]]님</a></li>
+                    <li><a th:href="@{/member/logout}">로그아웃</a></li>
+
+                </th:block>
+
             </ul>
         </nav>
-
     </header>
+
     <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -91,12 +90,31 @@
                     </button>
                 </div>
                 <div class="modal-body">
-<!--    에러 코드 수정 필요 <div th:replace="/member/login :: login"></div>-->
+                    <form th:action="@{/member/login}" method="post">
+                        <div class="first-input input__block first-input__block">
+                            <div class="input-container">
+                                <input type="text" placeholder="아이디" class="input" name="uid" />
+                            </div>
+                        </div>
+                        <div class="input__block">
+                            <div class="input-container">
+                                <input type="password" placeholder="비밀번호" class="input" id="password" name="pass" />
+                            </div>
+                        </div>
+                        <ul class="links">
+                            <li>
+                                <a th:href="@{/member/register}">회원가입</a>
+                            </li>
+                        </ul>
+                        <button type="submit" class="signin__btn">
+                            로그인
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-    </div>
+
     <main id="member">
         <div layout:fragment="content"></div>
     </main>
