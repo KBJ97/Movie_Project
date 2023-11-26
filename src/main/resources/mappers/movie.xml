@@ -1,0 +1,16 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cinema.movie.mapper.MovieListMapper">
+
+
+    <select id="selectMovies" resultType="com.cinema.admin.dto.MovieDTO">
+        SELECT *
+        FROM movie
+        LIMIT #{start}, 36
+    </select>
+
+    <select id="selectMoviesByName" resultType="com.cinema.admin.dto.MovieDTO">
+        SELECT * FROM `movie` WHERE LOWER(movieName) LIKE CONCAT('%', LOWER(#{keyword}), '%')
+    </select>
+</mapper>
