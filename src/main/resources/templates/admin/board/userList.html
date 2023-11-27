@@ -213,11 +213,17 @@
                     </table>
 
                     <div class="page">
-                        <a href="#" class="prev">이전</a>
-                        <a href="#" class="num on">1</a>
-                        <a href="#" class="num">2</a>
-                        <a href="#" class="num">3</a>
-                        <a href="#" class="next">다음</a>
+                        <th:block th:if="${pageGroupStart > 1}">
+                            <a th:href="@{/admin/userList(pg=${pageGroupStart - 1})}" class="prev">이전</a>
+                        </th:block>
+
+                        <th:block th:each="num : ${#numbers.sequence(pageGroupStart, pageGroupEnd)}">
+                            <a th:href="@{/admin/userList(pg=${num})}" th:class="${num == pg} ? 'on' : 'num'">[[${num}]]</a>
+                        </th:block>
+
+                        <th:block th:if="${pageGroupEnd < lastPageNum}">
+                            <a th:href="@{/admin/userList(pg=${pageGroupEnd + 1})}" class="next">다음</a>
+                        </th:block>
                     </div>
                 </section>
             </div>

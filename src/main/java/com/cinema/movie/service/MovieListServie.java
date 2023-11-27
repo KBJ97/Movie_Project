@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Log4j2
@@ -20,5 +22,13 @@ public class MovieListServie {
 
     public List<MovieDTO> selectMoviesByName(String keyword){
         return movieListMapper.selectMoviesByName(keyword);
+    }
+
+    public List<MovieDTO> selectFutureMovies(LocalDateTime currentTime){
+        return movieListMapper.selectFutureMovies(currentTime);
+    }
+
+    public List<MovieDTO> selectNowMovies(LocalDateTime currentTime){
+        return movieListMapper.selectNowMovies(currentTime);
     }
 }
