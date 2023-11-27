@@ -13293,19 +13293,21 @@ body.body-iframe .modal-layer {
     right: 150px
 }
 
+/*
 #gnb>ul>li>a.gnb-txt-movie {
     width: 30px;
     background-image: url(https://img.megabox.co.kr/static/pc/images/common/gnb/gnb-txt-movie.png)
 }
+*/
 
 #gnb>ul>li>a.gnb-txt-reserve {
     width: 30px;
-    background-image: url(https://img.megabox.co.kr/static/pc/images/common/gnb/gnb-txt-reserve.png)
+  /*  background-image: url(https://img.megabox.co.kr/static/pc/images/common/gnb/gnb-txt-reserve.png)*/
 }
 
 #gnb>ul>li>a.gnb-txt-theater {
     width: 31px;
-    background-image: url(https://img.megabox.co.kr/static/pc/images/common/gnb/gnb-txt-theater.png)
+    /*background-image: url(https://img.megabox.co.kr/static/pc/images/common/gnb/gnb-txt-theater.png)*/
 }
 
 #gnb>ul>li>a.gnb-txt-event {
