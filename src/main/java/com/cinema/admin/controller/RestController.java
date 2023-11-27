@@ -7,6 +7,7 @@ import jakarta.transaction.Transactional;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -52,6 +53,15 @@ public class RestController {
         movieService.deleteMovieInfo(movieInfoNum);
 
         return ResponseEntity.ok("Movie deleted successfully");
+    }
+
+    @DeleteMapping("/admin/theaterList/deleteTheater/{theaterNum}")
+    @Transactional
+    public ResponseEntity<String> deleteTheater(@PathVariable("theaterNum") int theaterNum) {
+        log.info(theaterNum);
+        movieService.deleteTheater(theaterNum);
+
+        return ResponseEntity.ok("theater deleted successfully");
     }
 
 

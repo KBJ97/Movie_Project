@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>REST CINEMA</title>
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/images/favicon.ico}"/>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+    <link rel="stylesheet" th:href="@{/movie/css/common.css}"/>
+    <link rel="stylesheet" th:href="@{/movie/css/footer.css}"/>
+    <link rel="stylesheet" th:href="@{/movie/css/header.css}"/>
+    <link rel="stylesheet" th:href="@{/movie/css/index.css}"/>
+    <link rel="stylesheet" th:href="@{/member/css/member.css}"/>
+    <link rel="stylesheet" th:href="@{/member/css/login.css}"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://kit.fontawesome.com/20962f3e4b.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <script th:src="@{/member/js/validation.js}"></script>
+    <script th:src="@{/member/js/checkMember.js}"></script>
+    <script th:src="@{/js/loginModal.js}"></script>
+    <style>
+        .row__posters {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start; /* 왼쪽으로 정렬 */
+        }
+
+        .moviePoster {
+            width: calc(15% - 10px); /* 각 칸의 너비 지정 */
+            margin-bottom: 20px; /* 간격 조절 */
+        }
+        .search {
+            width: 100%;
+            max-width: 350px;
+            margin-left: 20px;
+        }
+
+        .search input[name=search]{
+            width: 170px;
+            height: 35px;
+            font-size: 12px;
+        }
+
+        .search .btnSearch{
+            width: 40px;
+            height: 35px;
+            background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-search.png)
+            background-repeat: no-repeat; /* 배경 이미지 반복 제거 */
+            background-size: cover; /* 이미지 크기에 맞게 조정 */
+            border: none;
+            background-color: #111;
+            color: white;
+            border: none;
+        }
+
+        #topMenu {
+            margin-top: 25px;
+            display: flex;
+            list-style: none;
+            padding: 0;
+        }
+
+        #topMenu > li {
+            float: none; /* float 제거 */
+            height: 32px;
+            margin: 0;
+            border-width: 1px 0 1px 1px;
+            margin-right: 20px;
+        }
+
+
+        #topMenu li a {
+            font-size: 18px; /* 글자 크기 조정 */
+            color: #333; /* 글자 색상 변경 */
+            text-decoration: none; /* 링크 밑줄 제거 */
+        }
+
+        #topMenu .on a {
+            color: white; /* 흰색으로 텍스트 색상 변경 */
+        }
+
+        #movie .ticketing {
+            width: 170px;
+            height: 35px;
+            font-size: 16px;
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+
+    </style>
+</head>
+<body>
+<div  id="wrapper">
+    <header id="header" class="main-header">
+        <h1 class="ci"><a th:href="@{/}" title="REST Cinema 메인으로 가기">REST<br>Cinema</a></h1>
+
+        <!-- topGnb -->
+        <div class="util-area">
+            <div class="right-link">
+
+            </div>
+        </div>
+
+        <div class="link-area">
+            <a href="#" class="header-open-layer btn-layer-sitemap" title="사이트맵">사이트맵</a>
+            <a href="#" class="header-open-layer btn-layer-search" title="검색">검색</a>
+            <!--
+             <a href="#" class="link-ticket" title="상영시간표">상영시간표</a>
+             <a href="#" class="header-open-layer btn-layer-mymega" title="마이페이지">마이페이지</a>
+             -->
+        </div>
+        <nav id="gnb">
+            <ul class="gnb-depth1">
+                <li><a href="#" class="gnb-txt-movie" title="영화">영화</a></li>
+                <li><a href="#" class="gnb-txt-reserve" title="예매">예매</a></li>
+                <li><a href="#" class="gnb-txt-theater" title="극장">극장</a></li>
+                <li><a th:href="@{/cs/index}" class="gnb-txt-cs" title="고객센터">고객센터</a></li>
+                <li><a th:href="@{/member/register}" class="gnb-txt-register" title="회원가입">회원가입</a></li>
+                <li><a href="#" id="loginButton" class="gnb-txt-login" title="로그인">로그인</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!--로그인 모달창-->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">로그인</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form th:action="@{/member/login}" method="post">
+                        <div class="first-input input__block first-input__block">
+                            <div class="input-container">
+                                <input type="text" placeholder="아이디" class="input" name="uid" />
+                            </div>
+                        </div>
+                        <div class="input__block">
+                            <div class="input-container">
+                                <input type="password" placeholder="비밀번호" class="input" id="password" name="pass" />
+                            </div>
+                        </div>
+                        <ul class="links">
+                            <li>
+                                <a th:href="@{/member/register}">회원가입</a>
+                            </li>
+                        </ul>
+                        <button type="submit" class="signin__btn">
+                            로그인
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main id="movie">
+        <div layout:fragment="content"></div>
+    </main>
+
+    <footer id="footer">
+        <div class="footer-top">
+            <div>
+                <ul class="fnb">
+                    <li><a href="#">회사소개</a></li>
+                    <li><a href="#">인재채용</a></li>
+                    <li><a href="#">사회공헌</a></li>
+                    <li><a href="#">제휴/광고/부대사업문의</a></li>
+                    <li><a href="#">이용약관</a></li>
+                    <li><a href="#">위치기반서비스</a></li>
+                    <li class="privacy"><a href="#">개인정보처리방침</a></li>
+                    <li><a th:href="@{/policy/integrity}">윤리경영</a></li>
+                </ul>
+                <a href="#" class="btn-looking-theater"><i class="iconset ico-footer-search"></i>극장찾기</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="inner-wrap">
+                <div class="footer-info">
+                    <div>
+                        <address>부산시 그린 아카데미</address>
+                        <p>ARS 1515-1515</p>
+                    </div>
+                    <p>대표자명 이재용</p>
+                    <p>· 개인정보보호책임자 이재용</p>
+                    <p>· 사업자등록번호 211-86-59478</p>
+                    <p>· 통신판매업신고번호 2023-서울성동-0177</p>
+                    <p class="copy">COPYRIGHT © MegaboxJoongAng, Inc. All rights reserved</p>
+                </div>
+                <div class="footer-sns">
+                    <a href="#"><i class="iconset ico-youtubeN">유튜브</i></a>
+                    <a href="#"><i class="iconset ico-twitterN">트위터</i></a>
+                    <a href="#"><i class="iconset ico-instagramN">인스타그램</i></a>
+                    <a href="#"><i class="iconset ico-facebookN">페이스북</i></a>
+                </div>
+            </div>
+        </div>
+        <div id="layer_looking_theater" class="layer_looking_theater"></div>
+    </footer>
+</div>
+</body>
+</html>
+
+

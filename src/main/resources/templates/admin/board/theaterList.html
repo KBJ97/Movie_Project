@@ -286,8 +286,41 @@
             });
         }
 
+    </script>
+
+    <script>
+        $(document).ready(function(){
+            $('.deleteTheater').click(function (e) {
+                e.preventDefault();
+                var $link = $(this);
+                var $row = $link.closest('tr');
+
+                console.log("$row = " + $row );
+                //$row.remove();
+
+                var num = $link.closest('tr').find('td:eq(5)').text();
+
+                console.log("num = " + num);
+
+                if (confirm('등록된 극장을 지우시겠습니까?')) {
+                    $.ajax({
+                        url: '/cinema/admin/theaterList/deleteTheater/' + num,
+                        type: 'DELETE',
+                        success: function (data) {
+                            $row.remove();
+                        },
+                        error: function (xhr, status, error) {
+                        }
+                    });
+                }
+
+
+            });
+        });
 
     </script>
+
+
 
 
 
@@ -297,7 +330,7 @@
             <div id="register_detail">
                 상영관 목록
                 <hr/>
-            <!--
+
             <div class="theaterListOption">
                 <select id="region1" name="region1Num">
                     <option value='0'>-- 선택 --</option>
@@ -309,7 +342,7 @@
                     <option th:each="region1 : ${region1List}" th:value="${region1.region1Num}" th:text="${region1.region1Name}"></option>
                 </select>
             </div>
-            -->
+
 
                 <section>
 
@@ -319,7 +352,7 @@
                             <th>주소</th>
                             <th>상영관</th>
                             <th>최대 수용 인원</th>
-                            <th colspan="2">관리</th>
+                            <th>관리</th>
                         </tr>
                         <th:block th:each="theater:${theaters}">
                             <tr>
@@ -327,19 +360,27 @@
                                 <td th:text="${theater.addr1 + ' ' + theater.addr2}">나도몰라주소</td>
                                 <td th:text="${theater.roomName}">1관</td>
                                 <td th:text="${theater.totalSeats}"><a href="#">100</a></td>
-                                <td><a href="#">삭제</a></td>
-                                <td style="display: none" th:text="${theater.theaterNum}">서면점</td>
+                                <td class="deleteTheater"><a href="#">삭제</a></td>
+                                <td style="display: none" th:text="${theater.theaterNum}">1</td>
+
                             </tr>
                         </th:block>
                     </table>
 
                     <div class="page">
-                        <a href="#" class="prev">이전</a>
-                        <a href="#" class="num on">1</a>
-                        <a href="#" class="num">2</a>
-                        <a href="#" class="num">3</a>
-                        <a href="#" class="next">다음</a>
+                        <th:block th:if="${pageGroupStart > 1}">
+                            <a th:href="@{/admin/theaterList(pg=${pageGroupStart - 1})}" class="prev">이전</a>
+                        </th:block>
+
+                        <th:block th:each="num : ${#numbers.sequence(pageGroupStart, pageGroupEnd)}">
+                            <a th:href="@{/admin/theaterList(pg=${num})}" th:class="${num == pg} ? 'on' : 'num'">[[${num}]]</a>
+                        </th:block>
+
+                        <th:block th:if="${pageGroupEnd < lastPageNum}">
+                            <a th:href="@{/admin/theaterList(pg=${pageGroupEnd + 1})}" class="next">다음</a>
+                        </th:block>
                     </div>
+
                 </section>
             </div>
         </div>

@@ -13,4 +13,16 @@
     <select id="selectMoviesByName" resultType="com.cinema.admin.dto.MovieDTO">
         SELECT * FROM `movie` WHERE LOWER(movieName) LIKE CONCAT('%', LOWER(#{keyword}), '%')
     </select>
+
+    <select id="selectFutureMovies" resultType="com.cinema.admin.dto.MovieDTO">
+        SELECT *
+        FROM movie
+        WHERE openDate > #{currentTime}
+    </select>
+
+    <select id="selectNowMovies" resultType="com.cinema.admin.dto.MovieDTO">
+        SELECT *
+        FROM movie
+        WHERE #{currentTime} > openDate
+    </select>
 </mapper>

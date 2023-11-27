@@ -169,16 +169,16 @@ public class MovieService {
    }
 
 
-   public List<TheaterDTO> selectAllTheater(){
-        return movieMapper.selectAllTheater();
+   public List<TheaterDTO> selectAllTheater(int start, int end){
+        return movieMapper.selectAllTheater(start, end);
    }
 
     public List<TheaterDTO> selectTheaterByRegion(int region1Num, int regionNum2){
         return movieMapper.selectTheaterByRegion(region1Num,regionNum2);
     }
 
-    public List<MemberDTO> selectAllMembers(){
-        return movieMapper.selectAllMembers();
+    public List<MemberDTO> selectAllMembers(int start, int end){
+        return movieMapper.selectAllMembers(start, end);
     }
 
     public List<CateDTO> selectAllCate(){
@@ -194,5 +194,17 @@ public class MovieService {
     public List<MovieDTO> selectMoviesByCate(int cateNum){
         return movieMapper.selectMoviesByCate(cateNum);
     }
+
+    public void deleteTheater(int theaterNum){
+        movieMapper.deleteTheater(theaterNum);
+    }
+
+    public int theaterCount(){
+        return movieMapper.theaterCount();
+    };
+
+    public int memberCount(){
+        return movieMapper.memberCount();
+    };
 
 }
