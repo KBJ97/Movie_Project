@@ -21,8 +21,6 @@ public class SecurityUserService implements UserDetailsService {
 		MemberEntity member = repo.findById(username)
 				  			  .orElseThrow(()->new UsernameNotFoundException(username + " NotFound"));
 
-
-		
 		// 사용자 인증객체 생성(세션에 저장)
 		UserDetails userDetails = MyUserDetails.builder()
 									.member(member)
