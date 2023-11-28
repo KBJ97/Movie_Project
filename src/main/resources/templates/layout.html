@@ -87,9 +87,6 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="loginModalLabel">로그인</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
                 </div>
                 <div class="modal-body">
                     <form th:action="@{/member/login}" method="post">
@@ -101,6 +98,12 @@
                         <div class="input__block">
                             <div class="input-container">
                                 <input type="password" placeholder="비밀번호" class="input" id="password" name="pass" />
+                            </div>
+                        </div>
+                        <div class="auto_login">
+                            <div class="">
+                                <input type="checkbox" id="rememberMe" name="rememberMe" />
+                                <label for="rememberMe" style="font-weight: bold;">자동 로그인</label>
                             </div>
                         </div>
                         <ul class="links">

@@ -74,6 +74,13 @@ form .input__block input {
   font-size: 14px;
   font-family: "Montserrat", sans-serif;
 }
+
+.auto_login {
+    float: left;
+    margin-left: 30px;
+    font-weight: bolder;
+    }
+
 form .input__block input:focus, form .input__block input:active {
   outline: none;
   border: none;
