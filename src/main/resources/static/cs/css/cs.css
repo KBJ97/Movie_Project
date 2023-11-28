@@ -3,6 +3,11 @@ html {
     -webkit-text-size-adjust: 100%
 }
 
+#wrapper {
+    width: 100%;
+    background-color: white;
+}
+
 body {
     margin: 0
 }
