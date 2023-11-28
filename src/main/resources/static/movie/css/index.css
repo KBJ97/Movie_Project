@@ -38,6 +38,7 @@ body {
 
 .row__posterLarge {
   max-height: 250px;
+  min-height: 250px;
 }
 
 .row__posterLarge:hover {
@@ -92,4 +93,73 @@ body {
 
 .row__posters .moviePoster .director{
   font-size: 14px;
+}
+
+ .row__posters {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: flex-start; /* 왼쪽으로 정렬 */
+ }
+
+.moviePoster {
+  width: calc(15% - 10px); /* 각 칸의 너비 지정 */
+  margin-bottom: 20px; /* 간격 조절 */
+}
+.search {
+  width: 100%;
+  max-width: 350px;
+  margin-left: 20px;
+}
+
+.search input[name=search]{
+  width: 170px;
+  height: 35px;
+  font-size: 12px;
+}
+
+.search .btnSearch{
+  width: 40px;
+  height: 35px;
+  background-repeat: no-repeat; /* 배경 이미지 반복 제거 */
+  background-size: cover; /* 이미지 크기에 맞게 조정 */
+  border: none;
+  background-color: #111;
+  color: white;
+  border: none;
+}
+
+#topMenu {
+  margin-top: 25px;
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+
+#topMenu > li {
+  float: none; /* float 제거 */
+  height: 32px;
+  margin: 0;
+  border-width: 1px 0 1px 1px;
+  margin-right: 20px;
+}
+
+
+#topMenu li a {
+  font-size: 18px; /* 글자 크기 조정 */
+  color: #333; /* 글자 색상 변경 */
+  text-decoration: none; /* 링크 밑줄 제거 */
+}
+
+#topMenu .on a {
+  color: white; /* 흰색으로 텍스트 색상 변경 */
+}
+
+#movie .ticketing {
+  width: 170px;
+  height: 35px;
+  font-size: 16px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 5px;
 }
