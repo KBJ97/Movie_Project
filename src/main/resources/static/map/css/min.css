@@ -13293,19 +13293,21 @@ body.body-iframe .modal-layer {
     right: 150px
 }
 
+/*
 #gnb>ul>li>a.gnb-txt-movie {
     width: 30px;
     background-image: url(https://img.megabox.co.kr/static/pc/images/common/gnb/gnb-txt-movie.png)
 }
+*/
 
 #gnb>ul>li>a.gnb-txt-reserve {
     width: 30px;
-    background-image: url(https://img.megabox.co.kr/static/pc/images/common/gnb/gnb-txt-reserve.png)
+  /*  background-image: url(https://img.megabox.co.kr/static/pc/images/common/gnb/gnb-txt-reserve.png)*/
 }
 
 #gnb>ul>li>a.gnb-txt-theater {
     width: 31px;
-    background-image: url(https://img.megabox.co.kr/static/pc/images/common/gnb/gnb-txt-theater.png)
+    /*background-image: url(https://img.megabox.co.kr/static/pc/images/common/gnb/gnb-txt-theater.png)*/
 }
 
 #gnb>ul>li>a.gnb-txt-event {
@@ -24972,12 +24974,14 @@ body.body-iframe .modal-layer2 {
     width: 100%;
     min-height: 190px;
     border: 3px solid #686571;
-    border-radius: 10px
+    border-radius: 10px;
+    margin: 30px;
 }
 
 .theater-box .theater-place {
     width: 100%;
-    height: 48px
+    height: 48px;
+    border-bottom: 1px solid #bebebe;
 }
 
 .theater-box .theater-place>ul:after {
@@ -25022,9 +25026,9 @@ body.body-iframe .modal-layer2 {
     width: 140px
 }
 
-.theater-box .theater-place>ul>li:last-child {
+/*.theater-box .theater-place>ul>li:last-child {
     border-right: none
-}
+}*/
 
 .theater-box .theater-place>ul>li.on .theater-list {
     display: block
@@ -25380,7 +25384,7 @@ body.body-iframe .modal-layer2 {
 
 .theater-info-text {
     padding: 0;
-    border-bottom: 1px solid #ebebeb
+    border-bottom: 1px solid #e0e0e0;
 }
 
 .theater-info-text p {

@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.thymeleaf.org"
-      xmlns="http://www.w3.org/1999/html"
-      xmlns:sec="http://thymeleaf.org/extras/spring-security">
+<html lang="en"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>REST CINEMA</title>
@@ -11,9 +10,10 @@
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
-    <link rel="stylesheet" th:href="@{/css/common.css}"/>
-    <link rel="stylesheet" th:href="@{/css/footer.css}"/>
-    <link rel="stylesheet" th:href="@{/css/header.css}"/>
+    <link rel="stylesheet" th:href="@{/movie/css/common.css}"/>
+    <link rel="stylesheet" th:href="@{/movie/css/footer.css}"/>
+    <link rel="stylesheet" th:href="@{/movie/css/header.css}"/>
+    <link rel="stylesheet" th:href="@{/movie/css/index.css}"/>
     <link rel="stylesheet" th:href="@{/member/css/member.css}"/>
     <link rel="stylesheet" th:href="@{/member/css/login.css}"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -23,24 +23,83 @@
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <script th:src="@{/member/js/validation.js}"></script>
     <script th:src="@{/member/js/checkMember.js}"></script>
     <script th:src="@{/js/loginModal.js}"></script>
-    <script>
-        const sameEmail = "";
-        const sameHp = "";
+    <style>
+        .row__posters {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start; /* 왼쪽으로 정렬 */
+        }
 
-        $(function() {
-            const success = '[[${success}]]';
-            if (success == 100)
-                alert("일치하는 회원이 존재하지 않습니다.");
-            else if (success == 200)
-                alert("회원가입이 완료되었습니다.");
-            else if (success == 201)
-                alert("비밀번호가 변경되었습니다.");
-        });
-    </script>
+        .moviePoster {
+            width: calc(15% - 10px); /* 각 칸의 너비 지정 */
+            margin-bottom: 20px; /* 간격 조절 */
+        }
+        .search {
+            width: 100%;
+            max-width: 350px;
+            margin-left: 20px;
+        }
 
+        .search input[name=search]{
+            width: 170px;
+            height: 35px;
+            font-size: 12px;
+        }
+
+        .search .btnSearch{
+            width: 40px;
+            height: 35px;
+            background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-search.png)
+            background-repeat: no-repeat; /* 배경 이미지 반복 제거 */
+            background-size: cover; /* 이미지 크기에 맞게 조정 */
+            border: none;
+            background-color: #111;
+            color: white;
+            border: none;
+        }
+
+        #topMenu {
+            margin-top: 25px;
+            display: flex;
+            list-style: none;
+            padding: 0;
+        }
+
+        #topMenu > li {
+            float: none; /* float 제거 */
+            height: 32px;
+            margin: 0;
+            border-width: 1px 0 1px 1px;
+            margin-right: 20px;
+        }
+
+
+        #topMenu li a {
+            font-size: 18px; /* 글자 크기 조정 */
+            color: #333; /* 글자 색상 변경 */
+            text-decoration: none; /* 링크 밑줄 제거 */
+        }
+
+        #topMenu .on a {
+            color: white; /* 흰색으로 텍스트 색상 변경 */
+        }
+
+        #movie .ticketing {
+            width: 170px;
+            height: 35px;
+            font-size: 16px;
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+
+    </style>
 </head>
 <body>
 <div  id="wrapper">
@@ -57,27 +116,19 @@
         <div class="link-area">
             <a href="#" class="header-open-layer btn-layer-sitemap" title="사이트맵">사이트맵</a>
             <a href="#" class="header-open-layer btn-layer-search" title="검색">검색</a>
-           <!--
-            <a href="#" class="link-ticket" title="상영시간표">상영시간표</a>
-            <a href="#" class="header-open-layer btn-layer-mymega" title="마이페이지">마이페이지</a>
-            -->
+            <!--
+             <a href="#" class="link-ticket" title="상영시간표">상영시간표</a>
+             <a href="#" class="header-open-layer btn-layer-mymega" title="마이페이지">마이페이지</a>
+             -->
         </div>
         <nav id="gnb">
             <ul class="gnb-depth1">
-                <li><a th:href="@{/movie/index}" class="gnb-txt-movie" title="영화">영화</a></li>
+                <li><a href="#" class="gnb-txt-movie" title="영화">영화</a></li>
                 <li><a href="#" class="gnb-txt-reserve" title="예매">예매</a></li>
                 <li><a href="#" class="gnb-txt-theater" title="극장">극장</a></li>
                 <li><a th:href="@{/cs/index}" class="gnb-txt-cs" title="고객센터">고객센터</a></li>
-                <th:block sec:authorize="isAnonymous()">
-                    <li><a th:href="@{/member/register}" class="gnb-txt-register" title="회원가입">회원가입</a></li>
-                    <li><a href="#" id="loginButton" class="gnb-txt-login" title="로그인">로그인</a></li>
-                </th:block>
-                <th:block sec:authorize="isAuthenticated()">
-                    <li><a>[[${#authentication.principal.member.name}]]님</a></li>
-                    <li><a th:href="@{/member/logout}">로그아웃</a></li>
-
-                </th:block>
-
+                <li><a th:href="@{/member/register}" class="gnb-txt-register" title="회원가입">회원가입</a></li>
+                <li><a href="#" id="loginButton" class="gnb-txt-login" title="로그인">로그인</a></li>
             </ul>
         </nav>
     </header>
@@ -117,7 +168,32 @@
         </div>
     </div>
     <main id="movie">
-        <div layout:fragment="content"></div>
+        <ul id="topMenu">
+            <li class="on"><a href="/movie" title="박스오피스 탭으로 이동">전체 영화  |</a></li>
+            <li><a href="/movie/comingsoon" title="상영예정작 탭으로 이동">상영 중인 영화  |</a></li>
+            <li><a href="/movie/special" title="특별상영 탭으로 이동">개봉 예정 영화  </a></li>
+        </ul>
+        <div class="search">
+            <form th:action="@{/movie/index}" method="get">
+                <input type="text" name="search" placeholder="영화 제목을 입력하세요">
+                <button type="submit" class="btnSearch">
+                    <i class="fas fa-search"></i> <!-- 돋보기 아이콘 추가 -->
+                </button>
+            </form>
+        </div>
+        <!-- Netflix Originals -->
+        <div class="row">
+            <div class="row__posters">
+                <th:block th:each="movie:${movies}">
+                    <div class="moviePoster">
+                        <img class="row__poster row__posterLarge" th:src="@{/images/large-movie1.jpg}" alt="사진"/>
+                        <div class="titleMovie">[[${movie.movieName}]]</div>
+                        <button class="ticketing">예매</button>
+                    </div>
+
+                </th:block>
+            </div>
+        </div>
     </main>
     <footer id="footer">
         <div class="footer-top">
@@ -161,3 +237,5 @@
 </div>
 </body>
 </html>
+
+

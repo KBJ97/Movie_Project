@@ -211,7 +211,7 @@
 
                 if (confirm('등록된 영화를 삭제하시겠습니까?')) {
                     $.ajax({
-                        url: '/cinema/admin/movieList/deleteMovie/' + num,
+                        url: '/cinema/admin/movieRegisterList/deleteMovie/' + num,
                         type: 'DELETE',
                         success: function (data) {
                             $row.remove();

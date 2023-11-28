@@ -38,13 +38,22 @@ public interface MovieMapper {
 
     public int movieInfoCount();
 
-    public List<TheaterDTO> selectAllTheater();
+    public int theaterCount();
+
+    public int memberCount();
+
+    public List<TheaterDTO> selectAllTheater(int start, int end);
 
     public List<TheaterDTO> selectTheaterByRegion(int region1Num, int regionNum2);
 
-    public List<MemberDTO> selectAllMembers();
+    public List<MemberDTO> selectAllMembers(int start, int end);
 
     public List<CateDTO> selectAllCate();
 
     public void deleteMovieInfo(int movieInfoNum);
+
+    public List<MovieDTO> selectMoviesByCate(int cateNum);
+
+    public void deleteTheater(int theaterNum);
+
 }

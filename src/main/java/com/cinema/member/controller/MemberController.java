@@ -24,12 +24,8 @@ public class MemberController {
     @GetMapping("/member/login")
     public String login(Model model, String success) {
         model.addAttribute("success", success);
+
         return "/member/login";
-    }
-    @PostMapping("/member/login")
-    public String processLogin(Model model, String success) {
-        // 로그인 처리 로직 추가
-        return "redirect:/cinema"; // 로그인 성공 후 리다이렉트할 페이지
     }
 
     @GetMapping("/member/register")

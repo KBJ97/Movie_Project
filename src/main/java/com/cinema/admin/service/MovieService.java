@@ -134,19 +134,29 @@ public class MovieService {
 
     public void insertTheater(TheaterDTO theaterDTO){
 
-            List<RoomDTO> newList = new ArrayList<>();
+        log.info("insertTheater...1");
+        List<RoomDTO> newList = new ArrayList<>();
 
-            for(RoomDTO roomDTO: theaterDTO.getRooms()){
-                theaterDTO.setRoomName(roomDTO.getRoomName());
-                 movieMapper.insertTheater(theaterDTO);
-            }
 
-            for(RoomDTO roomDTO: theaterDTO.getRooms()){
-                roomDTO.setTheaterNum(theaterDTO.getTheaterNum());
-                newList.add(roomDTO);
-            }
+        for(RoomDTO roomDTO: theaterDTO.getRooms()){
 
-           movieMapper.insertRooms(newList);
+            log.info("insertTheater...2 : " + roomDTO);
+
+            theaterDTO.setRoomName(roomDTO.getRoomName());
+             movieMapper.insertTheater(theaterDTO);
+        }
+
+        log.info("insertTheater...3");
+
+        for(RoomDTO roomDTO: theaterDTO.getRooms()){
+
+            log.info("insertTheater...4 : " + roomDTO);
+
+            roomDTO.setTheaterNum(theaterDTO.getTheaterNum());
+            newList.add(roomDTO);
+        }
+
+       movieMapper.insertRooms(newList);
 
     }
 
@@ -159,16 +169,16 @@ public class MovieService {
    }
 
 
-   public List<TheaterDTO> selectAllTheater(){
-        return movieMapper.selectAllTheater();
+   public List<TheaterDTO> selectAllTheater(int start, int end){
+        return movieMapper.selectAllTheater(start, end);
    }
 
     public List<TheaterDTO> selectTheaterByRegion(int region1Num, int regionNum2){
         return movieMapper.selectTheaterByRegion(region1Num,regionNum2);
     }
 
-    public List<MemberDTO> selectAllMembers(){
-        return movieMapper.selectAllMembers();
+    public List<MemberDTO> selectAllMembers(int start, int end){
+        return movieMapper.selectAllMembers(start, end);
     }
 
     public List<CateDTO> selectAllCate(){
@@ -179,5 +189,22 @@ public class MovieService {
     public void deleteMovieInfo(int movieInfoNum){
         movieMapper.deleteMovieInfo(movieInfoNum);
     }
+
+
+    public List<MovieDTO> selectMoviesByCate(int cateNum){
+        return movieMapper.selectMoviesByCate(cateNum);
+    }
+
+    public void deleteTheater(int theaterNum){
+        movieMapper.deleteTheater(theaterNum);
+    }
+
+    public int theaterCount(){
+        return movieMapper.theaterCount();
+    };
+
+    public int memberCount(){
+        return movieMapper.memberCount();
+    };
 
 }

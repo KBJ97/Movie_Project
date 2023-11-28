@@ -1,6 +1,7 @@
 package com.cinema.main.controller;
 
 import com.cinema.admin.dto.CateDTO;
+import com.cinema.admin.dto.MovieDTO;
 import com.cinema.admin.service.MovieService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -22,9 +23,13 @@ public class MainController {
 
 
         List<CateDTO> cateList = movieService.selectAllCate();
+        List<MovieDTO> movieList = movieService.selectMovies(0,6);
+
+        log.info("movieList = " + movieList);
+        log.info("cateList = " +  cateList);
 
         model.addAttribute("cateList", cateList);
-
+        model.addAttribute("movieList", movieList);
 
         return "/index";
     }
