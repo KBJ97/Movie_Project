@@ -27,7 +27,7 @@ public class AdminController {
 
         model.addAttribute("movieList", movieList);
 
-        return "/admin/index";
+        return "/admin/board/index";
     }
 
 

@@ -116,9 +116,9 @@
                                 <tr>
                                     <th>영화 제목</th>
                                     <th>상영 지역</th>
+                                    <th>상영관</th>
                                     <th>Running Time</th>
                                     <th>관람 등급</th>
-                                    <th>상영 날짜</th>
                                     <th>상영 시간</th>
                                 </tr>
                             </thead>
@@ -126,9 +126,9 @@
                                 <tr th:each="movie:${movieList}">
                                     <td th:text="${movie.movieName}">Tiger Nixon</td>
                                     <td th:text="${movie.region1Name + ' - ' + movie.region2Name}">부산 -  서면</td>
+                                    <td th:text="${movie.roomName}">11:45</td>
                                     <td th:text="${movie.runTime + '분'}">120분</td>
                                     <td th:text="${movie.movieAge}">61</td>
-                                    <td th:text="${movie.roomName}">11:45</td>
                                     <td th:text="${#strings.substring(movie.playTime, 0, 5)}">14:25</td>
                                 </tr>
                             </tbody>
