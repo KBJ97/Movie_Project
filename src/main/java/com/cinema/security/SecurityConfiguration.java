@@ -71,7 +71,6 @@ public class SecurityConfiguration implements WebMvcConfigurer {
                         .requestMatchers("/admin/**").hasAnyRole("ADMIN")
                         .requestMatchers("/member/**").permitAll()
                         .requestMatchers("/").permitAll()
-                        .requestMatchers("/member/loginmodal").permitAll() // 로그인 모달 페이지 허용
                         .requestMatchers("/**").permitAll()
                         .requestMatchers("/vendor/**", "/js/**", "/dist/**", "/data/**", "/less/**", "/css/**").permitAll());
 
