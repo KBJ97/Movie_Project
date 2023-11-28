@@ -44,7 +44,7 @@ public class SecurityConfiguration implements WebMvcConfigurer {
                 .addResourceLocations(resourceLoader.getResource(files));
 
         registry.addResourceHandler("/thumbs/**")
-                .addResourceLocations(resourceLoader.getResource(thumbs));
+                .addResourceLocations(resourceLoader.getResource("file:" + thumbs));
 
         registry.addResourceHandler("/banners/**")
                 .addResourceLocations(resourceLoader.getResource(banners));

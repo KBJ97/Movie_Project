@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.thymeleaf.org/"
+      layout:decorate="/movie/board/layout.html">
+
+<div layout:fragment="content">
+        <ul id="topMenu">
+            <li><a th:href="@{/movie}">전체 영화  |</a></li>
+            <li><a th:href="@{/movie/nowMovie}">상영 중인 영화  |</a></li>
+            <li  class="on"><a th:href="@{/movie/laterMovie}">개봉 예정 영화  </a></li>
+        </ul>
+        <div class="search">
+            <form th:action="@{/movie/index}" method="get">
+                <input type="text" name="search" placeholder="영화 제목을 입력하세요">
+                <button type="submit" class="btnSearch">
+                    <i class="fas fa-search"></i> <!-- 돋보기 아이콘 추가 -->
+                </button>
+            </form>
+        </div>
+        <!-- Netflix Originals -->
+        <div class="row">
+            <div class="row__posters">
+                <th:block th:each="movie:${movies}">
+                    <div class="moviePoster">
+                        <img class="row__poster row__posterLarge" th:src="@{'/thumbs/' + ${movie.thumb1}}" alt="사진2"/>
+                        <div class="titleMovie">[[${movie.movieName}]]</div>
+                        <button class="ticketing">개봉 예정</button>
+                    </div>
+
+                </th:block>
+            </div>
+        </div>
+    </div>
+
+</html>
+
+

@@ -65,9 +65,7 @@ public class MovieController {
             lastPageNum =(total/10)+1;
         }
 
-        if(pageGroupEnd < 1) {
-            pageGroupEnd = 1;
-        }
+
 
         //페이지 그룹계산
         // 페이지 그룹 계산 (5개 단위로 나누기)
@@ -83,6 +81,10 @@ public class MovieController {
         pageStartNum = total-start;
 
         List<MovieDTO> movies = movieService.selectMovies(start, 10);
+
+        if(pageGroupEnd < 1) {
+            pageGroupEnd = 1;
+        }
 
         model.addAttribute("movies", movies);
         model.addAttribute("start", start);
@@ -124,6 +126,7 @@ public class MovieController {
 
     @GetMapping(value = "/admin/movieList")
     public String movieList(Model model, @RequestParam(defaultValue = "1") int pg) {
+
 
         //페이지 관련 변수
         int start=0;
@@ -196,11 +199,74 @@ public class MovieController {
     }
 
     @GetMapping(value = "/admin/userList")
-    public String userList(Model model) {
+    public String userList(Model model, @RequestParam(defaultValue = "1") int pg) {
 
-        List<MemberDTO> members = movieService.selectAllMembers();
+        //페이지 관련 변수
+        int start=0;
+        int currentPage =1;
+        int lastPageNum=0;
+        int pageGroupCurrent=1;
+        int pageGroupStart=1;
+        int pageGroupEnd=0;
+        int pageStartNum=0;
+
+
+        // 현재페이지계산
+        currentPage = pg;
+
+        // 전체 상품 갯수
+        total = movieService.memberCount();
+
+        log.info("total = " + total);
+
+        //LIMIT 시작값계산
+        start =(currentPage -1)*10;
+
+        if(total%10 == 0){
+            lastPageNum =(total/10);
+        }else{
+            lastPageNum =(total/10)+1;
+        }
+
+        if(pageGroupEnd < 1) {
+            pageGroupEnd = 1;
+        }
+
+        //페이지 그룹계산
+        // 페이지 그룹 계산 (5개 단위로 나누기)
+        pageGroupCurrent = (int) Math.ceil(currentPage / 5.0); // 현재 페이지 그룹 계산
+        pageGroupStart = (pageGroupCurrent - 1) * 5 + 1; // 페이지 그룹의 시작 페이지 계산
+        pageGroupEnd = Math.min(pageGroupCurrent * 5, lastPageNum); // 페이지 그룹의 끝 페이지 계산
+
+        if(pageGroupEnd > lastPageNum){
+            pageGroupEnd=lastPageNum;
+        }
+
+        //페이지 시작번호 계산
+        pageStartNum = total-start;
+
+
+        List<MemberDTO> members = movieService.selectAllMembers(start, 10);
+
+        log.info("members = "+  members);
+        log.info("start = "+ start);
+        log.info("currentPage = " + currentPage);
+        log.info("total = " +  total);
+        log.info("lastPageNum = " + lastPageNum);
+        log.info("pageGroupStart = " + pageGroupStart);
+        log.info("pageGroupEnd = " + pageGroupEnd);
+        log.info("pageStartNum = " + pageStartNum);
+
 
         model.addAttribute("members", members);
+        model.addAttribute("start", start);
+        model.addAttribute("currentPage", currentPage);
+        model.addAttribute("total", total);
+        model.addAttribute("lastPageNum", lastPageNum);
+        model.addAttribute("pageGroupCurrent", pageGroupCurrent);
+        model.addAttribute("pageGroupStart", pageGroupStart);
+        model.addAttribute("pageGroupEnd", pageGroupEnd);
+        model.addAttribute("pageStartNum", pageStartNum);
 
         return "/admin/board/userList";
     }
@@ -257,15 +323,72 @@ public class MovieController {
 
 
     @GetMapping(value = "/admin/theaterList")
-    public String theaterList(Model model){
+    public String theaterList(Model model, @RequestParam(defaultValue = "1") int pg){
+
+        //페이지 관련 변수
+        int start=0;
+        int currentPage =1;
+        int lastPageNum=0;
+        int pageGroupCurrent=1;
+        int pageGroupStart=1;
+        int pageGroupEnd=0;
+        int pageStartNum=0;
+
+
+        // 현재페이지계산
+        currentPage = pg;
+
+        // 전체 상품 갯수
+        total = movieService.theaterCount();
+
+        log.info("total = " + total);
+
+        //LIMIT 시작값계산
+        start =(currentPage -1)*10;
+
+        if(total%10 == 0){
+            lastPageNum =(total/10);
+        }else{
+            lastPageNum =(total/10)+1;
+        }
+
+        if(pageGroupEnd < 1) {
+            pageGroupEnd = 1;
+        }
+
+        //페이지 그룹계산
+        // 페이지 그룹 계산 (5개 단위로 나누기)
+        pageGroupCurrent = (int) Math.ceil(currentPage / 5.0); // 현재 페이지 그룹 계산
+        pageGroupStart = (pageGroupCurrent - 1) * 5 + 1; // 페이지 그룹의 시작 페이지 계산
+        pageGroupEnd = Math.min(pageGroupCurrent * 5, lastPageNum); // 페이지 그룹의 끝 페이지 계산
+
+        if(pageGroupEnd > lastPageNum){
+            pageGroupEnd=lastPageNum;
+        }
+
+        //페이지 시작번호 계산
+        pageStartNum = total-start;
+
+
+
 
         List<RegionDTO> region1List = movieService.selectRegion1Ajax();
-        List<TheaterDTO> theaters = movieService.selectAllTheater();
+        List<TheaterDTO> theaters = movieService.selectAllTheater(start, 10);
 
 
         model.addAttribute("region1List", region1List);
 
         model.addAttribute("theaters", theaters);
+        model.addAttribute("start", start);
+        model.addAttribute("currentPage", currentPage);
+        model.addAttribute("total", total);
+        model.addAttribute("lastPageNum", lastPageNum);
+        model.addAttribute("pageGroupCurrent", pageGroupCurrent);
+        model.addAttribute("pageGroupStart", pageGroupStart);
+        model.addAttribute("pageGroupEnd", pageGroupEnd);
+        model.addAttribute("pageStartNum", pageStartNum);
+
+
 
         log.info("theaters = " +theaters );
 

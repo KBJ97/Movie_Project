@@ -111,7 +111,9 @@
         ON a.theaterNum = d.theaterNum
         INNER JOIN `movie` e
         ON d.movieNum = e.movieNum
+        ORDER BY d.movieInfoNum DESC
         LIMIT #{start}, #{end}
+
     </select>
 
     <insert id="insertFileCinema">
@@ -132,6 +134,15 @@
         SELECT COUNT(*) FROM movie
     </select>
 
+    <select id="theaterCount" resultType="int">
+        SELECT COUNT(*) FROM `theater`
+    </select>
+
+    <select id="memberCount" resultType="int">
+        SELECT COUNT(*) FROM `member`
+    </select>
+
+
     <select id="movieInfoCount" resultType="int">
         SELECT COUNT(*) FROM `movieInfo`
     </select>
@@ -141,7 +152,9 @@
         SELECT a.thName ,a.theaterNum, a.region1Num, a.region2Num, a.addr1,a.addr2, b.`no`, b.roomName, b.totalSeats
         FROM `theater` a
         INNER JOIN `room` b
-        ON a.theaterNum = b.theaterNum;
+        ON a.theaterNum = b.theaterNum
+        ORDER BY a.theaterNum DESC
+        LIMIT #{start}, #{end}
     </select>
 
     <select id="selectTheaterByRegion" resultType="com.cinema.admin.dto.TheaterDTO">
@@ -153,6 +166,7 @@
 
     <select id="selectAllMembers" resultType="com.cinema.member.dto.MemberDTO">
         SELECT * FROM member
+        LIMIT #{start}, #{end}
     </select>
 
     <select id="selectAllCate" resultType="com.cinema.admin.dto.CateDTO">
@@ -173,5 +187,11 @@
         SELECT * FROM movie
         WHERE cateNum = #{cateNum}
     </select>
+
+    <delete id="deleteTheater" parameterType="int" >
+        DELETE FROM theater
+        WHERE theaterNum = #{theaterNum}
+    </delete>
+
 
 </mapper>
