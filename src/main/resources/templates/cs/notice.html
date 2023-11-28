@@ -147,6 +147,7 @@
 
                     <a th:href="@{/cs/notice(pg=${pg + 1})}" class="control next" th:if="${pg < lastPageNum}">다음</a>
                     <a th:href="@{/cs/notice(pg=${lastPageNum})}" class="control last">마지막</a>
+                    <button type="submit" class="button purple large" onclick="location.href='#'">등록</button>
                 </nav>
             </div>
             <!--// pagination -->
