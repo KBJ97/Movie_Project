@@ -286,6 +286,26 @@
             });
         }
 
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var region1 = document.getElementById('region1');
+            var region2 = document.getElementById('region2');
+
+            console.log("region1 = " + region1);
+            console.log("region2 = " + region2);
+
+            region2.addEventListener('change', function() {
+                var selectedRegion1 = region1.value;
+                var selectedRegion2 = this.value;
+
+                var url = '/cinema/admin/theaterList?region1Num=' + selectedRegion1 + '&region2Num=' + selectedRegion2;
+                window.location.href = url;
+            });
+        });
+
+
+
+
     </script>
 
     <script>
@@ -366,7 +386,7 @@
                             </tr>
                         </th:block>
                     </table>
-
+                <!--
                     <div class="page">
                         <th:block th:if="${pageGroupStart > 1}">
                             <a th:href="@{/admin/theaterList(pg=${pageGroupStart - 1})}" class="prev">이전</a>
@@ -380,7 +400,7 @@
                             <a th:href="@{/admin/theaterList(pg=${pageGroupEnd + 1})}" class="next">다음</a>
                         </th:block>
                     </div>
-
+                -->
                 </section>
             </div>
         </div>
