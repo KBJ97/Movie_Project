@@ -194,4 +194,16 @@
     </delete>
 
 
+    <select id="selectMovieInfoList" resultType="com.cinema.admin.dto.MovieInfoDTO">
+        SELECT a.*, b.region1Name, c.region2Name, d.*, e.movieName, e.movieAge, e.runTime
+        FROM `theater` a
+        LEFT JOIN `region1` b ON a.region1Num = b.region1Num
+        LEFT JOIN `region2` c ON a.region1Num = c.region1Num AND a.region2Num = c.region2Num
+        INNER JOIN `movieInfo` d ON a.theaterNum = d.theaterNum
+        INNER JOIN `movie` e ON d.movieNum = e.movieNum
+        WHERE DATE(playDate) = DATE(NOW())
+        ORDER BY d.movieInfoNum DESC
+    </select>
+
+
 </mapper>

@@ -207,4 +207,8 @@ public class MovieService {
         return movieMapper.memberCount();
     };
 
+    public List<MovieInfoDTO> selectMovieInfoList(){
+        return movieMapper.selectMovieInfoList();
+    }
+
 }

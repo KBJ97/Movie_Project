@@ -21,6 +21,9 @@ public class MovieInfoDTO {
     private LocalDate playDate;
     private int region1;
     private int region2;
+    private int movieAge;
+    private int runTime;
+
 
     private String movieName;
     private String region1Name;
@@ -43,4 +46,14 @@ public class MovieInfoDTO {
     public void setPlayTime(String playTime) {
         this.playTime = Time.valueOf(LocalTime.parse(playTime));
     }
+
+
+    public LocalDate getReleaseDate() {
+        return playDate;
+    }
+
+    public void setReleaseDate(LocalDate releaseDate) {
+        this.playTime = playTime;
+    }
+
 }
