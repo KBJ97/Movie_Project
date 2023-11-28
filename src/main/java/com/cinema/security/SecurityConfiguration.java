@@ -31,13 +31,6 @@ public class SecurityConfiguration implements WebMvcConfigurer {
     @Value("${upload.path.thumbs}")
     private String thumbs;
 
-    @Value("${upload.path.banners}")
-    private String banners;
-
-
-    public SecurityConfiguration() {
-    }
-
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/files/**")
@@ -46,15 +39,13 @@ public class SecurityConfiguration implements WebMvcConfigurer {
         registry.addResourceHandler("/thumbs/**")
                 .addResourceLocations(resourceLoader.getResource("file:" + thumbs));
 
-        registry.addResourceHandler("/banners/**")
-                .addResourceLocations(resourceLoader.getResource(banners));
     }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 // 사이트 위변조 방지 비활성
-                .csrf(CsrfConfigurer::disable) // 메서드 참조 연산자로 람다식을 간결하게 표현
+                .csrf(CsrfConfigurer::disable)
                 // 폼 로그인 설정
                 .formLogin(config -> config
                         .loginPage("/member/login")
@@ -67,7 +58,7 @@ public class SecurityConfiguration implements WebMvcConfigurer {
                 .rememberMe(config -> config.userDetailsService(securityUserService)
                         .rememberMeParameter("rememberMe")
                         .key("uniqueAndSecret")
-                        .tokenValiditySeconds(86400)) // 자동 로그인 유효 기간 (초))
+                        .tokenValiditySeconds(86400))
 
                 // 로그아웃 설정
                 .logout(config -> config
