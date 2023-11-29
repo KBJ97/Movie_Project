@@ -2,7 +2,8 @@ package com.cinema.admin.controller;
 
 import com.cinema.admin.dto.MovieInfoDTO;
 import com.cinema.admin.service.MovieService;
-import com.cinema.cs.dto.csDTO;
+import com.cinema.cs.dto.CsNoticeDTO;
+import com.cinema.cs.dto.CsQnaDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
@@ -23,13 +24,15 @@ public class AdminController {
 
 
         List<MovieInfoDTO> movieList = movieService.selectMovieInfoList();
-        List<csDTO> noticeList = movieService.selectAdminNotices();
+        List<CsNoticeDTO> noticeList = movieService.selectAdminNotices();
+        List<CsQnaDTO> qnaList = movieService.selectAdminQna();
 
         log.info("movieList", movieList);
         log.info("noticeList", noticeList);
 
         model.addAttribute("movieList", movieList);
         model.addAttribute("noticeList", noticeList);
+        model.addAttribute("qnaList", qnaList);
 
         return "/admin/board/index";
     }

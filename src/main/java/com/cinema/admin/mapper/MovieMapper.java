@@ -1,7 +1,6 @@
 package com.cinema.admin.mapper;
 
 import com.cinema.admin.dto.*;
-import com.cinema.cs.dto.csDTO;
 import com.cinema.member.dto.MemberDTO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -61,6 +60,5 @@ public interface MovieMapper {
 
     public List<MovieInfoDTO> selectMovieInfoList();
 
-    public List<csDTO> selectAdminNotices();
 
 }

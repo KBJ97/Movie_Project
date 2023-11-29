@@ -194,20 +194,23 @@
                 <section>
                     <table>
                         <tr>
-                            <th>아이디</th>
-                            <th>이름</th>
-                            <th>포인트</th>
-                            <th>생년월일</th>
-                            <th>Type</th>
+                            <th>글 번호</th>
+                            <th>제목</th>
+                            <th>작성자</th>
+                            <th>답변 유무</th>
+                            <th>관리</th>
                         </tr>
 
-                        <th:block th:each="member:${members}">
+                        <th:block th:each="qna:${qnaList}">
                             <tr>
-                                <td th:text="${member.uid}">a1234</td>
-                                <td th:text="${member.name}">김유신</td>
-                                <td th:text="${member.point}">1000P</td>
-                                <td th:text="${member.birth}">1988/11/01</td>
-                                <td th:text="${member.type}">일반회원</td>
+                                <td th:text="${qna.qnaNo}">1</td>
+                                <td th:text="${qna.title}">예매 질의</td>
+                                <td th:text="${qna.writer}">a101</td>
+                                <td>
+                                    <span th:if="${qna.status == 0}">답변 중</span>
+                                    <span th:if="${qna.status == 1}">답변 완료</span>
+                                </td>
+                                <td>답변하기</td>
                             </tr>
                         </th:block>
                     </table>

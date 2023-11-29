@@ -1,8 +1,10 @@
 package com.cinema.admin.service;
 
 import com.cinema.admin.dto.*;
+import com.cinema.admin.mapper.AdminCsMapper;
 import com.cinema.admin.mapper.MovieMapper;
-import com.cinema.cs.dto.csDTO;
+import com.cinema.cs.dto.CsNoticeDTO;
+import com.cinema.cs.dto.CsQnaDTO;
 import com.cinema.member.dto.MemberDTO;
 import lombok.RequiredArgsConstructor;
 
@@ -23,6 +25,8 @@ import java.util.UUID;
 public class MovieService {
 
     private final MovieMapper movieMapper;
+
+    private final AdminCsMapper adminCsMapper;
 
     @Value("${spring.servlet.multipart.location}")
     private String filePath;
@@ -212,8 +216,13 @@ public class MovieService {
         return movieMapper.selectMovieInfoList();
     }
 
-    public List<csDTO> selectAdminNotices(){
-        return movieMapper.selectAdminNotices();
+    public List<CsNoticeDTO> selectAdminNotices(){
+        return adminCsMapper.selectAdminNotices();
     }
+
+    public List<CsQnaDTO> selectAdminQna(){
+        return adminCsMapper.selectAdminQna();
+    };
+
 
 }
