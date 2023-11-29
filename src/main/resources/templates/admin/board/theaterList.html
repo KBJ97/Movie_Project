@@ -333,12 +333,12 @@
                 // AJAX 요청
                 $.ajax({
                     type: 'GET',
-                    url: '/cinema/admin/theater?region1Num=' + region1 + '&region2Num=' + region2, // URL에 직접 파라미터 추가
+                    url: '/cinema/admin/theater/' + region1 + '/' + region2, // URL에 직접 파라미터 추가
                     success: function(data) {
                         // 받은 데이터로 테이블 갱신
                         console.log(data);
 
-                        //$('#theaterTable').html(data);
+                        $('#theaterTable').html(data);
                     },
                     error: function() {
                         console.log('데이터를 불러오지 못했습니다.');
