@@ -2,6 +2,7 @@ package com.cinema.admin.service;
 
 import com.cinema.admin.dto.*;
 import com.cinema.admin.mapper.MovieMapper;
+import com.cinema.cs.dto.csDTO;
 import com.cinema.member.dto.MemberDTO;
 import lombok.RequiredArgsConstructor;
 
@@ -209,6 +210,10 @@ public class MovieService {
 
     public List<MovieInfoDTO> selectMovieInfoList(){
         return movieMapper.selectMovieInfoList();
+    }
+
+    public List<csDTO> selectAdminNotices(){
+        return movieMapper.selectAdminNotices();
     }
 
 }
