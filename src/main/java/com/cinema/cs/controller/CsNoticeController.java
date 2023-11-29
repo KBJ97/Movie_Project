@@ -1,6 +1,6 @@
 package com.cinema.cs.controller;
 
-import com.cinema.cs.dto.csDTO;
+import com.cinema.cs.dto.CsNoticeDTO;
 import com.cinema.cs.service.CsNoticeService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,7 @@ import java.util.List;
 
 @Log4j2
 @Controller
-public class NoticeController {
+public class CsNoticeController {
 
     @Autowired
     private CsNoticeService csNoticeService;
@@ -45,7 +45,7 @@ public class NoticeController {
         model.addAttribute("pg", pg);
 
         // 목록 출력 시작
-        List<csDTO> notices = csNoticeService.selectNotices(startNum);
+        List<CsNoticeDTO> notices = csNoticeService.selectNotices(startNum);
 
         // 목록을 모델에 추가
         model.addAttribute("notices", notices);

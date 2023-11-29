@@ -32,42 +32,13 @@
         <div id="contents">
             <h2 class="tit">공지사항</h2>
 
-            <div class="tab-block mb30">
-                <ul>
-                    <li class="on tabBtn"><button type="button" class="btn tabBtn" data-no="" title="전체공지 보기">전체</button></li>
-                    <li class="tabBtn"><button type="button" class="btn" data-no="81" title="영화관 공지 보기">영화관 공지</button></li>
-                    <li class="tabBtn"><button type="button" class="btn" data-no="82" title="지점 공지 보기">지점 공지</button></li>
-                </ul>
-            </div>
-
             <div class="board-list-util">
                 <p class="result-count">
                     <strong>전체 <em class="font-gblue">5,522</em>건</strong>
                 </p>
 
                 <div class="dropdown bootstrap-select mr07 bs3">
-                    <select id="theater" title="지역 선택" class="mr07" tabindex="-98">
-                        <option class="bs-title-option" value=""></option>
-                        <option value="">지역 선택</option>
-                        <option value="10">서울</option>
-                        <option value="30">경기</option>
-                        <option value="35">인천</option>
-                        <option value="45">대전/충청/세종</option>
-                        <option value="55">부산/대구/경상</option>
-                        <option value="65">광주/전라</option>
-                        <option value="70">강원</option>
-                        <option value="80">제주</option>
-                    </select>
-                    <button type="button" class="btn dropdown-toggle btn-default bs-placeholder" data-toggle="dropdown" role="button" data-id="theater" title="지역 선택">
-                        <div class="filter-option">
-                            <div class="filter-option-inner">
-                                <div class="filter-option-inner-inner">지역 선택</div>
-                            </div>
-                        </div>
-                        <span class="bs-caret">
-                            <span class="caret"></span>
-                        </span>
-                    </button>
+
                     <div class="dropdown-menu open" role="combobox">
                         <div class="inner open" role="listbox" aria-expanded="false" tabindex="-1">
                         <ul class="dropdown-menu inner "></ul>
@@ -76,16 +47,7 @@
                     </div>
 
                 <div class="dropdown bootstrap-select disabled mr07 bs3">
-                    <select id="theater02" title="극장 선택" disabled="disabled" class="mr07" tabindex="-98">
-                        <option class="bs-title-option" value=""></option>
-                    <option value="">극장 선택</option>
-                    </select>
 
-                    <button type="button" class="btn dropdown-toggle disabled btn-default bs-placeholder" data-toggle="dropdown" role="button" data-id="theater02" tabindex="-1" aria-disabled="true" title="극장 선택">
-                    <div class="filter-option">
-                        <div class="filter-option-inner">
-                        <div class="filter-option-inner-inner">극장 선택</div></div> </div>
-                    <span class="bs-caret"><span class="caret"></span></span></button>
                     <div class="dropdown-menu open" role="combobox">
                         <div class="inner open" role="listbox" aria-expanded="false" tabindex="-1">
                             <ul class="dropdown-menu inner "></ul>
@@ -147,7 +109,7 @@
 
                     <a th:href="@{/cs/notice(pg=${pg + 1})}" class="control next" th:if="${pg < lastPageNum}">다음</a>
                     <a th:href="@{/cs/notice(pg=${lastPageNum})}" class="control last">마지막</a>
-                    <button type="submit" class="button purple large" onclick="location.href='#'">등록</button>
+                   <!-- <button type="submit" class="button purple large" onclick="location.href='#'">등록</button>-->
                 </nav>
             </div>
             <!--// pagination -->

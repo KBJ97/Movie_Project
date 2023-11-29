@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class csDTO {
+public class CsNoticeDTO {
     private int noticeNo;
     private String uid;
     private String title;
