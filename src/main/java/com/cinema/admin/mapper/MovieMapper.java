@@ -56,4 +56,6 @@ public interface MovieMapper {
 
     public void deleteTheater(int theaterNum);
 
+    public List<MovieInfoDTO> selectMovieInfoList();
+
 }
