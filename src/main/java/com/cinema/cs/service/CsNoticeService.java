@@ -1,6 +1,6 @@
 package com.cinema.cs.service;
 
-import com.cinema.cs.dto.csDTO;
+import com.cinema.cs.dto.CsNoticeDTO;
 import com.cinema.cs.mapper.CsNoticeMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,19 +14,19 @@ public class CsNoticeService {
     private CsNoticeMapper csNoticeMapper;
 
     // CRUD 시작
-    public int insertNotice(csDTO dto) {
+    public int insertNotice(CsNoticeDTO dto) {
         return csNoticeMapper.insertNotice(dto);
     }
 
-    public csDTO selectNotice(int noticeNo) {
+    public CsNoticeDTO selectNotice(int noticeNo) {
         return csNoticeMapper.selectNotice(noticeNo);
     }
 
-    public List<csDTO> selectNotices(int start) {
+    public List<CsNoticeDTO> selectNotices(int start) {
         return csNoticeMapper.selectNotices(start);
     }
 
-    public int updateNotice(csDTO dto) {
+    public int updateNotice(CsNoticeDTO dto) {
         return csNoticeMapper.updateNotice(dto);
     }
 

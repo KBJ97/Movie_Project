@@ -1,6 +1,6 @@
 package com.cinema.cs.mapper;
 
-import com.cinema.cs.dto.csDTO;
+import com.cinema.cs.dto.CsNoticeDTO;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -9,12 +9,12 @@ import java.util.List;
 public interface CsNoticeMapper {
 
     // CRUD
-    public int insertNotice(csDTO dto);
+    public int insertNotice(CsNoticeDTO dto);
 
-    public csDTO selectNotice(int noticeNo);
-    public List<csDTO> selectNotices(int start);
+    public CsNoticeDTO selectNotice(int noticeNo);
+    public List<CsNoticeDTO> selectNotices(int start);
 
-    public int updateNotice(csDTO dto);
+    public int updateNotice(CsNoticeDTO dto);
 
     public int deleteNotice(int noticeNo);
 
