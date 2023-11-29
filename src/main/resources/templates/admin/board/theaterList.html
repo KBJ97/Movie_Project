@@ -3,7 +3,7 @@
       xmlns:layout="http://www.thymeleaf.org/"
       layout:decorate="/admin/board/layout.html">
 
-<html lang="en">
+
 <head>
     <style>
         * {
@@ -287,24 +287,6 @@
         }
 
 
-        document.addEventListener('DOMContentLoaded', function() {
-            var region1 = document.getElementById('region1');
-            var region2 = document.getElementById('region2');
-
-            console.log("region1 = " + region1);
-            console.log("region2 = " + region2);
-
-            region2.addEventListener('change', function() {
-                var selectedRegion1 = region1.value;
-                var selectedRegion2 = this.value;
-
-                var url = '/cinema/admin/theaterList?region1Num=' + selectedRegion1 + '&region2Num=' + selectedRegion2;
-                window.location.href = url;
-            });
-        });
-
-
-
 
     </script>
 
@@ -341,12 +323,39 @@
     </script>
 
 
+    <script>
+        $(document).ready(function() {
+            // region1이나 region2가 변경될 때 데이터를 서버에 요청
+            $('#region2').change(function() {
+                var region1 = $('#region1').val();
+                var region2 = $('#region2').val();
+
+                // AJAX 요청
+                $.ajax({
+                    type: 'GET',
+                    url: '/cinema/admin/theater?region1Num=' + region1 + '&region2Num=' + region2, // URL에 직접 파라미터 추가
+                    success: function(data) {
+                        // 받은 데이터로 테이블 갱신
+                        console.log(data);
+
+                        //$('#theaterTable').html(data);
+                    },
+                    error: function() {
+                        console.log('데이터를 불러오지 못했습니다.');
+                    }
+                });
+            });
+        });
+    </script>
+
+
 
 
 
 
 </head>
-        <div id="register" layout:fragment="content">
+    <div id="register" layout:fragment="content">
+        <form>
             <div id="register_detail">
                 상영관 목록
                 <hr/>
@@ -362,6 +371,7 @@
                     <option th:each="region1 : ${region1List}" th:value="${region1.region1Num}" th:text="${region1.region1Name}"></option>
                 </select>
             </div>
+
 
 
                 <section>
@@ -403,5 +413,6 @@
                 -->
                 </section>
             </div>
-        </div>
+        </form>
+    </div>
 </html>

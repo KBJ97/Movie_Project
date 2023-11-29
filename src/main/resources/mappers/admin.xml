@@ -205,5 +205,11 @@
         ORDER BY d.movieInfoNum DESC
     </select>
 
+    <select id="selectAdminNotices" resultType="com.cinema.cs.dto.csDTO">
+        SELECT * FROM cs_notice
+        ORDER BY noticeNo DESC
+        LIMIT 0,6
+    </select>
+
 
 </mapper>

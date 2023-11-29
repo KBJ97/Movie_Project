@@ -1,8 +1,10 @@
 package com.cinema.admin.mapper;
 
 import com.cinema.admin.dto.*;
+import com.cinema.cs.dto.csDTO;
 import com.cinema.member.dto.MemberDTO;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -10,6 +12,7 @@ import java.util.List;
 public interface MovieMapper {
 
     public void insertMovie(MovieDTO movieDTO);
+
     public void insertFile(FileDTO fileDTO);
 
     public List<MovieDTO> selectMovies(int start, int end);
@@ -44,7 +47,7 @@ public interface MovieMapper {
 
     public List<TheaterDTO> selectAllTheater(int start, int end);
 
-    public List<TheaterDTO> selectTheaterByRegion(int region1Num, int regionNum2);
+    public List<TheaterDTO> selectTheaterByRegion(@Param("region1Num") int regionNum1, @Param("region2Num") int region2Num);
 
     public List<MemberDTO> selectAllMembers(int start, int end);
 
@@ -57,5 +60,7 @@ public interface MovieMapper {
     public void deleteTheater(int theaterNum);
 
     public List<MovieInfoDTO> selectMovieInfoList();
+
+    public List<csDTO> selectAdminNotices();
 
 }

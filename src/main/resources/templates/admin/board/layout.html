@@ -2,7 +2,6 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.thymeleaf.org/">
 
-<html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -112,6 +111,11 @@
                     <a class="nav-link" th:href="@{/admin/userList}">
                         <div class="sb-nav-link-icon"></div>
                         회원
+
+                    </a>
+                    <a class="nav-link" th:href="@{/admin/qnaList}">
+                        <div class="sb-nav-link-icon"></div>
+                        1 : 1 문의사항
                     </a>
                     <div class="sb-sidenav-menu-heading">Theater</div>
                     <a class="nav-link" th:href="@{/admin/theaterRegister}">
