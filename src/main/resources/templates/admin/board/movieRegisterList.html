@@ -220,8 +220,6 @@
                         }
                     });
                 }
-
-
             });
         });
 
@@ -271,7 +269,7 @@
                 </th:block>
 
                 <th:block th:each="num : ${#numbers.sequence(pageGroupStart, pageGroupEnd)}">
-                    <a th:href="@{/admin/movieRegisterList(pg=${num})}" th:class="${num == pg} ? 'on' : 'num'">[[${num}]]</a>
+                    <a th:href="@{/admin/movieRegisterList(pg=${num})}" th:class="${num == currentPage} ? 'on' : 'num'">[[${num}]]</a>
                 </th:block>
 
                 <th:block th:if="${pageGroupEnd < lastPageNum}">
