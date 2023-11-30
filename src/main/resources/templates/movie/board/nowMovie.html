@@ -22,7 +22,9 @@
             <div class="row__posters">
                 <th:block th:each="movie:${movies}">
                     <div class="moviePoster">
-                        <img class="row__poster row__posterLarge" th:src="@{'/thumbs/' + ${movie.thumb1}}" alt="사진2"/>
+                        <a th:href="@{/movie/movieView(movieNum=${movie.movieNum})}">
+                            <img class="row__poster row__posterLarge" th:src="@{'/thumbs/' + ${movie.thumb1}}" alt="사진2"/>
+                        </a>
                         <div class="titleMovie">[[${movie.movieName}]]</div>
                         <button class="ticketing">예매</button>
                     </div>
