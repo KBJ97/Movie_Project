@@ -55,11 +55,13 @@
             <div class="row">
                 <h2>[[${cate.cateName}]]</h2>
                 <div class="row__posters">
-                    <th:block th:each="movie:${movieList}" th:if="${cate.cateNum == movie.cateNum}">
-                        <div class="moviePoster">
-                            <img class="row__poster row__posterLarge" th:src="@{'/thumbs/' + ${movie.thumb1}}" alt="사진2"/>
-                            <div class="titleMovie">[[${movie.movieName}]]</div>
-                        </div>
+                    <th:block th:each="movie:${movieList}">
+                        <th:block th:if="${cate.cateNum == movie.cateNum}">
+                            <div class="moviePoster">
+                                <img class="row__poster row__posterLarge" th:src="@{'/thumbs/' + ${movie.thumb1}}" alt="사진2"/>
+                                <div class="titleMovie">[[${movie.movieName}]]</div>
+                            </div>
+                        </th:block>
                     </th:block>
                 </div>
             </div>
@@ -67,3 +69,4 @@
     </div>
 </body>
 </html>
+

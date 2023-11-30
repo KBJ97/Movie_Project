@@ -280,7 +280,7 @@ public class MovieController {
         movieService.insertMovie(movieDTO);
 
 
-        return "/admin/board/register";
+        return "redirect:/admin/movieRegisterList";
     }
 
     @PostMapping(value = "/admin/timeRegister")
