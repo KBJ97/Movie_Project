@@ -75,7 +75,12 @@
                     <li><a href="#" id="loginButton" class="gnb-txt-login" title="로그인">로그인</a></li>
                 </th:block>
                 <th:block sec:authorize="isAuthenticated()">
-                    <li><a>[[${#authentication.principal.member.name}]]님</a></li>
+                    <li th:if="${#authentication.principal.member.type == 'ADMIN'}">
+                        <a th:href="@{/admin/index}">[[${#authentication.principal.member.name}]]님</a>
+                    </li>
+                    <li th:unless="${#authentication.principal.member.type == 'ADMIN'}">
+                        <a>[[${#authentication.principal.member.name}]]님</a>
+                    </li>
                     <li><a th:href="@{/member/logout}">로그아웃</a></li>
 
                 </th:block>
