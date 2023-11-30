@@ -185,9 +185,11 @@
         VALUES (#{actorNum}, #{movieNum})
     </insert>
 
-    <select id="selectMoviesByCate" resultType="com.cinema.member.dto.MemberDTO">
+    <select id="selectMoviesByCate" resultType="com.cinema.admin.dto.MovieDTO">
         SELECT * FROM movie
         WHERE cateNum = #{cateNum}
+        ORDER BY movieNum DESC
+        LIMIT 0, 6;
     </select>
 
     <delete id="deleteTheater" parameterType="int" >
