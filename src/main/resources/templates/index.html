@@ -58,7 +58,9 @@
                     <th:block th:each="movie:${movieList}">
                         <th:block th:if="${cate.cateNum == movie.cateNum}">
                             <div class="moviePoster">
-                                <img class="row__poster row__posterLarge" th:src="@{'/thumbs/' + ${movie.thumb1}}" alt="사진2"/>
+                                <a th:href="@{/movie/movieView(movieNum=${movie.movieNum})}">
+                                    <img class="row__poster row__posterLarge" th:src="@{'/thumbs/' + ${movie.thumb1}}" alt="사진2"/>
+                                </a>
                                 <div class="titleMovie">[[${movie.movieName}]]</div>
                             </div>
                         </th:block>

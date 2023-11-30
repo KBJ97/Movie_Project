@@ -18,4 +18,5 @@ public interface MovieListMapper {
 
     public List<MovieDTO> selectNowMovies(LocalDateTime currentTime);
 
+    public MovieDTO selectMovieByNum(int movieNum);
 }

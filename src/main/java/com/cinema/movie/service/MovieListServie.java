@@ -31,4 +31,10 @@ public class MovieListServie {
     public List<MovieDTO> selectNowMovies(LocalDateTime currentTime){
         return movieListMapper.selectNowMovies(currentTime);
     }
+
+    public MovieDTO selectMovieByNum(int movieNum){
+        return movieListMapper.selectMovieByNum(movieNum);
+    }
+
+
 }
