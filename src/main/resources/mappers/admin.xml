@@ -158,10 +158,12 @@
     </select>
 
     <select id="selectTheaterByRegion" resultType="com.cinema.admin.dto.TheaterDTO">
-        SELECT *
+        SELECT a.thName ,a.theaterNum, a.region1Num, a.region2Num, a.addr1,a.addr2, b.`no`, b.roomName, b.totalSeats
         FROM `theater` a
-        INNER JOIN `room` b ON a.theaterNum = b.theaterNum
+        INNER JOIN `room` b
+        ON a.theaterNum = b.theaterNum
         WHERE a.`region1Num` = #{region1Num} AND a.`region2Num` = #{region2Num}
+        ORDER BY a.theaterNum DESC
     </select>
 
     <select id="selectAllMembers" resultType="com.cinema.member.dto.MemberDTO">

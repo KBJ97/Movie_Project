@@ -292,7 +292,8 @@
 
     <script>
         $(document).ready(function(){
-            $('.deleteTheater').click(function (e) {
+            // region1이나 region2가 변경될 때 데이터를 서버에 요청
+            $(document).on('click', '.deleteTheater', function(e) {
                 e.preventDefault();
                 var $link = $(this);
                 var $row = $link.closest('tr');
@@ -338,7 +339,32 @@
                         // 받은 데이터로 테이블 갱신
                         console.log(data);
 
-                        $('#theaterTable').html(data);
+                        $('#register_detail table tbody tr').remove();
+
+                        // 새로운 데이터를 테이블에 추가하기 위해 헤더와 함께 테이블을 재구성합니다.
+                        var tableContent = '<tr>' +
+                            '<th>영화관 이름</th>' +
+                            '<th>주소</th>' +
+                            '<th>상영관</th>' +
+                            '<th>최대 수용 인원</th>' +
+                            '<th>관리</th>' +
+                            '</tr>';
+
+                        // 'data'를 기반으로 새로운 행을 생성하여 테이블에 추가합니다.
+                        data.forEach(function(theater) {
+                            tableContent += '<tr>' +
+                                '<td>' + theater.thName + '</td>' +
+                                '<td>' + theater.addr1 + ' ' + theater.addr2 + '</td>' +
+                                '<td>' + theater.roomName + '</td>' +
+                                '<td><a href="#">' + theater.totalSeats + '</a></td>' +
+                                '<td class="deleteTheater"><a href="#">삭제</a></td>' +
+                                '<td style="display: none">' + theater.theaterNum + '</td>' +
+                                '</tr>';
+                        });
+
+                        // 기존 테이블의 모든 내용을 삭제하고, 새로운 내용으로 테이블을 갱신합니다.
+                        $('#register_detail table').html(tableContent);
+
                     },
                     error: function() {
                         console.log('데이터를 불러오지 못했습니다.');
@@ -392,11 +418,10 @@
                                 <td th:text="${theater.totalSeats}"><a href="#">100</a></td>
                                 <td class="deleteTheater"><a href="#">삭제</a></td>
                                 <td style="display: none" th:text="${theater.theaterNum}">1</td>
-
                             </tr>
                         </th:block>
                     </table>
-                <!--
+                <
                     <div class="page">
                         <th:block th:if="${pageGroupStart > 1}">
                             <a th:href="@{/admin/theaterList(pg=${pageGroupStart - 1})}" class="prev">이전</a>
@@ -410,7 +435,7 @@
                             <a th:href="@{/admin/theaterList(pg=${pageGroupEnd + 1})}" class="next">다음</a>
                         </th:block>
                     </div>
-                -->
+
                 </section>
             </div>
         </form>
