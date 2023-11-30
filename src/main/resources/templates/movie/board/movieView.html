@@ -86,8 +86,7 @@
 
                 <div class="poster">
                     <div class="wrap">
-                        <p class="movie-grade age-15">15세 이상 관람가</p>
-                        <img th:src="@{'/thumbs/' + ${movie.thumb1}}" alt="다크 나이트"/>
+                        <img th:src="@{'/thumbs/' + ${movie.thumb1}}"/>
                     </div>
                 </div>
 
@@ -105,9 +104,107 @@
                             [[${movie.story}]]
                         </div>
                     </div>
-
-
                 </div>
+            </div>
+            <!-- 한줄평 있을 때 -->
+            <div class="tit-util mt70 mb15 oneContent">
+                <h2 class="tit small">
+                    다크 나이트에 대한 <span class="font-gblue">1</span>개의 이야기가
+                    있어요!
+                </h2>
+            </div>
+
+            <!-- 레이어  : 본 영화 등록 -->
+            <section id="saw_movie_regi" class="modal-layer">
+                <div class="wrap">
+                    <header class="layer-header">
+                        <h3 class="tit">본 영화 등록</h3>
+                    </header>
+
+                    <div class="layer-con">
+                        <div class="pop-gray mt10 mb30">
+                            <label for="movie_regi" class="mr10"
+                            >거래번호 또는 예매번호</label
+                            >
+                            <input
+                                    type="text"
+                                    id="movie_regi"
+                                    class="input-text w280px"
+                                    maxlength="20"
+                                    placeholder="숫자만 입력해 주세요"
+                                    title="티켓 거래번호 입력"
+                            />
+                            <button class="button gray ml05">등록</button>
+                        </div>
+
+                        <div class="box-border v1 mt30">
+                            <p class="tit-box">이용안내</p>
+                        </div>
+                    </div>
+
+                    <div class="btn-group-fixed">
+                        <button type="button" class="button purple close-layer">
+                            닫기
+                        </button>
+                    </div>
+
+                    <button type="button" class="btn-modal-close">레이어 닫기</button>
+                </div>
+            </section>
+
+            <div class="movie-idv-story oneContent">
+                <ul>
+                    <li class="type03">
+                        <div class="story-area">
+                            <div class="user-prof">
+                                <p class="user-id">LSET CINEMA</p>
+                            </div>
+
+                            <div class="story-box">
+                                <div class="story-wrap">
+                                    <div class="story-cont">
+                                        <span class="font-gblue">다크 나이트</span>
+                                        재미있게 보셨나요? 영화의 어떤 점이 좋았는지 이야기해주세요.
+                                    </div>
+
+                                    <div class="story-write">
+                                        <a href="#tooltip-layer01" title="관람평쓰기" class="tooltip-click oneWrtNonMbBtn"><i class="iconset ico-story-write"></i> 관람평쓰기</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!--한줄평 리뷰-->
+                    <li class="type01 oneContentTag">
+                        <div class="story-area">
+                            <div class="user-prof">
+                                <p class="user-id">아이디</p>
+                            </div>
+                            <div class="story-box">
+                                <div class="story-wrap review">
+                                    <div class="tit">관람평</div>
+                                    <div class="story-cont">
+                                        <div class="story-point"><span>10</span></div>
+                                        <div class="story-txt">리뷰 내용</div>
+                                        <div class="story-util">
+                                            <div class="post-funtion">
+                                                <div class="wrap">
+                                                    <div class="balloon-space user">
+                                                        <div class="balloon-cont">
+                                                            <div class="btn-close">
+                                                                <a href="#" title="닫기"><img src="/static/pc/images/common/btn/btn-balloon-close.png" alt="닫기"/></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
