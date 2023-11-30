@@ -414,7 +414,7 @@ em {
 }
 .movie-info {
   padding: 30px 0;
-  color: #222;
+  color: white;
 }
 .movie-info p {
   margin: 0;
@@ -435,17 +435,7 @@ em {
   margin: 0;
   padding: 0 0 0 20px;
 }
-.movie-info .line p:before {
-  content: "";
-  display: block;
-  position: absolute;
-  left: 9px;
-  top: 50%;
-  width: 1px;
-  height: 13px;
-  margin: -6px 0 0 0;
-  background-color: #d8d9db;
-}
+
 .movie-graph {
   display: table;
   width: 100%;
@@ -469,7 +459,7 @@ em {
 .movie-graph .col dl dd {
   padding: 0 0 30px 0;
   font-size: 2em;
-  color: #503396;
+  color: white;
 }
 .movie-graph .col {
   display: table-cell;
@@ -541,11 +531,7 @@ em {
 .movie-graph .col dl dd.font-roboto {
   font-size: 2.2em;
 }
-.movie-graph .col dl dd {
-  padding: 0 0 30px 0;
-  font-size: 2em;
-  color: #503396;
-}
+
 .font-roboto.regular {
   font-weight: 400 !important;
 }

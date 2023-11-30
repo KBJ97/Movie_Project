@@ -25,4 +25,10 @@
         FROM movie
         WHERE #{currentTime} > openDate
     </select>
+
+    <select id="selectMovieByNum" resultType="com.cinema.admin.dto.MovieDTO">
+        SELECT * FROM movie
+        WHERE movieNum = #{movieNum}
+    </select>
+
 </mapper>

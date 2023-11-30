@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.thymeleaf.org"
+      layout:decorate="/layout.html">
+<head>
+    <style>
+        main{
+            height: 1000px;
+        }
+
+    </style>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+    <div class="index" layout:fragment="content">
+        <div class="movie-detail-page">
+            <div class="movie-detail-cont">
+
+                <p class="d-day default">예매 D-2</p>
+                <p class="contents-type"></p>
+                <p class="title" th:text="${movie.movieName}">다크 나이트</p>
+
+                <div class="btn-util">
+                    <button type="button" title="보고싶어 안함" class="btn btn-like" rpst-movie-no="00094300">
+                        <i class="iconset ico-heart-line"></i>
+                        <span title="보고싶어 한 명수" id="intrstCnt"> 558 </span>
+                    </button>
+
+                    <div class="sns-share">
+                        <a href="#" class="btn btn-common-share" title="공유하기">
+                            <i class="iconset ico-sns-line"></i> 공유하기
+                        </a>
+
+                        <div class="btn-sns-share-wrap">
+                            <div class="cont-area">
+                                <div class="btn-sns-share-group"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="movie-info infoContent">
+                        <p>상영타입 : [[${movie.screenType}]]</p>
+                        <div class="line">
+                            <p>ㅣ 등급&nbsp;:
+                                <span th:switch="${movie.movieAge}">
+                                    <span th:case="0">전체관람가</span>
+                                    <span th:case="15">15세 이용가</span>
+                                    <span th:case="19">청소년 관람불가</span>
+                                </span>
+                            </p>
+                            <p>ㅣ 개봉일&nbsp;: [[${movie.openDate}]]</p>
+                        </div>
+                    </div>
+                    <div class="movieInfo">
+                        감독 : [[${movie.director}]]<br>
+                        배우 : [[${movie.actor}]]
+                    </div>
+                </div>
+
+                <!-- info -->
+
+                <div class="info">
+                    <div class="score" style="display: none">
+                        <p class="tit">실관람 평점</p>
+                        <div class="number gt" id="mainMegaScore">
+                            <p title="실관람 평점" class="before">
+                                <em>9.7</em><span class="ir">점</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="rate" style="padding: 0">
+                        <p class="tit">예매율</p>
+                        <p class="cont"><em>2</em>위 (17.4%)</p>
+                    </div>
+
+                    <div class="audience">
+                        <div class="tit">
+                            <span class="m-tooltip-wrap">누적관객수 </span>
+                        </div>
+                        <p class="cont"><em>4,228,360</em> 명</p>
+                    </div>
+                </div>
+                <!--// info -->
+
+                <div class="poster">
+                    <div class="wrap">
+                        <p class="movie-grade age-15">15세 이상 관람가</p>
+                        <img th:src="@{'/thumbs/' + ${movie.thumb1}}" alt="다크 나이트"/>
+                    </div>
+                </div>
+
+                <div class="reserve screen-type col-2">
+                    <div class="reserve">
+                        <a href="javascript:fn_bookingForm('00094300','basic');" class="btn reserve" title="영화 예매하기">예매</a>
+                        <a href="javascript:fn_bookingForm('00094300','DBC');" class="btn dolby"></a>
+                    </div>
+                </div>
+            </div>
+            <div id="contentData">
+                <div class="inner-wrap">
+                    <div class="movie-summary infoContent" id="info">
+                        <div class="txt">
+                            [[${movie.story}]]
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
