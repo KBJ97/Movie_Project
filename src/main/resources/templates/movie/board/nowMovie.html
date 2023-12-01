@@ -3,6 +3,35 @@
       xmlns:layout="http://www.thymeleaf.org/"
       layout:decorate="/layout.html">
 
+<head>
+    <style>
+        .page {
+            text-align: center; /* 가운데 정렬 */
+            margin-top: 20px;
+            margin-bottom: 5px;
+        }
+
+        .page a {
+            font-size: 15px; /* 원하는 글자 크기로 설정 */
+            color: wheat;
+            text-decoration: none; /* 링크 밑줄 제거 */
+            margin: 0 10px; /* 링크 사이 여백 설정 */
+        }
+
+        .page .on {
+            color: white;
+            font-size: 15px; /* 활성 페이지 글자 크기 설정 */
+            font-weight: bold; /* 활성 페이지 텍스트 굵게 표시 (선택적) */
+        }
+
+        .noSerch{
+            color: white;
+            font-size: 20px;
+            margin-bottom: 50px;
+        }
+    </style>
+</head>
+
 <div layout:fragment="content">
         <ul id="topMenu">
             <li><a th:href="@{/movie}">전체 영화  |</a></li>
@@ -28,10 +57,30 @@
                         <div class="titleMovie">[[${movie.movieName}]]</div>
                         <button class="ticketing">예매</button>
                     </div>
-
                 </th:block>
             </div>
         </div>
+        <!-- 페이지 네비게이션 -->
+        <div class="page" th:if="${total > 0}">
+            <th:block th:if="${pageGroupStart > 1}">
+                <a th:href="@{/movie/nowMovie(pg=${pageGroupStart - 1})}" class="prev">이전</a>
+            </th:block>
+
+            <th:block th:each="num : ${#numbers.sequence(pageGroupStart, pageGroupEnd)}">
+                <a th:href="@{/movie/nowMovie(pg=${num})}" th:class="${num == currentPage} ? 'on' : 'num'">[[${num}]]</a>
+            </th:block>
+
+            <th:block th:if="${pageGroupEnd < lastPageNum}">
+                <a th:href="@{/movie/nowMovie(pg=${pageGroupEnd + 1})}" class="next">다음</a>
+            </th:block>
+        </div>
+        <div th:if="${total == 0}">
+            <div class="page">
+                <p class="noSerch">검색된 결과가 없습니다.</p>
+                <a href="#" class="num on">1</a>
+            </div>
+        </div>
+
     </div>
 
 </html>
