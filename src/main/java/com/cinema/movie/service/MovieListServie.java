@@ -24,12 +24,12 @@ public class MovieListServie {
         return movieListMapper.selectMoviesByName(keyword);
     }
 
-    public List<MovieDTO> selectFutureMovies(LocalDateTime currentTime){
-        return movieListMapper.selectFutureMovies(currentTime);
+    public List<MovieDTO> selectFutureMovies(LocalDateTime currentTime, int start){
+        return movieListMapper.selectFutureMovies(currentTime, start);
     }
 
-    public List<MovieDTO> selectNowMovies(LocalDateTime currentTime){
-        return movieListMapper.selectNowMovies(currentTime);
+    public List<MovieDTO> selectNowMovies(LocalDateTime currentTime, int start){
+        return movieListMapper.selectNowMovies(currentTime, start);
     }
 
     public MovieDTO selectMovieByNum(int movieNum){
@@ -39,6 +39,14 @@ public class MovieListServie {
     public int countMoviesContainName(String keyword){
         return movieListMapper.countMoviesContainName(keyword);
     };
+
+    public int countNowMovies(LocalDateTime currentTime){
+        return movieListMapper.countNowMovies(currentTime);
+    }
+
+    public int countFutureMovies(LocalDateTime currentTime){
+        return movieListMapper.countFutureMovies(currentTime);
+    }
 
 
 }
