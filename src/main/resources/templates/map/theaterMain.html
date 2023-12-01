@@ -32,7 +32,7 @@
                 <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;">
 
                     <div class="cell swiper-slide swiper-slide-active" tabindex="0" style="width: 245px; margin-right: 40px;">
-                        <a href="#" class="eventBtn" data-no="14420" data-netfunnel="" title="[제주삼화] 메가박스 제주삼화 지점 그랜드 오프닝 상세보기">
+                        <a th:href="@{/map/theaterInfo}" class="eventBtn" data-no="14420" data-netfunnel="" title="[부산] 메가박스 부산남포 지점 그랜드 오프닝 상세보기">
 
                             <div class="img new"></div>
 
@@ -41,7 +41,7 @@
                                     신규오픈
                                 </p>
                                 <p class="local"></p>
-                                <p class="name">부산남포항</p>
+                                <p class="name">부산남포</p>
                                 <p class="date">2023.10.25</p>
                             </div>
                         </a>
@@ -431,7 +431,7 @@
                 <!-- 로그인 전 -->
                 <div>
                     <i class="iconset ico-favo-theater"></i> 나의 선호영화관 정보
-                    <a th:href="@{/member/login}" class="button small ml10" id="moveLogin" title="로그인하기">로그인하기</a>
+                   <!-- <a th:href="@{/member/login}" class="button small ml10" id="moveLogin" title="로그인하기">로그인하기</a>-->
                 </div>
             </div>
         </div>
