@@ -156,7 +156,7 @@
                                         <td th:text="${movie.movieName}">Tiger Nixon</td>
                                         <td th:text="${movie.region1Name + ' - ' + movie.region2Name}">부산 -  서면</td>
                                         <td th:text="${movie.roomName}">1관</td>
-                                        <td th:text="${movie.movieAge}">61</td>
+                                        <td th:text="(${movie.movieAge} == 0) ? '전체관람가' : ((${movie.movieAge} == 15) ? '15세이상관람가' : ((${movie.movieAge} == 19) ? '청소년관람불가' : ${movie.movieAge}))"></td>
                                         <td th:text="${movie.runTime + '분'}">120분</td>
                                         <td th:text="${#strings.substring(movie.playTime, 0, 5)}">14:25</td>
                                     </tr>
