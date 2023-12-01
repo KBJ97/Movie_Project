@@ -22,6 +22,12 @@
             font-size: 15px; /* 활성 페이지 글자 크기 설정 */
             font-weight: bold; /* 활성 페이지 텍스트 굵게 표시 (선택적) */
         }
+
+        .noSerch{
+            color: white;
+            font-size: 20px;
+            margin-bottom: 50px;
+        }
     </style>
 
 </head>
@@ -55,7 +61,7 @@
             </div>
         </div>
         <!-- 페이지 네비게이션 -->
-        <div class="page">
+        <div class="page" th:if="${total > 0}">
             <th:block th:if="${pageGroupStart > 1}">
                 <a th:href="@{/movie/index(pg=${pageGroupStart - 1})}" class="prev">이전</a>
             </th:block>
@@ -68,6 +74,14 @@
                 <a th:href="@{/movie/index(pg=${pageGroupEnd + 1})}" class="next">다음</a>
             </th:block>
         </div>
+        <div th:if="${total == 0}">
+            <div class="page">
+                <p class="noSerch">검색된 결과가 없습니다.</p>
+                <a href="#" class="num on">1</a>
+            </div>
+
+        </div>
+
     </div>
 
 
