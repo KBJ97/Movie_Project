@@ -193,6 +193,10 @@
             border: none; /* 테두리 없음 */
             border-radius: 5px; /* 둥근 모서리 */
         }
+
+        a:hover {
+            color: black;
+        }
     </style>
 
     <script>
@@ -248,7 +252,7 @@
 
                 <th:block th:each="movie:${movies}">
                     <tr>
-                        <td th:text="${movie.movieName}">해리포터</td>
+                        <td><a th:text="${movie.movieName}" th:href="@{/movie/movieView(movieNum=${movie.movieNum})}">해리포터</a></td>
                         <td th:text="${movie.cateName}">호러</td>
                         <td th:text="${movie.director}">해리</td>
                         <td th:text="${movie.actor}">포터 및 친구들</td>
