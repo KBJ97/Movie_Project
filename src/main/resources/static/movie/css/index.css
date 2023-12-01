@@ -89,6 +89,7 @@ body {
 .row__posters .moviePoster .titleMovie{
   font-size: 14px;
   margin: 10px;
+  height: 30px;
 }
 
 .row__posters .moviePoster .director{
