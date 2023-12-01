@@ -8,6 +8,7 @@
     <link th:href="@{/css/header.css}" rel="stylesheet" type="text/css" />
     <link th:href="@{/cs/css/cs.css}" rel="stylesheet" type="text/css" />
     <link th:href="@{/css/footer.css}" rel="stylesheet" />
+
 </head>
 <body>
 
@@ -57,15 +58,15 @@
                             <th scope="row"><label for="ask-type">문의유형</label> <em class="font-orange">*</em></th>
                             <td colspan="3">
                                 <div>
-                                    <form>
-                                        <select >
+                                    <form action="/cs/qna" method="get">
+                                        <select name="qnaCategory">
                                             <!--<option >문의유형 선택</option>-->
-                                            <option >영화 정보 문의</option>
-                                            <option >회원 및 포인트문의</option>
-                                            <option >예매/결제관련문의</option>
-                                            <option >이벤트문의</option>
-                                            <option >일반문의</option>
-                                            <option >제안/건의</option>
+                                            <option value="information">영화 정보 문의</option>
+                                            <option value="point">회원 및 포인트문의</option>
+                                            <option value="ticket">예매/결제관련문의</option>
+                                            <option value="event">이벤트문의</option>
+                                            <option value="common">일반문의</option>
+                                            <option value="suggest">제안/건의</option>
                                         </select>
                                     </form>
                                 </div>
