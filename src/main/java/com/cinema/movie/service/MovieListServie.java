@@ -36,5 +36,9 @@ public class MovieListServie {
         return movieListMapper.selectMovieByNum(movieNum);
     }
 
+    public int countMoviesContainName(String keyword){
+        return movieListMapper.countMoviesContainName(keyword);
+    };
+
 
 }

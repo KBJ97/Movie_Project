@@ -31,4 +31,10 @@
         WHERE movieNum = #{movieNum}
     </select>
 
+    <select id="countMoviesContainName" resultType="int">
+        SELECT COUNT(*)
+        FROM movie
+        WHERE LOWER(movieName) LIKE CONCAT('%', LOWER(#{Keyword}), '%')
+    </select>
+
 </mapper>
