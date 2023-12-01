@@ -292,7 +292,7 @@ public class MovieController {
         log.info(movieInfoDTO.getPlayTime());
         log.info(movieInfoDTO.getPlayDate());
 
-        return "/admin/board/timeRegister";
+        return "redirect:/admin/movieList";
 
     }
 
@@ -318,7 +318,7 @@ public class MovieController {
 
         log.info("movieService = " + movieService);
 
-        return "/admin/board/theaterRegister";
+        return "redirect:/admin/theaterList";
     }
 
 
