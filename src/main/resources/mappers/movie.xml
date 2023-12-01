@@ -18,12 +18,14 @@
         SELECT *
         FROM movie
         WHERE openDate > #{currentTime}
+        LIMIT  #{start}, 36
     </select>
 
     <select id="selectNowMovies" resultType="com.cinema.admin.dto.MovieDTO">
         SELECT *
         FROM movie
         WHERE #{currentTime} > openDate
+        LIMIT  #{start}, 36
     </select>
 
     <select id="selectMovieByNum" resultType="com.cinema.admin.dto.MovieDTO">
@@ -35,6 +37,18 @@
         SELECT COUNT(*)
         FROM movie
         WHERE LOWER(movieName) LIKE CONCAT('%', LOWER(#{Keyword}), '%')
+    </select>
+
+    <select id="countNowMovies" resultType="int">
+        SELECT COUNT(*)
+        FROM movie
+        WHERE openDate &lt; #{currentTime}
+    </select>
+
+    <select id="countFutureMovies" resultType="int">
+        SELECT COUNT(*)
+        FROM movie
+        WHERE openDate > #{currentTime}
     </select>
 
 </mapper>
