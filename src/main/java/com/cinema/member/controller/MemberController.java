@@ -41,7 +41,7 @@ public class MemberController {
         // 사용자가 입력한 비밀번호를 DTO에 설정
         dto.setPass1(userPassword);
         memberService.save(dto);
-        return "redirect:/member/login?success=200";
+        return "redirect:/index?success=200";
     }
 
     @GetMapping("/member/findId")

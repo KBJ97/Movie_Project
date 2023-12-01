@@ -76,7 +76,7 @@
                 </th:block>
                 <th:block sec:authorize="isAuthenticated()">
                     <li th:if="${#authentication.principal.member.type == 'ADMIN'}">
-                        <a th:href="@{/admin/index}">[[${#authentication.principal.member.name}]]님</a>
+                        <a th:href="@{/admin/index}">관리자</a>
                     </li>
                     <li th:unless="${#authentication.principal.member.type == 'ADMIN'}">
                         <a>[[${#authentication.principal.member.name}]]님</a>
