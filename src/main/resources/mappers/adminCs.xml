@@ -16,4 +16,38 @@
         LIMIT 0, 6
     </select>
 
+    <select id="selectQnaByQnaNo" resultType="com.cinema.cs.dto.CsQnaDTO">
+        SELECT * FROM cs_qna WHERE qnaNo = #{qnaNo}
+    </select>
+
+    <insert id="insertCsAnswer">
+        INSERT INTO cs_answer
+        SET
+        qnaNo = #{qnaNo},
+        writer = #{writer},
+        title = #{title},
+        content = #{content},
+        rdate = now()
+    </insert>
+
+    <select id="selectCsAnswer" resultType="com.cinema.admin.dto.CsAnswerDTO">
+        SELECT * FROM cs_answer WHERE qnaNo = #{qnaNo}
+    </select>
+
+    <update id="updateCsQnaStatus">
+        UPDATE cs_qna
+        SET STATUS = 1
+        WHERE qnaNo = #{qnaNo}
+    </update>
+
+    <select id="selectCsAnswerByQnaNo" resultType="com.cinema.admin.dto.CsAnswerDTO">
+        SELECT * FROM cs_answer WHERE qnaNo = #{qnaNo}
+    </select>
+
+    <update id="updateCsAnswer">
+        UPDATE cs_answer
+        SET title = #{title}, content = #{content}
+        WHERE qnaNo = #{qnaNo}
+    </update>
+
 </mapper>

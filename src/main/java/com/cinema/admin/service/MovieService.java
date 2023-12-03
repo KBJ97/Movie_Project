@@ -222,7 +222,33 @@ public class MovieService {
 
     public List<CsQnaDTO> selectAdminQna(){
         return adminCsMapper.selectAdminQna();
+    }
+
+
+    public CsQnaDTO selectQnaByQnaNo(int qnaNo){
+        return adminCsMapper.selectQnaByQnaNo(qnaNo);
     };
+
+    public void insertCsAnswer(CsAnswerDTO csAnswerDTO){
+        adminCsMapper.insertCsAnswer(csAnswerDTO);
+    }
+
+    public CsAnswerDTO selectCsAnswer(int qnaNo){
+        return adminCsMapper.selectCsAnswer(qnaNo);
+    }
+
+    public void updateCsQnaStatus(int qnaNo){
+        adminCsMapper.updateCsQnaStatus(qnaNo);
+    }
+
+    public CsAnswerDTO selectCsAnswerByQnaNo(int qnaNo){
+        return adminCsMapper.selectCsAnswerByQnaNo(qnaNo);
+    }
+
+    public void updateCsAnswer(CsAnswerDTO csAnswerDTO){
+        adminCsMapper.updateCsAnswer(csAnswerDTO);
+    }
+
 
 
 }
