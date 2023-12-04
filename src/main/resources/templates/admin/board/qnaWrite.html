@@ -155,8 +155,8 @@
         </div>
 
         <form class="csQnaView" th:action="@{/admin/qnaWrite}" method="post">
-            <input type="text" name="qnaNo" th:value="${csQna.qnaNo}">
-            <input type="text" name="writer" th:value="${#authentication.principal.member.name}">
+            <input type="hidden" name="qnaNo" th:value="${csQna.qnaNo}">
+            <input type="hidden" name="writer" th:value="${#authentication.principal.member.name}">
             <div style="font-size: 20px;">Answer</div>
             <hr/>
             <article>

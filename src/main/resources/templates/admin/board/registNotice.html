@@ -72,10 +72,6 @@
             border: 1px solid #ccc;
             padding: 8px;
         }
-        .cstable .cstable1 {
-            background-color: #f2f2f2;
-            font-weight: bold;
-        }
 
         #view .csQnaView {
             padding: 35px;
@@ -122,61 +118,60 @@
             cursor: pointer;
         }
 
+        .categoryNotice {
+            word-wrap: normal;
+            font-size: 15px;
+            width: 300px;
+            text-align: center;
+        }
+
 
 
 
 
     </style>
 </head>
-    <div id="view" layout:fragment="content">
-        <div class="csQnaView" >
-            <div style="font-size: 20px;">1 : 1 문의</div>
-            <hr/>
-            <article>
-                <table class="cstable">
-                    <tr class="cstable1">
-                        <td>유형</td>
-                        <td th:text="${csQna.qnaCate}">카테고리</td>
-                    </tr>
-                    <tr>
-                        <td>제목</td>
-                        <td th:text="${csQna.title}"></td>
-                    </tr>
-                    <tr>
-                        <td>답변 유무</td>
-                        <td>[[${csQna.status}]]</td>
-                    </tr>
-                    <tr class="question">
-                        <td>내용</td>
-                        <td>[[${csQna.content}]]</td>
-                    </tr>
-                </table>
-            </article>
-        </div>
-
-        <form class="csQnaView" th:action="@{/admin/qnaModify}" method="post">
-            <input type="hidden" name="qnaNo" th:value="${csQna.qnaNo}">
-            <input type="hidden" name="writer" th:value="${#authentication.principal.member.name}">
-            <div style="font-size: 20px;">Answer</div>
-            <hr/>
-            <article>
-                <table class="cstable">
-                    <tr>
-                        <td>제목</td>
-                        <td class="csQnaAnswer">
-                            <input class="csQnaAnswerTitle" type="text" name="title" th:value="${csAnswer.title}"/>
-                        </td>
-                    </tr>
-                    <tr class="question">
-                        <td>내용</td>
-                        <td class="csQnaAnswer">
-                            <textarea style="border: none" class="qnaAnswer" name="content" rows="14" cols="150">[[${csAnswer.content}]]</textarea>
-                        </td>
-                    </tr>
-                </table>
-            </article>
-            <button value="submit" class="answerButton">답변 수정</button>
-        </form>
-
+<div id="view" layout:fragment="content">
+    <div class="csQnaView" >
+        <div style="font-size: 20px;">공지사항 등록</div>
+        <hr/>
     </div>
+
+    <form class="csQnaView" th:action="@{/admin/registNotice}" method="post">
+        <input type="hidden" name="writer" th:value="${#authentication.principal.member.name}">
+        <article>
+            <table class="cstable">
+                <tr>
+                    <td>분류</td>
+                    <td class="csQnaAnswer">
+                        <select class="categoryNotice" name="uid">
+                            <option value="영화예매">영화예매</option>
+                            <option value="할인혜택">할인혜택</option>
+                            <option value="결제수단/관람권">결제수단/관람권</option>
+                            <option value="멤버십">멤버십</option>
+                            <option value="극장/특별관">극장/특별관</option>
+                            <option value="스토어">스토어</option>
+                            <option value="홈페이지/모바일">홈페이지/모바일</option>
+                            <option value="기프티카드">기프티카드</option>
+                            <!-- 원하는 장르 옵션을 계속해서 추가할 수 있습니다. -->
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>제목</td>
+                    <td class="csQnaAnswer">
+                        <input class="csQnaAnswerTitle" type="text" name="title"/>
+                    </td>
+                </tr>
+                <tr class="question">
+                    <td>내용</td>
+                    <td class="csQnaAnswer"><textarea style="border: none" class="qnaAnswer" name="content" rows="18" cols="150"></textarea></td>
+                </tr>
+            </table>
+        </article>
+
+        <button value="submit" class="answerButton">등록</button>
+    </form>
+
+</div>
 </html>

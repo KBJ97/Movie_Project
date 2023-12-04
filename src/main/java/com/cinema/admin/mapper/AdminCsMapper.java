@@ -2,6 +2,7 @@ package com.cinema.admin.mapper;
 
 
 import com.cinema.admin.dto.CsAnswerDTO;
+import com.cinema.admin.dto.CsFaqDTO;
 import com.cinema.cs.dto.CsNoticeDTO;
 import com.cinema.cs.dto.CsQnaDTO;
 import org.apache.ibatis.annotations.Mapper;
@@ -27,4 +28,11 @@ public interface AdminCsMapper {
     public CsAnswerDTO selectCsAnswerByQnaNo(int qnaNo);
 
     public void updateCsAnswer(CsAnswerDTO csAnswerDTO);
+
+    public void insertNotice(CsNoticeDTO csNoticeDTO);
+
+    public void insertFaq(CsFaqDTO csFaqDTO);
+
+    public List<CsFaqDTO> selectFAQs();
+
 }
