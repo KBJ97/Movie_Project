@@ -61,4 +61,6 @@ public interface MovieMapper {
     public List<MovieInfoDTO> selectMovieInfoList();
 
 
+
+
 }

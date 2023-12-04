@@ -210,7 +210,7 @@
                                     <span th:if="${qna.status == 0}">답변 중</span>
                                     <span th:if="${qna.status == 1}">답변 완료</span>
                                 </td>
-                                <td>답변하기</td>
+                                <td><a th:href="@{/admin/view(qnaNo=${qna.qnaNo})}">답변하기</a></td>
                             </tr>
                         </th:block>
                     </table>
