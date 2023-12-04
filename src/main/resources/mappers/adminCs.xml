@@ -50,4 +50,31 @@
         WHERE qnaNo = #{qnaNo}
     </update>
 
+    <insert id="insertNotice">
+        INSERT INTO cs_notice
+        SET
+        writer = #{writer},
+        title = #{title},
+        content = #{content},
+        rdate = #{rdate},
+        uid = #{uid}
+    </insert>
+
+    <insert id="insertFaq">
+        INSERT INTO cs_faq
+        SET
+        writer = #{writer},
+        title = #{title},
+        content = #{content},
+        rdate = NOW(),
+        category = #{category}
+    </insert>
+
+    <select id="selectFAQs" resultType="com.cinema.admin.dto.CsFaqDTO">
+
+    SELECT * FROM cs_faq ORDER BY faqNo DESC
+    LIMIT 0,6
+
+    </select>
+
 </mapper>

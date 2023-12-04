@@ -249,6 +249,18 @@ public class MovieService {
         adminCsMapper.updateCsAnswer(csAnswerDTO);
     }
 
+    public void insertNotice(CsNoticeDTO csNoticeDTO){
+        adminCsMapper.insertNotice(csNoticeDTO);
+    }
+
+    public void insertFaq(CsFaqDTO csFaqDTO){
+        adminCsMapper.insertFaq(csFaqDTO);
+    }
+
+    public List<CsFaqDTO> selectFAQs(){
+        return adminCsMapper.selectFAQs();
+    }
+
 
 
 }

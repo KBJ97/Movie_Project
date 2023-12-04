@@ -2,14 +2,12 @@ package com.cinema.admin.controller;
 
 
 import com.cinema.admin.dto.*;
-import com.cinema.admin.mapper.MovieMapper;
 import com.cinema.admin.service.MovieService;
+import com.cinema.cs.dto.CsNoticeDTO;
 import com.cinema.cs.dto.CsQnaDTO;
 import com.cinema.member.dto.MemberDTO;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -459,6 +457,35 @@ public class MovieController {
 
         return "redirect:/admin/view?qnaNo=" + csAnswerDTO.getQnaNo();
 
+    }
+    // movieService.insertNotice(csNoticeDTO);
+
+    @GetMapping(value = "/admin/registNotice")
+    public String registNotice() {
+
+        return "/admin/board/registNotice";
+    }
+
+    @PostMapping(value = "/admin/registNotice")
+    public String registNotice(CsNoticeDTO csNoticeDTO) {
+
+        movieService.insertNotice(csNoticeDTO);
+
+        return "redirect:/cs/notice";
+    }
+
+    @GetMapping(value = "/admin/registFaq")
+    public String registFaq() {
+
+        return "/admin/board/registFaq";
+    }
+
+    @PostMapping(value = "/admin/registFaq")
+    public String registFaq(CsFaqDTO csFaqDTO) {
+
+        movieService.insertFaq(csFaqDTO);
+
+        return "redirect:/cs/faq";
     }
 
 
