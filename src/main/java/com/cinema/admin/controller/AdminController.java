@@ -1,5 +1,6 @@
 package com.cinema.admin.controller;
 
+import com.cinema.admin.dto.CsFaqDTO;
 import com.cinema.admin.dto.MovieInfoDTO;
 import com.cinema.admin.service.MovieService;
 import com.cinema.cs.dto.CsNoticeDTO;
@@ -26,6 +27,7 @@ public class AdminController {
         List<MovieInfoDTO> movieList = movieService.selectMovieInfoList();
         List<CsNoticeDTO> noticeList = movieService.selectAdminNotices();
         List<CsQnaDTO> qnaList = movieService.selectAdminQna();
+        List<CsFaqDTO> faqList = movieService.selectFAQs();
 
         log.info("movieList", movieList);
         log.info("noticeList", noticeList);
@@ -33,6 +35,7 @@ public class AdminController {
         model.addAttribute("movieList", movieList);
         model.addAttribute("noticeList", noticeList);
         model.addAttribute("qnaList", qnaList);
+        model.addAttribute("faqList", faqList);
 
         return "/admin/board/index";
     }

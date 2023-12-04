@@ -194,31 +194,10 @@
                     </div>
                     <div class="card-deck">
                         <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">[문의] 개인정보 처리 문의</h5>
-                                <p class="card-text">2023.11.13</p>
+                            <div class="card-body" th:each="faq : ${faqList}">
+                                <h5 class="card-title" th:text="'[' + ${faq.category} + '] ' + ${faq.title}">[공지] 메가박스 개인정보 처리 방침 변경 안내</h5>
+                                <p class="card-text" th:text="${#temporals.format(faq.rdate, 'yy-MM-dd')}">2012-12-20</p>
                             </div>
-                            <div class="card-body">
-                                <h5 class="card-title">[문의] 예매 관련 문의</h5>
-                                <p class="card-text">2023.11.13</p>
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title">[문의] 로그인 관련 문의</h5>
-                                <p class="card-text">2023.11.13</p>
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title">[문의] 상영관 찾기 문의</h5>
-                                <p class="card-text">2023.11.13</p>
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title">[문의] 극장 위치 문의</h5>
-                                <p class="card-text">2023.11.13</p>
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title">[문의] 해당 상영관에 대한 문의</h5>
-                                <p class="card-text">2023.11.13</p>
-                            </div>
-
                             <div class="linked">
                                 <a th:href="@{/cs/faq}" class="more" title="바로가기"> <i class="fas fa-arrow-right icon-right-arrow"></i></a>
                             </div>

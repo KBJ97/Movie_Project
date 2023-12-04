@@ -68,7 +68,7 @@
             <ul class="gnb-depth1">
                 <li><a th:href="@{/movie/index}" class="gnb-txt-movie" title="영화">영화</a></li>
                 <li><a href="#" class="gnb-txt-reserve" title="예매">예매</a></li>
-                <li><a href="#" class="gnb-txt-theater" title="극장">극장</a></li>
+                <li><a th:href="@{/map/theaterMain}" class="gnb-txt-theater" title="극장">극장</a></li>
                 <li><a th:href="@{/cs/index}" class="gnb-txt-cs" title="고객센터">고객센터</a></li>
                 <th:block sec:authorize="isAnonymous()">
                     <li><a th:href="@{/member/register}" class="gnb-txt-register" title="회원가입">회원가입</a></li>
@@ -76,7 +76,7 @@
                 </th:block>
                 <th:block sec:authorize="isAuthenticated()">
                     <li th:if="${#authentication.principal.member.type == 'ADMIN'}">
-                        <a th:href="@{/admin/index}">[[${#authentication.principal.member.name}]]님</a>
+                        <a th:href="@{/admin/index}">관리자</a>
                     </li>
                     <li th:unless="${#authentication.principal.member.type == 'ADMIN'}">
                         <a>[[${#authentication.principal.member.name}]]님</a>

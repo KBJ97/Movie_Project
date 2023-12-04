@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.thymeleaf.org/"
+      layout:decorate="/admin/board/layout.html">
+
+
+<head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font: normal 14px "Noto Sans CJK KR";
+        }
+
+        a {
+            text-decoration: none; /* 밑줄 제거 */
+            color: black;
+        }
+
+        #view {
+            width: 100%;
+            height: auto;
+            background-color: #e2e2e2;
+            padding: 10px;
+        }
+
+
+        #view > div {
+            font-size: 20px;
+        }
+
+        #view hr:first-child {
+            opacity: 1;
+            border: 1.8px solid black;
+        }
+
+        #register_detail td {
+            padding: 10px;
+        }
+
+        #view td:nth-child(1) {
+            height: 50px; /* 원하는 높이로 조절 */
+            padding: 10px; /* 내부 여백 설정 */
+            text-align: center; /* 텍스트 가운데 정렬 */
+            width: 20%;
+        }
+        #view td:nth-child(2) {
+            height: auto; /* 원하는 높이로 조절 */
+            padding: 15px; /* 내부 여백 설정 */
+        }
+
+        #view table {
+            width: 100%;
+        }
+
+        #register_detail tr:first-child {
+            background-color: black !important; /* 원하는 회색 배경 색상 설정 */
+            color: white;
+        }
+
+        #register_detail tr:nth-child(odd) {
+            background-color: #ccc; /* 원하는 회색 배경 색상 설정 */
+        }
+
+        /* 테이블 스타일 */
+        .cstable {
+            width: 100%;
+            border-collapse: collapse;
+            padding: 20px;
+        }
+        .cstable td {
+            border: 1px solid #ccc;
+            padding: 8px;
+        }
+        .cstable .cstable1 {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        #view .csQnaView {
+            padding: 35px;
+            background: white;
+            font-size: 15px;
+        }
+
+        #view .csQnaView .csQnaAnswer{
+            padding: 10px;
+
+        }
+
+        #view .csQnaView .csQnaAnswer .csQnaAnswerTitle{
+            height: 50px;
+            border-width: 0;
+            width: 800px;
+
+        }
+        textarea:focus, input:focus{
+            outline: none;
+        }
+
+        #view .csQnaView hr{
+            opacity: 1;
+            border: 1.8px solid black;
+            margin-bottom: 45px;
+        }
+
+        .csQnaView .answerButton {
+            display: block;
+            margin: 20px auto 0; /* 위쪽 여백과 좌우 여백을 조절하여 가운데로 이동시킵니다 */
+            width: 150px;
+            height: 40px;
+            font-size: 16px;
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .csQnaView button:hover {
+            background-color: darkgray;
+            color: black;
+            cursor: pointer;
+        }
+
+
+
+
+
+    </style>
+</head>
+    <div id="view" layout:fragment="content">
+        <div class="csQnaView" >
+            <div style="font-size: 20px;">1 : 1 문의</div>
+            <hr/>
+            <article>
+                <table class="cstable">
+                    <tr class="cstable1">
+                        <td>유형</td>
+                        <td th:text="${csQna.qnaCate}">카테고리</td>
+                    </tr>
+                    <tr>
+                        <td>제목</td>
+                        <td th:text="${csQna.title}"></td>
+                    </tr>
+                    <tr>
+                        <td>답변 유무</td>
+                        <td>[[${csQna.status}]]</td>
+                    </tr>
+                    <tr class="question">
+                        <td>내용</td>
+                        <td>[[${csQna.content}]]</td>
+                    </tr>
+                </table>
+            </article>
+        </div>
+
+        <form class="csQnaView" th:action="@{/admin/qnaWrite}" method="post">
+            <input type="hidden" name="qnaNo" th:value="${csQna.qnaNo}">
+            <input type="hidden" name="writer" th:value="${#authentication.principal.member.name}">
+            <div style="font-size: 20px;">Answer</div>
+            <hr/>
+            <article>
+                <table class="cstable">
+                    <tr>
+                        <td>제목</td>
+                        <td class="csQnaAnswer">
+                            <input class="csQnaAnswerTitle" type="text" name="title"/>
+                        </td>
+                    </tr>
+                    <tr class="question">
+                        <td>내용</td>
+                        <td class="csQnaAnswer"><textarea style="border: none" class="qnaAnswer" name="content" rows="14" cols="150"></textarea></td>
+                    </tr>
+                </table>
+            </article>
+            <button value="submit" class="answerButton">답변 제출</button>
+        </form>
+
+    </div>
+</html>

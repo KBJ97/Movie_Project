@@ -1,21 +1,23 @@
-package com.cinema.cs.dto;
+package com.cinema.admin.dto;
 
 import lombok.*;
 
 import java.time.LocalDateTime;
 
-@Data
+@Getter
+@Setter
 @ToString
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
-public class CsNoticeDTO {
-    private int noticeNo;
-    private String uid;
+public class CsAnswerDTO {
+
+    private int answerNo;
+    private int qnaNo;
+    private String writer;
     private String title;
     private String content;
     private LocalDateTime rdate;
 
-    //추가필드
-    private String writer;
+
 }

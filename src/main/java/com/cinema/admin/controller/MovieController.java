@@ -2,13 +2,12 @@ package com.cinema.admin.controller;
 
 
 import com.cinema.admin.dto.*;
-import com.cinema.admin.mapper.MovieMapper;
 import com.cinema.admin.service.MovieService;
+import com.cinema.cs.dto.CsNoticeDTO;
+import com.cinema.cs.dto.CsQnaDTO;
 import com.cinema.member.dto.MemberDTO;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -393,6 +392,100 @@ public class MovieController {
         log.info("theaters = " +theaters );
 
         return "/admin/board/theaterList";
+    }
+
+    @GetMapping(value = "/admin/view")
+    public String view(Model model, int qnaNo) {
+
+        CsQnaDTO  csQna = movieService.selectQnaByQnaNo(qnaNo);
+        CsAnswerDTO csAnswer = movieService.selectCsAnswer(qnaNo);
+
+        log.info("csQna = " + csQna);
+
+        model.addAttribute("csQna",csQna);
+        model.addAttribute("csAnswer",csAnswer);
+
+        return "/admin/board/view";
+    }
+
+    @GetMapping(value = "/admin/qnaWrite")
+    public String qnaWrite(Model model, int qnaNo) {
+
+        CsQnaDTO  csQna = movieService.selectQnaByQnaNo(qnaNo);
+
+        log.info("csQna = " + csQna);
+
+        model.addAttribute("csQna",csQna);
+
+        return "/admin/board/qnaWrite";
+    }
+
+    @PostMapping(value = "/admin/qnaWrite")
+    public String qnaWrite(CsAnswerDTO csAnswerDTO) {
+
+        movieService.insertCsAnswer(csAnswerDTO);
+        movieService.updateCsQnaStatus(csAnswerDTO.getQnaNo());
+
+        log.info("csQnaDTO = " + csAnswerDTO);
+        log.info("csQnaDTO.getQnaNo() = " + csAnswerDTO.getQnaNo());
+
+        return "redirect:/admin/view?qnaNo=" + csAnswerDTO.getQnaNo();
+
+    }
+
+    @GetMapping(value = "/admin/qnaModify")
+    public String qnaModify(Model model, int qnaNo) {
+
+        CsQnaDTO  csQna = movieService.selectQnaByQnaNo(qnaNo);
+        CsAnswerDTO csAnswer = movieService.selectCsAnswerByQnaNo(qnaNo);
+
+        log.info("csQna = " + csQna);
+        log.info(csAnswer.getContent());
+
+        model.addAttribute("csQna",csQna);
+        model.addAttribute("csAnswer", csAnswer);
+
+
+        return "/admin/board/qnaModify";
+    }
+
+    @PostMapping(value = "/admin/qnaModify")
+    public String qnaModify(CsAnswerDTO csAnswerDTO) {
+
+
+        movieService.updateCsAnswer(csAnswerDTO);
+
+        return "redirect:/admin/view?qnaNo=" + csAnswerDTO.getQnaNo();
+
+    }
+    // movieService.insertNotice(csNoticeDTO);
+
+    @GetMapping(value = "/admin/registNotice")
+    public String registNotice() {
+
+        return "/admin/board/registNotice";
+    }
+
+    @PostMapping(value = "/admin/registNotice")
+    public String registNotice(CsNoticeDTO csNoticeDTO) {
+
+        movieService.insertNotice(csNoticeDTO);
+
+        return "redirect:/cs/notice";
+    }
+
+    @GetMapping(value = "/admin/registFaq")
+    public String registFaq() {
+
+        return "/admin/board/registFaq";
+    }
+
+    @PostMapping(value = "/admin/registFaq")
+    public String registFaq(CsFaqDTO csFaqDTO) {
+
+        movieService.insertFaq(csFaqDTO);
+
+        return "redirect:/cs/faq";
     }
 
 
