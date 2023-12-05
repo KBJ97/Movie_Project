@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.w3.org/1999/xhtml"
+      layout:decorate="/layout.html">
+
+<head>
+    <meta charset="UTF-8">
+    <title>REST Cinema</title>
+    <link th:href="@{/css/header.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/cs/css/cs.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/css/footer.css}" rel="stylesheet" />
+
+    <style>
+        .view {
+            margin: 20px;
+        }
+        .title {
+            /* 제목 스타일 */
+            font-size: 24px;
+            margin-bottom: 10px;
+            margin-top: 30px;
+        }
+        .meta {
+            /* UID와 날짜 스타일 */
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        .content {
+            /* 내용 스타일 */
+            font-size: 16px;
+            line-height: 1.6;
+            height: 200px;
+        }
+
+        .btnList {
+            /* 목록 보기 버튼 스타일 */
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #351f66;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+
+        .noticeList {
+            margin: 0 auto;
+            display: block;
+            text-align: center;
+        }
+
+        .noticeList a:link{
+            color: white;
+            font-size: 15px;
+        }
+        .noticeList a:visited{
+            color: white;
+        }
+
+
+    </style>
+
+</head>
+    <body>
+
+        <div class="container has-lnb" layout:fragment="content">
+            <div class="page-util">
+                <div class="inner-wrap">
+                    <div class="location">
+                        <span>Home</span>
+                        <a th:href="@{/cs/index}" title="고객센터 페이지로 이동">고객센터</a>
+                        <a th:href="@{/cs/notice}" title="공지사항 페이지로 이동">공지사항</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="inner-wrap">
+                <!-- aside 시작 -->
+                <div th:replace="~{/cs/fragments/_aside.html}"></div>
+                <!-- aside 끝 -->
+
+                <!-- notice 본문 -->
+                <div id="contents">
+                    <h2 class="tit">공지사항</h2>
+
+                    <!-- 공지사항 -->
+                    <div class="view">
+                        <hr>
+                        <!-- 공지사항 제목 -->
+                        <div class="title">[[${notice.title}]]</div>
+                        <div class="meta">
+                            <span th:text="${#temporals.format(notice.rdate, 'yyyy-MM-dd')}">2020-12-12</span>
+                        </div>
+                        <hr>
+
+                        <!-- 공지사항 내용 -->
+                        <div class="content">
+                            [[${notice.content}]] <br><br>
+                        </div>
+                        <hr>
+
+                        <div class="noticeList">
+                            <a th:href="@{/cs/notice}" class="btnList">목록보기</a>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <!-- notice 본문 끝 -->
+
+
+    </body>
+</html>

@@ -21,4 +21,7 @@ public interface CsNoticeMapper {
 
     // 페이징
     public int noticeCountTotal();
+
+    public CsNoticeDTO selectNoticeByNo(int noticeNo);
+
 }
