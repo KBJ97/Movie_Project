@@ -8,6 +8,17 @@
     <link th:href="@{/css/header.css}" rel="stylesheet" type="text/css" />
     <link th:href="@{/cs/css/cs.css}" rel="stylesheet" type="text/css" />
     <link th:href="@{/css/footer.css}" rel="stylesheet" />
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var registerBtn = document.querySelector('.button.purple.large');
+
+            registerBtn.addEventListener('click', function() {
+                alert('등록되었습니다.');
+            });
+        });
+    </script>
+
 </head>
 <body>
 

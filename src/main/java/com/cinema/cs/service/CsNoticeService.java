@@ -83,4 +83,8 @@ public class CsNoticeService {
         return (currentPage - 1) * pageSize;
     }
 
+    public CsNoticeDTO selectNoticeByNo(int noticeNo){
+        return csNoticeMapper.selectNoticeByNo(noticeNo);
+    }
+
 }
