@@ -35,6 +35,9 @@ public class MovieInfoDTO {
     private int price;
     private String roomName;
 
+    //추가필드
+    private int roomNo;
+
 
     // Getter
     public Time getPlayTime() {

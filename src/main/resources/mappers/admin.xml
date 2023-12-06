@@ -55,9 +55,10 @@
     </select>
 
     <select id="selectCinemaAjax" resultType="com.cinema.admin.dto.TheaterDTO">
-        SELECT a.*
+        SELECT a.*, c.roomName, c.no
         FROM `theater` a
         JOIN `region2` AS b ON a.region1Num = b.region1Num AND a.region2Num = b.region2Num
+        JOIN `room` AS c ON a.theaterNum = c.theaterNum
         WHERE a.`region1Num` = #{region1Num} AND a.region2Num = #{region2Num}
     </select>
 
