@@ -9,6 +9,16 @@
     <link th:href="@{/cs/css/cs.css}" rel="stylesheet" type="text/css" />
     <link th:href="@{/css/footer.css}" rel="stylesheet" />
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var registerBtn = document.querySelector('.button.purple.large');
+
+            registerBtn.addEventListener('click', function() {
+                alert('등록되었습니다.');
+            });
+        });
+    </script>
+
 </head>
 <body>
 
@@ -39,7 +49,7 @@
                     <li>문의하시기 전 FAQ를 확인하시면 궁금증을 더욱 빠르게 해결하실 수 있습니다. </li>
                 </ul>
             </div>
-            <form name="regFrm" method="post">
+            <form name="regFrm" th:action="@{/cs/qna}" method="post">
                 <input type="hidden" name="inqLclCd" value="INQD01">
                 <input type="hidden" name="custInqStatCd" value="INQST1">
                 <input type="hidden" name="cdLvl" value="3">
@@ -54,83 +64,60 @@
                             <col>
                         </colgroup>
                         <tbody>
-                        <tr>
-                            <th scope="row"><label for="ask-type">문의유형</label> <em class="font-orange">*</em></th>
-                            <td colspan="3">
-                                <div>
-                                    <form action="/cs/qna" method="get">
-                                        <select name="qnaCategory">
-                                            <!--<option >문의유형 선택</option>-->
-                                            <option value="information">영화 정보 문의</option>
-                                            <option value="point">회원 및 포인트문의</option>
-                                            <option value="ticket">예매/결제관련문의</option>
-                                            <option value="event">이벤트문의</option>
-                                            <option value="common">일반문의</option>
-                                            <option value="suggest">제안/건의</option>
-                                        </select>
-                                    </form>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><label for="name">이름</label> <em class="font-orange">*</em></th>
-                            <td>
-                                <input type="text" id="name" name="inqurNm" class="input-text w150px" value="" maxlength="30">
-                            </td>
-<!--                            <th scope="row"><label for="qnaRpstEmail">이메일</label> <em class="font-orange">*</em></th>-->
-<!--                            <td>-->
-<!--                                <input type="text" name="rpstEmail" id="qnaRpstEmail" class="input-text" value="" maxlength="50">-->
-<!--                            </td>-->
-                        </tr>
-                        <tr id="qnaMblpCertRow" style="display: none;">
-                            <th scope="row"><label for="ibxQnaMblpCharCertNo">인증번호</label> <em class="font-orange">*</em></th>
-                            <td colspan="3">
-                                <div class="chk-num">
-                                    <div class="line">
-                                        <input maxlength="4" type="text" id="ibxQnaMblpCharCertNo" class="input-text w180px numType" title="인증번호 입력" disabled="disabled"><!--인증번호 입력-->
-                                        <div id="qnaTimer" class="time-limit">3:00</div>
+                            <tr>
+                                <th scope="row">
+                                    <label>문의유형</label> <em class="font-orange">*</em>
+                                </th>
+                                <td colspan="3">
+                                    <div>
+                                        <form>
+                                            <select name="qnaCate" >
+                                                <!--<option >문의유형 선택</option>-->
+                                                <option >영화 예매</option>
+                                                <option >할인혜택</option>
+                                                <option >결제수단/관람권</option>
+                                                <option >멤버십</option>
+                                                <option >VIP</option>
+                                                <option >극장/특별관</option>
+                                                <option >스토어</option>
+                                                <option >홈페이지/모바일</option>
+                                                <option >기프티카드</option>
+                                            </select>
+                                        </form>
                                     </div>
-                                </div>
-                                <button id="btnQnaMblpCharCert" type="button" class="button purple w100px ml08 disabled" disabled="disabled">인증확인<!--인증확인--></button>
-                                <div id="qnaCertNo-error-text" class="alert"></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">
-                                <label for="qnaCustInqTitle">제목</label> <em class="font-orange">*</em></th>
-                            <td colspan="3"><input type="text" name="custInqTitle" id="qnaCustInqTitle" class="input-text" maxlength="100"></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">
-                                <label for="textarea">내용</label> <em class="font-orange">*</em></th>
-                            <td colspan="3">
-                                <div class="textarea">
-                                    <div id="textarea-notice" style="color: #999999; margin-left: 10px;">
-                                        <ul>- 문의내용에 개인정보(이름,연락처,카드번호 등)가 포함되지 않도록 유의하시기 바랍니다.</ul>
-                                    </div>
-                                    <textarea id="textarea" name="custInqCn" rows="5" cols="30" title="내용입력" class="input-textarea"></textarea>
-                                    <div class="util">
-                                        <p class="count">
-                                            <span id="textareaCnt">0</span> / 2000
-                                        </p>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">사진첨부</th>
-                            <td colspan="3">
-                                <div class="upload-image-box">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <label for="name">이름</label> <em class="font-orange">*</em>
+                                </th>
+                                <td>
+                                    <input type="text" id="name" name="writer" class="input-text w150px" th:value=${#authentication.principal.member.name} maxlength="30" readonly>
+                                </td>
+                            </tr>
 
-                                    <div class="info-txt">
-                                        <p>* JPEG, PNG 형식의 5M 이하의 파일만 첨부 가능합니다. (최대 3개)</p>
-                                        <button type="button" id="uploadBtn" class="btn-image-add"><span>파일선택</span></button>
-                                        <p>* 개인정보가 포함된 이미지 등록은 자제하여 주시기 바랍니다.</p>
+                            <tr>
+                                <th scope="row">
+                                    <label for="qnaCustInqTitle">제목</label> <em class="font-orange">*</em></th>
+                                <td colspan="3"><input type="text" name="title" id="qnaCustInqTitle" class="input-text" maxlength="100"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <label for="textarea">내용</label> <em class="font-orange">*</em></th>
+                                <td colspan="3">
+                                    <div class="textarea">
+                                        <div id="textarea-notice" style="color: #999999; margin-left: 10px;">
+                                            <ul>- 문의내용에 개인정보(이름,연락처,카드번호 등)가 포함되지 않도록 유의하시기 바랍니다.</ul>
+                                        </div>
+                                        <textarea id="textarea" name="content" rows="5" cols="30" title="내용입력" class="input-textarea"></textarea>
+                                        <div class="util">
+                                            <p class="count">
+                                                <span id="textareaCnt">0</span> / 2000
+                                            </p>
+                                        </div>
                                     </div>
-                                    <div id="imgList"></div>
-                                </div>
-                            </td>
-                        </tr>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
