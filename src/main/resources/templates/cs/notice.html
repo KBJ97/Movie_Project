@@ -34,7 +34,7 @@
 
             <div class="board-list-util">
                 <p class="result-count">
-                    <strong>전체 <em class="font-gblue">5,522</em>건</strong>
+                    <strong>전체 <em class="font-gblue">[[${totalNotices}]]</em>건</strong>
                 </p>
 
                 <div class="dropdown bootstrap-select mr07 bs3">
@@ -86,7 +86,7 @@
                         <td>[[${notice.uid}]]</td>
                         <td></td>
                         <td>
-                            <a href="#" class="moveBtn" data-no=${notice.noticeNo}
+                            <a th:href="@{/cs/view(noticeNo=${notice.noticeNo})}" class="moveBtn" data-no=${notice.noticeNo}
                                title="공지사항 상세보기">
                                 <span th:text="${notice.title}"></span>
                             </a>
