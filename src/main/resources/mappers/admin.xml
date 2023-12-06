@@ -55,6 +55,15 @@
     </select>
 
     <select id="selectCinemaAjax" resultType="com.cinema.admin.dto.TheaterDTO">
+        SELECT a.theaterNum, MAX(a.thName) AS thName, MAX(a.region1Num) AS region1Num, MAX(a.region2Num) AS region2Num, MAX(a.addr1) AS addr1, MAX(a.addr2) AS addr2, MAX(a.zip) AS zip, MAX(c.roomName) AS roomName, MAX(c.no) AS no
+        FROM `theater` a
+        JOIN `region2` AS b ON a.region1Num = b.region1Num AND a.region2Num = b.region2Num
+        JOIN `room` AS c ON a.theaterNum = c.theaterNum
+        WHERE a.`region1Num` = #{region1Num} AND a.region2Num = #{region2Num}
+        GROUP BY a.theaterNum
+    </select>
+
+    <select id="selectRoomAjax" resultType="com.cinema.admin.dto.TheaterDTO">
         SELECT a.*, c.roomName, c.no
         FROM `theater` a
         JOIN `region2` AS b ON a.region1Num = b.region1Num AND a.region2Num = b.region2Num
@@ -94,6 +103,7 @@
         INSERT INTO `movieInfo`
         SET
         `theaterNum` = #{theaterNum},
+        `roomNo` = #{roomNo},
         `movieNum` = #{movieNum},
         `playTime` = #{playTime},
         `playDate` = #{playDate},
@@ -101,7 +111,7 @@
     </insert>
 
     <select id="selectMovieInfo" resultType="com.cinema.admin.dto.MovieInfoDTO">
-        SELECT a.*, b.region1Name, c.region2Name, d.*, e.movieName
+        SELECT a.*, b.region1Name, c.region2Name, d.*, e.movieName, f.roomName
         FROM `theater` a
         LEFT JOIN `region1` b
         ON a.region1Num = b.region1Num
@@ -111,6 +121,8 @@
         ON a.theaterNum = d.theaterNum
         INNER JOIN `movie` e
         ON d.movieNum = e.movieNum
+        INNER JOIN `room` f
+        ON f.`no` = d.`roomNo`
         ORDER BY d.movieInfoNum DESC
         LIMIT #{start}, #{end}
 
@@ -193,8 +205,8 @@
     </select>
 
     <delete id="deleteTheater" parameterType="int" >
-        DELETE FROM theater
-        WHERE theaterNum = #{theaterNum}
+        DELETE FROM room
+        WHERE no = #{no}
     </delete>
 
 

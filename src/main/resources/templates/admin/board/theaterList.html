@@ -358,7 +358,7 @@
                                 '<td>' + theater.roomName + '</td>' +
                                 '<td><a href="#">' + theater.totalSeats + '</a></td>' +
                                 '<td class="deleteTheater"><a href="#">삭제</a></td>' +
-                                '<td style="display: none">' + theater.theaterNum + '</td>' +
+                                '<td style="display: none">' + theater.no + '</td>' +
                                 '</tr>';
                         });
 
@@ -417,7 +417,7 @@
                                 <td th:text="${theater.roomName}">1관</td>
                                 <td th:text="${theater.totalSeats}"><a href="#">100</a></td>
                                 <td class="deleteTheater"><a href="#">삭제</a></td>
-                                <td style="display: none" th:text="${theater.theaterNum}">1</td>
+                                <td style="display: none" th:text="${theater.no}">1</td>
                             </tr>
                         </th:block>
                     </table>
