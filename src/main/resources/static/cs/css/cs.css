@@ -9311,7 +9311,8 @@ address {
 }
 
 .pt40 {
-    padding-top: 40px!important
+    padding-top: 40px!important;
+    display: block;
 }
 
 .pt50 {
