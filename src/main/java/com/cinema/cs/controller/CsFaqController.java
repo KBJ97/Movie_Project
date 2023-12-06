@@ -2,7 +2,6 @@ package com.cinema.cs.controller;
 
 import com.cinema.admin.dto.CsFaqDTO;
 import com.cinema.cs.service.CsFaqService;
-
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

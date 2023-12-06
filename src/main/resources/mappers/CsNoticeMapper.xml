@@ -26,4 +26,8 @@
         SELECT COUNT(*) FROM `cs_notice`;
     </select>
 
+    <select id="selectNoticeByNo" resultType="com.cinema.cs.dto.CsNoticeDTO">
+        SELECT * FROM cs_notice WHERE noticeNo = #{noticeNo}
+    </select>
+
 </mapper>
