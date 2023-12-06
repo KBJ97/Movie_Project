@@ -1,7 +1,7 @@
 package com.cinema.cs.controller;
 
 import com.cinema.admin.dto.CsFaqDTO;
-import com.cinema.cs.service.CsService;
+import com.cinema.cs.service.CsFaqService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,12 +15,12 @@ import java.util.List;
 public class CsFaqController {
 
     @Autowired
-    private CsService csService;
+    private CsFaqService csFaqService;
 
     @GetMapping("/cs/faq")
     public String faq(Model model) {
 
-        List<CsFaqDTO> faqList = csService.selectFaqs(0);
+        List<CsFaqDTO> faqList = csFaqService.selectFaqs(0);
 
         log.info("faqList= " + faqList);
         model.addAttribute("faqList", faqList);
