@@ -70,8 +70,7 @@
         region2Num = #{region2Num},
         addr1 = #{addr1},
         addr2 = #{addr2},
-        zip = #{zip},
-        roomName = #{roomName}
+        zip = #{zip}
     </insert>
 
     <insert id="insertRooms">

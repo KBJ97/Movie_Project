@@ -8,6 +8,38 @@
     <link th:href="@{/css/header.css}" rel="stylesheet" type="text/css" />
     <link th:href="@{/cs/css/cs.css}" rel="stylesheet" type="text/css" />
     <link th:href="@{/css/footer.css}" rel="stylesheet" />
+    <script>
+        window.onload = function() {
+            var qutElements = document.querySelectorAll('.qut');
+
+            qutElements.forEach(function(qut) {
+                qut.addEventListener('click', function() {
+                    // 모든 'qut' 요소에서 'on' 클래스를 제거합니다.
+                    qutElements.forEach(function(element) {
+                        element.classList.remove('on');
+                    });
+
+                    // 클릭된 'qut' 요소에만 'on' 클래스를 추가합니다.
+                    this.classList.add('on');
+
+                    // 클릭한 'qut' 요소의 다음 형제 요소를 토글합니다.
+                    var awn = this.nextElementSibling;
+                    if (awn.style.display === 'block') {
+                        awn.style.display = 'none';
+                    } else {
+                        awn.style.display = 'block';
+                    }
+                });
+            });
+            var faqLinks = document.querySelectorAll('.faq-link');
+
+            faqLinks.forEach(function(link) {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault(); // 기본 동작을 막음
+                });
+            });
+        };
+    </script>
 </head>
 <body>
 
