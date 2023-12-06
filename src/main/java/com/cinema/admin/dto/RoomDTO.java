@@ -17,5 +17,6 @@ public class RoomDTO {
     private int colsTheater;
     private int totalSeats;
     private int theaterNum;
+    private int no;
 
 }
