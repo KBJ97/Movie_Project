@@ -38,7 +38,6 @@ public class CsNoticeController {
         int startNum = (pg - 1) * pageSize;
 
         // 페이징 정보 모델에 추가
-        model.addAttribute("totalNotices",totalNotices);
         model.addAttribute("lastPageNum", lastPageNum);
         model.addAttribute("pageGroupStart", pageGroupStart);
         model.addAttribute("pageGroupEnd", pageGroupEnd);
@@ -53,15 +52,4 @@ public class CsNoticeController {
 
         return "/cs/notice";
     }
-
-    @GetMapping("/cs/view")
-    public String view(Model model, int noticeNo) {
-
-        CsNoticeDTO notice = csNoticeService.selectNoticeByNo(noticeNo);
-
-        model.addAttribute("notice", notice);
-
-        return "/cs/view";
-    }
-
 }

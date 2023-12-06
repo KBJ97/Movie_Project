@@ -7,9 +7,7 @@
     <!-- CRUD -->
     <insert id="insertNotice"></insert>
 
-    <select id="selectNotice" resultType="com.cinema.cs.dto.CsNoticeDTO">
-        SELECT * FROM `cs_notice`
-    </select>
+    <select id="selectNotice" resultType="com.cinema.cs.dto.CsNoticeDTO"></select>
 
     <select id="selectNotices" resultType="com.cinema.cs.dto.CsNoticeDTO">
         SELECT `noticeNo`, `uid`, `title`, `rdate` FROM `cs_notice`
@@ -24,10 +22,6 @@
     <!-- 페이징 -->
     <select id="noticeCountTotal" resultType="int">
         SELECT COUNT(*) FROM `cs_notice`;
-    </select>
-
-    <select id="selectNoticeByNo" resultType="com.cinema.cs.dto.CsNoticeDTO">
-        SELECT * FROM cs_notice WHERE noticeNo = #{noticeNo}
     </select>
 
 </mapper>
