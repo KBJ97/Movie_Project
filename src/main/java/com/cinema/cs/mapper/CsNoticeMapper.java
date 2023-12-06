@@ -12,6 +12,7 @@ public interface CsNoticeMapper {
     public int insertNotice(CsNoticeDTO dto);
 
     public CsNoticeDTO selectNotice(int noticeNo);
+
     public List<CsNoticeDTO> selectNotices(int start);
 
     public int updateNotice(CsNoticeDTO dto);
@@ -20,4 +21,7 @@ public interface CsNoticeMapper {
 
     // 페이징
     public int noticeCountTotal();
+
+    public CsNoticeDTO selectNoticeByNo(int noticeNo);
+
 }

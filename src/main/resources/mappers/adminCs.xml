@@ -56,7 +56,7 @@
         writer = #{writer},
         title = #{title},
         content = #{content},
-        rdate = #{rdate},
+        rdate = NOW(),
         uid = #{uid}
     </insert>
 
