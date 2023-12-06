@@ -7441,9 +7441,7 @@ table select {
     color: #222;
     border: 1px solid #eaeaea;
     border-width: 0 0 1px 0;
-    background-color: #f2f4f5;
-    text-align: center;
-
+    background-color: #f2f4f5
 }
 
 .board-list>tbody>tr>td,.board-list>tbody>tr>th {
