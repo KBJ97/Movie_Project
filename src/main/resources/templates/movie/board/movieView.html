@@ -14,6 +14,7 @@
         }
     </style>
 
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
@@ -24,11 +25,12 @@
 
                 <p class="d-day default">예매 D-2</p>
                 <p class="contents-type"></p>
-                <p class="title" th:text="${movie.movieName}">다크 나이트</p>
+                <p class="title" th:text="${movie.movieName}"></p>
 
                 <div class="btn-util">
-                    <button type="button" title="보고싶어 안함" class="btn btn-like" rpst-movie-no="00094300">
+                    <button id="likeBtn" type="button" title="보고싶어 안함" class="btn btn-like" rpst-movie-no="00094300">
                         <i class="iconset ico-heart-line"></i>
+                        <!-- id 속성 추가 -->
                         <span title="보고싶어 한 명수" id="intrstCnt"> 558 </span>
                     </button>
 
@@ -111,9 +113,20 @@
                             [[${movie.story}]]
                         </div>
                     </div>
+                    <!-- 리뷰 작성 폼 -->
+                    <form th:action="@{/movie/movieView}" method="post">
+                        <!-- movieNum을 리뷰 작성 시 서버로 전달 -->
+                        <input type="hidden" name="movieNum" th:value="${movie.movieNum}" />
+                        <label for="content">리뷰 내용:</label>
+                        <textarea id="content" name="content" rows="4" cols="50"></textarea><br>
+                        <label for="score">평점 (1 ~ 10):</label>
+                        <input type="number" id="score" name="score" /><br>
+                        <button type="submit">리뷰 작성</button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+
 </body>
 </html>

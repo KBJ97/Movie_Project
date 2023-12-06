@@ -262,5 +262,7 @@ public class MovieService {
     }
 
 
-
+    public MovieDTO getMovieByNum(int movieNum) {
+        return null;
+    }
 }
