@@ -36,6 +36,14 @@ public class RestController {
         return cinemaList;
     }
 
+    @ResponseBody
+    @GetMapping("/admin/timeRegister/room/{region1Num}/{region2Num}")
+    public List<TheaterDTO> roomList( @PathVariable int region1Num, @PathVariable int region2Num) {
+        List<TheaterDTO> roomList = movieService.selectRoomAjax(region1Num, region2Num);
+
+        return roomList;
+    }
+
 
     @DeleteMapping("/admin/movieRegisterList/deleteMovie/{movieNum}")
     @Transactional
@@ -55,11 +63,11 @@ public class RestController {
         return ResponseEntity.ok("Movie deleted successfully");
     }
 
-    @DeleteMapping("/admin/theaterList/deleteTheater/{theaterNum}")
+    @DeleteMapping("/admin/theaterList/deleteTheater/{no}")
     @Transactional
-    public ResponseEntity<String> deleteTheater(@PathVariable("theaterNum") int theaterNum) {
-        log.info(theaterNum);
-        movieService.deleteTheater(theaterNum);
+    public ResponseEntity<String> deleteTheater(@PathVariable("no") int no) {
+        log.info(no);
+        movieService.deleteTheater(no);
 
         return ResponseEntity.ok("theater deleted successfully");
     }

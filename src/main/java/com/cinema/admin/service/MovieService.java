@@ -201,8 +201,8 @@ public class MovieService {
         return movieMapper.selectMoviesByCate(cateNum);
     }
 
-    public void deleteTheater(int theaterNum){
-        movieMapper.deleteTheater(theaterNum);
+    public void deleteTheater(int no){
+        movieMapper.deleteTheater(no);
     }
 
     public int theaterCount(){
@@ -262,6 +262,9 @@ public class MovieService {
         return adminCsMapper.selectFAQs();
     }
 
+    public List<TheaterDTO> selectRoomAjax(int region1Num, int region2Num){
+        return movieMapper.selectRoomAjax(region1Num, region2Num);
+    }
 
 
 }

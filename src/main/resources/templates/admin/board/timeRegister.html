@@ -80,6 +80,11 @@
             width: 50%; /* 너비 조절 */
         }
 
+        #register_detail #room {
+            height: 35px;
+            width: 50%; /* 너비 조절 */
+        }
+
         textarea {
             resize: none;
         }
@@ -221,7 +226,7 @@
                         data.forEach(function(cinema) {
                             var option = document.createElement('option');
                             option.value = cinema.theaterNum;
-                            option.text = cinema.roomName;
+                            option.text = cinema.thName;
                             selectedCinema.appendChild(option);
                         });
                     } else {
@@ -233,24 +238,87 @@
                 xhr.send();
             });
 
+            // 영화관이 변경될 때의 이벤트 리스너
+            document.querySelector("#cinema").addEventListener('change', function() {
+                var selectedCinema = this.value;
+
+                // 선택된 Region 1, Region 2 값
+                var selectedRegion1 = document.querySelector('select[name="region1"]').value;
+                var selectedRegion2 = document.querySelector('select[name="region2"]').value;
+
+                console.log("영화관이 변경될 때");
+                console.log("selectedRegion1 = " + selectedRegion1);
+                console.log("selectedRegion2 = " + selectedRegion2);
+                console.log("selectedCinema = " + selectedCinema);
+
+                // 서버로 요청을 보낼 URL
+                var url = `/cinema/admin/timeRegister/room/${selectedRegion1}/${selectedRegion2}`;
+
+                // XMLHttpRequest 객체 생성
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', url, true);
+
+                // 서버 응답이 도착했을 때의 처리
+                xhr.onload = function() {
+                    if (xhr.status >= 200 && xhr.status < 300) {
+                        // 상영관을 나타내는 DOM 요소
+                        var selectedRoom = document.querySelector("#room");
+
+                        // 이전 Room 옵션 제거
+                        while (selectedRoom.firstChild) {
+                            selectedRoom.removeChild(selectedRoom.firstChild);
+                        }
+
+                        // 서버에서 받은 데이터 파싱
+                        var data = JSON.parse(xhr.response);
+
+                        // Room을 선택하는 기본 옵션 추가
+                        var defaultOptionRoom = document.createElement('option');
+                        defaultOptionRoom.value = '';
+                        defaultOptionRoom.text = '-- 선택 --';
+                        selectedRoom.appendChild(defaultOptionRoom);
+
+                        // 서버에서 받은 데이터로 옵션 추가
+                        data.forEach(function(room) {
+                            var option = document.createElement('option');
+                            option.value = room.no;
+                            option.text = room.roomName;
+                            selectedRoom.appendChild(option);
+                        });
+                    } else {
+                        console.error('해당 상영관 정보를 가져오지 못했습니다.');
+                    }
+                };
+
+                // 서버에 요청 전송
+                xhr.send();
+            });
+
+
+
+
+
+
             // Form이 제출될 때의 이벤트 리스너
             var form = document.querySelector('form');
             form.addEventListener('submit', function(e) {
-                // 선택한 Region 1, Region 2, Cinema 값 가져오기
+                // 선택한 Region 1, Region 2, Cinema, Room 값 가져오기
                 var selectedRegion1 = document.querySelector('select[name="region1"]').value;
                 var selectedRegion2 = document.querySelector('select[name="region2"]').value;
                 var selectedCinema = document.querySelector('select[name="theaterNum"]').value;
+                var selectedRoom = document.querySelector('select[name="roomNo"]').value;
 
                 console.log("마지막");
                 console.log("selectedRegion1 = " + selectedRegion1);
                 console.log("selectedRegion2 = " + selectedRegion2);
                 console.log("selectedCinema = " + selectedCinema);
+                console.log("selectedRoom = " + selectedRoom);
 
-                // Region 1, Region 2 또는 Cinema가 ''인 경우 처리
-                if (selectedRegion1 === '0' || selectedRegion2 === '0' || selectedCinema === '') {
+                // Region 1, Region 2, Cinema, Room이 ''인 경우 처리
+                if (selectedRegion1 === '0' || selectedRegion2 === '0' || selectedCinema === '0' || selectedRoom === '0') {
                     e.preventDefault(); // 양식 제출 방지
 
-                    // Region 1, Region 2 및 Cinema에 따라 알람 메시지 생성
+                    // Region 1, Region 2, Cinema, Room에 따라 알람 메시지 생성
                     var alertMessage = '';
                     if (selectedRegion1 === '0') {
                         alertMessage += '지역를 선택하세요. ';
@@ -258,8 +326,11 @@
                     if (selectedRegion2 === '0') {
                         alertMessage += '상세 지역을 선택하세요. ';
                     }
-                    if (selectedCinema === '') {
-                        alertMessage += '상영 상영관을 선택하세요.';
+                    if (selectedCinema === '0') {
+                        alertMessage += '영화관을 선택하세요. ';
+                    }
+                    if (selectedRoom === '0') {
+                        alertMessage += '상영관을 선택하세요.';
                     }
 
                     alert(alertMessage); // 경고 메시지 표시
@@ -300,12 +371,20 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>상영관</td>
+                                <td>영화관</td>
                                 <td>
                                     <select id="cinema" name="theaterNum">
-                                        <option value=''>-- 선택 --</option>
+                                        <option value='0'>-- 선택 --</option>
                                         <option th:each="theater : ${cinemaList}" th:value="${theater.theaterNum}" th:text="${theater.roomName}"></option>
-                                        <!-- 원하는 장르 옵션들을 추가하세요 -->
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>상영관</td>
+                                <td>
+                                    <select id="room" name="roomNo">
+                                        <option value='0'>-- 선택 --</option>
+                                        <option th:each="room : ${roomList}" th:value="${room.roomNo}" th:text="${room.roomName}"></option>
                                     </select>
                                 </td>
                             </tr>

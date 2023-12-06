@@ -56,10 +56,11 @@ public interface MovieMapper {
 
     public List<MovieDTO> selectMoviesByCate(int cateNum);
 
-    public void deleteTheater(int theaterNum);
+    public void deleteTheater(int no);
 
     public List<MovieInfoDTO> selectMovieInfoList();
 
+    public List<TheaterDTO> selectRoomAjax(int region1Num, int region2Num);
 
 
 
